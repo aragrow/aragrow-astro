@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    question: 'What does an IT consultant do?',
+    answer:
+      'An IT consultant helps organizations solve technology challenges, improve business operations, and innovate with digital solutions. They advise on strategy, manage projects, optimize systems, integrate new technologies, and guide businesses through technical transformations.',
+  },
+  {
+    question: 'What are the benefits of IT consulting services?',
+    answer:
+      'IT consulting services provide expertise, save costs, improve security, and keep your business competitive. Consultants deliver solutions faster, transfer knowledge, and help you avoid costly mistakes.',
+  },
+  {
+    question: 'What is managed IT consulting?',
+    answer:
+      'Managed IT consulting combines regular strategic guidance with ongoing IT support. Instead of one-off projects, clients receive continuous advice, monitoring, and problem solving.',
+  },
+  {
+    question: 'What is the difference between IT consulting and IT support?',
+    answer:
+      'IT consulting is strategic: it helps you plan, innovate, and transform your technology. IT support is operational: it solves immediate issues and keeps systems running.',
+  },
+  {
+    question: "What are AraGrow's IT consulting rates?",
+    answer:
+      'AraGrow charges $75 per hour for expert IT consulting in AI integration, WordPress, Laravel, fractional CTO, Oracle Cloud, MySQL, Python, and ColdFusion.',
+  },
+  {
+    question: 'How can AraGrow help startups?',
+    answer:
+      'AraGrow helps startups scale with expert IT consulting: AI integration, WordPress optimization, Laravel applications, fractional CTO services, and Oracle Cloud/MySQL/Python infrastructure.',
+  },
+  {
+    question: 'How can AraGrow fix my slow WordPress site?',
+    answer:
+      'AraGrow speeds up slow WordPress sites with expert audits, caching plugins (WP Rocket/Redis), image optimization (TinyPNG/WebP), database cleanup (MySQL), and hosting configuration improvements.',
+  },
+  {
+    question: 'How does AraGrow integrate AI into WordPress sites?',
+    answer:
+      'AraGrow integrates AI (Claude, Gemini, and others) via plugins and APIs for chatbots, content generation, and SEO analytics on WordPress sites.',
+  },
+  {
+    question: 'How does fractional CTO work at AraGrow?',
+    answer:
+      "AraGrow's fractional CTO (David Arago) provides part-time strategic tech leadership including AI roadmaps, cloud migration, scaling strategies, and architecture decisions — without the cost of a full-time hire.",
+  },
+  {
+    question: 'How does AraGrow handle Python scripting?',
+    answer:
+      'AraGrow uses Python for automation, data analysis, and AI scripts that integrate with WordPress, CRMs, and other business systems.',
+  },
+  {
+    question: 'Does AraGrow offer nationwide support?',
+    answer:
+      'Yes. While Minneapolis-based, AraGrow serves US businesses nationwide with fast virtual and remote support.',
+  },
+  {
+    question: 'How do I get started with AraGrow consulting?',
+    answer:
+      'Contact us for a free audit. AraGrow starts with $75/hour projects in AI, WordPress, and Laravel — all tailored to your scalable growth goals.',
+  },
+  {
+    question: 'What makes AraGrow different from other consultants?',
+    answer:
+      'AraGrow stands out with direct expert access (no agency markup), 25+ years of experience in AI, WordPress, and Laravel, fractional CTO services, and a focused approach to scalable SMB growth.',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
+    },
+  })),
+};
+---
+
+<Layout
+  title="FAQ — AraGrow LLC | IT Consulting Questions Answered"
+  description="Answers to common questions about AraGrow's IT consulting services, fractional CTO, AI integration, WordPress development, rates, and more."
+  structuredData={structuredData}
+>
+  <Nav />
+  <div class="faq-page-wrapper">
+    <Faq faqs={faqs} />
+  </div>
+  <Footer />
+</Layout>
+
+<style>
+  .faq-page-wrapper {
+    padding-top: 80px;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+const awards = [
+  {
+    icon: '🏆',
+    text: 'Emmy Award — Web Site Design & Usability',
+    year: 'Upper Midwest Chapter · 2007–2008',
+  },
+  {
+    icon: '🥇',
+    text: 'Best in WebOps Award Winner',
+    year: 'Pantheon Platform · 2023',
+  },
+  {
+    icon: '🏆',
+    text: 'Brooklyn Center Local Business Person of the Year',
+    year: 'Alignable · 2025',
+    href: 'https://www.alignable.com/st-louis-park-mn/aragrow-llc',
+  },
+  {
+    icon: '🌟',
+    text: 'Highly Recommended by Locals',
+    year: 'Alignable · 2025',
+    href: 'https://www.alignable.com/st-louis-park-mn/aragrow-llc',
+  },
+  {
+    icon: '🤝',
+    text: 'Community Supporter Award',
+    year: 'Alignable · 2025',
+    href: 'https://www.alignable.com/st-louis-park-mn/aragrow-llc',
+  },
+];
+---
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-avatar">👤</div>
+        <div class="about-badges">
+          <div class="about-badge">🏆 Emmy Winner</div>
+          <div class="about-badge">🥇 Best in WebOps</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">David <span class="grad-text">Arago</span></h2>
+        <p>
+          I'm a results-oriented technology leader based in Minneapolis, Minnesota, with over 25
+          years of experience building and scaling digital products across industries.
+        </p>
+        <p>
+          Through <strong>AraGrow LLC</strong>, I provide senior-level tech leadership to startups
+          and small businesses — helping them leverage AI, build scalable web platforms, and make
+          smart infrastructure decisions without the overhead of a full-time executive hire.
+        </p>
+        <p>
+          I'm fully bilingual (English &amp; Spanish), which opens the door to broader collaboration
+          and serving diverse markets.
+        </p>
+        <div class="awards">
+          {
+            awards.map((a) =>
+              a.href ? (
+                <a class="award award-link" href={a.href} target="_blank" rel="noopener">
+                  <div class="award-icon">{a.icon}</div>
+                  <div>
+                    <div class="award-text">{a.text}</div>
+                    <div class="award-year">{a.year}</div>
+                  </div>
+                </a>
+              ) : (
+                <div class="award">
+                  <div class="award-icon">{a.icon}</div>
+                  <div>
+                    <div class="award-text">{a.text}</div>
+                    <div class="award-year">{a.year}</div>
+                  </div>
+                </div>
+              )
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

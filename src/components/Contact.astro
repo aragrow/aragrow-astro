@@ -1,0 +1,133 @@
+---
+const links = [
+  {
+    icon: '💼',
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/davidarago',
+    href: 'https://www.linkedin.com/in/davidarago/',
+  },
+  {
+    icon: '🌐',
+    label: 'Company Website',
+    value: 'aragrow.me',
+    href: 'https://aragrow.me',
+  },
+  {
+    icon: '✉️',
+    label: 'Email',
+    value: 'davidarago@aragrow.me',
+    href: 'mailto:davidarago@aragrow.me',
+  },
+];
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="contact-heading">
+          Let's Build<br /><span class="grad-text">Something Great</span>
+        </h2>
+        <p class="contact-intro">
+          Whether you need fractional CTO support, a new web platform, or help integrating AI into
+          your workflow — I'd love to hear about your project.
+        </p>
+        <div class="contact-links">
+          {
+            links.map((l) => (
+              <a
+                href={l.href}
+                target={l.href.startsWith('http') ? '_blank' : undefined}
+                rel={l.href.startsWith('http') ? 'noopener' : undefined}
+                class="contact-link"
+              >
+                <span class="contact-link-icon">{l.icon}</span>
+                <div>
+                  <div class="contact-link-label">{l.label}</div>
+                  <div class="contact-link-val">{l.value}</div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">What can I help you with?</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Fractional CTO</option>
+              <option>AI Integration</option>
+              <option>Web Development</option>
+              <option>Cloud Infrastructure</option>
+              <option>Database Management</option>
+              <option>Web Performance / WebOps</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about your project</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Brief description of your goals, timeline, and budget..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message ✉️</button>
+          <p class="form-note">I typically respond within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .contact-intro {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#0891b2';
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = 'Send Message ✉️';
+        btn.disabled = false;
+        btn.style.background = '';
+      }, 3000);
+    }, 1200);
+  });
+</script>

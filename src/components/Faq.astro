@@ -1,0 +1,74 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FaqItem[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">FAQ</div>
+      <h1 class="section-title">Frequently Asked <span class="grad-text">Questions</span></h1>
+      <p class="section-sub">
+        Everything you need to know about working with AraGrow. Can't find your answer?
+        <a href="/#contact" class="faq-contact-link">Get in touch →</a>
+      </p>
+    </div>
+
+    <div class="faq-list">
+      {
+        faqs.map((item, i) => (
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
+              <span>{item.question}</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id={`faq-answer-${i}`} role="region" hidden>
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>('.faq-item');
+
+  items.forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-question')!;
+    const answer = item.querySelector<HTMLElement>('.faq-answer')!;
+    const icon = btn.querySelector<HTMLElement>('.faq-icon')!;
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      items.forEach((other) => {
+        if (other !== item) {
+          const otherBtn = other.querySelector<HTMLButtonElement>('.faq-question')!;
+          const otherAnswer = other.querySelector<HTMLElement>('.faq-answer')!;
+          const otherIcon = other.querySelector<HTMLElement>('.faq-icon')!;
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherAnswer.hidden = true;
+          otherIcon.textContent = '+';
+          other.classList.remove('open');
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer.hidden = isOpen;
+      icon.textContent = isOpen ? '+' : '×';
+      item.classList.toggle('open', !isOpen);
+    });
+  });
+</script>

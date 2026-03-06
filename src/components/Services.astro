@@ -1,0 +1,71 @@
+---
+const services = [
+  {
+    icon: '🧭',
+    title: 'Fractional CTO',
+    description:
+      'Strategic technology leadership on your terms. I align your tech roadmap with business goals, lead engineering teams, and make the critical architectural decisions that fuel growth.',
+    tag: 'Leadership · Strategy',
+  },
+  {
+    icon: '🤖',
+    title: 'AI Integration',
+    description:
+      'Practical AI solutions tailored to your workflows. From LLM-powered tools to intelligent automation, I help you harness AI without the hype — and deliver real ROI.',
+    tag: 'AI · Automation',
+  },
+  {
+    icon: '🌐',
+    title: 'Web Development',
+    description:
+      'Custom WordPress sites, Laravel applications, and full-stack platforms built for performance. Emmy Award–winning experience in web design and usability.',
+    tag: 'WordPress · Laravel · Full-Stack',
+  },
+  {
+    icon: '☁️',
+    title: 'Cloud Infrastructure',
+    description:
+      'Oracle Cloud architecture, deployment pipelines, and scalable infrastructure design. I build systems that handle growth today and tomorrow.',
+    tag: 'Oracle Cloud · DevOps',
+  },
+  {
+    icon: '🗄️',
+    title: 'Database Management',
+    description:
+      'Oracle DBA expertise in MySQL, Oracle, and modern data architectures. Performance tuning, schema design, and data strategy for your most critical assets.',
+    tag: 'Oracle · MySQL · Architecture',
+  },
+  {
+    icon: '⚡',
+    title: 'Web Performance & WebOps',
+    description:
+      'Best in WebOps award winner. I optimize load times, implement CDN strategies, and streamline deployment workflows for maximum uptime.',
+    tag: 'Performance · WebOps · Pantheon',
+  },
+];
+---
+
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">Apps for <span class="grad-text">Scalable Growth</span></h2>
+      <p class="section-sub">
+        From strategy to execution — I deliver senior-level technology expertise that drives
+        measurable results for your business.
+      </p>
+    </div>
+    <div class="services-grid">
+      {
+        services.map((s) => (
+          <div class="service-card reveal">
+            <div class="service-icon">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+            <span class="service-tag">{s.tag}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

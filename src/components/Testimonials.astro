@@ -1,0 +1,83 @@
+---
+const testimonials = [
+  {
+    quote:
+      'David Arago is a WordPress development virtuoso who consistently delivers top-notch solutions. His 25+ years of experience shine through in his ability to navigate complex problems with finesse. David\'s deep understanding of WordPress and his knack for creative problem-solving make him an invaluable asset to any project. His dedication to his craft and his collaborative spirit ensure that he not only meets but exceeds expectations. I wholeheartedly recommend David for any WordPress development needs.',
+    name: 'Brent Peterson',
+    nameHref: 'https://www.alignable.com/st-louis-park-mn/content-basis-llc',
+    company: 'Content Basis LLC',
+    companyHref: 'https://www.contentbasis.io/',
+    location: 'Minneapolis, MN',
+  },
+  {
+    quote:
+      'David Arago is a very professional developer, excellent at creating accurate scopes for PHP development projects.',
+    name: 'Christian Kuffner',
+    nameHref: 'https://www.alignable.com/minneapolis-mn/cypress-creative-llc',
+    company: 'Cypress Creative, LLC',
+    companyHref: 'https://cypresscreative.com/',
+    location: 'Minneapolis, MN',
+  },
+  {
+    quote:
+      'David is committed to his craft and he is willing to do what I call the R&R – reading and research.',
+    name: 'Jack',
+    nameHref:
+      'https://www.alignable.com/san-diego-ca/websites-web-applications-and-mobile-apps',
+    company: 'AXEO.com',
+    companyHref: 'https://axeo.com',
+    location: 'San Diego, CA',
+  },
+  {
+    quote: 'Great guy, and very helpful. Gives folks what they need.',
+    name: 'Ben Baldwin',
+    nameHref: 'https://www.alignable.com/owasso-ok/bsquared-solutions',
+    company: 'Bsquared Solutions',
+    companyHref: 'https://bsquaredsolutions.net/',
+    location: 'Owasso, OK',
+  },
+];
+---
+
+<section id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What Clients Say</div>
+      <h2 class="section-title">Trusted by <span class="grad-text">Great People</span></h2>
+      <p class="section-sub">
+        Real feedback from clients and peers across Minneapolis and beyond.
+      </p>
+    </div>
+    <div class="testimonial-grid">
+      {
+        testimonials.map((t) => (
+          <article class="testimonial-card reveal">
+            <div class="testimonial-quote-mark">"</div>
+            <blockquote class="testimonial-quote">
+              <p>{t.quote}</p>
+            </blockquote>
+            <footer class="testimonial-footer">
+              <div class="testimonial-avatar">
+                {t.name.charAt(0)}
+              </div>
+              <div>
+                <div class="testimonial-name">
+                  <a href={t.nameHref} target="_blank" rel="noopener">
+                    {t.name}
+                  </a>
+                </div>
+                <div class="testimonial-meta">
+                  <a href={t.companyHref} target="_blank" rel="noopener">
+                    {t.company}
+                  </a>
+                  {' · '}
+                  {t.location}
+                </div>
+              </div>
+            </footer>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

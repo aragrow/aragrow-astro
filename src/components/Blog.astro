@@ -1,0 +1,86 @@
+---
+import {
+  getPosts,
+  formatDate,
+  stripHtml,
+  getFeaturedImage,
+  getPostCategories,
+} from '../lib/wordpress';
+
+// Fetch latest 3 posts for the homepage preview
+const allPosts = await getPosts(3);
+const hasPosts = allPosts.length > 0;
+
+// Fallback cards shown when WP API is unavailable
+const fallbackPosts = [
+  { imgClass: 'blog-img-ai', emoji: '🤖', category: 'AI & Automation', title: 'How Small Businesses Can Actually Benefit from AI (Without the Hype)', excerpt: 'A practical breakdown of where AI adds real value for growing companies — and where it doesn\'t. Skip the buzzwords, focus on ROI.', url: '/blog' },
+  { imgClass: 'blog-img-web', emoji: '🌐', category: 'Web Performance', title: 'The WebOps Playbook: Shipping Faster Without Breaking Things', excerpt: 'Lessons learned from years of WebOps work — how to streamline deployments, reduce downtime, and build a culture of reliability.', url: '/blog' },
+  { imgClass: 'blog-img-cto', emoji: '🧭', category: 'Fractional CTO', title: 'Do You Need a CTO? A Startup Budget Guide to Tech Leadership', excerpt: 'How fractional CTO services work, when you need one, and how to get executive-level guidance without the executive-level price tag.', url: '/blog' },
+];
+---
+
+<section id="blog">
+  <div class="container">
+    <div class="reveal blog-header">
+      <div>
+        <div class="section-label">Insights</div>
+        <h2 class="section-title">Latest from the <span class="grad-text">Blog</span></h2>
+      </div>
+      <a href="/blog" class="btn btn-outline">All Posts →</a>
+    </div>
+    <div class="blog-grid">
+      {hasPosts
+        ? allPosts.map((post) => {
+            const img = getFeaturedImage(post);
+            const cats = getPostCategories(post);
+            const excerpt = stripHtml(post.excerpt.rendered).slice(0, 140);
+            return (
+              <a href={`/blog/${post.slug}`} class="blog-card reveal">
+                <div class="blog-img blog-img-ai">
+                  {img
+                    ? <img src={img} alt={post.title.rendered} loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+                    : '✍️'}
+                </div>
+                <div class="blog-body">
+                  {cats[0] && <div class="blog-category">{cats[0]}</div>}
+                  <h3 set:html={post.title.rendered} />
+                  <p>{excerpt}{excerpt.length >= 140 ? '…' : ''}</p>
+                  <div class="blog-meta">
+                    <span>{formatDate(post.date)}</span>
+                    <span class="blog-read">Read More →</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })
+        : fallbackPosts.map((p) => (
+            <a href={p.url} class="blog-card reveal">
+              <div class={`blog-img ${p.imgClass}`}>{p.emoji}</div>
+              <div class="blog-body">
+                <div class="blog-category">{p.category}</div>
+                <h3>{p.title}</h3>
+                <p>{p.excerpt}</p>
+                <div class="blog-meta">
+                  <span>David Arago</span>
+                  <span class="blog-read">Read More →</span>
+                </div>
+              </div>
+            </a>
+          ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .blog-header .btn {
+    margin-top: 8px;
+  }
+</style>

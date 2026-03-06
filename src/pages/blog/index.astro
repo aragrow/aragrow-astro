@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import {
+  getPosts,
+  formatDate,
+  stripHtml,
+  getFeaturedImage,
+  getPostCategories,
+} from '../../lib/wordpress';
+
+const posts = await getPosts();
+const hasPosts = posts.length > 0;
+---
+
+<Layout
+  title="Blog — AraGrow LLC | Tech Insights by David Arago"
+  description="Articles on AI integration, fractional CTO leadership, WordPress development, web performance, and scalable technology for growing businesses."
+>
+  <Nav />
+  <div class="blog-page-wrapper">
+    <div class="container">
+      <div class="blog-page-header reveal">
+        <div class="section-label">Insights</div>
+        <h1 class="section-title">The <span class="grad-text">Blog</span></h1>
+        <p class="section-sub">
+          Practical articles on AI, web development, fractional CTO strategy, and growing your
+          business through technology.
+        </p>
+      </div>
+
+      {
+        hasPosts ? (
+          <div class="blog-listing-grid">
+            {posts.map((post) => {
+              const img = getFeaturedImage(post);
+              const cats = getPostCategories(post);
+              const excerpt = stripHtml(post.excerpt.rendered).slice(0, 160);
+              return (
+                <a href={`/blog/${post.slug}`} class="blog-listing-card reveal">
+                  <div class="blog-listing-img">
+                    {img ? (
+                      <img src={img} alt={post.title.rendered} loading="lazy" />
+                    ) : (
+                      <div class="blog-listing-img-placeholder">✍️</div>
+                    )}
+                  </div>
+                  <div class="blog-listing-body">
+                    {cats.length > 0 && (
+                      <div class="blog-category">{cats[0]}</div>
+                    )}
+                    <h2 set:html={post.title.rendered} />
+                    <p>{excerpt}{excerpt.length >= 160 ? '…' : ''}</p>
+                    <div class="blog-listing-meta">
+                      <span>{formatDate(post.date)}</span>
+                      <span class="blog-read">Read More →</span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        ) : (
+          <div class="blog-empty reveal">
+            <p>
+              Posts are coming soon — or the WordPress API may need to be enabled.
+              <a href="/#contact">Get in touch</a> if you have questions.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+  <Footer />
+</Layout>
+
+<style>
+  .blog-page-wrapper { padding-top: 80px; }
+
+  .blog-page-header { padding: 60px 0 56px; }
+
+  .blog-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+    padding-bottom: 100px;
+  }
+
+  .blog-listing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+  }
+  .blog-listing-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  }
+
+  .blog-listing-img {
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--teal-dim), var(--purple-dim));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .blog-listing-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .blog-listing-card:hover .blog-listing-img img { transform: scale(1.04); }
+  .blog-listing-img-placeholder { font-size: 3rem; }
+
+  .blog-listing-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-listing-body h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .blog-listing-body p {
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .blog-listing-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .blog-empty {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--muted);
+  }
+  .blog-empty a { color: var(--teal); }
+</style>

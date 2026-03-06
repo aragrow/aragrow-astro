@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contact — AraGrow LLC | Work With David Arago"
+  description="Ready to kickstart your project? Send David Arago a message via our secure contact form, email, or phone. Fractional CTO & technology consulting for growing businesses."
+>
+  <Nav />
+
+  <div class="contact-page-wrapper">
+    <div class="container">
+
+      <div class="contact-page-header reveal">
+        <div class="section-label">Get In Touch</div>
+        <h1 class="section-title">Let's <span class="grad-text">Talk Turkey</span></h1>
+        <p class="section-sub">
+          Ready to kickstart your project? Send me your inquiry and I'll be right in touch with you.
+        </p>
+      </div>
+
+      <div class="contact-page-grid">
+
+        <!-- GHL Form -->
+        <div class="contact-form-col reveal">
+          <div class="contact-form-card">
+            <iframe
+              data-layout-iframe-id="inline-uGpEAUsSB3eAYzaKzVdt"
+              id="inline-uGpEAUsSB3eAYzaKzVdt"
+              data-layout-type="inline"
+              style="border:none;width:100%;min-height:520px;"
+              title="Contact form"
+            ></iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          </div>
+        </div>
+
+        <!-- Contact details sidebar -->
+        <div class="contact-details-col reveal">
+          <div class="contact-detail-block">
+            <div class="contact-detail-icon">✉️</div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <a href="mailto:davidarago@aragrow.me" class="contact-detail-value">
+                davidarago@aragrow.me
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-detail-block">
+            <div class="contact-detail-icon">📞</div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <a href="tel:+19522281752" class="contact-detail-value">(952) 228-1752</a>
+            </div>
+          </div>
+
+          <div class="contact-detail-block">
+            <div class="contact-detail-icon">💼</div>
+            <div>
+              <div class="contact-detail-label">LinkedIn</div>
+              <a
+                href="https://www.linkedin.com/in/davidarago/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-detail-value"
+              >
+                linkedin.com/in/davidarago
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-detail-block">
+            <div class="contact-detail-icon">🌐</div>
+            <div>
+              <div class="contact-detail-label">Website</div>
+              <a
+                href="https://aragrow.me"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-detail-value"
+              >
+                aragrow.me
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-note">
+            <p>
+              Prefer a call? Book a free 30-minute discovery call directly via the form above,
+              or reach out by phone or email — I'm happy to chat in <strong>English or Spanish</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .contact-page-wrapper {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  .contact-page-header {
+    padding: 60px 0 56px;
+    text-align: center;
+  }
+  .contact-page-header .section-sub {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .contact-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Form card ── */
+  .contact-form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    overflow: hidden;
+  }
+
+  /* ── Details sidebar ── */
+  .contact-details-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-detail-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+  .contact-detail-block:hover { border-color: var(--teal); }
+
+  .contact-detail-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-detail-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail-value {
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: var(--teal);
+    text-decoration: none;
+    word-break: break-all;
+    transition: opacity 0.2s;
+  }
+  .contact-detail-value:hover { opacity: 0.75; }
+
+  .contact-note {
+    background: var(--teal-dim);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .contact-note strong { color: var(--text); }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .contact-page-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-details-col {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .contact-detail-block {
+      flex: 1 1 200px;
+    }
+    .contact-note {
+      flex: 1 1 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-page-header {
+      text-align: left;
+      padding: 40px 0 40px;
+    }
+    .contact-page-header .section-sub { margin: 0; }
+    .contact-form-card { padding: 20px; }
+  }
+</style>

@@ -1,0 +1,27 @@
+{
+  "name": "aragrow-astro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aragrow/aragrow-astro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aragrow/aragrow-astro/issues"
+  },
+  "homepage": "https://github.com/aragrow/aragrow-astro#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.18.0"
+  }
+}
