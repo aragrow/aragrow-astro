@@ -1,5 +1,15 @@
 const WP_API = 'https://aragrow.me/wp-json/wp/v2';
 
+// Application Password bypasses WordFence REST API blocking.
+// Set WP_USER and WP_APP_PASSWORD in your .env file.
+// WordPress Admin → Users → Profile → Application Passwords → Add New.
+const WP_USER = import.meta.env.WP_USER ?? '';
+const WP_APP_PASSWORD = import.meta.env.WP_APP_PASSWORD ?? '';
+const authHeader =
+  WP_USER && WP_APP_PASSWORD
+    ? { Authorization: 'Basic ' + btoa(`${WP_USER}:${WP_APP_PASSWORD}`) }
+    : {};
+
 export interface WPPost {
   id: number;
   slug: string;
@@ -33,7 +43,8 @@ export interface WPCategory {
 export async function getPosts(perPage = 100): Promise<WPPost[]> {
   try {
     const res = await fetch(
-      `${WP_API}/posts?_embed&per_page=${perPage}&status=publish&orderby=date&order=desc`
+      `${WP_API}/posts?_embed&per_page=${perPage}&status=publish&orderby=date&order=desc`,
+      { headers: authHeader }
     );
     if (!res.ok) throw new Error(`WP API error: ${res.status}`);
     return res.json();
@@ -46,7 +57,7 @@ export async function getPosts(perPage = 100): Promise<WPPost[]> {
 /** Fetch a single post by slug */
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   try {
-    const res = await fetch(`${WP_API}/posts?slug=${slug}&_embed&status=publish`);
+    const res = await fetch(`${WP_API}/posts?slug=${slug}&_embed&status=publish`, { headers: authHeader });
     if (!res.ok) throw new Error(`WP API error: ${res.status}`);
     const posts: WPPost[] = await res.json();
     return posts[0] ?? null;
@@ -59,7 +70,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 /** Fetch all categories */
 export async function getCategories(): Promise<WPCategory[]> {
   try {
-    const res = await fetch(`${WP_API}/categories?per_page=100`);
+    const res = await fetch(`${WP_API}/categories?per_page=100`, { headers: authHeader });
     if (!res.ok) throw new Error(`WP API error: ${res.status}`);
     return res.json();
   } catch (e) {
