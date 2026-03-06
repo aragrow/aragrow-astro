@@ -6,15 +6,17 @@ an Application Password.
 
 ---
 
-## 1. `.htaccess` — Pass Authorization header through Apache
+## 1. `.htaccess` — Pass Authorization header to PHP-FPM
 
 **File:** `public_html/.htaccess`
 
-By default Hostinger/Apache strips the `Authorization` HTTP header before PHP
-sees it. Without this fix, `$_SERVER['HTTP_AUTHORIZATION']` is always empty and
-the REST API block in the mu-plugin fires even for valid credentials.
+Hostinger runs PHP via **PHP-FPM** (FastCGI). Apache/LiteSpeed env variables
+set by `RewriteRule [E=...]` flags do **not** cross the FastCGI process boundary,
+so `$_SERVER['HTTP_AUTHORIZATION']` stays empty in PHP even if that RewriteRule
+is present. `CGIPassAuth On` is what actually fixes this — it tells the server
+to include the `Authorization` header in the FastCGI params directly.
 
-Add the two `RewriteRule` lines **inside** the existing `<IfModule mod_rewrite.c>`
+Add **only `CGIPassAuth On`** inside the existing `<IfModule mod_rewrite.c>`
 block, immediately after `RewriteEngine On`:
 
 ```apache
@@ -22,11 +24,11 @@ block, immediately after `RewriteEngine On`:
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Pass Authorization header to PHP (required for Application Passwords).
-# CGIPassAuth On is needed for Hostinger LiteSpeed + FastCGI.
+# Required for Application Password auth on Hostinger PHP-FPM.
+# Passes the Authorization header across the FastCGI boundary to PHP.
+# NOTE: The RewriteRule [E=HTTP_AUTHORIZATION:...] that may already be
+# present does NOT work with PHP-FPM — CGIPassAuth On is the correct fix.
 CGIPassAuth On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteRule .* - [E=REDIRECT_HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
