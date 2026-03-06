@@ -22,7 +22,9 @@ block, immediately after `RewriteEngine On`:
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Pass Authorization header through to PHP (required for Application Passwords)
+# Pass Authorization header to PHP (required for Application Passwords).
+# CGIPassAuth On is needed for Hostinger LiteSpeed + FastCGI.
+CGIPassAuth On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteRule .* - [E=REDIRECT_HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
