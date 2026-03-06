@@ -14,10 +14,11 @@ import Footer from '../components/Footer.astro';
     <div class="container">
 
       <div class="contact-page-header reveal">
-        <div class="section-label">Get In Touch</div>
-        <h1 class="section-title">Let's <span class="grad-text">Talk Turkey</span></h1>
+        <div class="section-label">Contact</div>
+        <h1 class="section-title">Let's Build<br /><span class="grad-text">Something Great</span></h1>
         <p class="section-sub">
-          Ready to kickstart your project? Send me your inquiry and I'll be right in touch with you.
+          Whether you need fractional CTO support, a new web platform, or help integrating AI into
+          your workflow — I'd love to hear about your project.
         </p>
       </div>
 
@@ -25,16 +26,17 @@ import Footer from '../components/Footer.astro';
 
         <!-- GHL Form -->
         <div class="contact-form-col reveal">
-          <div class="contact-form-card">
-            <iframe
-              data-layout-iframe-id="inline-uGpEAUsSB3eAYzaKzVdt"
-              id="inline-uGpEAUsSB3eAYzaKzVdt"
-              data-layout-type="inline"
-              style="border:none;width:100%;min-height:520px;"
-              title="Contact form"
-            ></iframe>
-            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-          </div>
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/uGpEAUsSB3eAYzaKzVdt"
+            style="width:100%;border:none;display:block;min-height:700px;"
+            scrolling="no"
+            id="inline-uGpEAUsSB3eAYzaKzVdt"
+            data-layout="{'id':'uGpEAUsSB3eAYzaKzVdt'}"
+            data-layout-iframe-id="inline-uGpEAUsSB3eAYzaKzVdt"
+            data-form-id="uGpEAUsSB3eAYzaKzVdt"
+            title="Contact form"
+          ></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js" defer data-deferred="1"></script>
         </div>
 
         <!-- Contact details sidebar -->
@@ -102,6 +104,18 @@ import Footer from '../components/Footer.astro';
   <Footer />
 </Layout>
 
+<script>
+  // Keep the form column height in sync with the iframe after GHL's script resizes it
+  const iframe = document.getElementById('inline-uGpEAUsSB3eAYzaKzVdt') as HTMLIFrameElement | null;
+  if (iframe) {
+    const ro = new ResizeObserver(() => {
+      const col = iframe.closest('.contact-form-col') as HTMLElement | null;
+      if (col) col.style.minHeight = iframe.offsetHeight + 'px';
+    });
+    ro.observe(iframe);
+  }
+</script>
+
 <style>
   .contact-page-wrapper {
     padding-top: 80px;
@@ -109,7 +123,7 @@ import Footer from '../components/Footer.astro';
   }
 
   .contact-page-header {
-    padding: 60px 0 56px;
+    padding: 15px 0 56px;
     text-align: center;
   }
   .contact-page-header .section-sub {
@@ -122,15 +136,6 @@ import Footer from '../components/Footer.astro';
     grid-template-columns: 1fr 320px;
     gap: 48px;
     align-items: start;
-  }
-
-  /* ── Form card ── */
-  .contact-form-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    overflow: hidden;
   }
 
   /* ── Details sidebar ── */
@@ -206,12 +211,17 @@ import Footer from '../components/Footer.astro';
     }
   }
 
+  /* Hide GHL-injected close/minimize buttons on inline form */
+  :global(.ep-close-icon),
+  :global(.ep-minimize-icon) {
+    display: none !important;
+  }
+
   @media (max-width: 600px) {
     .contact-page-header {
       text-align: left;
       padding: 40px 0 40px;
     }
     .contact-page-header .section-sub { margin: 0; }
-    .contact-form-card { padding: 20px; }
   }
 </style>
