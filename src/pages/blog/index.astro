@@ -19,6 +19,7 @@ const hasPosts = posts.length > 0;
   description="Articles on AI integration, fractional CTO leadership, WordPress development, web performance, and scalable technology for growing businesses."
 >
   <Nav />
+  <main>
   <div class="blog-page-wrapper">
     <div class="container">
       <div class="blog-page-header reveal">
@@ -38,7 +39,7 @@ const hasPosts = posts.length > 0;
               const cats = getPostCategories(post);
               const excerpt = stripHtml(post.excerpt.rendered).slice(0, 160);
               return (
-                <a href={`/blog/${post.slug}`} class="blog-listing-card reveal">
+                <a href={`/blog/${post.slug}`} class="blog-listing-card reveal" aria-label={`Read: ${stripHtml(post.title.rendered)}`}>
                   <div class="blog-listing-img">
                     {img ? (
                       <img src={img} alt={post.title.rendered} loading="lazy" />
@@ -72,6 +73,7 @@ const hasPosts = posts.length > 0;
       }
     </div>
   </div>
+  </main>
   <Footer />
 </Layout>
 
@@ -99,7 +101,7 @@ const hasPosts = posts.length > 0;
     transition: all 0.3s;
   }
   .blog-listing-card:hover {
-    border-color: var(--teal);
+    border-color: var(--teal-text);
     transform: translateY(-4px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   }
@@ -157,5 +159,5 @@ const hasPosts = posts.length > 0;
     text-align: center;
     color: var(--muted);
   }
-  .blog-empty a { color: var(--teal); }
+  .blog-empty a { color: var(--teal-text); }
 </style>

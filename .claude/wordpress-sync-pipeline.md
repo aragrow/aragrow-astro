@@ -4,6 +4,87 @@ Full workflow for keeping the Astro static site in sync with WordPress posts.
 
 ---
 
+## 0. Migration Strategy — WordPress to Astro
+
+> **Reference:** [Astro Docs — Migrate from WordPress](https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress/)
+
+### 0.1 Key Differences
+
+| Aspect | WordPress | Astro |
+|---|---|---|
+| **Editing** | Online dashboard (wp-admin) | Code editor + dev environment |
+| **Rendering** | PHP server-side on every request | Static HTML at build time |
+| **Extensibility** | Plugins & themes marketplace | Build features in code; fewer plugins |
+| **Content storage** | MySQL database | Markdown/MDX files **or** headless CMS (REST API) |
+| **Hosting** | Requires PHP + MySQL server | Static files on any CDN/host |
+
+### 0.2 Migration Strategies
+
+#### Strategy A — WordPress as Headless CMS ✅ (This project)
+
+Keep WordPress as the content editor (wp-admin stays). Astro fetches posts at build time via the WP REST API and outputs pure static HTML. This is what AraGrow uses.
+
+**Pros:**
+- No workflow change for content editors
+- Familiar WordPress dashboard for writing posts
+- Astro handles all frontend performance (100 Lighthouse scores)
+- WordPress can live on a subdomain or even a different host
+
+**Cons:**
+- Site must be rebuilt whenever content changes (handled via webhook — see Section 2)
+- WordPress server still needs to run (but only for the API endpoint, not serving traffic)
+
+#### Strategy B — Full Content Migration to Astro
+
+Export all posts from WordPress to local Markdown files and remove WordPress entirely.
+
+**When to choose this:** You want zero WordPress dependency, full content in Git, and the simplest possible hosting.
+
+**Steps:**
+1. Export posts using the community tool [`wordpress-export-to-markdown`](https://github.com/lonekorean/wordpress-export-to-markdown):
+   ```bash
+   npx wordpress-export-to-markdown
+   ```
+   This converts your WordPress XML export into `.md` files with frontmatter.
+
+2. Start from an Astro blog template:
+   ```bash
+   npm create astro@latest -- --template blog
+   ```
+
+3. Drop the generated `.md` files into `src/content/blog/`.
+
+4. Replace the REST API fetches (`src/lib/wordpress.ts`) with Astro's `getCollection('blog')`.
+
+5. Update `src/pages/blog/[slug].astro` to use `getStaticPaths` from the content collection instead of the WP API.
+
+**Note:** Large or complex sites (custom post types, ACF fields, shortcodes) will need manual adjustments after export.
+
+### 0.3 What This Project Uses (Headless — Strategy A)
+
+```
+WordPress (aragrow.me/wp-admin)
+  └─► WP REST API  (aragrow.me/wp-json/wp/v2)
+        └─► Astro build  (npm run build)
+              └─► Static HTML in ./dist
+                    └─► Deployed to CDN / host
+```
+
+- Posts are fetched at **build time**, not at request time.
+- No WordPress PHP code runs on the public-facing site.
+- Content updates require a new build (automated via webhook — see Section 2).
+
+### 0.4 Beginner Resources (Official Astro Docs)
+
+| Resource | Link |
+|---|---|
+| Build a Blog Tutorial | https://docs.astro.build/en/tutorial/0-introduction/ |
+| Content Collections | https://docs.astro.build/en/guides/content-collections/ |
+| Dynamic Routes | https://docs.astro.build/en/guides/routing/#dynamic-routes |
+| WordPress Migration Guide | https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress/ |
+
+---
+
 ## 1. How Posts Are Fetched (Current Setup)
 
 The WordPress REST API helper lives at `src/lib/wordpress.ts`.

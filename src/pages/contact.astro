@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
   description="Ready to kickstart your project? Send David Arago a message via our secure contact form, email, or phone. Fractional CTO & technology consulting for growing businesses."
 >
   <Nav />
-
+  <main>
   <div class="contact-page-wrapper">
     <div class="container">
 
@@ -36,7 +36,7 @@ import Footer from '../components/Footer.astro';
             data-form-id="uGpEAUsSB3eAYzaKzVdt"
             title="Contact form"
           ></iframe>
-          <script src="https://link.msgsndr.com/js/form_embed.js" defer data-deferred="1"></script>
+          <!-- GHL embed script loaded lazily when the form enters the viewport -->
         </div>
 
         <!-- Contact details sidebar -->
@@ -100,14 +100,31 @@ import Footer from '../components/Footer.astro';
       </div>
     </div>
   </div>
+  </main>
 
   <Footer />
 </Layout>
 
 <script>
-  // Keep the form column height in sync with the iframe after GHL's script resizes it
   const iframe = document.getElementById('inline-uGpEAUsSB3eAYzaKzVdt') as HTMLIFrameElement | null;
+
   if (iframe) {
+    // Lazy-load GHL embed script only when the iframe enters the viewport
+    let scriptLoaded = false;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !scriptLoaded) {
+        scriptLoaded = true;
+        const s = document.createElement('script');
+        s.src = 'https://link.msgsndr.com/js/form_embed.js';
+        s.defer = true;
+        s.dataset.deferred = '1';
+        document.body.appendChild(s);
+        io.disconnect();
+      }
+    }, { rootMargin: '200px' });
+    io.observe(iframe);
+
+    // Keep the form column height in sync as GHL resizes the iframe
     const ro = new ResizeObserver(() => {
       const col = iframe.closest('.contact-form-col') as HTMLElement | null;
       if (col) col.style.minHeight = iframe.offsetHeight + 'px';
@@ -155,7 +172,7 @@ import Footer from '../components/Footer.astro';
     padding: 20px;
     transition: border-color 0.2s;
   }
-  .contact-detail-block:hover { border-color: var(--teal); }
+  .contact-detail-block:hover { border-color: var(--teal-text); }
 
   .contact-detail-icon {
     font-size: 1.4rem;
@@ -176,7 +193,7 @@ import Footer from '../components/Footer.astro';
   .contact-detail-value {
     font-size: 0.925rem;
     font-weight: 500;
-    color: var(--teal);
+    color: var(--teal-text);
     text-decoration: none;
     word-break: break-all;
     transition: opacity 0.2s;

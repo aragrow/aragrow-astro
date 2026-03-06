@@ -59,7 +59,7 @@ const structuredData = {
   structuredData={structuredData}
 >
   <Nav />
-
+  <main>
   <div class="post-wrapper">
     <!-- Hero / header -->
     <header class="post-header">
@@ -104,6 +104,7 @@ const structuredData = {
       </div>
     </div>
   </div>
+  </main>
 
   <Footer />
 </Layout>
@@ -118,7 +119,7 @@ const structuredData = {
   .post-categories { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
   .post-category-tag {
     font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--teal);
+    text-transform: uppercase; color: var(--teal-text);
     background: var(--teal-dim); border: 1px solid var(--border);
     padding: 4px 12px; border-radius: 50px;
   }
@@ -163,7 +164,7 @@ const structuredData = {
     margin: 32px 0 12px; color: var(--text);
   }
   .post-body :global(p) { margin-bottom: 20px; color: var(--text); }
-  .post-body :global(a) { color: var(--teal); text-decoration: underline; }
+  .post-body :global(a) { color: var(--teal-text); text-decoration: underline; }
   .post-body :global(ul), .post-body :global(ol) {
     margin: 0 0 20px 24px; color: var(--text);
   }

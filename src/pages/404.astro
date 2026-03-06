@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Page Not Found (404) — AraGrow LLC"
+  description="The page you requested could not be found."
+  noindex={true}
+>
+  <Nav />
+  <main class="not-found-wrapper" aria-labelledby="error-heading">
+    <div class="container not-found-content">
+
+      <p class="not-found-code" aria-hidden="true">404</p>
+
+      <h1 id="error-heading" class="not-found-title">Page Not Found</h1>
+
+      <p class="not-found-sub">
+        The page you're looking for doesn't exist, has been moved, or the URL
+        may be misspelled. Here are some helpful links to get you back on track.
+      </p>
+
+      <nav class="not-found-links" aria-label="Helpful links">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="not-found-actions">
+        <a href="/" class="btn btn-primary">Go to Homepage</a>
+        <a href="/contact" class="btn btn-outline">Contact Us</a>
+      </div>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .not-found-wrapper {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 100px 0 60px;
+  }
+
+  .not-found-content {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .not-found-code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--teal) 0%, #6ee7d0 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    user-select: none;
+  }
+
+  .not-found-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .not-found-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  /* Quick nav list */
+  .not-found-links {
+    margin-bottom: 40px;
+  }
+  .not-found-links ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+  }
+  .not-found-links a {
+    color: var(--teal-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .not-found-links a:hover {
+    border-bottom-color: var(--teal-text);
+  }
+  .not-found-links a:focus-visible {
+    outline: 2px solid var(--teal-text);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .not-found-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Focus styles for action buttons */
+  .not-found-actions a:focus-visible {
+    outline: 2px solid var(--teal-text);
+    outline-offset: 4px;
+  }
+</style>
