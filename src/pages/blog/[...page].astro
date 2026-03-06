@@ -1,0 +1,303 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  );
+  return paginate(posts, { pageSize: 12 });
+}
+
+const { page } = Astro.props;
+
+// page.url.prev / page.url.next are undefined on first/last pages
+// page.currentPage is 1-based
+const totalPages = page.lastPage;
+const current    = page.currentPage;
+
+// Build page number links — show up to 7 slots with ellipsis
+function buildPages(current: number, total: number) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages: (number | '…')[] = [];
+  if (current <= 4) {
+    pages.push(1, 2, 3, 4, 5, '…', total);
+  } else if (current >= total - 3) {
+    pages.push(1, '…', total - 4, total - 3, total - 2, total - 1, total);
+  } else {
+    pages.push(1, '…', current - 1, current, current + 1, '…', total);
+  }
+  return pages;
+}
+
+const pageLinks = buildPages(current, totalPages);
+
+function pageUrl(n: number) {
+  return n === 1 ? '/blog' : `/blog/${n}`;
+}
+---
+
+<Layout
+  title={`Blog${current > 1 ? ` — Page ${current}` : ''} — AraGrow LLC | Tech Insights by David Arago`}
+  description="Practical articles on AI, web development, fractional CTO strategy, and growing your business through technology."
+>
+  <Nav />
+  <main>
+  <div class="blog-page-wrapper">
+    <div class="container">
+      <div class="blog-page-header reveal">
+        <div class="section-label">Insights</div>
+        <h1 class="section-title">The <span class="grad-text">Blog</span></h1>
+        <p class="section-sub">
+          Practical articles on AI, web development, fractional CTO strategy, and growing your
+          business through technology.
+        </p>
+      </div>
+
+      <div class="blog-listing-grid">
+        {page.data.map((post) => {
+          const { title, date, excerpt, featuredImage, categories } = post.data;
+          const slug = post.id.replace(/\.md$/, '');
+          return (
+            <a
+              href={`/blog/${slug}`}
+              class="blog-listing-card reveal"
+              aria-label={`Read: ${title}`}
+            >
+              <div class="blog-listing-img">
+                {featuredImage ? (
+                  <img src={featuredImage} alt={title} loading="lazy" width="640" height="200" />
+                ) : (
+                  <div class="blog-listing-img-placeholder" aria-hidden="true">✍️</div>
+                )}
+              </div>
+              <div class="blog-listing-body">
+                {categories.length > 0 && (
+                  <div class="blog-category">{categories[0]}</div>
+                )}
+                <h2>{title}</h2>
+                <p>{excerpt ? excerpt.slice(0, 160) + (excerpt.length > 160 ? '…' : '') : ''}</p>
+                <div class="blog-listing-meta">
+                  <time datetime={date}>
+                    {new Date(date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <span class="blog-read" aria-hidden="true">Read More →</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Pagination -->
+      <nav class="pagination" aria-label="Blog pages">
+        <a
+          href={page.url.prev ?? '#'}
+          class={`pagination-btn${!page.url.prev ? ' disabled' : ''}`}
+          aria-disabled={!page.url.prev}
+          aria-label="Previous page"
+        >← Prev</a>
+
+        <div class="pagination-pages">
+          {pageLinks.map((p) =>
+            p === '…' ? (
+              <span class="pagination-ellipsis" aria-hidden="true">…</span>
+            ) : (
+              <a
+                href={pageUrl(p as number)}
+                class={`pagination-page${p === current ? ' active' : ''}`}
+                aria-label={`Page ${p}`}
+                aria-current={p === current ? 'page' : undefined}
+              >{p}</a>
+            )
+          )}
+        </div>
+
+        <a
+          href={page.url.next ?? '#'}
+          class={`pagination-btn${!page.url.next ? ' disabled' : ''}`}
+          aria-disabled={!page.url.next}
+          aria-label="Next page"
+        >Next →</a>
+      </nav>
+
+      <p class="pagination-count">
+        Showing {page.start + 1}–{page.end + 1} of {page.total} articles
+      </p>
+    </div>
+  </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blog-page-wrapper { padding-top: 80px; padding-bottom: 80px; }
+
+  .blog-page-header { padding: 60px 0 56px; }
+
+  .blog-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 60px;
+  }
+
+  /* ── Cards ── */
+  .blog-listing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+  }
+  .blog-listing-card:hover {
+    border-color: var(--teal-text);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  }
+
+  .blog-listing-img {
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--teal-dim), var(--purple-dim));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .blog-listing-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .blog-listing-card:hover .blog-listing-img img { transform: scale(1.04); }
+  .blog-listing-img-placeholder { font-size: 3rem; }
+
+  .blog-listing-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-listing-body h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .blog-listing-body p {
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .blog-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+  }
+
+  .blog-listing-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* ── Pagination ── */
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--card);
+    transition: all 0.2s;
+  }
+  .pagination-btn:hover:not(.disabled) {
+    border-color: var(--teal-text);
+    color: var(--teal-text);
+  }
+  .pagination-btn.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .pagination-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--card);
+    transition: all 0.2s;
+  }
+  .pagination-page:hover {
+    border-color: var(--teal-text);
+    color: var(--teal-text);
+  }
+  .pagination-page.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+    pointer-events: none;
+  }
+
+  .pagination-ellipsis {
+    width: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .pagination-count {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0;
+  }
+</style>
