@@ -2,15 +2,19 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import {
-  getPosts,
-  formatDate,
-  stripHtml,
-  getFeaturedImage,
-  getPostCategories,
-} from '../../lib/wordpress';
+import { getCollection } from 'astro:content';
 
-const posts = await getPosts();
+// Try content collection first (local XML import), fall back to empty
+let posts: Awaited<ReturnType<typeof getCollection<'blog'>>> = [];
+try {
+  const all = await getCollection('blog');
+  posts = all.sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  );
+} catch {
+  // collection not yet populated — run: npx tsx scripts/import-wp.ts
+}
+
 const hasPosts = posts.length > 0;
 ---
 
@@ -35,26 +39,34 @@ const hasPosts = posts.length > 0;
         hasPosts ? (
           <div class="blog-listing-grid">
             {posts.map((post) => {
-              const img = getFeaturedImage(post);
-              const cats = getPostCategories(post);
-              const excerpt = stripHtml(post.excerpt.rendered).slice(0, 160);
+              const { title, date, excerpt, featuredImage, categories } = post.data;
               return (
-                <a href={`/blog/${post.slug}`} class="blog-listing-card reveal" aria-label={`Read: ${stripHtml(post.title.rendered)}`}>
+                <a
+                  href={`/blog/${post.id.replace(/\.md$/, '')}`}
+                  class="blog-listing-card reveal"
+                  aria-label={`Read: ${title}`}
+                >
                   <div class="blog-listing-img">
-                    {img ? (
-                      <img src={img} alt={post.title.rendered} loading="lazy" />
+                    {featuredImage ? (
+                      <img src={featuredImage} alt={title} loading="lazy" />
                     ) : (
                       <div class="blog-listing-img-placeholder">✍️</div>
                     )}
                   </div>
                   <div class="blog-listing-body">
-                    {cats.length > 0 && (
-                      <div class="blog-category">{cats[0]}</div>
+                    {categories.length > 0 && (
+                      <div class="blog-category">{categories[0]}</div>
                     )}
-                    <h2 set:html={post.title.rendered} />
-                    <p>{excerpt}{excerpt.length >= 160 ? '…' : ''}</p>
+                    <h2>{title}</h2>
+                    <p>{excerpt ? excerpt.slice(0, 160) + (excerpt.length > 160 ? '…' : '') : ''}</p>
                     <div class="blog-listing-meta">
-                      <span>{formatDate(post.date)}</span>
+                      <span>
+                        {new Date(date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </span>
                       <span class="blog-read">Read More →</span>
                     </div>
                   </div>
@@ -65,7 +77,8 @@ const hasPosts = posts.length > 0;
         ) : (
           <div class="blog-empty reveal">
             <p>
-              Posts are coming soon — or the WordPress API may need to be enabled.
+              Posts are coming soon — run <code>npx tsx scripts/import-wp.ts</code> to import from
+              WordPress, or check that the WordPress API is accessible.
               <a href="/#contact">Get in touch</a> if you have questions.
             </p>
           </div>
@@ -160,4 +173,10 @@ const hasPosts = posts.length > 0;
     color: var(--muted);
   }
   .blog-empty a { color: var(--teal-text); }
+  .blog-empty code {
+    background: var(--teal-dim);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.875em;
+  }
 </style>
