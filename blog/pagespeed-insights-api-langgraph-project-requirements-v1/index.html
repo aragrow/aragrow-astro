@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PageSpeed Insights API - LangGraph Project Requirements - V1 — AraGrow Blog</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="description" content><!-- Preload critical fonts to eliminate CLS from font-swap --><link rel="preload" href="/fonts/space-grotesk-300-2.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-300-6.woff2" as="font" type="font/woff2" crossorigin><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"PageSpeed Insights API - LangGraph Project Requirements - V1","description":"","datePublished":"2025-09-16","dateModified":"2025-09-16","author":{"@type":"Person","name":"David Arago","url":"https://aragrow.me"},"publisher":{"@type":"Organization","name":"AraGrow LLC","url":"https://aragrow.me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://aragrow.me/blog/pagespeed-insights-api-langgraph-project-requirements-v1"}}</script><!-- Google Tag Manager — loads only when PUBLIC_GTM_ID is set in .env --><link rel="stylesheet" href="/_astro/_slug_.D2do5T1U.css">
+<style>.post-wrapper[data-astro-cid-4sn4zg3r]{padding-top:80px;padding-bottom:100px}.post-header[data-astro-cid-4sn4zg3r]{padding:64px 0 40px}.post-header-inner[data-astro-cid-4sn4zg3r]{max-width:760px}.post-categories[data-astro-cid-4sn4zg3r]{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.post-category-tag[data-astro-cid-4sn4zg3r]{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-text);background:var(--teal-dim);border:1px solid var(--border);padding:4px 12px;border-radius:50px}.post-title[data-astro-cid-4sn4zg3r]{font-family:Space Grotesk,sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:20px}.post-meta[data-astro-cid-4sn4zg3r]{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--muted)}.post-author[data-astro-cid-4sn4zg3r]{font-weight:500}.post-sep[data-astro-cid-4sn4zg3r]{opacity:.4}.post-featured-img[data-astro-cid-4sn4zg3r]{border-radius:var(--radius);overflow:hidden;margin-bottom:48px;max-height:480px;border:1px solid var(--border)}.post-featured-img[data-astro-cid-4sn4zg3r] img[data-astro-cid-4sn4zg3r]{width:100%;height:100%;object-fit:cover;display:block}.post-body[data-astro-cid-4sn4zg3r]{max-width:760px;font-size:1.05rem;line-height:1.85;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] h2{font-family:Space Grotesk,sans-serif;font-size:1.6rem;font-weight:700;margin:48px 0 16px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] h3{font-family:Space Grotesk,sans-serif;font-size:1.2rem;font-weight:600;margin:32px 0 12px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] p{margin-bottom:20px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] a{color:var(--teal-text);text-decoration:underline}.post-body[data-astro-cid-4sn4zg3r] ul,.post-body[data-astro-cid-4sn4zg3r] ol{margin:0 0 20px 24px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] li{margin-bottom:8px;line-height:1.7}.post-body[data-astro-cid-4sn4zg3r] blockquote{border-left:4px solid var(--teal);margin:32px 0;padding:16px 24px;background:var(--teal-dim);border-radius:0 8px 8px 0;font-style:italic;color:var(--muted)}.post-body[data-astro-cid-4sn4zg3r] pre{background:#0f172a;color:#e2e8f0;padding:24px;border-radius:8px;overflow-x:auto;margin-bottom:24px;font-size:.875rem;line-height:1.7}.post-body[data-astro-cid-4sn4zg3r] code{font-family:Fira Code,Courier New,monospace;background:var(--teal-dim);padding:2px 6px;border-radius:4px;font-size:.875em}.post-body[data-astro-cid-4sn4zg3r] pre code{background:none;padding:0}.post-body[data-astro-cid-4sn4zg3r] img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:24px 0}.post-body[data-astro-cid-4sn4zg3r] table{width:100%;border-collapse:collapse;margin-bottom:24px}.post-body[data-astro-cid-4sn4zg3r] th,.post-body[data-astro-cid-4sn4zg3r] td{padding:10px 14px;border:1px solid var(--border);font-size:.9rem}.post-body[data-astro-cid-4sn4zg3r] th{background:var(--teal-dim);font-weight:600}.post-body[data-astro-cid-4sn4zg3r] figure{margin:24px 0}.post-body[data-astro-cid-4sn4zg3r] figcaption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}.post-back[data-astro-cid-4sn4zg3r]{display:flex;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:40px;border-top:1px solid var(--border)}
+</style></head> <body> <!-- Google Tag Manager (noscript fallback) -->   <nav id="navbar" data-astro-cid-dmqpwcec> <div class="nav-inner" data-astro-cid-dmqpwcec> <a href="/" class="nav-logo" data-astro-cid-dmqpwcec> <img src="/logo.svg" alt="AraGrow logo" class="nav-logo-img" width="36" height="36" data-astro-cid-dmqpwcec>
+AraGrow,<span data-astro-cid-dmqpwcec>LLC</span> </a> <!-- Desktop links --> <ul class="nav-links" id="nav-links" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/#services" data-astro-cid-dmqpwcec>Services</a></li> <li data-astro-cid-dmqpwcec><a href="/#about" data-astro-cid-dmqpwcec>About</a></li> <li data-astro-cid-dmqpwcec><a href="/blog" data-astro-cid-dmqpwcec>Blog</a></li> <li data-astro-cid-dmqpwcec><a href="/faq" data-astro-cid-dmqpwcec>FAQ</a></li> <li data-astro-cid-dmqpwcec><a href="/contact" data-astro-cid-dmqpwcec>Contact</a></li> <!-- Mobile-only CTA inside menu --> <li class="nav-cta-mobile" data-astro-cid-dmqpwcec> <a href="/contact" class="btn btn-primary" data-astro-cid-dmqpwcec>Let's Talk</a> </li> </ul> <a href="/contact" class="btn btn-primary nav-cta" data-astro-cid-dmqpwcec>Let's Talk</a> <!-- Hamburger button --> <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-dmqpwcec> <span data-astro-cid-dmqpwcec></span> <span data-astro-cid-dmqpwcec></span> <span data-astro-cid-dmqpwcec></span> </button> </div> </nav> <script type="module">const n=document.getElementById("navbar"),e=document.getElementById("hamburger"),s=document.getElementById("nav-links");window.addEventListener("scroll",()=>{n?.classList.toggle("scrolled",window.scrollY>60)});e?.addEventListener("click",()=>{const t=s?.classList.toggle("open");e.setAttribute("aria-expanded",String(t)),e.classList.toggle("active",t??!1)});s?.querySelectorAll("a").forEach(t=>{t.addEventListener("click",()=>{s.classList.remove("open"),e?.setAttribute("aria-expanded","false"),e?.classList.remove("active")})});</script>  <main data-astro-cid-4sn4zg3r> <div class="post-wrapper" data-astro-cid-4sn4zg3r> <!-- Hero / header --> <header class="post-header" data-astro-cid-4sn4zg3r> <div class="container post-header-inner" data-astro-cid-4sn4zg3r> <div class="post-categories" data-astro-cid-4sn4zg3r> <span class="post-category-tag" data-astro-cid-4sn4zg3r>Blog</span><span class="post-category-tag" data-astro-cid-4sn4zg3r>LLM Journey</span> </div> <h1 class="post-title" data-astro-cid-4sn4zg3r>PageSpeed Insights API - LangGraph Project Requirements - V1</h1> <div class="post-meta" data-astro-cid-4sn4zg3r> <span class="post-author" data-astro-cid-4sn4zg3r>By David Arago</span> <span class="post-sep" data-astro-cid-4sn4zg3r>·</span> <time datetime="2025-09-16" data-astro-cid-4sn4zg3r>September 16, 2025</time> </div> </div> </header> <!-- Featured image -->  <!-- Post body --> <div class="container" data-astro-cid-4sn4zg3r> <article class="post-body" data-astro-cid-4sn4zg3r> <pre class="wp-block-code"><code># PageSpeed Insights API - LangGraph Project Requirements
+
+## Project Overview
+A LangGraph-based workflow system that processes URLs from a CSV file, analyzes their performance using Google PageSpeed Insights API, leverages Google Gemini for intelligent analysis, and updates HubSpot contact records with the performance metrics.
+
+## Functional Requirements
+
+### 1. URL Import Node
+- **Purpose**: Import and validate URLs from a CSV file
+- **Input**: CSV file path containing URLs
+- **Output**: List of validated URLs for processing
+- **Validation**: Check URL format and accessibility
+
+### 2. PageSpeed API Loop Node
+- **Purpose**: Iterate through URLs and call PageSpeed Insights API
+- **Input**: List of URLs from import node
+- **Processing**: 
+  - Call PageSpeed Insights API for each URL
+  - Collect both mobile and desktop performance data
+  - Handle API rate limiting and errors
+- **Output**: Raw PageSpeed data for each URL
+
+### 3. Data Parser Node
+- **Purpose**: Extract relevant metrics from PageSpeed API responses
+- **Input**: Raw PageSpeed API responses
+- **Processing**:
+  - Extract performance scores (mobile/desktop)
+  - Extract loading time metrics
+  - Extract Core Web Vitals
+- **Output**: Structured performance data
+
+### 4. Gemini Analysis Node
+- **Purpose**: Analyze performance data using Google Gemini AI
+- **Input**: Structured performance data
+- **Processing**:
+  - Generate performance insights
+  - Identify optimization opportunities
+  - Create performance summaries
+- **Output**: AI-generated analysis and recommendations
+
+### 5. CSV Export Node
+- **Purpose**: Create comprehensive performance report
+- **Input**: Analyzed performance data
+- **Output**: CSV file with columns:
+  - URL
+  - Index Time (timestamp)
+  - Mobile Performance Score
+  - Desktop Performance Score
+  - Load Time
+  - AI Analysis Summary
+
+### 6. HubSpot Integration Node
+- **Purpose**: Update HubSpot contact records with performance data
+- **Input**: Performance data mapped to contact records
+- **Processing**:
+  - Match URLs to HubSpot contacts
+  - Update contact properties:
+    - Website URL
+    - Website Load Time
+    - Mobile Page Speed Score
+    - Desktop Page Speed Score
+- **Output**: Updated HubSpot contact records
+
+## Technical Requirements
+
+### APIs and Services
+- **Google PageSpeed Insights API**: Performance analysis
+- **Google Gemini API**: AI-powered analysis
+- **HubSpot API**: Contact record updates
+- **LangGraph**: Workflow orchestration
+
+### Data Flow
+```
+CSV Input → URL Import → PageSpeed API Loop → Data Parser → 
+Gemini Analysis → CSV Export → HubSpot Update
+```
+
+### Error Handling
+- API rate limiting management
+- Network timeout handling
+- Invalid URL handling
+- HubSpot contact matching errors
+
+### Performance Considerations
+- Batch processing for large URL lists
+- Concurrent API calls (within rate limits)
+- Progress tracking and logging
+- Resume capability for interrupted processes
+
+## Project Structure
+
+```
+pagespeed_insights_project/
+├── README.md
+├── requirements.txt
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   └── api_keys.py
+├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── graph/
+│   │   ├── __init__.py
+│   │   ├── workflow.py
+│   │   └── state.py
+│   ├── nodes/
+│   │   ├── __init__.py
+│   │   ├── url_import_node.py
+│   │   ├── pagespeed_api_node.py
+│   │   ├── data_parser_node.py
+│   │   ├── gemini_analysis_node.py
+│   │   ├── csv_export_node.py
+│   │   └── hubspot_integration_node.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── pagespeed_service.py
+│   │   ├── gemini_service.py
+│   │   └── hubspot_service.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── performance_data.py
+│   │   └── workflow_state.py
+│   └── utils/
+│       ├── __init__.py
+│       ├── csv_handler.py
+│       ├── url_validator.py
+│       └── logger.py
+├── data/
+│   ├── input/
+│   │   └── urls.csv
+│   └── output/
+│       └── performance_report.csv
+├── tests/
+│   ├── __init__.py
+│   ├── test_nodes/
+│   ├── test_services/
+│   └── test_utils/
+└── logs/
+    └── application.log
+```
+
+## File Descriptions
+
+### Core Files
+- **main.py**: Application entry point and workflow execution
+- **workflow.py**: LangGraph workflow definition and node connections
+- **state.py**: Workflow state management and data structures
+
+### Node Classes
+- **URLImportNode**: Handles CSV import and URL validation
+- **PageSpeedAPINode**: Manages PageSpeed Insights API calls
+- **DataParserNode**: Extracts and structures performance metrics
+- **GeminiAnalysisNode**: AI-powered performance analysis
+- **CSVExportNode**: Generates performance reports
+- **HubSpotIntegrationNode**: Updates HubSpot contact records
+
+### Service Classes
+- **PageSpeedService**: PageSpeed Insights API client
+- **GeminiService**: Google Gemini AI client
+- **HubSpotService**: HubSpot API client
+
+### Model Classes
+- **PerformanceData**: Data structure for performance metrics
+- **WorkflowState**: State management for LangGraph workflow
+
+### Utility Classes
+- **CSVHandler**: CSV file operations
+- **URLValidator**: URL validation and sanitization
+- **Logger**: Application logging and monitoring
+
+## Configuration Requirements
+
+### Environment Variables
+```
+GOOGLE_PAGESPEED_API_KEY=your_pagespeed_api_key
+GOOGLE_GEMINI_API_KEY=your_gemini_api_key
+HUBSPOT_API_KEY=your_hubspot_api_key
+LOG_LEVEL=INFO
+MAX_CONCURRENT_REQUESTS=5
+API_RATE_LIMIT_DELAY=1
+```
+
+### Dependencies (requirements.txt)
+```
+langgraph>=0.1.0
+langchain>=0.1.0
+google-api-python-client>=2.0.0
+google-generativeai>=0.3.0
+hubspot-api-client>=7.0.0
+pandas>=2.0.0
+aiohttp>=3.8.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+pytest>=7.0.0
+```
+
+## Implementation Best Practices
+
+### Code Organization
+- Use class-based architecture for all components
+- Implement dependency injection for services
+- Follow SOLID principles
+- Use type hints throughout the codebase
+
+### Error Handling
+- Implement comprehensive exception handling
+- Use custom exception classes for specific error types
+- Log all errors with appropriate context
+- Implement retry mechanisms for API calls
+
+### Testing Strategy
+- Unit tests for all classes and methods
+- Integration tests for API services
+- End-to-end workflow testing
+- Mock external API calls in tests
+
+### Security Considerations
+- Store API keys in environment variables
+- Implement API key rotation capability
+- Use HTTPS for all API communications
+- Validate and sanitize all input data
+
+### Performance Optimization
+- Implement connection pooling for HTTP requests
+- Use async/await for concurrent operations
+- Implement caching for repeated API calls
+- Monitor and log performance metrics
+
+## Deliverables
+
+1. **Source Code**: Complete implementation following the specified structure
+2. **Documentation**: README with setup and usage instructions
+3. **Configuration Files**: Environment setup and API configuration
+4. **Test Suite**: Comprehensive test coverage
+5. **Sample Data**: Example CSV files for testing
+6. **Deployment Guide**: Instructions for production deployment
+
+## Recommended Script Creation Order
+1. Start with the Foundation (Utils + Config)
+    Reason: Everything else depends on configuration and utilities.
+    Files to create first:
+      config/settings.py and config/api_keys.py → for managing .env and API keys
+      src/utils/logger.py → standardized logging
+      src/utils/url_validator.py → URL validation logic
+      src/utils/csv_handler.py → read/write CSV
+
+2. Build Models (Data Structures)
+    Reason: Define the core objects your nodes/services will pass around.
+    Files here:
+      src/models/performance_data.py
+      src/models/workflow_state.py (or src/graph/state.py depending on use)
+
+3. Implement Services (External API Clients)
+
+    Reason: Nodes will call these services. You need them ready first.
+    Create in this order:
+      src/services/pagespeed_service.py → fetch metrics
+      src/services/gemini_service.py → AI insights
+      src/services/hubspot_service.py → contact updates
+
+4. Create Nodes (Workflow Steps)
+
+    Reason: Each node uses your utils, models, and services.
+    Suggested order (matches execution flow):
+      url_import_node.py
+      pagespeed_api_node.py
+      data_parser_node.py
+      gemini_analysis_node.py
+      csv_export_node.py
+      hubspot_integration_node.py
+
+5. Assemble the Workflow (LangGraph)
+
+    Files to do after nodes exist:
+      src/graph/workflow.py (define graph, set edges/entry points)
+      src/graph/state.py (holds workflow state)
+
+6. Build the Entrypoint (Main App)
+
+    src/main.py → ties everything together:
+      Loads config
+      Starts LangGraph
+      Kicks off execution with urls.csv
+
+7. Generate .env
+
+    Using the values from the ### Environment Variables Section.
+
+
+8. Validation &#x26; Testing
+
+    Create simple tests for each service/node (mock external calls).
+    Ensure each node works before chaining them in the workflow.
+
+
+## Instructions
+1. **Zip File with Code**: Create a zip file with the directory and the files.  The files should just include the imports and the class definition.
+2. **Recommended Script Creation Order**: Give me the recommendation on the order of how to create the scripts
+3. **Code Generation instructions.**. Each code generation instruction should have its own zip file.
+ **Code Generation instructions.** Generate the code for: Start with the Foundation (Utils + Config).
+ **Code Generation instructions.** Build Models (Data Structures).
+ **Code Generation instructions.** Implement Services (External API Clients).
+ **Code Generation instructions.** Create Nodes (Workflow Steps).
+ **Code Generation instructions.** Assemble the Workflow (LangGraph).
+ **Code Generation instructions.** Build the Entrypoint main.py (Main App).
+ **Code Generation instructions.** Generate .env file.
+ **Code Generation instructions.** Validation &#x26; Testing.
+5.  
+4. **Create a full README.md** for the entired project.
+
+## Success Criteria
+
+- Successfully process CSV files with 100+ URLs
+- Achieve 95%+ success rate for PageSpeed API calls
+- Generate accurate performance reports
+- Successfully update HubSpot contact records
+- Handle errors gracefully without workflow interruption
+- Complete processing within reasonable time limits (&#x3C; 5 minutes per 100 URLs)
+</code></pre> </article> <!-- Back link --> <div class="post-back" data-astro-cid-4sn4zg3r> <a href="/blog" class="btn btn-outline" data-astro-cid-4sn4zg3r>← Back to Blog</a> <a href="/#contact" class="btn btn-primary" data-astro-cid-4sn4zg3r>Work With Me</a> </div> </div> </div> </main> <footer> <div class="container"> <div class="footer-inner"> <div class="footer-logo">Ara<span>Grow</span> LLC</div> <div class="footer-copy">© 2025 AraGrow LLC · Minneapolis, MN</div> <div class="footer-links"> <a href="https://aragrow.me" target="_blank" rel="noopener">aragrow.me</a> <a href="https://www.linkedin.com/in/davidarago/" target="_blank" rel="noopener">LinkedIn</a> <a href="#contact">Contact</a> </div> </div> </div> </footer>   <script type="module">const o=document.querySelectorAll(".reveal"),r=new IntersectionObserver(e=>{e.forEach((s,t)=>{s.isIntersecting&&(setTimeout(()=>s.target.classList.add("visible"),t*80),r.unobserve(s.target))})},{threshold:.12});o.forEach(e=>r.observe(e));</script></body></html> 
