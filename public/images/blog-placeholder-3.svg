@@ -1,34 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">
   <defs>
-    <!-- Background: richer sky blue → soft violet -->
+    <!-- Background: warm amber → dusty rose -->
     <linearGradient id="bg" x1="0" y1="0" x2="640" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#bae6fd"/>
-      <stop offset="100%" stop-color="#ddd6fe"/>
+      <stop offset="0%"   stop-color="#f5e6c0"/>
+      <stop offset="100%" stop-color="#f0cfc0"/>
     </linearGradient>
-
-    <linearGradient id="logoGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#0891b2"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
-    </linearGradient>
-
     <linearGradient id="textGrad" x1="265" y1="0" x2="375" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#0891b2"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+      <stop offset="0%"   stop-color="#7B1818"/>
+      <stop offset="100%" stop-color="#D4380D"/>
     </linearGradient>
   </defs>
 
   <rect width="640" height="200" fill="url(#bg)"/>
 
-  <circle cx="60"  cy="170" r="110" fill="#0891b2" opacity="0.10"/>
-  <circle cx="580" cy="30"  r="90"  fill="#7c3aed" opacity="0.13"/>
+  <circle cx="60"  cy="170" r="110" fill="#7B1818" opacity="0.10"/>
+  <circle cx="580" cy="30"  r="90"  fill="#E8B931" opacity="0.13"/>
 
   <g transform="translate(265, 34) scale(1.1)">
-    <polygon points="50,10 10,88 24,88"  fill="url(#logoGrad)"/>
-    <polygon points="50,10 76,88 90,88"  fill="url(#logoGrad)"/>
-    <rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="url(#logoGrad)"/>
-    <ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="url(#logoGrad)"/>
-    <ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="url(#logoGrad)"/>
-    <ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)"  fill="url(#logoGrad)"/>
+    <polygon points="50,10 10,88 24,88"  fill="#7B1818"/>
+    <polygon points="50,10 76,88 90,88"  fill="#7B1818"/>
+    <rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="#7B1818"/>
+    <ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="#E8B931"/>
+    <ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="#E8B931"/>
+    <ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)"  fill="#E8B931"/>
   </g>
 
   <text

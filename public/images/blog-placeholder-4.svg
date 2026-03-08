@@ -1,35 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">
   <defs>
-    <!-- Background: dark navy → deep purple -->
+    <!-- Background: dark wine → deep amber-black -->
     <linearGradient id="bg" x1="0" y1="0" x2="640" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#0d1f3c"/>
-      <stop offset="100%" stop-color="#1a0838"/>
+      <stop offset="0%"   stop-color="#1a0505"/>
+      <stop offset="100%" stop-color="#2d1a00"/>
     </linearGradient>
-
-    <!-- Brighter logo gradient for dark background -->
-    <linearGradient id="logoGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
-    </linearGradient>
-
+    <!-- Brighter logo/text for dark background -->
     <linearGradient id="textGrad" x1="265" y1="0" x2="375" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
+      <stop offset="0%"   stop-color="#e05050"/>
+      <stop offset="100%" stop-color="#E8B931"/>
     </linearGradient>
   </defs>
 
   <rect width="640" height="200" fill="url(#bg)"/>
 
-  <circle cx="60"  cy="170" r="110" fill="#22d3ee" opacity="0.08"/>
-  <circle cx="580" cy="30"  r="90"  fill="#a78bfa" opacity="0.12"/>
+  <circle cx="60"  cy="170" r="110" fill="#e05050" opacity="0.08"/>
+  <circle cx="580" cy="30"  r="90"  fill="#E8B931" opacity="0.10"/>
 
   <g transform="translate(265, 34) scale(1.1)">
-    <polygon points="50,10 10,88 24,88"  fill="url(#logoGrad)"/>
-    <polygon points="50,10 76,88 90,88"  fill="url(#logoGrad)"/>
-    <rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="url(#logoGrad)"/>
-    <ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="url(#logoGrad)"/>
-    <ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="url(#logoGrad)"/>
-    <ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)"  fill="url(#logoGrad)"/>
+    <polygon points="50,10 10,88 24,88"  fill="#e05050"/>
+    <polygon points="50,10 76,88 90,88"  fill="#e05050"/>
+    <rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="#e05050"/>
+    <ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="#E8B931"/>
+    <ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="#E8B931"/>
+    <ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)"  fill="#E8B931"/>
   </g>
 
   <text
