@@ -6,15 +6,15 @@
   --dark: #f8fafc;
   --darker: #f1f5f9;
   --card: #ffffff;
-  --teal: #0891b2;
-  --teal-text: #0e7490;
-  --teal-dim: rgba(8,145,178,0.08);
-  --teal-glow: rgba(8,145,178,0.2);
-  --purple: #7c3aed;
-  --purple-dim: rgba(124,58,237,0.08);
+  --teal: #7B1818;
+  --teal-text: #6b1414;
+  --teal-dim: rgba(123,24,24,0.08);
+  --teal-glow: rgba(123,24,24,0.2);
+  --purple: #E8B931;
+  --purple-dim: rgba(232,185,49,0.08);
   --text: #0f172a;
   --muted: #475569;
-  --border: rgba(8,145,178,0.18);
+  --border: rgba(123,24,24,0.18);
   --radius: 12px;
 }
 
@@ -32,7 +32,7 @@ body {
 body::before {
   content: '';
   position: fixed; inset: 0;
-  background-image: radial-gradient(rgba(8,145,178,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(123,24,24,0.12) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
@@ -41,7 +41,7 @@ body::before {
 /* ── Utility ── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 .grad-text {
-  background: linear-gradient(135deg, var(--teal) 0%, #6ee7d0 50%, var(--purple) 100%);
+  background: linear-gradient(135deg, var(--teal) 0%, #D4380D 50%, var(--purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -53,9 +53,9 @@ body::before {
   text-decoration: none; transition: all 0.25s;
 }
 .btn-primary {
-  background: var(--teal); color: #020712;
+  background: var(--teal); color: #fff;
 }
-.btn-primary:hover { background: #00f5c8; box-shadow: 0 0 24px var(--teal-glow); transform: translateY(-2px); }
+.btn-primary:hover { background: #D4380D; box-shadow: 0 0 24px var(--teal-glow); transform: translateY(-2px); }
 .btn-outline {
   background: transparent; color: var(--teal-text);
   border: 1.5px solid var(--border);
@@ -127,13 +127,13 @@ nav.scrolled {
 }
 .hero-orb-1 {
   width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(8,145,178,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(123,24,24,0.15) 0%, transparent 70%);
   top: -100px; right: -100px;
   animation: float1 8s ease-in-out infinite;
 }
 .hero-orb-2 {
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,185,49,0.1) 0%, transparent 70%);
   bottom: 50px; left: -100px;
   animation: float2 10s ease-in-out infinite;
 }
