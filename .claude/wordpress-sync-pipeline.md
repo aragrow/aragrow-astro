@@ -4,9 +4,263 @@ Full workflow for keeping the Astro static site in sync with WordPress posts.
 
 ---
 
-## 0. Migration Strategy — WordPress to Astro
+## 0. Current Architecture (as of March 2026)
 
-> **Reference:** [Astro Docs — Migrate from WordPress](https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress/)
+### What Changed
+
+The site was originally planned as a headless CMS pulling from the WordPress REST API at build time. That approach is **blocked** by the Hostinger CDN (see Section 7). The working architecture is now:
+
+1. **WordPress → XML export** → `npm run import` → local `.md` files in `src/content/blog/`
+2. **Git push** → GitHub Actions rebuilds and deploys to GitHub Pages
+3. **WordPress publish webhook** → GitHub Actions triggered automatically on post publish
+
+```
+Author publishes/updates post in WordPress
+  └─► WordPress plugin fires GitHub repository_dispatch
+        └─► GitHub Actions: Build & Deploy
+              ├─► npm ci
+              ├─► npm run build  (reads src/content/blog/*.md)
+              └─► peaceiris/actions-gh-pages → gh-pages branch → aragrow.me ✓
+
+OR (manual content sync):
+  Export posts.xml from WordPress Admin → Tools → Export
+  └─► npm run import  (scripts/menu.sh)
+        ├─► npx tsx scripts/import-wp.ts  (parses XML → .md files + downloads images)
+        ├─► git add src/content/blog/ public/images/blog/
+        ├─► git commit
+        └─► git push  → triggers GitHub Actions rebuild ✓
+```
+
+---
+
+## 1. Content Collection Architecture
+
+### Files
+
+| File | Purpose |
+|---|---|
+| `src/content/config.ts` | Zod schema for blog collection |
+| `src/content/blog/*.md` | 69 blog posts (Markdown + YAML frontmatter) |
+| `public/images/blog/` | 113 downloaded post images |
+| `src/pages/blog/[...page].astro` | Paginated blog listing (12/page, 6 pages) |
+| `src/pages/blog/[slug].astro` | Individual post page |
+| `src/components/Blog.astro` | Homepage "Latest from the Blog" section (3 posts) |
+
+### Content Schema (`src/content/config.ts`)
+
+```typescript
+import { defineCollection, z } from 'astro:content';
+
+export const collections = {
+  blog: defineCollection({
+    type: 'content',
+    schema: z.object({
+      title: z.string(),
+      date: z.string(),
+      modified: z.string().optional(),
+      author: z.string().default('David Arago'),
+      categories: z.array(z.string()).default([]),
+      excerpt: z.string().default(''),
+      featuredImage: z.string().nullable().default(null),
+    }),
+  }),
+};
+```
+
+> **Astro 5 note:** `slug` is a reserved field — do NOT add it to the schema. Use `post.id` for routing (filename without extension). Always strip `.md` with `post.id.replace(/\.md$/, '')`.
+
+### Reading posts in components/pages
+
+```typescript
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+// Use post.id.replace(/\.md$/, '') for slug/href everywhere
+```
+
+---
+
+## 2. XML Import Workflow (Current Working Method)
+
+### Quick steps
+
+1. WordPress Admin → Tools → Export → All content → Save as `posts.xml` in project root
+2. Run:
+   ```bash
+   npm run import
+   ```
+   This runs `bash scripts/menu.sh` which:
+   - Checks `posts.xml` exists
+   - Runs `npx tsx scripts/import-wp.ts` (parses XML, writes `.md` files, downloads images)
+   - Stages `src/content/blog/` and `public/images/blog/`
+   - Commits and pushes → triggers GitHub Actions rebuild
+
+### What `scripts/import-wp.ts` does
+
+- Parses WXR (WordPress eXtended RSS) XML format
+- Downloads featured images and inline `<img>` images to `public/images/blog/`
+- Rewrites image URLs to local `/images/blog/` paths
+- Strips WordPress block editor comments (`<!-- wp:... -->`)
+- Writes YAML frontmatter: `title`, `date`, `modified`, `author`, `categories`, `excerpt`, `featuredImage`
+- Skips `auto-draft` posts
+- Creates `src/content/blog/<slug>.md` for each published post
+
+### Incremental REST API importer (`scripts/fetch-wp-api.ts`)
+
+A second script exists for incremental imports via the WordPress REST API. It compares post `modified` dates and only updates changed posts. **Currently blocked by Hostinger CDN** (see Section 7). Used by GitHub Actions when `repository_dispatch` or `workflow_dispatch` triggers the build.
+
+---
+
+## 3. WordPress Deploy Trigger Plugin
+
+**File in this repo:** `plugins/aragrow-astro-deploy/aragrow-astro-deploy.php`
+
+> Install via Hostinger File Manager — copy to `public_html/wp-content/plugins/aragrow-astro-deploy/` and activate in wp-admin → Plugins.
+
+### How it works
+
+Hooks `transition_post_status`. When a post is published or updated (status changes to `publish`):
+- Skips autosaves, revisions, and non-`post` post types
+- POSTs to `https://api.github.com/repos/aragrow/aragrow-astro/dispatches` with `event_type: wp-post-updated`
+- Requires `GITHUB_PAT` constant in `wp-config.php`
+
+### wp-config.php addition (on Hostinger)
+
+Add before `/* That's all, stop editing! */`:
+
+```php
+define( 'GITHUB_PAT', 'ghp_xxxxxxxxxxxxxxxxxxxx' ); // fine-grained PAT, contents:write on aragrow/aragrow-astro
+```
+
+**PAT requirements:** Fine-grained personal access token, scoped to `aragrow/aragrow-astro`, with `Contents: Read and write` permission.
+
+---
+
+## 4. GitHub Actions Workflow
+
+**File:** `.github/workflows/deploy.yml`
+
+### Triggers
+
+| Trigger | When |
+|---|---|
+| `push` to `main` | Code/content changes pushed to repo |
+| `repository_dispatch` (`wp-post-updated`) | WordPress plugin fires on publish/update |
+| `workflow_dispatch` | Manual run from GitHub UI |
+
+### Build steps
+
+1. Checkout → Setup Node 20 → `npm ci`
+2. If triggered by `repository_dispatch` or `workflow_dispatch`: run `npx tsx scripts/fetch-wp-api.ts` (incremental REST API import — **currently blocked by CDN**, step is a no-op until CDN is fixed)
+3. `npm run build` (builds from `src/content/blog/*.md`)
+4. Deploy to `gh-pages` branch with `peaceiris/actions-gh-pages@v4`
+   - Writes `CNAME: aragrow.me` so GitHub Pages preserves the custom domain
+
+### Required GitHub Secrets
+
+Go to: **github.com/aragrow/aragrow-astro → Settings → Secrets and variables → Actions**
+
+| Secret | Value |
+|---|---|
+| `WP_USER` | `aragrowwp-headless` |
+| `WP_APP_PASSWORD` | (Application Password from WP admin) |
+| `PUBLIC_GTM_ID` | GTM ID when ready (optional) |
+
+`GITHUB_TOKEN` is automatic — no setup needed.
+
+### GitHub Pages setup (one-time)
+
+1. Go to `github.com/aragrow/aragrow-astro/settings/pages`
+2. Source → **Deploy from a branch**
+3. Branch → `gh-pages` / `/ (root)` → Save
+4. Add custom domain `aragrow.me`
+
+> The `gh-pages` branch is created automatically by `peaceiris/actions-gh-pages` on first successful build — no manual branch creation needed.
+
+---
+
+## 5. Pagination
+
+The blog listing is paginated using Astro's built-in `paginate()`:
+
+- **Page size:** 12 posts per page
+- **Routes:** `/blog` (page 1), `/blog/2` … `/blog/N`
+- **File:** `src/pages/blog/[...page].astro`
+- As posts are added/removed, the number of pages recalculates automatically at build time
+- Pagination controls: Prev/Next buttons + numbered page links with ellipsis for large page counts
+
+---
+
+## 6. WordPress REST API — Status & Troubleshooting
+
+### Current Status: BLOCKED by Hostinger CDN
+
+The WordPress REST API (`aragrow.me/wp-json/wp/v2/posts`) requires Basic Authentication with an Application Password. The Astro build (via `scripts/fetch-wp-api.ts`) sends:
+
+```
+Authorization: Basic base64(aragrowwp-headless:app-password)
+```
+
+**Root cause of 401 errors:** Hostinger's CDN (`server: hcdn`) strips the `Authorization` header before it reaches the origin server. This means even with `.htaccess` and mu-plugin fixes applied correctly, PHP never sees the header.
+
+### Investigation findings
+
+| Fix attempted | Result | Why |
+|---|---|---|
+| `RewriteRule .* - [E=HTTP_AUTHORIZATION:...]` in `.htaccess` | ❌ | Apache env vars don't cross PHP-FPM FastCGI boundary |
+| `CGIPassAuth On` in `.htaccess` (inside `<If /wp-json/>`) | ❌ | Correct for PHP-FPM, but irrelevant — CDN strips header before it reaches Apache |
+| mu-plugin `disable_rest_api_by_user` Authorization bypass | ✅ already in place | PHP never sees the header so this bypass never fires |
+| `allow-api-auth.php` plugin (removed) | N/A | Redundant; `remove_filter` can't remove a class method callback by function name |
+
+**Evidence of CDN:** `curl` response headers contain `server: hcdn` and `x-hcdn-request-id`.
+
+### Pending fix options
+
+**Option A — Configure Hostinger CDN** (preferred):
+- In Hostinger hPanel → CDN settings, add a rule to pass `Authorization` header for paths matching `/wp-json/*`
+- May not be available on all Hostinger plans
+
+**Option B — WP Plugin pushes content to GitHub** (alternative):
+- Instead of GitHub Actions pulling from REST API, the WordPress plugin pushes post Markdown to the repo directly via GitHub Contents API
+- Bypasses CDN entirely
+- More complex but fully decouples the CDN issue
+
+**Current workaround:** XML export + `npm run import` (Section 2). Reliable and works today.
+
+### Server-side setup documentation
+
+See `plugins/aragrow-astro-deploy/SETUP.md` for full documentation of:
+- `.htaccess` `CGIPassAuth On` change (correct but insufficient due to CDN)
+- `disable_rest_api_by_user` mu-plugin Authorization header bypass code
+
+---
+
+## 7. Full End-to-End Flow (Once Fully Set Up)
+
+```
+WordPress (publish/update post)
+  └─► aragrow-astro-deploy plugin
+        └─► POST github.com/repos/aragrow/aragrow-astro/dispatches
+              └─► GitHub Actions: Build & Deploy
+                    ├─► npm ci
+                    ├─► npx tsx scripts/fetch-wp-api.ts  ← blocked by CDN currently
+                    ├─► npm run build  (reads src/content/blog/*.md)
+                    └─► peaceiris/actions-gh-pages → gh-pages → aragrow.me ✓
+```
+
+Until CDN is resolved, content sync is done manually:
+
+```
+WordPress export (posts.xml)
+  └─► npm run import
+        └─► git push → GitHub Actions → aragrow.me ✓
+```
+
+---
+
+## 8. Migration Strategy Reference
 
 ### 0.1 Key Differences
 
@@ -15,66 +269,22 @@ Full workflow for keeping the Astro static site in sync with WordPress posts.
 | **Editing** | Online dashboard (wp-admin) | Code editor + dev environment |
 | **Rendering** | PHP server-side on every request | Static HTML at build time |
 | **Extensibility** | Plugins & themes marketplace | Build features in code; fewer plugins |
-| **Content storage** | MySQL database | Markdown/MDX files **or** headless CMS (REST API) |
+| **Content storage** | MySQL database | Markdown/MDX files or headless CMS |
 | **Hosting** | Requires PHP + MySQL server | Static files on any CDN/host |
 
-### 0.2 Migration Strategies
+### 0.2 What This Project Uses
 
-#### Strategy A — WordPress as Headless CMS ✅ (This project)
-
-Keep WordPress as the content editor (wp-admin stays). Astro fetches posts at build time via the WP REST API and outputs pure static HTML. This is what AraGrow uses.
-
-**Pros:**
-- No workflow change for content editors
-- Familiar WordPress dashboard for writing posts
-- Astro handles all frontend performance (100 Lighthouse scores)
-- WordPress can live on a subdomain or even a different host
-
-**Cons:**
-- Site must be rebuilt whenever content changes (handled via webhook — see Section 2)
-- WordPress server still needs to run (but only for the API endpoint, not serving traffic)
-
-#### Strategy B — Full Content Migration to Astro
-
-Export all posts from WordPress to local Markdown files and remove WordPress entirely.
-
-**When to choose this:** You want zero WordPress dependency, full content in Git, and the simplest possible hosting.
-
-**Steps:**
-1. Export posts using the community tool [`wordpress-export-to-markdown`](https://github.com/lonekorean/wordpress-export-to-markdown):
-   ```bash
-   npx wordpress-export-to-markdown
-   ```
-   This converts your WordPress XML export into `.md` files with frontmatter.
-
-2. Start from an Astro blog template:
-   ```bash
-   npm create astro@latest -- --template blog
-   ```
-
-3. Drop the generated `.md` files into `src/content/blog/`.
-
-4. Replace the REST API fetches (`src/lib/wordpress.ts`) with Astro's `getCollection('blog')`.
-
-5. Update `src/pages/blog/[slug].astro` to use `getStaticPaths` from the content collection instead of the WP API.
-
-**Note:** Large or complex sites (custom post types, ACF fields, shortcodes) will need manual adjustments after export.
-
-### 0.3 What This Project Uses (Headless — Strategy A)
+**Headless CMS with local Markdown files** — WordPress stays as the content editor (wp-admin). Posts are exported to Markdown files checked into Git. Astro reads those files at build time and outputs pure static HTML.
 
 ```
-WordPress (aragrow.me/wp-admin)
-  └─► WP REST API  (aragrow.me/wp-json/wp/v2)
-        └─► Astro build  (npm run build)
+WordPress (aragrow.me/wp-admin)  ← authors write here
+  └─► XML export → import script → src/content/blog/*.md (in Git)
+        └─► Astro build (npm run build)
               └─► Static HTML in ./dist
-                    └─► Deployed to CDN / host
+                    └─► GitHub Pages → aragrow.me
 ```
 
-- Posts are fetched at **build time**, not at request time.
-- No WordPress PHP code runs on the public-facing site.
-- Content updates require a new build (automated via webhook — see Section 2).
-
-### 0.4 Beginner Resources (Official Astro Docs)
+### 0.3 Beginner Resources (Official Astro Docs)
 
 | Resource | Link |
 |---|---|
@@ -82,250 +292,3 @@ WordPress (aragrow.me/wp-admin)
 | Content Collections | https://docs.astro.build/en/guides/content-collections/ |
 | Dynamic Routes | https://docs.astro.build/en/guides/routing/#dynamic-routes |
 | WordPress Migration Guide | https://docs.astro.build/en/guides/migrate-to-astro/from-wordpress/ |
-
----
-
-## 1. How Posts Are Fetched (Current Setup)
-
-The WordPress REST API helper lives at `src/lib/wordpress.ts`.
-The base URL is `https://aragrow.me/wp-json/wp/v2`.
-
-### Key functions
-
-| Function | What it does |
-|---|---|
-| `getPosts(perPage?)` | Fetches published posts, newest first, with embedded author/media/terms |
-| `getPostBySlug(slug)` | Fetches a single post by slug |
-| `getCategories()` | Fetches all categories |
-| `getFeaturedImage(post)` | Extracts featured image URL from embedded media |
-| `getPostCategories(post)` | Extracts category names from embedded terms |
-| `getAuthorName(post)` | Extracts author name from embedded author |
-
-### How static paths are generated
-
-`src/pages/blog/[slug].astro` calls `getStaticPaths()` at **build time**, which:
-1. Fetches all published posts via `getPosts()`
-2. Returns one `{ params: { slug } }` entry per post
-3. Astro generates a static HTML file for each slug
-
-This means **a new WordPress post only appears on the site after a new build**.
-
----
-
-## 2. Triggering a Rebuild When a Post Is Published/Updated
-
-### Option A — WordPress Webhook → GitHub Actions (Recommended)
-
-**On the WordPress side**, install a webhook plugin (e.g. WP Webhooks, or use the built-in
-`publish_post` / `post_updated` hooks in a small custom plugin):
-
-```php
-// wp-content/plugins/aragrow-deploy/aragrow-deploy.php
-add_action('publish_post',    'aragrow_trigger_deploy');
-add_action('post_updated',    'aragrow_trigger_deploy');
-
-function aragrow_trigger_deploy() {
-    wp_remote_post('https://api.github.com/repos/aragrow/aragrow-astro/dispatches', [
-        'headers' => [
-            'Authorization' => 'Bearer ' . GITHUB_PAT,   // set in wp-config.php
-            'Accept'        => 'application/vnd.github.v3+json',
-            'Content-Type'  => 'application/json',
-        ],
-        'body' => json_encode(['event_type' => 'wp-post-updated']),
-    ]);
-}
-```
-
-Add to `wp-config.php`:
-```php
-define('GITHUB_PAT', 'ghp_xxxxxxxxxxxxxxxxxxxx'); // fine-grained PAT, repo:write scope
-```
-
-**On the GitHub side**, create `.github/workflows/deploy.yml` (see Section 4).
-
----
-
-### Option B — Scheduled Rebuild (Simpler, Less Real-Time)
-
-Add a cron trigger to the GitHub Actions workflow that rebuilds every N hours:
-```yaml
-on:
-  schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
-```
-
----
-
-## 3. GitHub Actions Workflow (Build + Deploy)
-
-Create `.github/workflows/deploy.yml` in the repo root:
-
-```yaml
-name: Build & Deploy
-
-on:
-  push:
-    branches: [main]
-  repository_dispatch:
-    types: [wp-post-updated]   # triggered by WordPress webhook
-  workflow_dispatch:            # allows manual trigger from GitHub UI
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Astro site
-        run: npm run build
-        env:
-          PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID }}
-
-      # ── Deploy step — fill in when cloud target is decided ──────────────────
-      # See Section 4 for provider-specific deploy steps.
-      - name: Deploy
-        run: echo "Deploy step TBD — see Section 4"
-```
-
----
-
-## 4. Deploy Step — To Be Determined
-
-Replace the `Deploy` step above with the appropriate block for your cloud provider:
-
-### Netlify
-```yaml
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: ./dist
-          production-branch: main
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-```
-
-### Vercel
-```yaml
-      - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-```
-
-### AWS S3 + CloudFront
-```yaml
-      - name: Deploy to S3
-        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET }} --delete
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-
-      - name: Invalidate CloudFront cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
-            --paths "/*"
-```
-
-### GitHub Pages
-```yaml
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
-
----
-
-## 5. Required GitHub Secrets
-
-Add these under **Settings → Secrets and variables → Actions**:
-
-| Secret | Used for |
-|---|---|
-| `PUBLIC_GTM_ID` | Google Tag Manager ID injected at build time |
-| `NETLIFY_AUTH_TOKEN` | Netlify deploy (if chosen) |
-| `NETLIFY_SITE_ID` | Netlify site ID |
-| `VERCEL_TOKEN` | Vercel deploy (if chosen) |
-| `VERCEL_ORG_ID` | Vercel org |
-| `VERCEL_PROJECT_ID` | Vercel project |
-| `AWS_ACCESS_KEY_ID` | AWS S3/CloudFront deploy |
-| `AWS_SECRET_ACCESS_KEY` | AWS S3/CloudFront deploy |
-| `S3_BUCKET` | AWS S3 bucket name |
-| `CF_DISTRIBUTION_ID` | CloudFront distribution ID |
-
----
-
-## 6. Full End-to-End Flow (Once Set Up)
-
-```
-WordPress (publish/update post)
-  └─► WordPress webhook plugin
-        └─► POST /repos/aragrow/aragrow-astro/dispatches  (GitHub API)
-              └─► GitHub Actions: build-and-deploy.yml
-                    ├─► npm ci
-                    ├─► npm run build  (fetches posts from WP REST API)
-                    └─► Deploy ./dist → Cloud provider
-                              └─► Live site updated ✓
-```
-
-**Manual fallback**: Go to GitHub → Actions → "Build & Deploy" → "Run workflow"
-to trigger a rebuild at any time without publishing a new post.
-
----
-
-## 7. WordPress REST API — Enabling & Troubleshooting
-
-If `getPosts()` returns `[]` (the blog shows placeholder cards):
-
-1. **Check permalinks** — WordPress Admin → Settings → Permalinks → Save Changes
-   (this flushes rewrite rules which enables the REST API routes)
-
-2. **Check for security plugins** — Wordfence, iThemes Security, etc. may block
-   external REST API requests. Add the build server IP to the allowlist,
-   or disable "block REST API access for non-authenticated users".
-
-3. **Test the endpoint directly**:
-   ```
-   curl https://aragrow.me/wp-json/wp/v2/posts?per_page=1
-   ```
-   Should return a JSON array. If it returns an error, the API is blocked.
-
-4. **Application Passwords** — Already implemented in `src/lib/wordpress.ts`.
-   All fetch calls include a `Basic` auth header when `WP_USER` and
-   `WP_APP_PASSWORD` are set in `.env`. This bypasses WordFence's REST API
-   blocking without disabling the firewall.
-
-   **Setup steps:**
-   - WordPress Admin → Users → Profile → scroll to **Application Passwords**
-   - Enter a name (e.g. `Astro Build`) → click **Add New Application Password**
-   - Copy the generated password (shown only once)
-   - Add to `.env`:
-     ```
-     WP_USER=your-wp-username
-     WP_APP_PASSWORD=xxxx xxxx xxxx xxxx xxxx xxxx
-     ```
-   - Add the same two values as **GitHub Secrets** so the CI build can also
-     authenticate (Settings → Secrets → `WP_USER`, `WP_APP_PASSWORD`).
-   - Add them to the GitHub Actions workflow env block:
-     ```yaml
-     env:
-       PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID }}
-       WP_USER: ${{ secrets.WP_USER }}
-       WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
-     ```

@@ -37,6 +37,18 @@ const pageLinks = buildPages(current, totalPages);
 function pageUrl(n: number) {
   return n === 1 ? '/blog' : `/blog/${n}`;
 }
+
+const placeholders = [
+  '/images/blog-placeholder.svg',
+  '/images/blog-placeholder-2.svg',
+  '/images/blog-placeholder-3.svg',
+  '/images/blog-placeholder-4.svg',
+];
+
+function pickPlaceholder(id: string) {
+  const hash = id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  return placeholders[hash % placeholders.length];
+}
 ---
 
 <Layout
@@ -47,7 +59,7 @@ function pageUrl(n: number) {
   <main>
   <div class="blog-page-wrapper">
     <div class="container">
-      <div class="blog-page-header reveal">
+      <div class="blog-page-header">
         <div class="section-label">Insights</div>
         <h1 class="section-title">The <span class="grad-text">Blog</span></h1>
         <p class="section-sub">
@@ -60,18 +72,22 @@ function pageUrl(n: number) {
         {page.data.map((post) => {
           const { title, date, excerpt, featuredImage, categories } = post.data;
           const slug = post.id.replace(/\.md$/, '');
+          const imgSrc = featuredImage ?? pickPlaceholder(post.id);
+          const imgAlt = featuredImage ? title : `AraGrow — ${title}`;
           return (
             <a
               href={`/blog/${slug}`}
-              class="blog-listing-card reveal"
+              class="blog-listing-card"
               aria-label={`Read: ${title}`}
             >
               <div class="blog-listing-img">
-                {featuredImage ? (
-                  <img src={featuredImage} alt={title} loading="lazy" width="640" height="200" />
-                ) : (
-                  <div class="blog-listing-img-placeholder" aria-hidden="true">✍️</div>
-                )}
+                <img
+                  src={imgSrc}
+                  alt={imgAlt}
+                  loading="lazy"
+                  width="640"
+                  height="200"
+                />
               </div>
               <div class="blog-listing-body">
                 {categories.length > 0 && (
@@ -180,7 +196,6 @@ function pageUrl(n: number) {
     transition: transform 0.4s;
   }
   .blog-listing-card:hover .blog-listing-img img { transform: scale(1.04); }
-  .blog-listing-img-placeholder { font-size: 3rem; }
 
   .blog-listing-body {
     padding: 24px;
