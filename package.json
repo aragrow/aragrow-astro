@@ -23,6 +23,7 @@
   "homepage": "https://github.com/aragrow/aragrow-astro#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.18.0"
+    "astro": "^5.18.0",
+    "firebase": "^12.12.0"
   }
 }
