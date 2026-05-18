@@ -33,12 +33,48 @@
 #     inspecting the generated dist/ folder or testing the build
 #     without publishing.
 #
+#  E) Archive posts.xml
+#     Moves a processed posts.xml from the project root into
+#     post-uploaded/posts-N.xml (next free slot). Run this
+#     manually after you've verified the import looks right —
+#     the import path itself no longer auto-archives.
+#
 #  Usage:
 #     ./deploy.sh ci       # option A — git push, let CI deploy
 #     ./deploy.sh local    # option B — build + deploy from here
 #     ./deploy.sh import   # option C — import posts.xml + local deploy
 #     ./deploy.sh build    # option D — npm run build only, no deploy
+#     ./deploy.sh archive  # option E — archive posts.xml only
 #     ./deploy.sh          # prompts to choose
+#
+# ─────────────────────────────────────────────────────────────
+#  Quickstart — import, build, and deploy to the cloud
+# ─────────────────────────────────────────────────────────────
+#
+#  One command does all three:
+#
+#      ./deploy.sh import
+#
+#  Which runs, in order:
+#    1. Import — npx tsx scripts/import-wp.ts parses posts.xml,
+#       writes src/content/blog/<slug>.md, and downloads images
+#       to public/images/blog/.
+#    2. Build  — npm run build → writes dist/.
+#    3. Deploy — npx firebase-tools deploy --only hosting
+#       pushes dist/ to Firebase Hosting.
+#
+#  Prereqs (one-time):
+#    - posts.xml in the project root
+#      (WP Admin → Tools → Export → All content)
+#    - Logged in: npx firebase-tools login
+#
+#  After it succeeds:
+#    - Verify the live site looks right.
+#    - Archive the XML: ./deploy.sh archive
+#      (moves posts.xml → post-uploaded/posts-N.xml)
+#
+#  If something fails mid-flow, fix and re-run — posts.xml is
+#  still in place and the import is idempotent.
 # ═════════════════════════════════════════════════════════════
 
 
@@ -54,7 +90,60 @@ set -euo pipefail
 GREEN="\033[0;32m"
 RED="\033[0;31m"
 BOLD="\033[1m"
+DIM="\033[2m"
 RESET="\033[0m"
+
+
+# ─────────────────────────────────────────────────────────────
+#  Local preview info — printed at the end of every mode
+# ─────────────────────────────────────────────────────────────
+print_local_access() {
+  echo ""
+  echo -e "${BOLD}Preview locally:${RESET}"
+  echo -e "  ${BOLD}npm run dev${RESET}     → http://localhost:4321/"
+  echo -e "  ${DIM}(hot-reloads on file changes — best for editing)${RESET}"
+  echo ""
+  echo -e "  ${BOLD}npm run preview${RESET} → http://localhost:4321/"
+  echo -e "  ${DIM}(serves the built dist/ — matches what gets deployed)${RESET}"
+  echo ""
+}
+
+
+# ─────────────────────────────────────────────────────────────
+#  Quickstart docs — printed before the menu and on `help`
+# ─────────────────────────────────────────────────────────────
+print_quickstart() {
+  echo ""
+  echo -e "${BOLD}AraGrow — Deploy to Firebase Hosting${RESET}"
+  echo "═════════════════════════════════════════════════════════════"
+  echo ""
+  echo -e "${BOLD}Quickstart — import, build, and deploy to the cloud${RESET}"
+  echo "  One command does all three:"
+  echo ""
+  echo -e "      ${BOLD}./deploy.sh import${RESET}"
+  echo ""
+  echo "  Which runs, in order:"
+  echo "    1. Import — npx tsx scripts/import-wp.ts parses posts.xml,"
+  echo "       writes src/content/blog/<slug>.md, and downloads images"
+  echo "       to public/images/blog/."
+  echo "    2. Build  — npm run build → writes dist/."
+  echo "    3. Deploy — npx firebase-tools deploy --only hosting"
+  echo "       pushes dist/ to Firebase Hosting."
+  echo ""
+  echo -e "${BOLD}Prereqs (one-time):${RESET}"
+  echo "  - posts.xml in the project root"
+  echo "    (WP Admin → Tools → Export → All content)"
+  echo "  - Logged in: npx firebase-tools login"
+  echo ""
+  echo -e "${BOLD}After it succeeds:${RESET}"
+  echo "  - Verify the live site looks right."
+  echo "  - Archive the XML: ./deploy.sh archive"
+  echo "    (moves posts.xml → post-uploaded/posts-N.xml)"
+  echo ""
+  echo -e "${DIM}  If something fails mid-flow, fix and re-run — posts.xml is${RESET}"
+  echo -e "${DIM}  still in place and the import is idempotent.${RESET}"
+  echo ""
+}
 
 
 # ─────────────────────────────────────────────────────────────
@@ -62,23 +151,31 @@ RESET="\033[0m"
 # ─────────────────────────────────────────────────────────────
 mode="${1:-}"
 
+# Explicit help flag — print docs and exit.
+if [[ "$mode" == "help" || "$mode" == "-h" || "$mode" == "--help" ]]; then
+  print_quickstart
+  exit 0
+fi
+
 if [[ -z "$mode" ]]; then
-  echo ""
-  echo -e "${BOLD}AraGrow — Deploy to Firebase Hosting${RESET}"
+  print_quickstart
+  echo -e "${BOLD}Menu${RESET}"
   echo "────────────────────────────────────"
-  echo "  1) ci      — push to GitHub, let Actions build & deploy"
-  echo "  2) local   — build & deploy directly from this machine"
-  echo "  3) import  — import posts.xml, then build & deploy locally"
-  echo "  4) build   — npm run build only, no deploy"
-  echo "  0) exit    — quit without doing anything"
+  echo "  1) ci       — push to GitHub, let Actions build & deploy"
+  echo "  2) local    — build & deploy directly from this machine"
+  echo "  3) import   — import posts.xml, then build & deploy locally"
+  echo "  4) build    — npm run build only, no deploy"
+  echo "  5) archive  — move posts.xml → post-uploaded/posts-N.xml"
+  echo "  0) exit     — quit without doing anything"
   echo ""
-  read -rp "Choose [0/1/2/3/4]: " choice
+  read -rp "Choose [0/1/2/3/4/5]: " choice
   case "$choice" in
     0) echo "Bye."; exit 0 ;;
     1) mode="ci" ;;
     2) mode="local" ;;
     3) mode="import" ;;
     4) mode="build" ;;
+    5) mode="archive" ;;
     *) echo -e "${RED}✗  Invalid choice${RESET}"; exit 1 ;;
   esac
 fi
@@ -102,6 +199,7 @@ case "$mode" in
     echo ""
     echo -e "${GREEN}✓  Pushed. Watch the build at:${RESET}"
     echo "   https://github.com/aragrow/aragrow-astro/actions"
+    print_local_access
     ;;
 
   # ───── B) Local deploy — build + firebase deploy ──────────
@@ -116,6 +214,7 @@ case "$mode" in
 
     echo ""
     echo -e "${GREEN}✓  Deployed.${RESET}"
+    print_local_access
     ;;
 
   # ───── C) Import posts.xml + build + local deploy ─────────
@@ -141,6 +240,8 @@ case "$mode" in
 
     echo ""
     echo -e "${GREEN}✓  Imported, built, and deployed.${RESET}"
+    echo -e "   Run ${BOLD}./deploy.sh archive${RESET} once you've verified the import."
+    print_local_access
     ;;
 
   # ───── D) Build only — no deploy ──────────────────────────
@@ -150,12 +251,31 @@ case "$mode" in
     npm run build
     echo ""
     echo -e "${GREEN}✓  Build complete — output in dist/${RESET}"
+    print_local_access
+    ;;
+
+  # ───── E) Archive posts.xml — manual step ─────────────────
+  archive)
+    if [[ ! -f "posts.xml" ]]; then
+      echo -e "${RED}✗  posts.xml not found in project root — nothing to archive.${RESET}"
+      exit 1
+    fi
+    mkdir -p post-uploaded
+    n=1
+    while [[ -e "post-uploaded/posts-$n.xml" ]]; do
+      n=$((n + 1))
+    done
+    archive="post-uploaded/posts-$n.xml"
+    mv posts.xml "$archive"
+    echo ""
+    echo -e "${GREEN}✓  Archived posts.xml → $archive${RESET}"
+    print_local_access
     ;;
 
   # ───── Unknown mode ───────────────────────────────────────
   *)
     echo -e "${RED}✗  Unknown mode: $mode${RESET}"
-    echo "   Usage: ./deploy.sh [ci|local|import|build]"
+    echo "   Usage: ./deploy.sh [ci|local|import|build|archive|help]"
     exit 1
     ;;
 

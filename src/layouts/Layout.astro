@@ -1,9 +1,13 @@
 ---
+import ConsentBanner from '../components/ConsentBanner.astro';
+
 interface Props {
   title?: string;
   description?: string;
   structuredData?: object | object[];
   noindex?: boolean;
+  image?: string;
+  type?: 'website' | 'article';
 }
 
 const {
@@ -11,10 +15,13 @@ const {
   description = 'David Arago | AraGrow LLC — Fractional CTO services, AI integration, web development, and scalable tech solutions for growing businesses.',
   structuredData,
   noindex = false,
+  image = '/logo.png',
+  type = 'website',
 } = Astro.props;
 
-// Set PUBLIC_GTM_ID in your .env file to activate Google Tag Manager
-const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const siteOrigin = Astro.site?.origin ?? 'https://aragrow.me';
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const absoluteImage = image.startsWith('http') ? image : `${siteOrigin}${image}`;
 ---
 
 <!doctype html>
@@ -28,37 +35,31 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, iMessage, Discord, WhatsApp, etc.) -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="AraGrow" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- X/Twitter falls back to og:* tags but explicit summary_large_image gives the big card -->
+    <meta name="twitter:card" content="summary_large_image" />
     <!-- Preload critical fonts to eliminate CLS from font-swap -->
     <link rel="preload" href="/fonts/space-grotesk-300-2.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-300-6.woff2" as="font" type="font/woff2" crossorigin />
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
-    <!-- Google Tag Manager — loads only when PUBLIC_GTM_ID is set in .env -->
-    {gtmId && (
-      <script is:inline define:vars={{ gtmId }}>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',gtmId);
-      </script>
-    )}
+    <!-- Analytics scripts (GA/GTM) load via ConsentBanner only after user opt-in -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript fallback) -->
-    {gtmId && (
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-          height="0"
-          width="0"
-          style="display:none;visibility:hidden"
-        ></iframe>
-      </noscript>
-    )}
     <slot />
+    <ConsentBanner />
   </body>
 </html>
 

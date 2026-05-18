@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = '2026-05-18';
+---
+
+<Layout
+  title="AI Usage Policy — AraGrow LLC"
+  description="How AraGrow, LLC uses Artificial Intelligence: our providers, due diligence, disclosure commitments, rules for sensitive information, and your right to opt out."
+>
+  <Nav />
+  <main>
+    <article class="legal-page">
+      <div class="container">
+        <header class="legal-header">
+          <div class="section-label">Legal</div>
+          <h1 class="legal-title">AI <span class="grad-text">Usage Policy</span></h1>
+          <p class="legal-updated">Last updated: {lastUpdated}</p>
+        </header>
+
+        <div class="legal-content">
+          <p>At Aragrow, LLC, we use Artificial Intelligence (AI) as a practical tool — much as a carpenter uses a table saw, skill saw, or drill — to improve productivity and reduce costs for our clients. As a technology company, we are committed to leveraging available tools responsibly for your benefit.</p>
+
+          <p>This policy describes how we use AI on your behalf, the choices we make to protect your information, and the rights you retain throughout. It complements (and is referenced by) our <a href="/privacy/">Privacy Policy</a>.</p>
+
+          <h2>Our Commitments</h2>
+
+          <ul>
+            <li><strong>Purpose limitation.</strong> Any information you provide to us that we route through an AI tool is used solely to help with <em>your</em> request or project — not for advertising, profiling, or building a profile of you.</li>
+
+            <li><strong>Provider choices, not guarantees.</strong> We use established AI providers — currently Anthropic (Claude), OpenAI, and Google (Gemini), among others — and we choose the API tiers, settings, and accounts whose published terms commit the provider to <em>not</em> use submitted content for training their models. We follow each provider's recommended practices for keeping submitted data out of training pipelines. We also perform due diligence on the AI providers we work with and rely on contractual and technical measures (provider terms of service, data processing terms, and enterprise/API-tier settings) to require them to protect your information and restrict how they may use it. That said, we cannot control or independently verify what happens inside their systems. If you would not be comfortable with an AI provider potentially seeing a piece of information, please tell us before sending it and we will keep it out of any AI workflow.</li>
+
+            <li><strong>Disclosure and your choice.</strong> Our practice is to tell you up front whenever a process we run on your behalf involves an AI tool — typically at the start of the engagement, and again before any specific AI-assisted step. If we ever fail to give that notice, please let us know so we can correct it. If you choose to proceed with an AI-assisted process, you confirm that you have read and understood the limits described in <em>Provider choices, not guarantees</em> above — that the protections come from provider terms and settings, not from a guarantee we can independently enforce. You can ask us at any time to handle a task without AI, and we will accommodate that whenever it is practical.</li>
+
+            <li><strong>Respect for your preferences.</strong> If you prefer that no AI tools be used in your project, simply tell us. We will honor your request and discuss alternative approaches.</li>
+
+            <li><strong>No selling to AI providers or anyone else.</strong> We do not sell your personal information to any third party — including AI providers, data brokers, advertisers, or analytics vendors.</li>
+
+            <li><strong>Sensitive information.</strong> As a rule, we do not send highly sensitive information — such as passwords, payment card numbers, government identification numbers, health or biometric data, or precise location data — to general-purpose AI tools. If you share something else that you consider confidential or particularly sensitive, please tell us so we can keep that information out of any AI workflow as well.</li>
+
+            <li><strong>Privacy commitment.</strong> We take meaningful steps to protect your personal and private information regardless of the technology in use. The protections described in our <a href="/privacy/">Privacy Policy</a> apply to all data we handle, including data routed through AI tools.</li>
+          </ul>
+
+          <h2>Mistakes and Corrections</h2>
+
+          <p>We aim to follow this policy at all times, but we are a small business and mistakes can happen. If you believe we have not followed any commitment described here — through error, oversight, or any other reason — please contact us at <a href="mailto:davidarago@aragrow.me">davidarago@aragrow.me</a>. We will investigate promptly, correct the issue and notify affected individuals where appropriate, comply with any notification obligations under applicable law, and update this policy or our internal processes to prevent recurrence.</p>
+
+          <h2>Changes to This Policy</h2>
+
+          <p>AI tools, providers, and best practices change quickly. We may update this policy as our practices evolve. We will update the "Last updated" date at the top of this page; for material changes, we will notify subscribers by email where we have a way to reach you. Your continued use of the site after a change indicates acceptance of the updated terms.</p>
+
+          <h2>Questions or Special Requirements</h2>
+
+          <p>If you have questions, concerns, or specific requirements regarding the use of AI in your project, please contact us at <a href="mailto:davidarago@aragrow.me">davidarago@aragrow.me</a>. We want you to feel confident and comfortable working with Aragrow, LLC.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page { padding-top: 120px; padding-bottom: 80px; }
+  .legal-header { padding-bottom: 40px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+  .legal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 600;
+    line-height: 1.15; margin: 12px 0 8px; color: var(--text);
+  }
+  .legal-updated { color: var(--muted); font-size: 0.875rem; margin: 0; }
+
+  .legal-content { max-width: 760px; }
+  .legal-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--text);
+    margin: 48px 0 16px;
+  }
+  .legal-content p, .legal-content li {
+    color: var(--text); line-height: 1.7; font-size: 1rem;
+  }
+  .legal-content p { margin: 0 0 16px; }
+  .legal-content ul { padding-left: 24px; margin: 0 0 20px; }
+  .legal-content li { margin-bottom: 12px; }
+  .legal-content a { color: var(--teal-text); text-decoration: underline; text-underline-offset: 2px; }
+  .legal-content a:hover { color: var(--teal); }
+</style>

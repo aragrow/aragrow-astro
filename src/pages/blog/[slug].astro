@@ -54,6 +54,8 @@ const structuredData = {
   title={`${title} — AraGrow Blog`}
   description={excerpt}
   structuredData={structuredData}
+  type="article"
+  image={featuredImage ?? undefined}
 >
   <Nav />
   <main>
@@ -72,7 +74,7 @@ const structuredData = {
         }
         <h1 class="post-title">{title}</h1>
         <div class="post-meta">
-          <span class="post-author">By {author}</span>
+          <span class="post-author">By <a href="/#about">{author}</a></span>
           <span class="post-sep">·</span>
           <time datetime={date}>{formattedDate}</time>
         </div>
@@ -135,6 +137,8 @@ const structuredData = {
     font-size: 0.875rem; color: var(--muted);
   }
   .post-author { font-weight: 500; }
+  .post-author a { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
+  .post-author a:hover { color: var(--brand, var(--text)); border-bottom-style: solid; }
   .post-sep { opacity: 0.4; }
 
   /* ── Featured image ── */

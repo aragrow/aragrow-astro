@@ -1,0 +1,205 @@
+---
+const gaId = import.meta.env.PUBLIC_GA_ID ?? '';
+const gtmId = import.meta.env.PUBLIC_GTM_ID ?? '';
+const hasAnalytics = Boolean(gaId || gtmId);
+---
+
+{hasAnalytics && (
+  <>
+    <div
+      id="consent-banner"
+      class="consent-banner"
+      role="dialog"
+      aria-live="polite"
+      aria-label="Cookie consent"
+      hidden
+    >
+      <div class="consent-inner">
+        <span class="consent-cookie" aria-hidden="true">🍪</span>
+        <p class="consent-text">
+          <strong>We use cookies because we’re so sweet.</strong>
+          <span class="consent-sub">
+            Just Google Analytics — anonymized, no ads, no third parties.
+            <a href="/privacy/">Details</a>.
+          </span>
+        </p>
+        <div class="consent-actions">
+          <button type="button" class="consent-btn consent-decline" data-consent="denied">
+            No thanks
+          </button>
+          <button type="button" class="consent-btn consent-accept" data-consent="granted">
+            Sure!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ gaId, gtmId }}>
+      (function () {
+        var KEY = 'aragrow-consent';
+        var SNOOZE_KEY = 'aragrow-consent-snooze-until';
+        var SNOOZE_MS = 5 * 60 * 1000; // 5 minutes
+        var loaded = false;
+
+        function loadAnalytics() {
+          if (loaded) return;
+          loaded = true;
+
+          if (gaId) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', gaId, { anonymize_ip: true });
+          }
+
+          if (gtmId) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var g = document.createElement('script');
+            g.async = true;
+            g.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+            document.head.appendChild(g);
+          }
+        }
+
+        function showBanner() {
+          var el = document.getElementById('consent-banner');
+          if (el) el.hidden = false;
+        }
+        function hideBanner() {
+          var el = document.getElementById('consent-banner');
+          if (el) el.hidden = true;
+        }
+
+        function init() {
+          var decision = null;
+          var snoozedUntil = 0;
+          try {
+            decision = localStorage.getItem(KEY);
+            snoozedUntil = parseInt(localStorage.getItem(SNOOZE_KEY) || '0', 10) || 0;
+          } catch (e) {}
+
+          if (decision === 'granted') {
+            loadAnalytics();
+          } else if (Date.now() >= snoozedUntil) {
+            showBanner();
+          }
+
+          document.querySelectorAll('[data-consent]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var choice = btn.getAttribute('data-consent');
+              hideBanner();
+              try {
+                if (choice === 'granted') {
+                  localStorage.setItem(KEY, 'granted');
+                  localStorage.removeItem(SNOOZE_KEY);
+                  loadAnalytics();
+                } else {
+                  localStorage.removeItem(KEY);
+                  localStorage.setItem(SNOOZE_KEY, String(Date.now() + SNOOZE_MS));
+                }
+              } catch (e) {}
+            });
+          });
+
+          window.addEventListener('aragrow:open-consent', function () {
+            try {
+              localStorage.removeItem(KEY);
+              localStorage.removeItem(SNOOZE_KEY);
+            } catch (e) {}
+            showBanner();
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+
+    <style>
+      .consent-banner {
+        position: fixed; left: 16px; right: 16px; bottom: 16px;
+        background: var(--card); color: var(--text);
+        border: 1px solid var(--border); border-radius: 18px;
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.6) inset,
+          0 18px 40px -12px rgba(123,24,24,0.25),
+          0 4px 12px rgba(0,0,0,0.08);
+        padding: 18px 22px; z-index: 9999;
+        max-width: 680px; margin: 0 auto;
+        font-size: 0.92rem;
+        animation: consent-rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1.05);
+      }
+      .consent-banner[hidden] { display: none; }
+
+      @keyframes consent-rise {
+        0%   { transform: translateY(120%); opacity: 0; }
+        70%  { transform: translateY(-6px); opacity: 1; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+
+      .consent-inner {
+        display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+      }
+      .consent-cookie {
+        font-size: 2rem; line-height: 1; flex-shrink: 0;
+        display: inline-block; transform-origin: 50% 70%;
+        animation: cookie-wobble 3.2s ease-in-out infinite;
+      }
+      @keyframes cookie-wobble {
+        0%, 100% { transform: rotate(-6deg); }
+        50%      { transform: rotate(6deg); }
+      }
+      .consent-text {
+        flex: 1 1 280px; margin: 0; line-height: 1.5;
+      }
+      .consent-text strong {
+        display: block; font-weight: 600; color: var(--text);
+        margin-bottom: 2px; font-size: 1.02em;
+      }
+      .consent-sub { color: var(--muted); font-size: 0.88em; }
+      .consent-sub a {
+        color: var(--teal-text); text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+      .consent-btn {
+        appearance: none; cursor: pointer; font: inherit; font-weight: 500;
+        padding: 9px 20px; border-radius: 999px;
+        border: 1px solid var(--border); background: transparent; color: var(--muted);
+        transition: background 0.18s, color 0.18s, transform 0.18s, border-color 0.18s;
+      }
+      .consent-btn:hover { color: var(--text); border-color: var(--text); }
+      .consent-btn:active { transform: translateY(1px); }
+
+      .consent-accept {
+        background: var(--teal); color: #fff; border-color: var(--teal);
+        box-shadow: 0 2px 8px rgba(123,24,24,0.25);
+      }
+      .consent-accept:hover {
+        background: var(--teal-text); color: #fff; border-color: var(--teal-text);
+        box-shadow: 0 4px 12px rgba(123,24,24,0.35);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .consent-banner { animation: none; }
+        .consent-cookie { animation: none; }
+        .consent-btn { transition: none; }
+      }
+
+      @media (max-width: 520px) {
+        .consent-actions { width: 100%; justify-content: stretch; }
+        .consent-btn { flex: 1; }
+      }
+    </style>
+  </>
+)}
