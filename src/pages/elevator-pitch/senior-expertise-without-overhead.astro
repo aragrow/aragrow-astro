@@ -1,0 +1,311 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Pitch 4 — Senior Expertise, Without the Overhead | AraGrow + Evrig + Content Cucumber"
+  description="Senior-level technology, build, and content leadership for growing businesses — without the full-time cost of hiring all three."
+  noindex={true}
+>
+  <Nav />
+  <main>
+    <!-- ─────────────────────────── HERO ─────────────────────────── -->
+    <section class="pitch-hero">
+      <div class="pitch-hero-bg" aria-hidden="true"></div>
+      <div class="container pitch-hero-inner">
+        <p class="pitch-eyebrow">
+          <a href="/elevator-pitch/">← All pitches</a> · Pitch 4 — Startup / growth-stage angle
+        </p>
+        <h1 class="pitch-title">
+          Senior Expertise,<br />
+          <span class="grad-text">Without the Overhead.</span>
+        </h1>
+        <p class="pitch-lede">
+          Fractional CTO leadership, an award-winning build team, and a content engine — assembled
+          as one coordinated bench for growing businesses that can't afford to hire all three.
+        </p>
+        <p class="pitch-tag">Senior specialists. Not big-agency overhead.</p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── BODY ─────────────────────────── -->
+    <section class="pitch-body">
+      <div class="container pitch-body-inner">
+        <div class="pitch-problem">
+          <h2>A common trap for growing businesses</h2>
+          <p>
+            You need senior-level expertise — a real CTO, a real dev agency, real content writers
+            — but you can't afford to hire all of that full-time. So you either underspend and get
+            mediocre results, or you overspend and burn runway on the wrong things.
+          </p>
+          <p>
+            <strong>We've built something designed for exactly that problem.</strong>
+          </p>
+        </div>
+
+        <div class="pitch-partners">
+          <article class="pitch-partner pitch-partner--accent">
+            <div class="pitch-partner-label">Leadership</div>
+            <h3>AraGrow</h3>
+            <p>
+              Fractional CTO-level technology leadership — 25+ years of experience helping startups
+              and growing businesses make smart technology decisions without the full-time cost.
+            </p>
+          </article>
+
+          <article class="pitch-partner">
+            <div class="pitch-partner-label">Build</div>
+            <h3>Evrig</h3>
+            <p>
+              An award-winning ecommerce development team — Magento Masters, Adobe Silver Partner,
+              Hyva certified — who have scaled stores from startup to enterprise.
+            </p>
+          </article>
+
+          <article class="pitch-partner">
+            <div class="pitch-partner-label">Content</div>
+            <h3>Content Cucumber</h3>
+            <p>
+              40+ professional human writers delivering weekly content as a subscription — so you
+              get consistent SEO traction without hiring a content team.
+            </p>
+          </article>
+        </div>
+
+        <!-- Credentials strip — unique to this pitch (geography + posture) -->
+        <div class="pitch-credentials">
+          <div class="pitch-cred">
+            <span class="pitch-cred-label">Based</span>
+            <span class="pitch-cred-value">Minneapolis</span>
+          </div>
+          <div class="pitch-cred">
+            <span class="pitch-cred-label">Serving</span>
+            <span class="pitch-cred-value">Clients globally</span>
+          </div>
+          <div class="pitch-cred">
+            <span class="pitch-cred-label">Built for</span>
+            <span class="pitch-cred-value">Real outcomes</span>
+          </div>
+        </div>
+
+        <div class="pitch-trust">
+          <p>
+            We're not a big agency with overhead you pay for. We're senior specialists who work as
+            one team.
+          </p>
+        </div>
+
+        <div class="pitch-close">
+          <p class="pitch-close-tag">Need senior expertise without the full-time price tag?</p>
+          <p class="pitch-close-line">
+            Let's talk about what a coordinated bench could do for your stage of growth.
+          </p>
+          <a href="/contact" class="pitch-cta">Set up a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ──────────────── HERO (pure CSS — no images, sub-250ms paint) ──────────────── */
+  .pitch-hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* Pitch 4 variant: two sangria "brackets" at top corners + warm cream base
+     — visual metaphor for senior framing without overhead-heavy center weight. */
+  .pitch-hero-bg {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(circle at 8% 8%, rgba(123,24,24,0.20), transparent 32%),
+      radial-gradient(circle at 92% 8%, rgba(123,24,24,0.18), transparent 32%),
+      radial-gradient(ellipse at 50% 110%, rgba(232,185,49,0.22), transparent 50%),
+      linear-gradient(180deg, #fdf6f4 0%, #ffffff 50%, #fff7e6 100%);
+  }
+  /* Dot pattern texture (vs. grid/diagonals in earlier pitches) */
+  .pitch-hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(123,24,24,0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .pitch-hero-inner { position: relative; }
+
+  .pitch-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--teal-text);
+    margin: 0 0 18px;
+  }
+  .pitch-eyebrow a {
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+    margin-right: 6px;
+  }
+  .pitch-eyebrow a:hover { color: var(--teal-text); }
+
+  .pitch-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700;
+    line-height: 1.05; color: var(--text);
+    margin: 0 0 24px; letter-spacing: -0.02em;
+  }
+  .pitch-lede {
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5; color: var(--text);
+    margin: 0 0 28px; max-width: 680px;
+  }
+  .pitch-tag {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.04em; color: var(--teal-text);
+    padding: 8px 16px; border-radius: 999px;
+    background: rgba(123,24,24,0.08);
+    border: 1px solid rgba(123,24,24,0.15);
+    margin: 0;
+  }
+
+  /* ──────────────── BODY ──────────────── */
+  .pitch-body { padding: 80px 0 100px; background: var(--bg, #fff); }
+  .pitch-body-inner { max-width: 1000px; }
+
+  .pitch-problem { max-width: 760px; margin: 0 0 64px; }
+  .pitch-problem h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 600;
+    color: var(--text); margin: 0 0 18px; line-height: 1.25;
+  }
+  .pitch-problem p {
+    font-size: 1.05rem; line-height: 1.7; color: var(--text);
+    margin: 0 0 16px;
+  }
+
+  .pitch-partners {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; margin-bottom: 36px;
+  }
+  .pitch-partner {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 24px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .pitch-partner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -16px rgba(123,24,24,0.20);
+    border-color: var(--teal-text);
+  }
+  .pitch-partner--accent {
+    background: linear-gradient(160deg, rgba(123,24,24,0.04), rgba(232,185,49,0.06));
+    border-color: rgba(123,24,24,0.18);
+  }
+  .pitch-partner-label {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--teal-text);
+    padding: 4px 10px; border-radius: 6px;
+    background: rgba(232,185,49,0.18);
+    margin-bottom: 14px;
+  }
+  .pitch-partner h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem; font-weight: 600; color: var(--text);
+    margin: 0 0 10px;
+  }
+  .pitch-partner p {
+    font-size: 0.95rem; line-height: 1.65; color: var(--muted);
+    margin: 0;
+  }
+
+  /* Credentials strip — small, three-column facts row unique to this pitch */
+  .pitch-credentials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 0 auto 36px;
+    max-width: 760px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .pitch-cred {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 4px 12px;
+    border-right: 1px solid var(--border);
+  }
+  .pitch-cred:last-child { border-right: none; }
+  .pitch-cred-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); margin-bottom: 4px;
+  }
+  .pitch-cred-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.98rem; font-weight: 600;
+    color: var(--text);
+  }
+  @media (max-width: 540px) {
+    .pitch-credentials { grid-template-columns: 1fr; gap: 12px; }
+    .pitch-cred { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .pitch-cred:last-child { border-bottom: none; padding-bottom: 4px; }
+  }
+
+  .pitch-trust {
+    max-width: 760px; margin: 0 auto 64px;
+    padding: 24px 28px;
+    background: linear-gradient(160deg, rgba(232,185,49,0.10), rgba(123,24,24,0.05));
+    border: 1px solid rgba(123,24,24,0.15);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .pitch-trust p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem; font-weight: 500;
+    color: var(--text); line-height: 1.55;
+    margin: 0;
+  }
+
+  .pitch-close { text-align: center; }
+  .pitch-close-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 600;
+    color: var(--text); margin: 0 0 8px; letter-spacing: -0.01em;
+  }
+  .pitch-close-line {
+    font-size: 1.05rem; color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .pitch-cta {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    padding: 14px 28px; border-radius: 999px;
+    background: var(--teal); color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(123,24,24,0.25);
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .pitch-cta:hover {
+    background: var(--teal-text);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(123,24,24,0.35);
+  }
+
+  @media (max-width: 720px) {
+    .pitch-hero { min-height: 78vh; padding-top: 100px; }
+  }
+</style>

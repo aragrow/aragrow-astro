@@ -1,0 +1,216 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+// Manually maintained list of pitches.
+// To add a new pitch: create a new .astro file in this folder, then add an
+// entry below. Keep the array ordered newest-first (or in the order you
+// want presented).
+const pitches = [
+  {
+    number: 1,
+    slug: 'one-team-full-journey',
+    angle: 'The complete-solution angle',
+    title: 'One Team, Full Journey',
+    summary:
+      'Three specialized firms working as a single, coordinated team — taking you from zero to a live, performing website without the chaos.',
+    partners: ['AraGrow', 'Evrig', 'Content Cucumber'],
+  },
+  {
+    number: 2,
+    slug: 'no-more-handoff-chaos',
+    angle: 'The pain-point angle',
+    title: 'No More Handoff Chaos',
+    summary:
+      'One partnership built specifically to eliminate the gaps, restarts, and miscommunication that derail most website launches.',
+    partners: ['AraGrow', 'Evrig', 'Content Cucumber'],
+  },
+  {
+    number: 3,
+    slug: 'built-for-ecommerce',
+    angle: 'Ecommerce brand angle',
+    title: 'Built for Ecommerce',
+    summary:
+      'A three-firm partnership purpose-built for commerce brands: platform, strategy, and content — all coordinated, all commerce-focused.',
+    partners: ['AraGrow', 'Evrig', 'Content Cucumber'],
+  },
+  {
+    number: 4,
+    slug: 'senior-expertise-without-overhead',
+    angle: 'Startup / growth-stage angle',
+    title: 'Senior Expertise, Without the Overhead',
+    summary:
+      'Fractional CTO leadership, an award-winning build team, and a content engine — assembled as one coordinated bench for growing businesses that can’t afford to hire all three.',
+    partners: ['AraGrow', 'Evrig', 'Content Cucumber'],
+  },
+  {
+    number: 5,
+    slug: 'from-idea-to-revenue',
+    angle: 'Business-outcomes / ROI angle',
+    title: 'From Idea to Revenue',
+    summary:
+      'Strategy, build, and content delivered in sequence — coordinated from day one so the launch actually performs.',
+    partners: ['AraGrow', 'Evrig', 'Content Cucumber'],
+  },
+];
+---
+
+<Layout
+  title="Elevator Pitches — Internal"
+  description="Internal index of AraGrow elevator pitches."
+  noindex={true}
+>
+  <Nav />
+  <main>
+    <section class="pitches-hero">
+      <div class="pitches-hero-bg" aria-hidden="true"></div>
+      <div class="container pitches-hero-inner">
+        <p class="pitches-eyebrow">Internal · Elevator pitches</p>
+        <h1 class="pitches-title">
+          The <span class="grad-text">pitches</span>
+        </h1>
+        <p class="pitches-lede">
+          Short, focused angles on what AraGrow does and who we partner with — written to be shared
+          one-to-one in conversations, emails, and warm intros.
+        </p>
+      </div>
+    </section>
+
+    <section class="pitches-list-section">
+      <div class="container pitches-list-inner">
+        <ol class="pitches-list">
+          {
+            pitches.map((p) => (
+              <li class="pitch-card">
+                <a href={`/elevator-pitch/${p.slug}/`} class="pitch-card-link">
+                  <div class="pitch-card-meta">
+                    <span class="pitch-card-number">Pitch {p.number}</span>
+                    <span class="pitch-card-angle">{p.angle}</span>
+                  </div>
+                  <h2 class="pitch-card-title">{p.title}</h2>
+                  <p class="pitch-card-summary">{p.summary}</p>
+                  <div class="pitch-card-partners">
+                    {p.partners.map((name) => (
+                      <span class="pitch-card-partner">{name}</span>
+                    ))}
+                  </div>
+                  <span class="pitch-card-cta">Read the pitch →</span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+
+        {pitches.length === 0 && (
+          <p class="pitches-empty">No pitches yet — add one in <code>src/pages/elevator-pitch/</code>.</p>
+        )}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .pitches-hero {
+    position: relative;
+    padding: 140px 0 60px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .pitches-hero-bg {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 18% 30%, rgba(232,185,49,0.15), transparent 55%),
+      radial-gradient(ellipse at 82% 80%, rgba(123,24,24,0.18), transparent 55%),
+      linear-gradient(135deg, #fdf6f4 0%, #ffffff 60%, #fff7e6 100%);
+  }
+  .pitches-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--teal-text);
+    margin: 0 0 18px;
+  }
+  .pitches-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+    line-height: 1.05; color: var(--text);
+    margin: 0 0 24px; letter-spacing: -0.02em;
+  }
+  .pitches-lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.55; color: var(--text);
+    margin: 0; max-width: 700px;
+  }
+
+  /* ── List ── */
+  .pitches-list-section { padding: 56px 0 100px; }
+  .pitches-list-inner { max-width: 880px; }
+
+  .pitches-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 20px;
+  }
+  .pitch-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .pitch-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px -16px rgba(123,24,24,0.22);
+    border-color: var(--teal-text);
+  }
+  .pitch-card-link {
+    display: block; padding: 28px 28px 26px;
+    text-decoration: none; color: inherit;
+  }
+
+  .pitch-card-meta {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 12px;
+  }
+  .pitch-card-number {
+    color: #fff; background: var(--teal);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .pitch-card-angle { color: var(--muted); }
+
+  .pitch-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 600;
+    color: var(--text); margin: 0 0 10px; line-height: 1.2;
+  }
+  .pitch-card-summary {
+    color: var(--text); line-height: 1.6; font-size: 1rem;
+    margin: 0 0 18px;
+  }
+
+  .pitch-card-partners {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 18px;
+  }
+  .pitch-card-partner {
+    font-size: 0.78rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 6px;
+    background: rgba(232,185,49,0.18); color: var(--teal-text);
+  }
+
+  .pitch-card-cta {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--teal-text);
+  }
+  .pitch-card:hover .pitch-card-cta { color: var(--teal); }
+
+  .pitches-empty { color: var(--muted); font-style: italic; }
+  .pitches-empty code {
+    font-family: 'Inter', monospace; font-size: 0.92em;
+    background: var(--teal-dim); padding: 2px 6px; border-radius: 4px;
+  }
+</style>

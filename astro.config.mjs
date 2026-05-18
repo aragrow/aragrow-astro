@@ -5,7 +5,11 @@ export default defineConfig({
   site: 'https://aragrow.me',
   compressHTML: true,
   devToolbar: { enabled: false },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/elevator-pitch(\/|$)/.test(page),
+    }),
+  ],
   vite: {
     build: {
       minify: 'esbuild',

@@ -100,6 +100,43 @@ RESET="\033[0m"
 
 
 # ─────────────────────────────────────────────────────────────
+#  Auto-generated commit message
+#  Builds a subject line listing the top-level areas touched,
+#  followed by a body with the full file-status list.
+# ─────────────────────────────────────────────────────────────
+generate_commit_message() {
+  local files
+  files=$(git diff --cached --name-status)
+  local count
+  count=$(printf '%s\n' "$files" | wc -l | tr -d ' ')
+
+  # Map each file path to a friendly area name; dedupe; comma-join.
+  local areas
+  areas=$(printf '%s\n' "$files" | awk '{print $2}' | awk -F/ '
+    {
+      if      ($1 == "src" && $2 == "pages")       print "pages"
+      else if ($1 == "src" && $2 == "components")  print "components"
+      else if ($1 == "src" && $2 == "layouts")     print "layouts"
+      else if ($1 == "src" && $2 == "styles")      print "styles"
+      else if ($1 == "src" && $2 == "content")     print "content"
+      else if ($1 == "src")                        print "src"
+      else if ($1 == "public")                     print "public assets"
+      else if ($1 == ".github")                    print "CI workflows"
+      else if ($1 == "scripts")                    print "scripts"
+      else                                         print "config"
+    }
+  ' | awk '!seen[$0]++' | paste -sd ', ' -)
+
+  # Subject: brief, machine-readable, scannable.
+  printf 'Update %s (%s file(s))\n\n' "$areas" "$count"
+
+  # Body: full status list, indented.
+  echo "Changes:"
+  printf '%s\n' "$files" | sed 's/^/  /'
+}
+
+
+# ─────────────────────────────────────────────────────────────
 #  Local preview info — printed at the end of every mode
 # ─────────────────────────────────────────────────────────────
 print_local_access() {
@@ -209,23 +246,30 @@ case "$mode" in
 
   # ───── B) Local deploy — commit + push + build + firebase deploy ─
   local)
-    # Step 1 — Commit any working-tree changes (interactive).
+    # Step 1 — Commit any working-tree changes with an auto-generated message.
     if [[ -n "$(git status --porcelain)" ]]; then
       echo ""
       echo -e "${BOLD}Uncommitted changes detected:${RESET}"
       git status --short
       echo ""
-      read -rp "Stage all and commit these changes? [y/N]: " confirm_commit
-      if [[ "$confirm_commit" == "y" || "$confirm_commit" == "Y" ]]; then
-        read -rp "Commit message: " commit_msg
-        if [[ -z "$commit_msg" ]]; then
-          echo -e "${RED}✗  Empty commit message — aborting.${RESET}"
-          exit 1
-        fi
-        git add -A
-        git commit -m "$commit_msg"
+
+      # Stage everything (gitignore handles the local-only files).
+      git add -A
+
+      # Generate the message from what's now staged.
+      commit_msg=$(generate_commit_message)
+
+      echo -e "${BOLD}Auto-generated commit message:${RESET}"
+      echo -e "${DIM}───────────────────────────────────${RESET}"
+      printf '%s\n' "$commit_msg"
+      echo -e "${DIM}───────────────────────────────────${RESET}"
+      echo ""
+      read -rp "Commit with this message? [Y/n]: " confirm_commit
+      if [[ "$confirm_commit" == "n" || "$confirm_commit" == "N" ]]; then
+        echo -e "${DIM}  Unstaging and skipping commit. Continuing with current working tree.${RESET}"
+        git reset HEAD -- . >/dev/null
       else
-        echo -e "${DIM}  Skipping commit. Continuing with current working tree.${RESET}"
+        git commit -m "$commit_msg"
       fi
     fi
 
