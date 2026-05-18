@@ -139,3 +139,12 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 /post-uploaded
 posts.xml
+
+# Astro build cache
+.astro/
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Local auth / credential files
+.token

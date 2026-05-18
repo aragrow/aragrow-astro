@@ -16,10 +16,15 @@
 #     becomes a production deploy.
 #
 #  B) Local deploy (direct from your machine)
-#     Builds locally and deploys with firebase-tools using your
-#     own `firebase login` session (not the service account).
-#     Use this for quick sanity checks, hotfixes, or when the
-#     GitHub Action is unavailable.
+#     Full pipeline in one command:
+#       1. If working tree has changes, prompts to stage all and
+#          commit (you supply the message).
+#       2. Pushes to remote if the local branch is ahead.
+#       3. Builds the Astro site locally.
+#       4. Deploys dist/ to Firebase Hosting using your own
+#          `firebase login` session (not the service account).
+#     Use this for normal day-to-day deploys when you want
+#     immediate publish (vs. waiting on CI).
 #
 #  C) Import + local deploy
 #     Runs the WordPress XML importer (scripts/import-wp.ts) to
@@ -162,7 +167,7 @@ if [[ -z "$mode" ]]; then
   echo -e "${BOLD}Menu${RESET}"
   echo "────────────────────────────────────"
   echo "  1) ci       — push to GitHub, let Actions build & deploy"
-  echo "  2) local    — build & deploy directly from this machine"
+  echo "  2) local    — commit, push, build & deploy directly from this machine"
   echo "  3) import   — import posts.xml, then build & deploy locally"
   echo "  4) build    — npm run build only, no deploy"
   echo "  5) archive  — move posts.xml → post-uploaded/posts-N.xml"
@@ -202,18 +207,53 @@ case "$mode" in
     print_local_access
     ;;
 
-  # ───── B) Local deploy — build + firebase deploy ──────────
+  # ───── B) Local deploy — commit + push + build + firebase deploy ─
   local)
+    # Step 1 — Commit any working-tree changes (interactive).
+    if [[ -n "$(git status --porcelain)" ]]; then
+      echo ""
+      echo -e "${BOLD}Uncommitted changes detected:${RESET}"
+      git status --short
+      echo ""
+      read -rp "Stage all and commit these changes? [y/N]: " confirm_commit
+      if [[ "$confirm_commit" == "y" || "$confirm_commit" == "Y" ]]; then
+        read -rp "Commit message: " commit_msg
+        if [[ -z "$commit_msg" ]]; then
+          echo -e "${RED}✗  Empty commit message — aborting.${RESET}"
+          exit 1
+        fi
+        git add -A
+        git commit -m "$commit_msg"
+      else
+        echo -e "${DIM}  Skipping commit. Continuing with current working tree.${RESET}"
+      fi
+    fi
+
+    # Step 2 — Push if local branch is ahead of its upstream.
+    if git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+      ahead=$(git rev-list --count @{u}..HEAD)
+      if [[ "$ahead" -gt 0 ]]; then
+        echo ""
+        echo -e "${BOLD}Pushing $ahead commit(s) to remote …${RESET}"
+        git push
+      fi
+    else
+      echo ""
+      echo -e "${DIM}  No upstream branch configured — skipping push.${RESET}"
+    fi
+
+    # Step 3 — Build.
     echo ""
     echo -e "${BOLD}Building Astro site …${RESET}"
     npm run build
 
+    # Step 4 — Deploy.
     echo ""
     echo -e "${BOLD}Deploying to Firebase Hosting …${RESET}"
     npx firebase-tools deploy --only hosting
 
     echo ""
-    echo -e "${GREEN}✓  Deployed.${RESET}"
+    echo -e "${GREEN}✓  Committed, pushed, built, and deployed.${RESET}"
     print_local_access
     ;;
 
