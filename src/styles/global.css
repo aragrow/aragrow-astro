@@ -392,19 +392,26 @@ section { position: relative; z-index: 1; }
 .form-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 12px; }
 
 /* ══════════════════ FOOTER ══════════════════ */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 0; position: relative; z-index: 1;
+body > footer {
+  background: #5a1010;
+  color: #fdf6f4;
+  padding: 48px 0; position: relative; z-index: 1;
 }
 .footer-inner {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
 }
-.footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; }
-.footer-logo span { color: var(--teal-text); }
-.footer-copy { font-size: 0.8rem; color: var(--muted); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--teal-text); }
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem;
+  color: #fdf6f4;
+}
+.footer-logo span { color: var(--purple); }
+.footer-copy { font-size: 0.8rem; color: rgba(253,246,244,0.7); }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.82rem; color: rgba(253,246,244,0.75); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--purple); }
 
 /* ══════════════════ REVEAL ANIMATIONS ══════════════════ */
 .reveal {
