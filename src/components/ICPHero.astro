@@ -1,0 +1,196 @@
+---
+---
+
+<section class="icp-hero" id="icp-hero">
+  <div class="icp-hero-bg" aria-hidden="true"></div>
+  <div class="container icp-hero-inner">
+    <div class="icp-text">
+      <p class="icp-eyebrow">For growth-stage businesses</p>
+      <h2 class="icp-title">
+        Scale without<br />
+        <span class="grad-text">chaos.</span>
+      </h2>
+
+      <p class="icp-lead">
+        You're past the startup phase — but not ready for a full IT team. Your tools don't talk to
+        each other, your people are buried in manual admin, and security keeps slipping to
+        "next quarter."
+      </p>
+
+      <p class="icp-body">
+        I help growth-stage teams plug those gaps — unifying your tech stack, automating the
+        busywork, and building a security-aware digital core. So when you grow, the wheels don't
+        fall off.
+      </p>
+
+      <a href="/contact" class="icp-cta">
+        Book a 30-minute conversation
+        <span class="icp-cta-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <p class="icp-fitnote">
+        <span class="icp-fitnote-dot" aria-hidden="true"></span>
+        Best fit: <strong>$5M–$10M revenue</strong> · <strong>20–40 employees</strong> ·
+        no in-house CTO
+      </p>
+    </div>
+
+    <div class="icp-portrait" aria-hidden="true">
+      <div class="icp-portrait-glow"></div>
+      <img
+        src="/images/david-illustration.svg"
+        alt=""
+        width="520"
+        height="420"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ──────────────── Section ──────────────── */
+  .icp-hero {
+    position: relative;
+    padding: 100px 0 120px;
+    overflow: hidden;
+    isolation: isolate;
+    border-top: 1px solid var(--border);
+  }
+  .icp-hero-bg {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 15% 25%, rgba(232,185,49,0.18), transparent 55%),
+      radial-gradient(ellipse at 88% 78%, rgba(123,24,24,0.20), transparent 55%),
+      linear-gradient(160deg, #fdf6f4 0%, #ffffff 55%, #fff7e6 100%);
+  }
+  .icp-hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(123,24,24,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(123,24,24,0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 25%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 70%);
+  }
+
+  .icp-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+  }
+
+  /* ──────────────── Text column ──────────────── */
+  .icp-text { max-width: 600px; }
+
+  .icp-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--teal-text);
+    margin: 0 0 18px;
+  }
+
+  .icp-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.02em;
+    color: var(--text); margin: 0 0 24px;
+  }
+
+  .icp-lead {
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.55; color: var(--text);
+    margin: 0 0 14px; font-weight: 500;
+  }
+  .icp-body {
+    font-size: 1rem; line-height: 1.65; color: var(--muted);
+    margin: 0 0 32px;
+  }
+
+  /* ──────────────── CTA button ──────────────── */
+  .icp-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.02rem; font-weight: 600;
+    padding: 16px 28px; border-radius: 999px;
+    background: var(--teal); color: #fff;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(123,24,24,0.28);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .icp-cta:hover {
+    background: var(--teal-text);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(123,24,24,0.36);
+  }
+  .icp-cta:hover .icp-cta-arrow { transform: translateX(4px); }
+  .icp-cta-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  /* ──────────────── Fit note ──────────────── */
+  .icp-fitnote {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin: 18px 0 0;
+    font-size: 0.85rem; color: var(--muted);
+  }
+  .icp-fitnote strong { color: var(--text); font-weight: 600; }
+  .icp-fitnote-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(123,24,24,0.12);
+    animation: icp-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes icp-pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(123,24,24,0.12); }
+    50%      { box-shadow: 0 0 0 8px rgba(123,24,24,0.04); }
+  }
+
+  /* ──────────────── Portrait column ──────────────── */
+  .icp-portrait {
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .icp-portrait-glow {
+    position: absolute; inset: 8% 12%;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(232,185,49,0.32), rgba(232,185,49,0) 60%),
+      radial-gradient(circle at 50% 60%, rgba(123,24,24,0.10), rgba(123,24,24,0) 65%);
+    filter: blur(8px);
+    z-index: 0;
+    border-radius: 50%;
+  }
+  .icp-portrait img {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 520px; height: auto;
+    /* Tint the black line art toward the brand brown so it reads as illustration, not stock */
+    filter: brightness(0) saturate(100%)
+            invert(13%) sepia(50%) saturate(2400%) hue-rotate(346deg)
+            brightness(80%) contrast(95%);
+  }
+
+  /* ──────────────── Responsive ──────────────── */
+  @media (max-width: 880px) {
+    .icp-hero { padding: 72px 0 88px; }
+    .icp-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .icp-portrait { order: -1; max-width: 360px; margin: 0 auto; }
+    .icp-portrait img { max-width: 360px; }
+    .icp-text { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .icp-cta { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .icp-cta, .icp-cta-arrow { transition: none; }
+    .icp-fitnote-dot { animation: none; }
+  }
+</style>
