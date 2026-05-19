@@ -30,8 +30,12 @@
 
       <p class="icp-fitnote">
         <span class="icp-fitnote-dot" aria-hidden="true"></span>
-        Best fit: <strong>$5M–$10M revenue</strong> · <strong>20–40 employees</strong> ·
+        Most clients: <strong>$5M–$10M revenue</strong> · <strong>20–40 employees</strong> ·
         no in-house CTO
+      </p>
+      <p class="icp-fitnote-escape">
+        Close but not exact? <a href="/contact">Reach out anyway</a> — happy to point you somewhere
+        helpful even if we're not the right fit.
       </p>
     </div>
 
@@ -139,6 +143,18 @@
     font-size: 0.85rem; color: var(--muted);
   }
   .icp-fitnote strong { color: var(--text); font-weight: 600; }
+
+  .icp-fitnote-escape {
+    margin: 6px 0 0 16px;
+    font-size: 0.8rem; line-height: 1.55; color: var(--muted);
+    font-style: italic;
+    opacity: 0.85;
+  }
+  .icp-fitnote-escape a {
+    color: var(--teal-text); text-decoration: underline;
+    text-underline-offset: 2px; font-style: normal;
+  }
+  .icp-fitnote-escape a:hover { color: var(--teal); }
   .icp-fitnote-dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--teal); flex-shrink: 0;
