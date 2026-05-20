@@ -1,0 +1,359 @@
+---
+// Manifesto section — HTML/CSS port of the original hero-banner-2.svg poster.
+// Text is now selectable, indexable, and translatable. Layout is responsive.
+// Drop <Manifesto /> anywhere on a page; styles are scoped to this component.
+---
+
+<section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
+  <div class="manifesto-bg" aria-hidden="true"></div>
+  <div class="container manifesto-inner">
+
+    <!-- Headline -->
+    <header class="manifesto-header">
+      <p class="manifesto-eyebrow">For growing companies</p>
+      <h2 id="manifesto-title" class="manifesto-title">
+        Move beyond
+        <span class="manifesto-accent">duct-tape technology.</span>
+      </h2>
+    </header>
+
+    <!-- Problem / Solution split -->
+    <div class="manifesto-split">
+
+      <div class="manifesto-problem">
+        <p class="manifesto-sub">If your business is running on:</p>
+        <ul class="manifesto-painlist">
+          <li>Disconnected tools</li>
+          <li>Repetitive manual work</li>
+          <li>Fragile processes</li>
+          <li>Security gaps</li>
+          <li>An overstretched "tech person"</li>
+        </ul>
+        <p class="manifesto-diagnosis">
+          You're probably already feeling the drag on growth.
+        </p>
+      </div>
+
+      <div class="manifesto-solution">
+        <p class="manifesto-value">
+          I help companies unify their systems, automate repetitive operations,
+          improve visibility, and build a security-aware technology foundation
+          that actually scales with the business.
+        </p>
+        <p class="manifesto-tagline">
+          Practical technology.<br />
+          Real business impact.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Three pillars -->
+    <div class="manifesto-pillars">
+
+      <div class="manifesto-pillar">
+        <div class="manifesto-pillar-label">Unify</div>
+        <p class="manifesto-pillar-text">
+          Disconnected systems <span class="manifesto-arrow">→</span>
+          one connected stack
+        </p>
+      </div>
+
+      <div class="manifesto-pillar">
+        <div class="manifesto-pillar-label">Automate</div>
+        <p class="manifesto-pillar-text">
+          Repetitive work <span class="manifesto-arrow">→</span>
+          faster operations
+        </p>
+      </div>
+
+      <div class="manifesto-pillar">
+        <div class="manifesto-pillar-label">Secure</div>
+        <p class="manifesto-pillar-text">
+          Security-aware foundation <span class="manifesto-arrow">→</span>
+          built to scale
+        </p>
+      </div>
+
+    </div>
+
+    <!-- What an engagement looks like — concrete deliverables -->
+    <div class="manifesto-engagement">
+      <p class="manifesto-engagement-label">What an engagement actually looks like</p>
+      <ul class="manifesto-engagement-list">
+        <li><strong>Weekly working session</strong> — decisions, strategy, blockers</li>
+        <li><strong>Shared Slack or email channel</strong> for between-meeting questions</li>
+        <li><strong>Hands-on time in your tools</strong> (CRM, cloud, analytics) when needed</li>
+        <li><strong>Monthly written summary</strong> — what changed, what's next, what to watch</li>
+      </ul>
+    </div>
+
+    <!-- Closing CTA -->
+    <div class="manifesto-cta">
+      <p class="manifesto-cta-line">
+        Let's connect if you're ready to simplify operations and make your technology work
+        together.
+      </p>
+      <a href="/contact" class="manifesto-cta-btn">
+        Book a 30-minute conversation
+        <span class="manifesto-cta-arrow" aria-hidden="true">→</span>
+      </a>
+      <p class="manifesto-partnership-note">
+        Engagements run through me directly. For specialist work I partner with
+        <strong>Evrig</strong> (commerce engineering) and
+        <strong>Content Cucumber</strong> (content).
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ──────────────── Section ──────────────── */
+  .manifesto {
+    position: relative;
+    padding: 40px 0 64px;
+    overflow: hidden;
+    isolation: isolate;
+    color: #fdf6f4;
+  }
+  .manifesto-bg {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 12% 18%, rgba(232,185,49,0.18), transparent 55%),
+      radial-gradient(ellipse at 88% 82%, rgba(232,185,49,0.10), transparent 60%),
+      linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+  }
+  .manifesto-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(253,246,244,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(253,246,244,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+  }
+
+  .manifesto-inner {
+    max-width: 1080px;
+    position: relative;
+  }
+
+  /* ──────────────── Header ──────────────── */
+  .manifesto-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--purple, #E8B931);
+    margin: 0 0 12px;
+  }
+  .manifesto-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0;
+    color: #fdf6f4;
+    max-width: 820px;
+  }
+  .manifesto-accent {
+    background: linear-gradient(95deg, #E8B931 0%, #f5d56b 60%, #E8B931 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+
+  /* ──────────────── Problem / Solution split ──────────────── */
+  .manifesto-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 40px;
+    margin: 32px 0 40px;
+    align-items: start;
+  }
+
+  .manifesto-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: rgba(253,246,244,0.65);
+    margin: 0 0 12px;
+  }
+
+  .manifesto-painlist {
+    list-style: none; padding: 0; margin: 0 0 18px;
+  }
+  .manifesto-painlist li {
+    position: relative;
+    padding: 8px 0 8px 28px;
+    font-size: 0.98rem; line-height: 1.4; font-weight: 500;
+    color: #fdf6f4;
+    border-bottom: 1px solid rgba(253,246,244,0.10);
+  }
+  .manifesto-painlist li:last-child { border-bottom: none; }
+  .manifesto-painlist li::before {
+    content: '✕';
+    position: absolute; left: 0; top: 8px;
+    color: var(--purple, #E8B931);
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .manifesto-diagnosis {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.98rem; font-style: italic;
+    color: rgba(253,246,244,0.85);
+    margin: 0;
+    padding: 12px 16px;
+    border-left: 3px solid var(--purple, #E8B931);
+    background: rgba(253,246,244,0.04);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .manifesto-value {
+    font-size: 1.02rem; line-height: 1.55;
+    color: #fdf6f4;
+    margin: 0 0 18px;
+  }
+  .manifesto-tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem); font-weight: 600;
+    color: var(--purple, #E8B931);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  /* ──────────────── Three pillars ──────────────── */
+  .manifesto-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .manifesto-pillar {
+    padding: 18px 18px;
+    background: rgba(253,246,244,0.05);
+    border: 1px solid rgba(253,246,244,0.12);
+    border-radius: 10px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .manifesto-pillar:hover {
+    background: rgba(253,246,244,0.08);
+    border-color: rgba(232,185,49,0.40);
+    transform: translateY(-2px);
+  }
+  .manifesto-pillar-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--purple, #E8B931);
+    margin-bottom: 6px;
+  }
+  .manifesto-pillar-text {
+    font-size: 0.9rem; line-height: 1.45;
+    color: #fdf6f4;
+    margin: 0;
+  }
+  .manifesto-arrow {
+    color: var(--purple, #E8B931);
+    font-weight: 600;
+    margin: 0 2px;
+  }
+
+  /* ──────────────── What an engagement looks like ──────────────── */
+  .manifesto-engagement {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    padding: 20px 24px;
+    background: rgba(253,246,244,0.04);
+    border: 1px solid rgba(253,246,244,0.10);
+    border-radius: 12px;
+  }
+  .manifesto-engagement-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--purple, #E8B931);
+    margin: 0 0 12px;
+  }
+  .manifesto-engagement-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 8px;
+  }
+  .manifesto-engagement-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.95rem; line-height: 1.5;
+    color: #fdf6f4;
+  }
+  .manifesto-engagement-list li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 0;
+    color: var(--purple, #E8B931);
+    font-weight: 700;
+  }
+  .manifesto-engagement-list strong {
+    color: #fdf6f4; font-weight: 600;
+  }
+
+  /* ──────────────── CTA ──────────────── */
+  .manifesto-cta {
+    text-align: center;
+    padding-top: 18px;
+    border-top: 1px solid rgba(253,246,244,0.10);
+  }
+
+  .manifesto-partnership-note {
+    margin: 18px auto 0;
+    max-width: 580px;
+    font-size: 0.82rem; line-height: 1.5;
+    color: rgba(253,246,244,0.65);
+  }
+  .manifesto-partnership-note strong { color: var(--purple, #E8B931); font-weight: 600; }
+  .manifesto-cta-line {
+    font-size: 0.98rem; line-height: 1.55;
+    color: rgba(253,246,244,0.9);
+    max-width: 620px; margin: 0 auto 18px;
+  }
+  .manifesto-cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    padding: 14px 28px; border-radius: 999px;
+    background: var(--purple, #E8B931); color: #3b0a0a;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(232,185,49,0.25);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .manifesto-cta-btn:hover {
+    background: #f5d56b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(232,185,49,0.40);
+  }
+  .manifesto-cta-btn:hover .manifesto-cta-arrow { transform: translateX(4px); }
+  .manifesto-cta-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  /* ──────────────── Responsive ──────────────── */
+  @media (max-width: 820px) {
+    .manifesto { padding: 48px 0 56px; }
+    .manifesto-split {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin: 24px 0 32px;
+    }
+    .manifesto-pillars {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .manifesto-cta-btn { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .manifesto-pillar, .manifesto-cta-btn, .manifesto-cta-arrow { transition: none; }
+  }
+</style>

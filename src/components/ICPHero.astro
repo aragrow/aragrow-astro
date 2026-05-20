@@ -5,37 +5,32 @@
   <div class="icp-hero-bg" aria-hidden="true"></div>
   <div class="container icp-hero-inner">
     <div class="icp-text">
-      <p class="icp-eyebrow">For growth-stage businesses</p>
+      <p class="icp-eyebrow">Quick fit check</p>
       <h2 class="icp-title">
-        Scale without<br />
-        <span class="grad-text">chaos.</span>
+        Are we a<br />
+        <span class="grad-text">match?</span>
       </h2>
-
-      <p class="icp-lead">
-        You're past the startup phase — but not ready for a full IT team. Your tools don't talk to
-        each other, your people are buried in manual admin, and security keeps slipping to
-        "next quarter."
-      </p>
-
-      <p class="icp-body">
-        I help growth-stage teams plug those gaps — unifying your tech stack, automating the
-        busywork, and building a security-aware digital core. So when you grow, the wheels don't
-        fall off.
-      </p>
-
-      <a href="/contact" class="icp-cta">
-        Book a 30-minute conversation
-        <span class="icp-cta-arrow" aria-hidden="true">→</span>
-      </a>
 
       <p class="icp-fitnote">
         <span class="icp-fitnote-dot" aria-hidden="true"></span>
         Most clients: <strong>$5M–$10M revenue</strong> · <strong>20–40 employees</strong> ·
         no in-house CTO
       </p>
+      <p class="icp-fitnote-price">
+        <strong>$75/hour. Flat rate.</strong> No tiers, no minimums, no surprises.
+      </p>
       <p class="icp-fitnote-escape">
         Close but not exact? <a href="/contact">Reach out anyway</a> — happy to point you somewhere
         helpful even if we're not the right fit.
+      </p>
+
+      <a href="/contact" class="icp-cta">
+        Book a 30-minute conversation
+        <span class="icp-cta-arrow" aria-hidden="true">→</span>
+      </a>
+      <p class="icp-cta-alt">
+        Or have a quick question?
+        <a href="mailto:davidarago@aragrow.me">Email me</a> — no call required.
       </p>
     </div>
 
@@ -104,19 +99,10 @@
     color: var(--text); margin: 0 0 24px;
   }
 
-  .icp-lead {
-    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
-    line-height: 1.55; color: var(--text);
-    margin: 0 0 14px; font-weight: 500;
-  }
-  .icp-body {
-    font-size: 1rem; line-height: 1.65; color: var(--muted);
-    margin: 0 0 32px;
-  }
-
   /* ──────────────── CTA button ──────────────── */
   .icp-cta {
     display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 28px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.02rem; font-weight: 600;
     padding: 16px 28px; border-radius: 999px;
@@ -135,6 +121,15 @@
     display: inline-block;
     transition: transform 0.2s;
   }
+  .icp-cta-alt {
+    font-size: 0.88rem; color: var(--muted);
+    margin: 14px 0 0;
+  }
+  .icp-cta-alt a {
+    color: var(--teal-text); text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .icp-cta-alt a:hover { color: var(--teal); }
 
   /* ──────────────── Fit note ──────────────── */
   .icp-fitnote {
@@ -143,6 +138,15 @@
     font-size: 0.85rem; color: var(--muted);
   }
   .icp-fitnote strong { color: var(--text); font-weight: 600; }
+
+  .icp-fitnote-price {
+    margin: 10px 0 0 16px;
+    font-size: 0.92rem; line-height: 1.5;
+    color: var(--text);
+  }
+  .icp-fitnote-price strong {
+    color: var(--teal-text); font-weight: 700;
+  }
 
   .icp-fitnote-escape {
     margin: 6px 0 0 16px;
