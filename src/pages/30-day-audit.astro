@@ -98,6 +98,10 @@ import Footer from '../components/Footer.astro';
           ongoing engagement from there. That decision is yours to make once you've seen what
           the audit produces.
         </p>
+        <p class="ta-opt-out">
+          The audit has a 14-day opt-out. If the engagement isn't working for you in the first
+          two weeks, say so and we stop. You pay only for the hours completed.
+        </p>
         <div class="ta-cta-actions">
           <a href="/contact" class="btn btn-primary">Book a 30-minute conversation →</a>
           <a href="/self-assessment" class="ta-cta-secondary">Take the free self-assessment first</a>
@@ -224,6 +228,18 @@ import Footer from '../components/Footer.astro';
     margin: 0 auto 28px;
   }
   .ta-price strong { color: var(--text); font-weight: 700; }
+  .ta-opt-out {
+    font-size: 0.92rem; line-height: 1.7;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 28px;
+    padding: 14px 18px;
+    background: #fdf6f4;
+    border-left: 3px solid #01696F;
+    border-radius: 0 6px 6px 0;
+    text-align: left;
+  }
+
   .ta-cta-actions {
     display: flex; flex-direction: column;
     align-items: center; gap: 14px;
