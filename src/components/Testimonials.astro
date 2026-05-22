@@ -2,12 +2,25 @@
 const testimonials = [
   {
     quote:
+      'I recently had the pleasure of meeting with David Arago following an AI Mastermind session. He was incredibly generous with his time and insight, helping me work through several challenges related to a lead generation tool I am developing. David brings a genuine desire to help and a thoughtful, practical approach to problem-solving. As a Fractional CTO, he would be a valuable partner for any business needing strong technical leadership and guidance, particularly in navigating complex technology decisions.',
+    name: 'Yasmin Sagadevan, MBA',
+    nameHref: 'https://www.alignable.com/gastonia-nc/optima-management-advisors-2?',
+    company: 'Optima Management Advisors',
+    companyHref: 'https://www.alignable.com/gastonia-nc/optima-management-advisors-2?',
+    location: '',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzE2MjI4MDUwL0NGTy1TdHJhdGVneS1Db25zdWx0aW5nLUNvYWNoaW5nLkpQRyIsImVkaXRzIjp7ImV4dHJhY3QiOnsibGVmdCI6MCwidG9wIjowLCJ3aWR0aCI6NjEyLCJoZWlnaHQiOjYxMn0sInJlc2l6ZSI6eyJ3aWR0aCI6MTgyLCJoZWlnaHQiOjE4Mn0sImV4dGVuZCI6eyJ0b3AiOjAsImJvdHRvbSI6MCwibGVmdCI6MCwicmlnaHQiOjAsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19',
+    avatarHref: 'https://www.alignable.com/gastonia-nc/optima-management-advisors-2?',
+  },
+  {
+    quote:
       'David Arago is a WordPress development virtuoso who consistently delivers top-notch solutions. His 25+ years of experience shine through in his ability to navigate complex problems with finesse. David\'s deep understanding of WordPress and his knack for creative problem-solving make him an invaluable asset to any project. His dedication to his craft and his collaborative spirit ensure that he not only meets but exceeds expectations. I wholeheartedly recommend David for any WordPress development needs.',
     name: 'Brent Peterson',
     nameHref: 'https://www.alignable.com/st-louis-park-mn/content-basis-llc',
-    company: 'Content Basis LLC',
-    companyHref: 'https://www.contentbasis.io/',
+    company: 'Content Cucumber',
+    companyHref: 'https://www.contentcucumber.com/',
     location: 'Minneapolis, MN',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzEzMDA2ODE2L2IyNjJiODUwZGFiZGNjNDJiODY0MjQ0YmU4NzIyM2RhIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfX19',
+    avatarHref: 'https://www.alignable.com/st-louis-park-mn/content-basis-llc?user=13006816',
   },
   {
     quote:
@@ -17,16 +30,59 @@ const testimonials = [
     company: 'Cypress Creative, LLC',
     companyHref: 'https://cypresscreative.com/',
     location: 'Minneapolis, MN',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6ImJ1c2luZXNzZXMvbG9nb3Mvb3JpZ2luYWwvMjIyODgzMi9DeXByZXNzLUNyZWF0aXZlLXNoYXJpbmctMTA4MHgxMDgwLTEucG5nIiwiZWRpdHMiOnsiZXh0cmFjdCI6eyJsZWZ0IjowLCJ0b3AiOjAsIndpZHRoIjoxMDgwLCJoZWlnaHQiOjEwODB9LCJyZXNpemUiOnsid2lkdGgiOjE4MiwiaGVpZ2h0IjoxODJ9LCJleHRlbmQiOnsidG9wIjowLCJib3R0b20iOjAsImxlZnQiOjAsInJpZ2h0IjowLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==',
+    avatarHref: 'https://www.alignable.com/minneapolis-mn/cypress-creative-llc',
   },
   {
     quote:
       'David is committed to his craft and he is willing to do what I call the R&R – reading and research.',
     name: 'Jack',
-    nameHref:
-      'https://www.alignable.com/san-diego-ca/websites-web-applications-and-mobile-apps',
+    nameHref: 'https://www.alignable.com/san-diego-ca/websites-web-applications-and-mobile-apps',
     company: 'AXEO.com',
-    companyHref: 'https://axeo.com',
+    companyHref: 'https://axeo.com/',
     location: 'San Diego, CA',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6ImJ1c2luZXNzZXMvbG9nb3Mvb3JpZ2luYWwvNzExMjY4OS9jb2d3aGVlbC5wbmciLCJlZGl0cyI6eyJleHRyYWN0Ijp7ImxlZnQiOjAsInRvcCI6MCwid2lkdGgiOjUxMiwiaGVpZ2h0Ijo1MTJ9LCJyZXNpemUiOnsid2lkdGgiOjE4MiwiaGVpZ2h0IjoxODJ9LCJleHRlbmQiOnsidG9wIjowLCJib3R0b20iOjAsImxlZnQiOjAsInJpZ2h0IjowLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==',
+    avatarHref: 'https://www.alignable.com/san-diego-ca/websites-web-applications-and-mobile-apps',
+  },
+  {
+    quote: 'David is a good connection to get to know if you want personalized care on your small business web site. He is very easy to talk to.',
+    name: 'Chuck Boyce',
+    nameHref: 'https://www.alignable.com/mount-pleasant-sc/cibi-creative-providing-a-realistic-no-hype-approach-to-ai',
+    company: 'Cibi Creative',
+    companyHref: 'https://www.alignable.com/mount-pleasant-sc/cibi-creative-providing-a-realistic-no-hype-approach-to-ai',
+    location: '',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzkyNDAyODkvQ2h1Y2sgYml6IGNhc3VhbCBqYWNrZXQuanBnIiwiZWRpdHMiOnsiZXh0cmFjdCI6eyJsZWZ0IjowLCJ0b3AiOjUsIndpZHRoIjo3NjgsImhlaWdodCI6NzY4fSwicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfSwiZXh0ZW5kIjp7InRvcCI6MCwiYm90dG9tIjowLCJsZWZ0IjowLCJyaWdodCI6MCwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=',
+    avatarHref: 'https://www.alignable.com/mount-pleasant-sc/cibi-creative-providing-a-realistic-no-hype-approach-to-ai',
+  },
+  {
+    quote: 'David is highly knowledgeable and thorough. His sincere approach to addressing issues is refreshing and instills confidence.',
+    name: 'Eden Wood',
+    nameHref: 'https://www.alignable.com/port-saint-lucie-fl/beach-fit-treasure-coast',
+    company: 'Beach Fit Treasure Coast',
+    companyHref: 'https://beachfittc.com/',
+    location: 'Port Saint Lucie, FL',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzEyMjIwMTcxL0lNR183MDQ2LmpwZWciLCJlZGl0cyI6eyJleHRyYWN0Ijp7ImxlZnQiOjAsInRvcCI6MjQ4LCJ3aWR0aCI6MjMxNSwiaGVpZ2h0IjoyMzE1fSwicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfSwiZXh0ZW5kIjp7InRvcCI6MCwiYm90dG9tIjowLCJsZWZ0IjowLCJyaWdodCI6MCwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=',
+    avatarHref: 'https://www.alignable.com/port-saint-lucie-fl/beach-fit-treasure-coast',
+  },
+  {
+    quote: "David is a great guy, I applaud his authenticity you know you are dealing with a straight shooter. There is a reason he is recommended.",
+    name: "Donna O'Leary",
+    nameHref: 'https://www.alignable.com/colonie-ny/boldendeavors-queen-of-reviews-ai-videos-colonie-local-bizperson-2025-get-found-trusted-paid',
+    company: 'BOLDEndeavors',
+    companyHref: 'https://boldendeavors.ai/',
+    location: 'Colonie, NY',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzEzNzU2NTI4L0Rvbm5hX0dyZWVuX0hlYWRzaG90X1Byb2ZpbGVfQ2lyY2xlLnBuZyIsImVkaXRzIjp7ImV4dHJhY3QiOnsibGVmdCI6MCwidG9wIjowLCJ3aWR0aCI6MTA4MCwiaGVpZ2h0IjoxMDgwfSwicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfSwiZXh0ZW5kIjp7InRvcCI6MCwiYm90dG9tIjowLCJsZWZ0IjowLCJyaWdodCI6MCwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=',
+    avatarHref: 'https://www.alignable.com/colonie-ny/boldendeavors-queen-of-reviews-ai-videos-colonie-local-bizperson-2025-get-found-trusted-paid',
+  },
+  {
+    quote: 'David was extremely helpful and informative in such a short amount of time! I could easily see his genius and his clear expertise gave me confidence in his ability to achieve our goals.',
+    name: 'John Rohrig IV',
+    nameHref: 'https://www.alignable.com/mount-shasta-ca/g2b-enterprises',
+    company: 'G2B Enterprises',
+    companyHref: '',
+    location: '',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzE2Mjc0MjM1L0cyQiBMb2dvLnBuZyIsImVkaXRzIjp7ImV4dHJhY3QiOnsibGVmdCI6NjksInRvcCI6NjksIndpZHRoIjozNjEsImhlaWdodCI6MzYxfSwicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfSwiZXh0ZW5kIjp7InRvcCI6MCwiYm90dG9tIjowLCJsZWZ0IjowLCJyaWdodCI6MCwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=',
+    avatarHref: 'https://www.alignable.com/mount-shasta-ca/g2b-enterprises',
   },
   {
     quote: 'Great guy, and very helpful. Gives folks what they need.',
@@ -35,49 +91,183 @@ const testimonials = [
     company: 'Bsquared Solutions',
     companyHref: 'https://bsquaredsolutions.net/',
     location: 'Owasso, OK',
+    avatarUrl: 'https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6InVzZXJzL3BpY3R1cmVzL29yaWdpbmFsLzE0NDQ3ODY2L2Rvd25sb2FkLmpwZyIsImVkaXRzIjp7ImV4dHJhY3QiOnsibGVmdCI6MCwidG9wIjoxMTcsIndpZHRoIjoxNDkwLCJoZWlnaHQiOjE0OTB9LCJyZXNpemUiOnsid2lkdGgiOjE4MiwiaGVpZ2h0IjoxODJ9LCJleHRlbmQiOnsidG9wIjowLCJib3R0b20iOjAsImxlZnQiOjAsInJpZ2h0IjowLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==',
+    avatarHref: 'https://www.alignable.com/owasso-ok/bsquared-solutions',
   },
 ];
+
+// Group into pages of 2
+const pages: (typeof testimonials)[] = [];
+for (let i = 0; i < testimonials.length; i += 2) {
+  pages.push(testimonials.slice(i, i + 2));
+}
 ---
 
 <section id="testimonials">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">What Clients Say</div>
-      <h2 class="section-title">Trusted by <span class="grad-text">Great People</span></h2>
+      <div class="section-label">What clients and colleagues say</div>
+      <h2 class="section-title">People Who've <span class="grad-text">Done the Work With Me</span></h2>
       <p class="section-sub">
-        Real feedback from clients and peers across Minneapolis and beyond.
+        AraGrow works with a small number of clients at a time. These are real people who have
+        worked alongside David as clients, collaborators, and peers.
       </p>
     </div>
-    <div class="testimonial-grid">
-      {
-        testimonials.map((t) => (
-          <article class="testimonial-card reveal">
-            <div class="testimonial-quote-mark">"</div>
-            <blockquote class="testimonial-quote">
-              <p>{t.quote}</p>
-            </blockquote>
-            <footer class="testimonial-footer">
-              <div class="testimonial-avatar">
-                {t.name.charAt(0)}
-              </div>
-              <div>
-                <div class="testimonial-name">
-                  <a href={t.nameHref} target="_blank" rel="noopener">
-                    {t.name}
-                  </a>
-                </div>
-                <div class="testimonial-meta">
-                  <a href={t.companyHref} target="_blank" rel="noopener">
-                    {t.company}
-                  </a>
-                  {' · '}
-                  {t.location}
-                </div>
-              </div>
-            </footer>
-          </article>
-        ))
-      }
+
+    <!-- Carousel -->
+    <div class="tc-viewport">
+      <div class="tc-track" id="tc-track">
+        {pages.map((page) => (
+          <div class="tc-slide">
+            {page.map((t) => (
+              <article class="testimonial-card">
+                <div class="testimonial-quote-mark">"</div>
+                <blockquote class="testimonial-quote">
+                  <p>{t.quote}</p>
+                </blockquote>
+                <footer class="testimonial-footer">
+                  <div class="testimonial-avatar">
+                    {t.avatarUrl && t.avatarHref
+                      ? <a href={t.avatarHref} target="_blank" rel="noopener" aria-label={`${t.name} profile`}><img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" /></a>
+                      : t.avatarUrl
+                      ? <img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" />
+                      : t.name.charAt(0)
+                    }
+                  </div>
+                  <div>
+                    <div class="testimonial-name">
+                      {t.nameHref
+                        ? <a href={t.nameHref} target="_blank" rel="noopener">{t.name}</a>
+                        : t.name
+                      }
+                    </div>
+                    <div class="testimonial-meta">
+                      {t.companyHref
+                        ? <a href={t.companyHref} target="_blank" rel="noopener">{t.company}</a>
+                        : t.company
+                      }
+                      {t.location && <>{' · '}{t.location}</>}
+                    </div>
+                  </div>
+                </footer>
+              </article>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
+
+    <!-- Controls -->
+    <div class="tc-controls">
+      <button class="tc-arrow" id="tc-prev" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="tc-dots" id="tc-dots">
+        {pages.map((_, i) => (
+          <button class={`tc-dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Page ${i + 1}`}></button>
+        ))}
+      </div>
+      <button class="tc-arrow" id="tc-next" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
   </div>
 </section>
+
+<style>
+  .tc-viewport {
+    overflow: hidden;
+    margin: 0 -4px;
+    padding: 0 4px;
+  }
+  .tc-track {
+    display: flex;
+    transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .tc-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Controls */
+  .tc-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .tc-arrow {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .tc-arrow:hover {
+    border-color: var(--teal-text);
+    color: var(--teal-text);
+    background: var(--teal-dim);
+  }
+  .tc-dots {
+    display: flex; gap: 7px; align-items: center;
+  }
+  .tc-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border);
+    border: none; cursor: pointer; padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .tc-dot.active {
+    background: var(--teal-text);
+    transform: scale(1.4);
+  }
+
+  @media (max-width: 640px) {
+    .tc-slide { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tc-track { transition: none; }
+    .tc-dot { transition: none; }
+  }
+</style>
+
+<script>
+  const track = document.getElementById('tc-track') as HTMLElement;
+  const dots = Array.from(document.querySelectorAll<HTMLButtonElement>('.tc-dot'));
+  const total = dots.length;
+  let current = 0;
+
+  function goTo(n: number) {
+    current = ((n % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('tc-prev')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('tc-next')?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 48) goTo(current + (diff > 0 ? 1 : -1));
+  });
+</script>

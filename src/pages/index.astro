@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Manifesto from '../components/Manifesto.astro';
 import ICPHero from '../components/ICPHero.astro';
+import AssessmentCallout from '../components/AssessmentCallout.astro';
 import Services from '../components/Services.astro';
 import About from '../components/About.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -114,14 +115,15 @@ const structuredData = [
 ---
 
 <Layout
-  title="David Arago — Fractional CTO & Technology Leader | AraGrow LLC"
-  description="David Arago | AraGrow LLC — Fractional CTO services, AI integration, web development, and scalable tech solutions for growing businesses in Minneapolis, MN."
+  title="AraGrow LLC — Fractional CTO for Growing Businesses | David Aragó"
+  description="Your technology was built for the company you were. I help businesses between $5M–$10M close the gap — hands-on fractional CTO leadership without the full-time overhead. Minneapolis, MN."
   structuredData={structuredData}
 >
   <Nav />
   <main>
     <Hero />
     <Manifesto />
+    <AssessmentCallout />
     <ICPHero />
     <Services />
     <About />

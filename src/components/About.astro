@@ -33,39 +33,65 @@ const awards = [
 
 <section id="about">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-image">
+    <div class="about-three-col">
+
+      <!-- Left: Bio -->
+      <div class="about-bio reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">David <span class="grad-text">Aragó</span></h2>
+        <p>
+          I didn't become a technology leader by climbing a corporate ladder. Over 23 years at
+          Hubbard Broadcasting, I went from senior developer to team lead, building a custom CMS
+          for seven TV stations, leading nine major system migrations, and sitting in the room
+          with the CIO and President when the decisions that shaped the company's technology were
+          made. I've managed the 2am crisis when the system went down. I know what these problems
+          look like from the inside, which means I know how to actually fix them, not just
+          recommend someone else fix them.
+        </p>
+        <p>
+          I started AraGrow to stay close to the work. I split my time between Minneapolis and
+          Spain, with bilingual fluency in English and Spanish that is professional and technical,
+          not just conversational. When you reach out, you reach me directly, no account managers
+          or handoffs between us.
+        </p>
+
+        <div class="about-social">
+          <p class="about-social-label">Connect</p>
+          <div class="about-social-icons" aria-label="Connect with David on social media">
+            <a href="https://www.linkedin.com/in/davidarago/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06s.92-2.06 2.06-2.06c1.14 0 2.06.92 2.06 2.06s-.93 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/david.arago" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https://www.alignable.com/golden-valley-mn/aragrow-llc?user=13125290" target="_blank" rel="noopener" aria-label="Alignable" title="Alignable">
+              <span class="about-social-mark" aria-hidden="true">A</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Photo -->
+      <div class="about-photo-col">
         <div class="about-avatar">
           <img
             src="/images/david.webp"
-            alt="David Arago"
+            alt="David Aragó"
             width="280"
             height="280"
             loading="lazy"
             decoding="async"
           />
         </div>
-        <div class="about-badges">
-          <div class="about-badge">🏆 Emmy Winner</div>
-          <div class="about-badge">🥇 Best in WebOps</div>
-        </div>
       </div>
-      <div class="about-text reveal">
-        <div class="section-label">About Me</div>
-        <h2 class="section-title">David <span class="grad-text">Arago</span></h2>
-        <p>
-          I'm a results-oriented technology leader based in Minneapolis, Minnesota, with over 25
-          years of experience building and scaling digital products across industries.
-        </p>
-        <p>
-          Through <strong>AraGrow LLC</strong>, I provide senior-level tech leadership to startups
-          and small businesses — helping them leverage AI, build scalable web platforms, and make
-          smart infrastructure decisions without the overhead of a full-time executive hire.
-        </p>
-        <p>
-          I'm fully bilingual (English &amp; Spanish), which opens the door to broader collaboration
-          and serving diverse markets.
-        </p>
+
+      <!-- Right: Awards -->
+      <div class="about-awards-col reveal">
+        <div class="section-label">Recognition</div>
         <div class="awards">
           {
             awards.map((a) =>
@@ -89,79 +115,119 @@ const awards = [
             )
           }
         </div>
-
-        <div class="about-social">
-          <p class="about-social-label">Connect</p>
-          <div class="about-social-icons" aria-label="Connect with David on social media">
-            <a
-              href="https://www.linkedin.com/in/davidarago/"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06s.92-2.06 2.06-2.06c1.14 0 2.06.92 2.06 2.06s-.93 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
-              </svg>
-            </a>
-            <a
-              href="https://www.facebook.com/david.arago"
-              target="_blank"
-              rel="noopener"
-              aria-label="Facebook"
-              title="Facebook"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-            <a
-              href="https://www.alignable.com/golden-valley-mn/aragrow-llc?user=13125290"
-              target="_blank"
-              rel="noopener"
-              aria-label="Alignable"
-              title="Alignable"
-            >
-              <span class="about-social-mark" aria-hidden="true">A</span>
-            </a>
-          </div>
-        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <style>
+  /* ── Layout ── */
+  .about-three-col {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 280px minmax(0, 1.2fr);
+    gap: 56px;
+    align-items: center;
+  }
+
+  /* ── Bio column ── */
+  .about-bio .section-title { margin-bottom: 20px; }
+  .about-bio p { color: var(--muted); margin-bottom: 16px; line-height: 1.8; }
+
   .about-social {
-    margin-top: 32px;
-    padding-top: 24px;
+    margin-top: 28px;
+    padding-top: 20px;
     border-top: 1px solid var(--border);
   }
   .about-social-label {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.72rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.2em;
     color: var(--teal-text);
   }
-  .about-social-icons { display: flex; gap: 12px; }
+  .about-social-icons { display: flex; gap: 10px; }
   .about-social-icons a {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 38px; height: 38px; border-radius: 50%;
-    color: var(--text);
-    background: var(--card);
-    border: 1px solid var(--border);
+    width: 36px; height: 36px; border-radius: 50%;
+    color: var(--text); background: var(--card); border: 1px solid var(--border);
     transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
   }
   .about-social-icons a:hover {
-    color: #fff;
-    background: var(--teal);
-    border-color: var(--teal);
+    color: #fff; background: var(--teal); border-color: var(--teal);
     transform: translateY(-2px);
   }
-  .about-social-icons svg { width: 18px; height: 18px; display: block; }
+  .about-social-icons svg { width: 16px; height: 16px; display: block; }
   .about-social-mark {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800; font-size: 1.05rem; line-height: 1;
+    font-weight: 800; font-size: 1rem; line-height: 1;
+  }
+
+  /* ── Photo column ── */
+  .about-photo-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-avatar {
+    width: 280px; height: 280px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-dim), var(--purple-dim));
+    border: 2px solid var(--border);
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .about-avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .about-avatar::after {
+    content: ''; position: absolute; inset: -12px; border-radius: 50%;
+    border: 1px dashed rgba(0,212,170,0.2);
+    animation: spin 30s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Awards column ── */
+  .about-awards-col .section-label { margin-bottom: 16px; }
+  .awards { display: flex; flex-direction: column; gap: 12px; }
+  .award {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px;
+  }
+  .award-link {
+    text-decoration: none; color: inherit;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .award-link:hover { border-color: var(--teal-text); background: var(--teal-dim); }
+  .award-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .award-text { font-size: 0.85rem; font-weight: 500; line-height: 1.3; }
+  .award-year { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    .about-three-col {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "photo awards"
+        "bio   bio";
+    }
+    .about-photo-col { grid-area: photo; }
+    .about-awards-col { grid-area: awards; }
+    .about-bio { grid-area: bio; }
+  }
+
+  @media (max-width: 580px) {
+    .about-three-col {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "photo"
+        "bio"
+        "awards";
+    }
+    .about-avatar { width: 220px; height: 220px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-social-icons a { transition: none; }
+    .about-avatar::after { animation: none; }
   }
 </style>

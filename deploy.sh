@@ -46,10 +46,11 @@
 #
 #  Usage:
 #     ./deploy.sh ci       # option A — git push, let CI deploy
-#     ./deploy.sh local    # option B — build + deploy from here
+#     ./deploy.sh local    # option B — commit + push + build + deploy
 #     ./deploy.sh import   # option C — import posts.xml + local deploy
 #     ./deploy.sh build    # option D — npm run build only, no deploy
 #     ./deploy.sh archive  # option E — archive posts.xml only
+#     ./deploy.sh deploy   # option F — build + deploy, no git
 #     ./deploy.sh          # prompts to choose
 #
 # ─────────────────────────────────────────────────────────────
@@ -208,9 +209,10 @@ if [[ -z "$mode" ]]; then
   echo "  3) import   — import posts.xml, then build & deploy locally"
   echo "  4) build    — npm run build only, no deploy"
   echo "  5) archive  — move posts.xml → post-uploaded/posts-N.xml"
+  echo "  6) deploy   — build & deploy directly, no git"
   echo "  0) exit     — quit without doing anything"
   echo ""
-  read -rp "Choose [0/1/2/3/4/5]: " choice
+  read -rp "Choose [0/1/2/3/4/5/6]: " choice
   case "$choice" in
     0) echo "Bye."; exit 0 ;;
     1) mode="ci" ;;
@@ -218,6 +220,7 @@ if [[ -z "$mode" ]]; then
     3) mode="import" ;;
     4) mode="build" ;;
     5) mode="archive" ;;
+    6) mode="deploy" ;;
     *) echo -e "${RED}✗  Invalid choice${RESET}"; exit 1 ;;
   esac
 fi
@@ -356,10 +359,25 @@ case "$mode" in
     print_local_access
     ;;
 
+  # ───── F) Deploy only — build + firebase deploy, no git ──────
+  deploy)
+    echo ""
+    echo -e "${BOLD}Building Astro site …${RESET}"
+    npm run build
+
+    echo ""
+    echo -e "${BOLD}Deploying to Firebase Hosting …${RESET}"
+    npx firebase-tools deploy --only hosting
+
+    echo ""
+    echo -e "${GREEN}✓  Built and deployed.${RESET}"
+    print_local_access
+    ;;
+
   # ───── Unknown mode ───────────────────────────────────────
   *)
     echo -e "${RED}✗  Unknown mode: $mode${RESET}"
-    echo "   Usage: ./deploy.sh [ci|local|import|build|archive|help]"
+    echo "   Usage: ./deploy.sh [ci|local|import|build|archive|deploy|help]"
     exit 1
     ;;
 

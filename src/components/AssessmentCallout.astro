@@ -1,0 +1,117 @@
+---
+---
+
+<section class="ac-band">
+  <div class="container ac-inner">
+    <div class="ac-text">
+      <p class="ac-eyebrow">Not ready for a call yet?</p>
+      <h2 class="ac-title">Understand where your technology stands before the first conversation.</h2>
+      <p class="ac-body">
+        The free self-assessment takes 5 minutes. It helps you put words to the problem and gives
+        your first conversation with David a real starting point — useful even if you never book a call.
+      </p>
+    </div>
+    <div class="ac-action">
+      <a href="/self-assessment" class="ac-cta">
+        Take the self-assessment
+        <span class="ac-arrow" aria-hidden="true">→</span>
+      </a>
+      <p class="ac-fine">Takes about 5 minutes · Sends to David by email</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ac-band {
+    background: linear-gradient(135deg, #3b0a0a 0%, #5a1010 50%, #4a0c0c 100%);
+    padding: 56px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ac-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(232,185,49,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,185,49,0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  }
+
+  .ac-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .ac-text { max-width: 540px; }
+
+  .ac-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #E8B931;
+    margin: 0 0 12px;
+  }
+
+  .ac-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-weight: 700; line-height: 1.25;
+    color: #fdf6f4;
+    margin: 0 0 12px;
+  }
+
+  .ac-body {
+    font-size: 0.92rem; line-height: 1.65;
+    color: rgba(253,246,244,0.72);
+    margin: 0;
+  }
+
+  .ac-action {
+    flex-shrink: 0;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 10px;
+  }
+
+  .ac-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.97rem; font-weight: 700;
+    padding: 15px 28px; border-radius: 999px;
+    background: #E8B931; color: #3b0a0a;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(232,185,49,0.3);
+  }
+  .ac-cta:hover {
+    background: #f0ca4a;
+    transform: translateY(-2px);
+  }
+  .ac-cta:hover .ac-arrow { transform: translateX(4px); }
+  .ac-arrow { display: inline-block; transition: transform 0.2s; }
+
+  .ac-fine {
+    font-size: 0.78rem;
+    color: rgba(253,246,244,0.45);
+    text-align: center;
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .ac-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .ac-action { align-items: flex-start; }
+    .ac-cta { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ac-cta, .ac-arrow { transition: none; }
+  }
+</style>

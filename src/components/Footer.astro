@@ -4,19 +4,20 @@ const year = new Date().getFullYear();
 
 <footer>
   <div class="container">
-    <div class="footer-inner">
+
+    <!-- Row 1: Logo + nav links -->
+    <div class="footer-top">
       <div class="footer-logo">Ara<span>Grow</span> LLC</div>
-      <div class="footer-copy">© {year} AraGrow LLC · Minneapolis, MN</div>
       <div class="footer-links">
-        <a href="https://aragrow.me" target="_blank" rel="noopener">aragrow.me</a>
-        <a href="#contact">Contact</a>
-        <a href="/privacy/">Privacy policy</a>
-        <a href="/ai-policy/">AI usage policy</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/ai-policy/">AI policy</a>
         <a href="/terms/">Terms</a>
         <button type="button" class="footer-link-btn" id="open-consent">Cookie preferences</button>
       </div>
     </div>
 
+    <!-- Row 2: Social icons -->
     <p class="footer-social-label">Connect</p>
     <div class="footer-social" aria-label="Connect with David on social media">
       <a
@@ -51,6 +52,10 @@ const year = new Date().getFullYear();
         <span class="footer-social-mark" aria-hidden="true">A</span>
       </a>
     </div>
+
+    <!-- Row 3: Copyright -->
+    <p class="footer-copy">© {year} AraGrow LLC · Minneapolis, MN · Serving clients in the US and internationally · EN · ES</p>
+
   </div>
 </footer>
 

@@ -1,0 +1,509 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Technology Self-Assessment — AraGrow LLC"
+  description="A free 5-minute self-assessment for growing businesses ($5M–$10M revenue). Understand the state of your technology before your first conversation with David Aragó."
+>
+  <Nav />
+  <main class="sa-page">
+
+    <!-- Header -->
+    <div class="sa-header">
+      <div class="container">
+        <div class="section-label">Free resource</div>
+        <h1 class="sa-title">Technology State of the Business</h1>
+        <p class="sa-intro">
+          A self-assessment for growing companies between $5M and $10M in revenue.
+          It takes about 5 minutes. The more specific your answers, the more useful
+          your first conversation with David will be.
+        </p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="container sa-container">
+      <form id="sa-form" novalidate>
+
+        <p class="sa-required-legend"><span aria-hidden="true" class="req-star">*</span> All fields are required</p>
+
+        <!-- Section 1 -->
+        <div class="sa-section">
+          <h2 class="sa-section-title">Section 1 — Your Technology Today</h2>
+
+          <div class="sa-question">
+            <p class="sa-q-text">1. How many software systems does your business actively use?</p>
+            <p class="sa-q-hint">(CRM, accounting, project management, website, email, HR, scheduling, etc.)</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q1" value="Fewer than 5" required /><span>Fewer than 5</span></label>
+              <label class="sa-option"><input type="radio" name="q1" value="5–10" /><span>5–10</span></label>
+              <label class="sa-option"><input type="radio" name="q1" value="11–20" /><span>11–20</span></label>
+              <label class="sa-option"><input type="radio" name="q1" value="More than 20 (and I'm not sure I know all of them)" /><span>More than 20 — and I'm not sure I know all of them</span></label>
+              <label class="sa-option"><input type="radio" name="q1" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">2. How many of those systems talk to each other automatically?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q2" value="Most are connected" required /><span>Most are connected</span></label>
+              <label class="sa-option"><input type="radio" name="q2" value="Some connected, others require manual work" /><span>Some are connected, others require manual work</span></label>
+              <label class="sa-option"><input type="radio" name="q2" value="Most require manual work to share data" /><span>Most require manual work to share data</span></label>
+              <label class="sa-option"><input type="radio" name="q2" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">3. Do you have documentation of how your systems are set up and how they connect?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q3" value="Yes, current and maintained" required /><span>Yes, it's current and maintained</span></label>
+              <label class="sa-option"><input type="radio" name="q3" value="Exists but outdated" /><span>It exists but it's outdated</span></label>
+              <label class="sa-option"><input type="radio" name="q3" value="Mostly in people's heads" /><span>It's mostly in people's heads</span></label>
+              <label class="sa-option"><input type="radio" name="q3" value="No documentation exists" /><span>No documentation exists</span></label>
+              <label class="sa-option"><input type="radio" name="q3" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="sa-section">
+          <h2 class="sa-section-title">Section 2 — Risk and Dependency</h2>
+
+          <div class="sa-question">
+            <p class="sa-q-text">4. If your primary technical person left tomorrow, how long before something broke?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q4" value="We'd be fine — knowledge is well distributed" required /><span>We'd be fine — knowledge is well distributed</span></label>
+              <label class="sa-option"><input type="radio" name="q4" value="A few days before a serious problem" /><span>A few days before we hit a serious problem</span></label>
+              <label class="sa-option"><input type="radio" name="q4" value="Immediately — there are things only one person knows" /><span>Immediately — there are things only one person knows</span></label>
+              <label class="sa-option"><input type="radio" name="q4" value="I'm not sure, and that worries me" /><span>I'm not sure, and that worries me</span></label>
+              <label class="sa-option"><input type="radio" name="q4" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">5. Have you had a critical system go down or malfunction in the past 12 months?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q5" value="No significant incidents" required /><span>No significant incidents</span></label>
+              <label class="sa-option"><input type="radio" name="q5" value="Yes, minor issues resolved quickly" /><span>Yes, minor issues that were resolved quickly</span></label>
+              <label class="sa-option"><input type="radio" name="q5" value="Yes, something that cost time, money, or client trust" /><span>Yes, something that cost us time, money, or client trust</span></label>
+              <label class="sa-option"><input type="radio" name="q5" value="Yes, more than once" /><span>Yes, more than once</span></label>
+              <label class="sa-option"><input type="radio" name="q5" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">6. Are there manual processes your team runs regularly that you know should be automated?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q6" value="No, we're fairly automated" required /><span>No, we're fairly automated</span></label>
+              <label class="sa-option"><input type="radio" name="q6" value="A few, but manageable" /><span>A few, but they're manageable</span></label>
+              <label class="sa-option"><input type="radio" name="q6" value="Yes, several — meaningful time each week" /><span>Yes, several — they take meaningful time each week</span></label>
+              <label class="sa-option"><input type="radio" name="q6" value="Yes, constant source of errors or frustration" /><span>Yes, and they're a constant source of errors or frustration</span></label>
+              <label class="sa-option"><input type="radio" name="q6" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="sa-section">
+          <h2 class="sa-section-title">Section 3 — Technology and Growth</h2>
+
+          <div class="sa-question">
+            <p class="sa-q-text">7. Is your current technology built for the size of company you are now, or the size you were two or three years ago?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q7" value="Scales well with where we are today" required /><span>It scales well with where we are today</span></label>
+              <label class="sa-option"><input type="radio" name="q7" value="Starting to show strain" /><span>It's starting to show strain</span></label>
+              <label class="sa-option"><input type="radio" name="q7" value="Built for a smaller company, working around its limits" /><span>Built for a smaller company and we're working around its limits</span></label>
+              <label class="sa-option"><input type="radio" name="q7" value="Not sure — nobody has evaluated it recently" /><span>Not sure — nobody has evaluated it recently</span></label>
+              <label class="sa-option"><input type="radio" name="q7" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">8. In the past 12 months, has a technology limitation caused you to delay, decline, or lose a business opportunity?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q8" value="No" required /><span>No</span></label>
+              <label class="sa-option"><input type="radio" name="q8" value="Possibly, but can't point to a specific instance" /><span>Possibly, but I can't point to a specific instance</span></label>
+              <label class="sa-option"><input type="radio" name="q8" value="Yes, at least once" /><span>Yes, at least once</span></label>
+              <label class="sa-option"><input type="radio" name="q8" value="Yes, more than once" /><span>Yes, more than once</span></label>
+              <label class="sa-option"><input type="radio" name="q8" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">9. How confident are you in the technology decisions being made for your business right now?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q9" value="Very confident — clear strategy and right people executing" required /><span>Very confident — clear strategy and the right people executing it</span></label>
+              <label class="sa-option"><input type="radio" name="q9" value="Somewhat confident — moving but not sure in the right direction" /><span>Somewhat confident — moving, but not sure we're going the right direction</span></label>
+              <label class="sa-option"><input type="radio" name="q9" value="Not very confident — decisions feel reactive" /><span>Not very confident — decisions feel reactive rather than strategic</span></label>
+              <label class="sa-option"><input type="radio" name="q9" value="No visibility into technology decisions" /><span>I don't have visibility into technology decisions and that concerns me</span></label>
+              <label class="sa-option"><input type="radio" name="q9" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="sa-section">
+          <h2 class="sa-section-title">Section 4 — Leadership and Oversight</h2>
+
+          <div class="sa-question">
+            <p class="sa-q-text">10. Who is responsible for technology strategy at your company?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q10" value="Full-time CTO or VP of Technology" required /><span>A full-time CTO or VP of Technology</span></label>
+              <label class="sa-option"><input type="radio" name="q10" value="Senior developer or IT manager who also handles strategy" /><span>A senior developer or IT manager who also handles strategy</span></label>
+              <label class="sa-option"><input type="radio" name="q10" value="Founder or CEO alongside everything else" /><span>The founder or CEO, alongside everything else</span></label>
+              <label class="sa-option"><input type="radio" name="q10" value="Nobody specifically — distributed or reactive" /><span>Nobody specifically — it's distributed or reactive</span></label>
+              <label class="sa-option"><input type="radio" name="q10" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">11. When a significant technology decision needs to be made, how does it typically get decided?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q11" value="Clear process, right people in the room" required /><span>We have a clear process and the right people in the room</span></label>
+              <label class="sa-option"><input type="radio" name="q11" value="Depends on the decision — some handled well, others not" /><span>Depends on the decision — some handled well, others not</span></label>
+              <label class="sa-option"><input type="radio" name="q11" value="Decisions get delayed because nobody owns them" /><span>Decisions tend to get delayed because nobody owns them</span></label>
+              <label class="sa-option"><input type="radio" name="q11" value="Decisions made quickly but not always correctly" /><span>Decisions get made quickly but not always correctly</span></label>
+              <label class="sa-option"><input type="radio" name="q11" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+
+          <div class="sa-question">
+            <p class="sa-q-text">12. Do you receive regular reporting on the state of your technology in language you can understand?</p>
+            <div class="sa-options">
+              <label class="sa-option"><input type="radio" name="q12" value="Yes — clear updates I understand" required /><span>Yes — I get clear updates and understand what they mean</span></label>
+              <label class="sa-option"><input type="radio" name="q12" value="I get updates but too technical to be useful" /><span>I get updates but they're too technical to be useful</span></label>
+              <label class="sa-option"><input type="radio" name="q12" value="Mostly hear about technology when something breaks" /><span>I mostly hear about technology when something breaks</span></label>
+              <label class="sa-option"><input type="radio" name="q12" value="No visibility" /><span>No — I have very little visibility</span></label>
+              <label class="sa-option"><input type="radio" name="q12" value="I do not know" /><span>I do not know</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5 — Open questions -->
+        <div class="sa-section sa-section-open">
+          <h2 class="sa-section-title">Section 5 — Open Questions</h2>
+          <p class="sa-section-note">There are no wrong answers. These questions tend to open the most useful part of the conversation. Answer in your own words.</p>
+          <p class="sa-section-caution">Keep answers general. Do not include information you consider private or sensitive — IP addresses, server names, network names, credentials, or internal system details. Describe the situation; the specifics can wait for the call. Like all email, this is transmitted in clear text and is not end-to-end encrypted.</p>
+
+          <div class="sa-question">
+            <label class="sa-q-text" for="q13">What is the one technology problem that costs your business the most time or money right now?</label>
+            <textarea id="q13" name="q13" rows="4" placeholder="Write your answer here…" required></textarea>
+          </div>
+
+          <div class="sa-question">
+            <label class="sa-q-text" for="q14">If you could fix one thing about how technology works in your business in the next 90 days, what would it be?</label>
+            <textarea id="q14" name="q14" rows="4" placeholder="Write your answer here…" required></textarea>
+          </div>
+
+          <div class="sa-question">
+            <label class="sa-q-text" for="q15">Is there a technology decision coming up in the next 6 months that you're not confident about?</label>
+            <textarea id="q15" name="q15" rows="4" placeholder="Write your answer here…" required></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="sa-submit-block" id="sa-submit-block">
+          <p class="sa-submit-note">
+            Your answers will open in a new email addressed to David. Send it before your call
+            so the conversation starts on your actual situation, not background context.
+          </p>
+          <button type="submit" class="btn btn-primary sa-submit-btn">
+            Send my answers to David →
+          </button>
+          <p class="sa-submit-fine">
+            A free resource from AraGrow LLC. No obligation, no follow-up pitch unless you want one.
+          </p>
+        </div>
+
+        <!-- Success state -->
+        <div class="sa-success" id="sa-success" hidden>
+          <div class="sa-success-icon" aria-hidden="true">✓</div>
+          <h2 class="sa-success-title">Your answers are ready to send.</h2>
+          <p class="sa-success-body">Your email client just opened with everything filled in. Hit send, and David will read it before your call.</p>
+          <a href="/contact" class="btn btn-primary sa-success-cta">Book your 30-minute conversation →</a>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Page header ── */
+  .sa-header {
+    background: linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+    color: #fdf6f4;
+    padding: 80px 0 60px;
+  }
+  .sa-header .section-label { color: #E8B931; }
+  .sa-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    color: #fdf6f4; margin: 12px 0 20px;
+  }
+  .sa-intro {
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(253,246,244,0.8);
+    max-width: 600px;
+  }
+
+  /* ── Form container ── */
+  .sa-container { padding-top: 48px; padding-bottom: 80px; }
+
+  /* ── Sections ── */
+  .sa-section {
+    margin-bottom: 48px;
+    padding: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .sa-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--teal-text);
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sa-section-note {
+    font-size: 0.9rem; color: var(--muted);
+    margin-bottom: 12px; line-height: 1.6;
+  }
+  .sa-section-caution {
+    font-size: 0.85rem; line-height: 1.6;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-left: 3px solid var(--teal-text);
+    background: var(--teal-dim);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 28px;
+  }
+
+  /* ── Required legend ── */
+  .sa-required-legend {
+    font-size: 0.82rem; color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .req-star { color: #dc2626; font-weight: 700; }
+
+  /* ── Questions ── */
+  .sa-question { margin-bottom: 28px; }
+  .sa-question:last-child { margin-bottom: 0; }
+
+  .sa-q-text {
+    display: block;
+    font-size: 0.98rem; font-weight: 600;
+    color: var(--text); margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .sa-q-text::after {
+    content: ' *';
+    color: #dc2626;
+    font-weight: 700;
+  }
+  .sa-q-hint {
+    display: block;
+    font-size: 0.82rem; font-weight: 400;
+    color: var(--muted); margin-top: 3px;
+  }
+
+  /* ── Unanswered highlight ── */
+  .sa-question.unanswered {
+    background: rgba(220, 38, 38, 0.04);
+    border-radius: 8px;
+    padding: 12px;
+    margin-left: -12px;
+    margin-right: -12px;
+    border-left: 3px solid rgba(220, 38, 38, 0.4);
+  }
+  .sa-question.unanswered .sa-q-text::after { color: #dc2626; }
+
+  /* ── Radio options as cards ── */
+  .sa-options {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sa-option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 0.92rem; color: var(--text);
+    line-height: 1.4;
+  }
+  .sa-option:hover {
+    border-color: var(--teal-text);
+    background: var(--teal-dim);
+  }
+  .sa-option input[type="radio"] {
+    accent-color: var(--teal-text);
+    width: 16px; height: 16px; flex-shrink: 0;
+    cursor: pointer;
+  }
+  .sa-option:has(input:checked) {
+    border-color: var(--teal-text);
+    background: var(--teal-dim);
+  }
+  .sa-option:has(input:checked) span { font-weight: 500; }
+
+  /* ── Textareas ── */
+  .sa-section-open textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit; font-size: 0.95rem; line-height: 1.6;
+    resize: vertical;
+    transition: border-color 0.15s;
+  }
+  .sa-section-open textarea:focus {
+    outline: none;
+    border-color: var(--teal-text);
+  }
+
+  /* ── Submit block ── */
+  .sa-submit-block {
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .sa-submit-btn {
+    font-size: 1.05rem;
+    padding: 16px 36px;
+    margin: 0 auto;
+  }
+  .sa-submit-note {
+    max-width: 520px; margin: 0 auto 24px;
+    font-size: 0.92rem; color: var(--muted); line-height: 1.65;
+  }
+  .sa-submit-fine {
+    margin-top: 16px;
+    font-size: 0.8rem; color: var(--muted);
+  }
+
+  /* ── Success state ── */
+  .sa-success {
+    text-align: center;
+    padding: 56px 24px;
+  }
+  .sa-success-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--teal-dim);
+    border: 2px solid var(--teal-text);
+    color: var(--teal-text);
+    font-size: 1.8rem; line-height: 64px;
+    margin: 0 auto 24px;
+  }
+  .sa-success-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--text); margin-bottom: 12px;
+  }
+  .sa-success-body {
+    font-size: 0.95rem; color: var(--muted);
+    line-height: 1.65; max-width: 460px;
+    margin: 0 auto 28px;
+  }
+
+  @media (max-width: 640px) {
+    .sa-section { padding: 24px 20px; }
+    .sa-submit-btn { width: 100%; justify-content: center; }
+    .sa-success-cta { width: 100%; justify-content: center; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('sa-form') as HTMLFormElement;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    // Validate — highlight every unanswered question
+    let valid = true;
+    form.querySelectorAll('.sa-question').forEach((block) => {
+      const el = block as HTMLElement;
+      const radios = el.querySelectorAll('input[type="radio"]');
+      const textarea = el.querySelector('textarea');
+
+      let answered = true;
+      if (radios.length > 0) {
+        answered = Array.from(radios).some((r) => (r as HTMLInputElement).checked);
+      } else if (textarea) {
+        answered = (textarea as HTMLTextAreaElement).value.trim().length > 0;
+      }
+
+      if (!answered) {
+        el.classList.add('unanswered');
+        valid = false;
+      } else {
+        el.classList.remove('unanswered');
+      }
+    });
+
+    if (!valid) {
+      const first = form.querySelector('.unanswered') as HTMLElement;
+      first?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    const questions: Record<string, string> = {
+      q1:  '1. How many software systems does your business actively use?',
+      q2:  '2. How many of those systems talk to each other automatically?',
+      q3:  '3. Do you have documentation of how your systems are set up?',
+      q4:  '4. If your primary technical person left tomorrow, how long before something broke?',
+      q5:  '5. Have you had a critical system go down in the past 12 months?',
+      q6:  '6. Are there manual processes that should be automated?',
+      q7:  '7. Is your technology built for the company you are now or were?',
+      q8:  '8. Has a technology limitation cost you a business opportunity in the past 12 months?',
+      q9:  '9. How confident are you in the technology decisions being made right now?',
+      q10: '10. Who is responsible for technology strategy at your company?',
+      q11: '11. How are significant technology decisions typically made?',
+      q12: '12. Do you receive regular reporting on the state of your technology?',
+      q13: '13. What is the one technology problem that costs your business the most time or money right now?',
+      q14: '14. If you could fix one thing about how technology works in the next 90 days, what would it be?',
+      q15: '15. Is there a technology decision coming up in the next 6 months that you\'re not confident about?',
+    };
+
+    let body = 'Technology State of the Business — Self-Assessment\n';
+    body += '='.repeat(52) + '\n\n';
+
+    const sections = [
+      ['Section 1 — Your Technology Today', ['q1','q2','q3']],
+      ['Section 2 — Risk and Dependency',   ['q4','q5','q6']],
+      ['Section 3 — Technology and Growth', ['q7','q8','q9']],
+      ['Section 4 — Leadership and Oversight', ['q10','q11','q12']],
+      ['Section 5 — Open Questions',        ['q13','q14','q15']],
+    ] as [string, string[]][];
+
+    for (const [title, keys] of sections) {
+      body += title + '\n' + '-'.repeat(title.length) + '\n\n';
+      for (const key of keys) {
+        const answer = data.get(key) as string || '(no answer)';
+        body += questions[key] + '\n';
+        body += 'Answer: ' + answer + '\n\n';
+      }
+    }
+
+    const subject = encodeURIComponent('AraGrow Self-Assessment — Technology State of the Business');
+    const bodyEncoded = encodeURIComponent(body);
+    window.location.href = `mailto:davidarago@aragrow.me?subject=${subject}&body=${bodyEncoded}`;
+
+    // Show success state
+    const submitBlock = document.getElementById('sa-submit-block');
+    const successBlock = document.getElementById('sa-success');
+    if (submitBlock) submitBlock.hidden = true;
+    if (successBlock) successBlock.hidden = false;
+    successBlock?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
