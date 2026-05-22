@@ -162,6 +162,11 @@ section { position: relative; z-index: 1; }
 .hero-sub-italic {
   font-style: italic; margin-bottom: 16px;
 }
+.hero-sub-context {
+  font-size: clamp(0.9rem, 1.6vw, 1rem); color: var(--muted);
+  max-width: 560px; margin-bottom: 32px; line-height: 1.7;
+  opacity: 0.85;
+}
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
 .hero-cta-alt {
   font-size: 0.88rem; color: var(--muted);

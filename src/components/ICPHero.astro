@@ -17,15 +17,20 @@
         no full-time CTO in the room
       </p>
 
-      <p class="icp-body">
-        Most clients start with a 30-day technology audit or a defined project, then move to an
-        ongoing engagement once both sides have confirmed the fit.
-      </p>
-
-      <p class="icp-fitnote-price">
-        <strong>$75/hour. Flat rate.</strong> No tiers, no minimums, no surprises. Most engagements
-        run 10–20 hours per month.
-      </p>
+      <ul class="icp-pricing">
+        <li>
+          <strong>30-day technology audit: up to $1,500.</strong>
+          Around 20 hours. Defined scope, specific deliverables, clear picture of where things stand.
+          <a href="/30-day-audit" class="icp-pricing-link">See what the audit includes</a>
+        </li>
+        <li>
+          <strong>Ongoing fractional CTO: $750–$1,500/month.</strong>
+          Most engagements run 10–20 hours a month, billed at $75/hour, no minimums.
+        </li>
+        <li class="icp-pricing-nudge">
+          Not sure which fits? <a href="/contact">Start with the audit.</a>
+        </li>
+      </ul>
       <p class="icp-fitnote-escape">
         If you're not an exact fit, <a href="/contact">reach out anyway</a>. I'd rather point you somewhere
         useful than let you keep searching.
@@ -151,14 +156,41 @@
     font-size: 0.98rem; line-height: 1.65; color: var(--muted);
   }
 
-  .icp-fitnote-price {
-    margin: 10px 0 0 16px;
-    font-size: 0.92rem; line-height: 1.5;
-    color: var(--text);
+  .icp-pricing {
+    list-style: none; padding: 0; margin: 18px 0 0;
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .icp-fitnote-price strong {
+  .icp-pricing li {
+    font-size: 0.92rem; line-height: 1.6;
+    color: var(--muted);
+    padding-left: 20px; position: relative;
+  }
+  .icp-pricing li::before {
+    content: '·';
+    position: absolute; left: 6px;
     color: var(--teal-text); font-weight: 700;
   }
+  .icp-pricing strong {
+    color: var(--text); font-weight: 600;
+  }
+  .icp-pricing-nudge {
+    font-size: 0.88rem !important;
+    font-style: italic;
+    opacity: 0.85;
+  }
+  .icp-pricing-nudge a {
+    color: var(--teal-text); text-decoration: underline;
+    text-underline-offset: 2px; font-style: normal;
+  }
+  .icp-pricing-nudge a:hover { color: var(--teal); }
+  .icp-pricing-nudge::before { content: '' !important; }
+  .icp-pricing-link {
+    display: inline-block; margin-top: 4px;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--teal-text); text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .icp-pricing-link:hover { color: var(--teal); }
 
   .icp-fitnote-escape {
     margin: 6px 0 0 16px;

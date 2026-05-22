@@ -13,7 +13,7 @@ const testimonials = [
   },
   {
     quote:
-      'David Arago is a WordPress development virtuoso who consistently delivers top-notch solutions. His 25+ years of experience shine through in his ability to navigate complex problems with finesse. David\'s deep understanding of WordPress and his knack for creative problem-solving make him an invaluable asset to any project. His dedication to his craft and his collaborative spirit ensure that he not only meets but exceeds expectations. I wholeheartedly recommend David for any WordPress development needs.',
+      'His 25+ years of experience shine through in his ability to navigate complex problems with finesse. His dedication to his craft and his collaborative spirit ensure that he not only meets but exceeds expectations. I wholeheartedly recommend David.',
     name: 'Brent Peterson',
     nameHref: 'https://www.alignable.com/st-louis-park-mn/content-basis-llc',
     company: 'Content Cucumber',
@@ -96,11 +96,6 @@ const testimonials = [
   },
 ];
 
-// Group into pages of 2
-const pages: (typeof testimonials)[] = [];
-for (let i = 0; i < testimonials.length; i += 2) {
-  pages.push(testimonials.slice(i, i + 2));
-}
 ---
 
 <section id="testimonials">
@@ -117,41 +112,39 @@ for (let i = 0; i < testimonials.length; i += 2) {
     <!-- Carousel -->
     <div class="tc-viewport">
       <div class="tc-track" id="tc-track">
-        {pages.map((page) => (
+        {testimonials.map((t) => (
           <div class="tc-slide">
-            {page.map((t) => (
-              <article class="testimonial-card">
-                <div class="testimonial-quote-mark">"</div>
-                <blockquote class="testimonial-quote">
-                  <p>{t.quote}</p>
-                </blockquote>
-                <footer class="testimonial-footer">
-                  <div class="testimonial-avatar">
-                    {t.avatarUrl && t.avatarHref
-                      ? <a href={t.avatarHref} target="_blank" rel="noopener" aria-label={`${t.name} profile`}><img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" /></a>
-                      : t.avatarUrl
-                      ? <img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" />
-                      : t.name.charAt(0)
+            <article class="testimonial-card">
+              <div class="testimonial-quote-mark">"</div>
+              <blockquote class="testimonial-quote">
+                <p>{t.quote}</p>
+              </blockquote>
+              <footer class="testimonial-footer">
+                <div class="testimonial-avatar">
+                  {t.avatarUrl && t.avatarHref
+                    ? <a href={t.avatarHref} target="_blank" rel="noopener" aria-label={`${t.name} profile`}><img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" /></a>
+                    : t.avatarUrl
+                    ? <img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" />
+                    : t.name.charAt(0)
+                  }
+                </div>
+                <div>
+                  <div class="testimonial-name">
+                    {t.nameHref
+                      ? <a href={t.nameHref} target="_blank" rel="noopener">{t.name}</a>
+                      : t.name
                     }
                   </div>
-                  <div>
-                    <div class="testimonial-name">
-                      {t.nameHref
-                        ? <a href={t.nameHref} target="_blank" rel="noopener">{t.name}</a>
-                        : t.name
-                      }
-                    </div>
-                    <div class="testimonial-meta">
-                      {t.companyHref
-                        ? <a href={t.companyHref} target="_blank" rel="noopener">{t.company}</a>
-                        : t.company
-                      }
-                      {t.location && <>{' · '}{t.location}</>}
-                    </div>
+                  <div class="testimonial-meta">
+                    {t.companyHref
+                      ? <a href={t.companyHref} target="_blank" rel="noopener">{t.company}</a>
+                      : t.company
+                    }
+                    {t.location && <>{' · '}{t.location}</>}
                   </div>
-                </footer>
-              </article>
-            ))}
+                </div>
+              </footer>
+            </article>
           </div>
         ))}
       </div>
@@ -164,11 +157,7 @@ for (let i = 0; i < testimonials.length; i += 2) {
           <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="tc-dots" id="tc-dots">
-        {pages.map((_, i) => (
-          <button class={`tc-dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Page ${i + 1}`}></button>
-        ))}
-      </div>
+      <div class="tc-dots" id="tc-dots"></div>
       <button class="tc-arrow" id="tc-next" aria-label="Next">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
@@ -191,11 +180,10 @@ for (let i = 0; i < testimonials.length; i += 2) {
     will-change: transform;
   }
   .tc-slide {
-    min-width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: start;
+    min-width: 50%;
+    box-sizing: border-box;
+    padding: 0 12px;
+    align-self: start;
   }
 
   /* Controls */
@@ -236,7 +224,7 @@ for (let i = 0; i < testimonials.length; i += 2) {
   }
 
   @media (max-width: 640px) {
-    .tc-slide { grid-template-columns: 1fr; }
+    .tc-slide { min-width: 100%; padding: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -247,21 +235,36 @@ for (let i = 0; i < testimonials.length; i += 2) {
 
 <script>
   const track = document.getElementById('tc-track') as HTMLElement;
-  const dots = Array.from(document.querySelectorAll<HTMLButtonElement>('.tc-dot'));
-  const total = dots.length;
+  const dotsContainer = document.getElementById('tc-dots') as HTMLElement;
+  const slides = track.querySelectorAll('.tc-slide');
+  const total = slides.length;
+  const MOBILE_BP = 640;
+
+  let step = window.innerWidth <= MOBILE_BP ? 1 : 2;
+  let pageCount = Math.ceil(total / step);
   let current = 0;
 
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < pageCount; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'tc-dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', `Page ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(btn);
+    }
+  }
+
   function goTo(n: number) {
-    current = ((n % total) + total) % total;
+    current = ((n % pageCount) + pageCount) % pageCount;
     track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    dotsContainer.querySelectorAll('.tc-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
   }
 
   document.getElementById('tc-prev')?.addEventListener('click', () => goTo(current - 1));
   document.getElementById('tc-next')?.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
-  });
 
   // Touch swipe
   let touchStartX = 0;
@@ -270,4 +273,18 @@ for (let i = 0; i < testimonials.length; i += 2) {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 48) goTo(current + (diff > 0 ? 1 : -1));
   });
+
+  // Rebuild on resize if breakpoint crossed
+  window.addEventListener('resize', () => {
+    const newStep = window.innerWidth <= MOBILE_BP ? 1 : 2;
+    if (newStep !== step) {
+      step = newStep;
+      pageCount = Math.ceil(total / step);
+      current = 0;
+      track.style.transform = 'translateX(0)';
+      buildDots();
+    }
+  });
+
+  buildDots();
 </script>

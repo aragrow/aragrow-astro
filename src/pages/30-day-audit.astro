@@ -1,0 +1,244 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="30-Day Technology Audit — AraGrow LLC"
+  description="A defined 30-day engagement that gives growing businesses a clear picture of where their technology stands, what to fix first, and a 90-day roadmap with agreed priorities."
+>
+  <Nav />
+  <main class="ta-page">
+
+    <!-- Header -->
+    <div class="ta-header">
+      <div class="container">
+        <div class="section-label">30-Day Engagement</div>
+        <h1 class="ta-title">Your First 30 Days with AraGrow</h1>
+        <p class="ta-intro">
+          Most technology problems at growing businesses aren't mysteries. They're the result of
+          decisions made under pressure, systems chosen for yesterday's needs, and a team that's
+          been too busy shipping to step back and look at the full picture. The first 30 days
+          aren't about fixing everything. They're about seeing it clearly.
+        </p>
+      </div>
+    </div>
+
+    <div class="container ta-container">
+
+      <!-- Week by week -->
+      <section class="ta-section">
+        <h2 class="ta-section-title">Week by Week</h2>
+
+        <div class="ta-week">
+          <div class="ta-week-label">Week 1</div>
+          <div class="ta-week-content">
+            <h3 class="ta-week-title">Listen before touching anything</h3>
+            <p>The first week is conversations, not solutions. I talk to the people who actually use the technology, not just the person who bought it. I ask what's slowing them down, what they've stopped trying to change, and what they've learned to work around. I review whatever documentation exists. I take inventory of every system the business runs on, who owns it, and what breaks if it goes away.</p>
+            <div class="ta-week-outcome">
+              <span class="ta-outcome-label">By the end of week one</span>
+              A complete picture of what's there, including the things nobody has written down.
+            </div>
+          </div>
+        </div>
+
+        <div class="ta-week">
+          <div class="ta-week-label">Week 2</div>
+          <div class="ta-week-content">
+            <h3 class="ta-week-title">Identify what actually matters</h3>
+            <p>With a full inventory in hand, I map the gaps: where systems don't connect, where manual work is filling in for automation that should exist, where a single person's departure would create a crisis. Not everything is urgent. Part of the value here is separating what feels urgent from what is urgent, and being direct about the difference.</p>
+            <div class="ta-week-outcome">
+              <span class="ta-outcome-label">By the end of week two</span>
+              A ranked list of risks and opportunities, ordered by business impact, not technical complexity.
+            </div>
+          </div>
+        </div>
+
+        <div class="ta-week">
+          <div class="ta-week-label">Week 3</div>
+          <div class="ta-week-content">
+            <h3 class="ta-week-title">Align on priorities</h3>
+            <p>I present findings to leadership in plain language: no acronyms, no architecture diagrams that require a translator. The goal is a shared understanding of where things stand and a clear agreement on what to address first. I ask questions your technology team may not have been asked: what does growth look like in the next 12 months, and does your current setup support it?</p>
+            <div class="ta-week-outcome">
+              <span class="ta-outcome-label">By the end of week three</span>
+              An agreed-upon 90-day roadmap with clear ownership for each priority.
+            </div>
+          </div>
+        </div>
+
+        <div class="ta-week">
+          <div class="ta-week-label">Week 4</div>
+          <div class="ta-week-content">
+            <h3 class="ta-week-title">First actions</h3>
+            <p>Work begins on the highest-priority item. The engagement cadence is established: weekly working session, shared Slack or email channel for between-meeting questions, monthly written summary for leadership. We define what success looks like before the work starts, so there's no ambiguity about whether it's working.</p>
+            <div class="ta-week-outcome">
+              <span class="ta-outcome-label">By the end of week four</span>
+              The first priority is in motion, and the engagement has a rhythm your team can rely on.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deliverables -->
+      <section class="ta-section">
+        <h2 class="ta-section-title">What you have at the end of 30 days</h2>
+        <ul class="ta-deliverables">
+          <li>A complete inventory of your systems, documented for the first time</li>
+          <li>A clear picture of where your technology is creating risk or friction</li>
+          <li>A 90-day roadmap with priorities your leadership has agreed to</li>
+          <li>The first concrete improvement already underway</li>
+        </ul>
+      </section>
+
+      <!-- Pricing + CTA -->
+      <section class="ta-cta-block">
+        <p class="ta-price">
+          The audit is <strong>$1,500</strong> (around 20 hours). Most clients continue into an
+          ongoing engagement from there. That decision is yours to make once you've seen what
+          the audit produces.
+        </p>
+        <div class="ta-cta-actions">
+          <a href="/contact" class="btn btn-primary">Book a 30-minute conversation →</a>
+          <a href="/self-assessment" class="ta-cta-secondary">Take the free self-assessment first</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Header ── */
+  .ta-header {
+    background: linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+    color: #fdf6f4;
+    padding: 80px 0 60px;
+  }
+  .ta-header .section-label { color: #E8B931; }
+  .ta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    color: #fdf6f4; margin: 12px 0 20px;
+  }
+  .ta-intro {
+    font-size: 1rem; line-height: 1.75;
+    color: rgba(253,246,244,0.8);
+    max-width: 640px;
+  }
+
+  /* ── Container ── */
+  .ta-container { padding-top: 48px; padding-bottom: 80px; }
+
+  /* ── Sections ── */
+  .ta-section {
+    margin-bottom: 24px;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .ta-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--teal-text);
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Week timeline ── */
+  .ta-week {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ta-week:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .ta-week-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--teal-text);
+    padding-top: 4px;
+  }
+  .ta-week-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--text); margin-bottom: 12px;
+  }
+  .ta-week-content p {
+    font-size: 0.95rem; line-height: 1.75;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .ta-week-outcome {
+    font-size: 0.9rem; line-height: 1.6;
+    color: var(--text);
+    padding: 12px 16px;
+    background: var(--teal-dim);
+    border-left: 3px solid var(--teal-text);
+    border-radius: 0 8px 8px 0;
+  }
+  .ta-outcome-label {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--teal-text);
+    margin-bottom: 4px;
+  }
+
+  /* ── Deliverables ── */
+  .ta-deliverables {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ta-deliverables li {
+    font-size: 0.97rem; line-height: 1.65;
+    color: var(--muted);
+    padding-left: 24px; position: relative;
+  }
+  .ta-deliverables li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--teal-text); font-weight: 700;
+    font-size: 0.85rem; top: 2px;
+  }
+
+  /* ── CTA block ── */
+  .ta-cta-block {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .ta-price {
+    font-size: 0.97rem; line-height: 1.75;
+    color: var(--muted); max-width: 520px;
+    margin: 0 auto 28px;
+  }
+  .ta-price strong { color: var(--text); font-weight: 700; }
+  .ta-cta-actions {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+  }
+  .ta-cta-secondary {
+    font-size: 0.88rem; color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .ta-cta-secondary:hover { color: var(--teal); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .ta-section { padding: 24px 20px; }
+    .ta-week { grid-template-columns: 1fr; gap: 6px; }
+    .ta-week-label { padding-top: 0; }
+    .ta-cta-block { padding: 36px 20px; }
+  }
+</style>

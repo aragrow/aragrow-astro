@@ -147,6 +147,7 @@ import Footer from '../components/Footer.astro';
               <li>Async support</li>
               <li>Written summaries</li>
             </ul>
+            <p class="hw-tier-price">Custom scope — <a href="/contact">ask about fit</a></p>
           </div>
           <div class="hw-tier hw-tier-featured">
             <div class="hw-tier-badge">Most common</div>
@@ -158,6 +159,7 @@ import Footer from '../components/Footer.astro';
               <li>Team coordination</li>
               <li>Monthly summaries</li>
             </ul>
+            <p class="hw-tier-price">$750–$1,500/month <span>· 10–20 hours · $75/hr</span></p>
           </div>
           <div class="hw-tier">
             <div class="hw-tier-name">Technology Reset</div>
@@ -168,11 +170,11 @@ import Footer from '../components/Footer.astro';
               <li>Vendor evaluation</li>
               <li>Architecture support</li>
             </ul>
+            <p class="hw-tier-price">Starts with the 30-day audit <span>· up to $1,500</span></p>
           </div>
         </div>
         <p class="hw-rate">
-          Typical engagements are offered hourly or as a flat-rate scoped project, depending on the work.
-          Simple pricing, clear expectations, no long-term lock-in.
+          No tiers, no minimums, no surprises. Billed at $75/hour — most clients land between $750 and $1,500/month.
         </p>
       </section>
 
@@ -413,6 +415,22 @@ import Footer from '../components/Footer.astro';
     position: absolute; left: 4px;
     color: var(--teal-text); font-weight: 700;
   }
+  .hw-tier-price {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--teal-text);
+  }
+  .hw-tier-price span {
+    font-weight: 400; color: var(--muted);
+  }
+  .hw-tier-price a {
+    color: var(--teal-text); text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .hw-tier-price a:hover { color: var(--teal); }
+
   .hw-rate {
     font-size: 0.9rem; color: var(--muted);
     line-height: 1.65;
