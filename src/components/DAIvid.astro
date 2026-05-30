@@ -1,0 +1,99 @@
+---
+const isDev = import.meta.env.DEV;
+---
+
+<section class="daivid-section" id="daivid">
+  <div class="container daivid-inner">
+    <div class="daivid-text">
+      <p class="daivid-eyebrow">Meet DAIvid</p>
+      <h2 class="daivid-title">
+        Not ready to book a call?<br />
+        <span class="grad-text">Talk to my digital twin.</span>
+      </h2>
+      <p class="daivid-body">
+        DAIvid is an AI version of me — trained on how I think, what I've built, and how I
+        approach technology problems. Ask it anything you'd ask me: whether AraGrow is the
+        right fit, what a fractional CTO actually does day-to-day, or what you should fix
+        first in your tech stack.
+      </p>
+      <p class="daivid-sub">
+        It won't replace a real conversation, but it's a good place to start.
+      </p>
+    </div>
+
+    <div class="daivid-widget">
+      {isDev && <script is:inline src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a1af39096c166bea6e5e57f"></script>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .daivid-section {
+    position: relative;
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .daivid-section::before {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 80% 50%, rgba(232,185,49,0.10), transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(123,24,24,0.08), transparent 50%);
+  }
+
+  .daivid-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+
+  .daivid-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--teal-text);
+    margin: 0 0 16px;
+  }
+  .daivid-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 20px;
+  }
+  .daivid-body {
+    font-size: clamp(0.95rem, 1.5vw, 1.02rem);
+    line-height: 1.75; color: var(--muted);
+    margin: 0 0 10px;
+    max-width: 520px;
+  }
+  .daivid-sub {
+    font-size: 0.875rem; line-height: 1.6;
+    color: var(--muted); opacity: 0.75;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .daivid-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  @media (max-width: 780px) {
+    .daivid-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .daivid-body { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .daivid-section { padding: 56px 0; }
+  }
+</style>
