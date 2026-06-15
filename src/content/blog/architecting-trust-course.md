@@ -3,7 +3,7 @@ title: "Architecting Trust: An Executive's Field Guide to AI Security"
 date: "2026-06-15"
 modified: "2026-06-15"
 author: "David Arago"
-categories: ["Blog", "AI Security", "Course"]
+categories: ["Blog", "AI Security", "Guide"]
 excerpt: "Eight short parts that turn AI security from a black box into decisions you can own. Learn to ask the right questions of any tool or vendor, and tell a real answer from a hand-wave. Built for the person who signs off, not the person who codes."
 featuredImage: null
 ---
@@ -16,9 +16,9 @@ featuredImage: null
 <p><strong>Before you begin.</strong> I'm David Aragó, and I'm sharing this guide as is, with no guarantees of any kind. Some modules include hands-on labs that ask you to type into live, public chatbots. Never enter real customer data, passwords, or any confidential or personal information while running them. Neither I nor AraGrow LLC accept responsibility for any data loss, or any leakage of personal or confidential information, that results from following this guide or running the labs. By continuing, you accept that you use this guide at your own risk and take full responsibility for anything you enter.</p>
 </aside>
 
-<p>You sign the contract, approve the budget, and answer for it when something goes wrong. But the AI tool in front of you is a black box, and the vendor's security answers sound reassuring without telling you much.</p>
+<p>You sign the contract, approve the budget, and answer for it when something breaks. But the AI tool is a black box, and the vendor's security answers reassure you without telling you much.</p>
 
-<p>This course fixes that. Eight short parts give you a simple framework for judging any AI tool or vendor, so you can tell a real answer from a hand-wave. No code required.</p>
+<p>This guide fixes that. It gives you a simple framework for judging any AI tool or vendor, so you can tell a real answer from a hand-wave. No code required.</p>
 
 <style>
 .at-course{
@@ -80,6 +80,11 @@ featuredImage: null
 .at-mod.at-soon .at-num{color:var(--at-muted);}
 .at-mod.at-soon.at-assess .at-num{color:var(--at-gold-deep);}
 .at-pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--at-gold-deep);background:rgba(154,107,34,.14);border-radius:999px;padding:2px 8px;white-space:nowrap;vertical-align:middle;}
+.at-course a.at-mod .at-m-t{color:var(--at-accent);}
+.at-pill-go{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--at-accent);border-radius:999px;padding:2px 9px;white-space:nowrap;vertical-align:middle;transition:background .18s ease,transform .18s ease;}
+.at-course a.at-mod:hover .at-pill-go{background:var(--at-accent-dark);transform:translateX(2px);}
+.at-course a.at-mod.at-assess .at-m-t{color:var(--at-gold-deep);}
+.at-course a.at-mod.at-assess .at-pill-go{background:var(--at-gold-deep);}
 .at-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px;}
 .at-card{background:var(--at-surface);border:1px solid var(--at-border);border-radius:8px;padding:24px 24px;}
 .at-card-k{font-family:var(--at-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--at-accent);margin-bottom:5px;}
@@ -122,22 +127,22 @@ featuredImage: null
 <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,10 10,88 24,88" fill="#7B1818"/><polygon points="50,10 76,88 90,88" fill="#7B1818"/><rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="#7B1818"/><ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="#E8B931"/><ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="#E8B931"/><ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)" fill="#E8B931"/></svg>
 <span>Ara<span class="at-leaf">Grow</span></span>
 </div>
-<div class="at-top-meta">Executive Course · AI Risk &amp; Readiness</div>
+<div class="at-top-meta">Executive Guide · AI Risk &amp; Readiness</div>
 </div>
 <div class="at-hero">
 <div>
 <p class="at-eyebrow">A Leader's Field Guide</p>
 <div class="at-h1">Architecting Trust</div>
-<p class="at-subtitle">A clear-eyed guide for leaders deciding whether and how to adopt AI. Plain language, not jargon. No code required.</p>
+<p class="at-subtitle">A clear-eyed guide for leaders deciding whether and how to adopt AI. Plain language, not jargon.</p>
 </div>
 <div class="at-about">
 <div class="at-about-head">
 <div class="at-about-mark">
 <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,10 10,88 24,88" fill="#fff"/><polygon points="50,10 76,88 90,88" fill="#fff"/><rect x="48.5" y="57" width="3" height="13" rx="1.5" fill="#fff"/><ellipse cx="50" cy="49" rx="3.5" ry="7.5" fill="#E8B931"/><ellipse cx="44" cy="57" rx="6.5" ry="3" transform="rotate(-35 44 57)" fill="#E8B931"/><ellipse cx="56" cy="57" rx="6.5" ry="3" transform="rotate(35 56 57)" fill="#E8B931"/></svg>
 </div>
-<div class="at-about-title">What this course is</div>
+<div class="at-about-title">What this guide is</div>
 </div>
-<p>Eight short parts that turn AI security from a black box into a set of decisions you can <b>own</b>. You learn to ask the right questions of any tool or vendor, then tell a real answer from a hand-wave. Built for the person who <b>signs off</b>, not the person who codes.</p>
+<p>Eight short parts that turn AI security into a set of decisions you can <b>own</b>. Built for the person who <b>signs off</b>, not the person who codes.</p>
 </div>
 </div>
 <div class="at-facts">
@@ -147,19 +152,19 @@ featuredImage: null
 <div class="at-fact"><b>1</b><span>Live assessment</span></div>
 </div>
 <div class="at-banner">
-<span class="at-b-k">Inside the course</span>
+<span class="at-b-k">Inside the guide</span>
 <span class="at-b-t">Eight modules, one framework you'll keep</span>
 </div>
 <div class="at-grid">
 <a class="at-mod" href="/blog/architecting-trust-introduction-four-questions">
 <div class="at-num">00</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12 15.5 8.5M12 12 8.5 15.5"/><circle cx="12" cy="12" r="1.4" fill="#7B1818" stroke="none"/></svg></div>
-<div><div class="at-m-t">Introduction &amp; the Four Questions <span class="at-arrow">→</span></div><div class="at-m-d">The one framework the whole course rests on, and the one you'll carry into every module.</div></div>
+<div><div class="at-m-t">Introduction &amp; the Four Questions <span class="at-pill-go">Read →</span></div><div class="at-m-d">The one framework the whole guide rests on. You'll carry it into every module.</div></div>
 </a>
 <a class="at-mod" href="/blog/architecting-trust-how-ai-thinks">
 <div class="at-num">01</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a8 4 0 0 0 16 0"/><path d="M4 8a8 4 0 0 1 16 0v8a8 4 0 0 1-16 0V8"/><path d="M4 12a8 4 0 0 0 16 0"/></svg></div>
-<div><div class="at-m-t">How AI Actually "Thinks" <span class="at-arrow">→</span></div><div class="at-m-d">Why AI forgets between chats, has no "admin mode," and why that changes security entirely.</div></div>
+<div><div class="at-m-t">How AI Actually "Thinks" <span class="at-pill-go">Read →</span></div><div class="at-m-d">Why AI forgets between chats, has no "admin mode," and why that changes security entirely.</div></div>
 </a>
 <div class="at-mod at-soon">
 <div class="at-num">02</div>
@@ -194,7 +199,7 @@ featuredImage: null
 </div>
 <div class="at-cols">
 <div class="at-card">
-<p class="at-card-k">The spine of the course</p>
+<p class="at-card-k">The spine of the guide</p>
 <div class="at-card-h">The Four Questions</div>
 <p class="at-card-sub">Ask these of any AI system, yours or a vendor's.</p>
 <ol class="at-qlist">
@@ -221,7 +226,7 @@ featuredImage: null
 </div>
 </div>
 <div class="at-foot">
-<a class="at-foot-link" href="/blog/architecting-trust-introduction-four-questions">Ara<span class="at-leaf">Grow</span> · Start the course →</a>
+<a class="at-foot-link" href="/blog/architecting-trust-introduction-four-questions">Ara<span class="at-leaf">Grow</span> · Start the guide →</a>
 <div class="at-f-meta"><b>AraGrow LLC</b> · David Aragó, Fractional CTO<br>Minneapolis · Practical AI &amp; technology leadership · Bilingual EN / ES</div>
 </div>
 </div>

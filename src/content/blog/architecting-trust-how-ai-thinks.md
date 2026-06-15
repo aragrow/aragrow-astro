@@ -3,7 +3,7 @@ title: 'Architecting Trust, Module 01: How AI Actually "Thinks"'
 date: "2026-06-15"
 modified: "2026-06-15"
 author: "David Arago"
-categories: ["Blog", "AI Security", "Course"]
+categories: ["Blog", "AI Security", "Guide"]
 excerpt: "Two simple facts about how AI works explain almost every risk you'll face: it keeps no memory of its own, and it has no built-in way to rank the instructions it reads. Here's what that means for your business."
 featuredImage: null
 ---
@@ -190,8 +190,8 @@ max-width:none;
 <span class="brand-name">Ara<span>Grow</span></span>
 </div>
 <div class="masthead-meta">
-<a class="back-link" href="/blog/architecting-trust-course">&larr; Course overview</a><br>
-Executive Course · Part 1 of 7<br>
+<a class="back-link" href="/blog/architecting-trust-course">&larr; Guide overview</a><br>
+Executive Guide · Part 1 of 7<br>
 How AI Actually "Thinks"
 </div>
 </div>
@@ -215,8 +215,8 @@ How AI Actually "Thinks"
 <div class="wrap">
 <p class="kicker">Explainer · Idea 1 of 2</p>
 <h2>The amnesiac: AI has no memory</h2>
-<p>It's tempting to picture an AI assistant as an employee who learns your business over time. It isn't. Today's language models are <strong>stateless</strong>. Every single message is treated as a first meeting. The model reads what's in front of it, produces a reply, and then remembers nothing.</p>
-<p>So what about the "conversation" you can clearly see scrolling up the screen? That history is an <strong>illusion the app creates</strong>. Behind the scenes, every time you hit send, the software quietly re-pastes the <em>entire</em> conversation so far, meaning your earlier messages, the AI's earlier replies, and the hidden rules the company wrote, into one big block of text, and hands the whole thing back to the model to read again from scratch.</p>
+<p>It's tempting to picture an AI assistant as an employee who learns your business over time. It isn't. Today's language models are <strong>stateless</strong>. Every message is treated as a first meeting. The model reads what's in front of it, produces a reply, and then remembers nothing.</p>
+<p>So what about the "conversation" you can clearly see scrolling up the screen? That history is an <strong>illusion the app creates</strong>. Behind the scenes, every time you hit send, the software quietly re-pastes the <em>entire</em> conversation so far, meaning your earlier messages, the AI's earlier replies, and the hidden rules the company wrote, into one big block of text, and hands it all back to the model to read from scratch.</p>
 <div class="analogy">
 <p><b>An analogy I use with boards.</b> Imagine a brilliant consultant with no long-term memory. Every time you meet, you hand them a binder containing everything said so far. They read it, give sharp advice, then forget you the moment you leave. The binder <em>is</em> the memory, not the consultant.</p>
 </div>
@@ -296,7 +296,7 @@ How AI Actually "Thinks"
 <h2>Why this reaches the balance sheet</h2>
 <div class="pl">
 <span class="tag">The business stake</span>
-<p>The practical takeaway is about <strong>promises and budgets</strong>. When a vendor says <em>"our assistant will never reveal customer data"</em> or <em>"it can't be tricked,"</em> the machinery above tells you that's a probability, not a guarantee, no matter how confident the demo looks. A rule written in words can be argued with in words. That isn't a reason to distrust every vendor: strong guardrails, red-teaming, and monitoring genuinely move the numbers, and a credible vendor can show you something like "no known failures under this test suite, with these limits." Read <em>"never"</em> as <em>"very unlikely, under the conditions we tested,"</em> then ask what happens outside those conditions.</p>
+<p>This comes down to <strong>promises and budgets</strong>. When a vendor says <em>"our assistant will never reveal customer data"</em> or <em>"it can't be tricked,"</em> the machinery above tells you that's a probability, not a guarantee, no matter how confident the demo looks. A rule written in words can be argued with in words. That isn't a reason to distrust every vendor: strong guardrails, red-teaming, and monitoring genuinely move the numbers, and a credible vendor can show you something like "no known failures under this test suite, with these limits." Read <em>"never"</em> as <em>"very unlikely, under the conditions we tested,"</em> then ask what happens outside those conditions.</p>
 <p>So two things follow for any AI investment. First, <strong>set expectations as resilience, not perfection</strong>: ask "how is this contained when it misbehaves?", not "can you promise it won't?" Second, <strong>budget for the containment</strong>, meaning review steps, limits on what the AI can touch, and human checkpoints, as part of the project, not an afterthought. The teams that get burned are the ones who bought the guarantee.</p>
 </div>
 </div>
@@ -321,7 +321,7 @@ How AI Actually "Thinks"
 <div class="wrap">
 <p class="kicker">Labs · run these yourself</p>
 <h2>Feel it, don't just read it</h2>
-<p>Each lab takes about five minutes in any everyday chatbot. You don't need anything special. The point is to watch the two ideas above happen with your own eyes. As a reminder from the disclaimer up top: use made-up values only, never real customer data or anything confidential.</p>
+<p>Each lab takes about five minutes in any everyday chatbot. The point is to watch the two ideas above happen for yourself. As a reminder from the disclaimer up top: use made-up values only, never real customer data or anything confidential.</p>
 <div class="lab">
 <span class="tag">Lab 1 · hands-on</span>
 <h3>The amnesiac test</h3>
@@ -448,7 +448,7 @@ to verify their integrity.</div>
 <div class="nav">
 <a class="prev" href="/blog/architecting-trust-introduction-four-questions">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#5c5851" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-Introduction
+Previous: Introduction
 </a>
 <span class="soon">Next: Module 02, Prompt Injection <span class="pill">Coming soon</span></span>
 </div>
