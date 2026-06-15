@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
   lines.push('');
   lines.push('> Fractional CTO services for businesses between $5M and $10M in revenue — hands-on technology leadership without the full-time overhead.');
   lines.push('');
-  lines.push('AraGrow is run by David Aragó, based in Minneapolis with bilingual fluency in English and Spanish. David works directly with clients: no account managers, no handoffs. Services include a 30-day technology audit and ongoing fractional CTO engagements billed at $75/hour.');
+  lines.push('AraGrow is run by David Aragó, based in Minneapolis with bilingual fluency in English and Spanish. David works directly with clients: no account managers, no handoffs. Services include a 30-day technology audit and ongoing fractional CTO engagements billed at $150/hour.');
   lines.push('');
 
   lines.push('## Core pages');
