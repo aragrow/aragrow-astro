@@ -134,17 +134,20 @@ max-width:none;
 #at-m01 .lab .prompt{font-family:var(--mono);font-size:13.5px;line-height:1.55;background:#2a2722;color:#ede8df;border-radius:6px;padding:14px 16px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere;}
 #at-m01 .lab .prompt .c{color:#d9b36b;}
 /* check */
-#at-m01 .check details{border:1px solid var(--ai-border);border-radius:8px;margin:0 0 12px;background:#fff;overflow:hidden;}
-#at-m01 .check summary{cursor:pointer;padding:16px 20px;font-weight:600;font-size:16px;list-style:none;display:flex;gap:12px;align-items:flex-start;}
-#at-m01 .check summary::-webkit-details-marker{display:none;}
-#at-m01 .check summary::before{content:"Q";font-family:var(--serif);font-weight:700;color:var(--accent);flex:0 0 auto;}
-#at-m01 .check summary:hover{background:var(--surface);}
-#at-m01 .check .ans{padding:0 20px 18px 20px;border-top:1px solid var(--ai-border);}
-#at-m01 .check .ans p{font-size:15.5px;margin:14px 0 0;color:var(--ai-text);}
-#at-m01 .check .ans .correct{font-weight:600;color:var(--accent-dark);}
-#at-m01 .check .opts{margin:14px 0 0;padding:0;list-style:none;}
-#at-m01 .check .opts li{font-size:15.5px;padding:3px 0 3px 26px;position:relative;color:var(--ai-muted);margin:0;}
-#at-m01 .check .opts li::before{content:attr(data-k);position:absolute;left:2px;font-weight:600;color:var(--ai-muted);}
+#at-m01 .check .quiz{counter-reset:qz;list-style:none;margin:0 0 26px;padding:0;}
+#at-m01 .check .quiz>li{counter-increment:qz;border:1px solid var(--ai-border);border-radius:8px;background:#fff;padding:18px 20px;margin:0 0 14px;}
+#at-m01 .check .quiz>li:last-child{margin-bottom:0;}
+#at-m01 .check .q{font-weight:600;font-size:16px;margin:0 0 14px;display:flex;gap:11px;align-items:flex-start;}
+#at-m01 .check .q::before{content:counter(qz);font-family:var(--serif);font-weight:700;color:var(--accent);flex:0 0 auto;}
+#at-m01 .check .opts{margin:0;padding:0;list-style:none;}
+#at-m01 .check .opts li{font-size:15.5px;line-height:1.5;padding:8px 0 8px 32px;position:relative;color:var(--ai-text);margin:0;border-top:1px solid var(--ai-border);}
+#at-m01 .check .opts li:first-child{border-top:none;}
+#at-m01 .check .opts li::before{content:attr(data-k);position:absolute;left:2px;top:8px;font-weight:700;color:var(--accent);}
+#at-m01 .check .answerkey{background:var(--surface);border:1px solid var(--ai-border);border-left:3px solid var(--accent);border-radius:8px;padding:20px 22px;}
+#at-m01 .check .answerkey .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:12px;}
+#at-m01 .check .answerkey p{font-size:15px;line-height:1.55;margin:0 0 12px;color:var(--ai-muted);}
+#at-m01 .check .answerkey p:last-child{margin-bottom:0;}
+#at-m01 .check .answerkey b{color:var(--accent-dark);font-weight:700;}
 /* glossary */
 #at-m01 .glossary{background:var(--surface);border:1px solid var(--ai-border);border-radius:8px;padding:24px 26px;}
 #at-m01 .glossary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;}
@@ -168,6 +171,7 @@ max-width:none;
 #at-m01 .nav .soon .pill{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);background:rgba(154,107,34,.14);border-radius:999px;padding:3px 9px;}
 #at-m01 .nav svg{transition:transform .2s ease;}
 #at-m01 .nav a.prev:hover svg{transform:translateX(-3px);}
+#at-m01 .nav a.next:hover svg{transform:translateX(3px);}
 #at-m01 .foot-meta{font-size:13.5px;color:var(--ai-muted);border-top:1px solid var(--ai-border);padding-top:22px;}
 #at-m01 .foot-meta .brand{margin-bottom:8px;font-size:15px;}
 #at-m01 .foot-meta .brand span{color:var(--ochre);}
@@ -377,50 +381,6 @@ to verify their integrity.</div>
 </section>
 <section>
 <div class="wrap">
-<p class="kicker">Check · lock in the one thing that matters</p>
-<h2>Three quick questions</h2>
-<div class="check">
-<details>
-<summary>1. Why is a chatbot's "chat history" considered a security weakness, not just a feature?</summary>
-<div class="ans">
-<ul class="opts">
-<li data-k="A">A. The history is stored permanently inside the AI's brain.</li>
-<li data-k="B">B. The history is re-pasted into the AI on every turn, so anything malicious that lands in it keeps influencing future answers.</li>
-<li data-k="C">C. The history encrypts the company's rules so the AI can't read them.</li>
-</ul>
-<p class="correct">Answer: B.</p>
-<p>The conversation is rebuilt and re-fed to the model every time. A bad instruction that gets into that block doesn't get used once and forgotten. It persists and shapes everything that follows.</p>
-</div>
-</details>
-<details>
-<summary>2. The "semantic gap" means that an AI model...</summary>
-<div class="ans">
-<ul class="opts">
-<li data-k="A">A. reads your company's rules, a user's message, and any document as one stream of text, with no built-in way to rank them.</li>
-<li data-k="B">B. takes a moment to load before it can answer.</li>
-<li data-k="C">C. can't translate between languages.</li>
-</ul>
-<p class="correct">Answer: A.</p>
-<p>The lanes that do exist, "system" rules vs. "user" message, are soft preferences the model is trained toward, not an enforced "admin mode." So it tends to follow the most forceful or recent text rather than the most authorized.</p>
-</div>
-</details>
-<details>
-<summary>3. AI assistants are described as "stateless." In plain terms, that means...</summary>
-<div class="ans">
-<ul class="opts">
-<li data-k="A">A. they don't work without an internet connection.</li>
-<li data-k="B">B. they operate outside the reach of state law.</li>
-<li data-k="C">C. they keep no memory of their own between conversations. Each one starts blank.</li>
-</ul>
-<p class="correct">Answer: C.</p>
-<p>Any sense of continuity is supplied by the app re-feeding the conversation, not by the model remembering you.</p>
-</div>
-</details>
-</div>
-</div>
-</section>
-<section>
-<div class="wrap">
 <p class="kicker">Plain-language glossary</p>
 <h2>The five terms from this module</h2>
 <div class="glossary">
@@ -439,6 +399,47 @@ to verify their integrity.</div>
 </div>
 </div>
 </section>
+<section>
+<div class="wrap">
+<p class="kicker">Check · lock in the one thing that matters</p>
+<h2>Three quick questions</h2>
+<p>Pick an answer for each, then check the key below.</p>
+<div class="check">
+<ol class="quiz">
+<li>
+<p class="q">Why is a chatbot's "chat history" considered a security weakness, not just a feature?</p>
+<ul class="opts">
+<li data-k="A">The history is stored permanently inside the AI's brain.</li>
+<li data-k="B">The history is re-pasted into the AI on every turn, so anything malicious that lands in it keeps influencing future answers.</li>
+<li data-k="C">The history encrypts the company's rules so the AI can't read them.</li>
+</ul>
+</li>
+<li>
+<p class="q">The "semantic gap" means that an AI model...</p>
+<ul class="opts">
+<li data-k="A">reads your company's rules, a user's message, and any document as one stream of text, with no built-in way to rank them.</li>
+<li data-k="B">takes a moment to load before it can answer.</li>
+<li data-k="C">can't translate between languages.</li>
+</ul>
+</li>
+<li>
+<p class="q">AI assistants are described as "stateless." In plain terms, that means...</p>
+<ul class="opts">
+<li data-k="A">they don't work without an internet connection.</li>
+<li data-k="B">they operate outside the reach of state law.</li>
+<li data-k="C">they keep no memory of their own between conversations. Each one starts blank.</li>
+</ul>
+</li>
+</ol>
+<div class="answerkey">
+<span class="tag">Answer key</span>
+<p><b>1. Answer: B.</b> The conversation is rebuilt and re-fed to the model every time. A bad instruction that gets into that block doesn't get used once and forgotten. It persists and shapes everything that follows.</p>
+<p><b>2. Answer: A.</b> The lanes that do exist, "system" rules vs. "user" message, are soft preferences the model is trained toward, not an enforced "admin mode." So it tends to follow the most forceful or recent text rather than the most authorized.</p>
+<p><b>3. Answer: C.</b> Any sense of continuity is supplied by the app re-feeding the conversation, not by the model remembering you.</p>
+</div>
+</div>
+</div>
+</section>
 <div class="at-foot">
 <div class="wrap">
 <div class="recap">
@@ -450,7 +451,9 @@ to verify their integrity.</div>
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#5c5851" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 Previous: Introduction
 </a>
-<span class="soon">Next: Module 02, Prompt Injection <span class="pill">Coming soon</span></span>
+<a class="next" href="/blog/architecting-trust-prompt-injection">Next: Module 02, Prompt Injection
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#5a1212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 </div>
 <div class="foot-meta">
 <div class="brand"><span class="brand-name">Ara<span>Grow</span></span></div>

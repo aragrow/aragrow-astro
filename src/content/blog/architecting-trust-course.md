@@ -151,52 +151,6 @@ featuredImage: null
 <div class="at-fact"><b>10<em>+</em></b><span>Hands-on labs</span></div>
 <div class="at-fact"><b>1</b><span>Live assessment</span></div>
 </div>
-<div class="at-banner">
-<span class="at-b-k">Inside the guide</span>
-<span class="at-b-t">Eight modules, one framework you'll keep</span>
-</div>
-<div class="at-grid">
-<a class="at-mod" href="/blog/architecting-trust-introduction-four-questions">
-<div class="at-num">00</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12 15.5 8.5M12 12 8.5 15.5"/><circle cx="12" cy="12" r="1.4" fill="#7B1818" stroke="none"/></svg></div>
-<div><div class="at-m-t">Introduction &amp; the Four Questions <span class="at-pill-go">Read →</span></div><div class="at-m-d">The one framework the whole guide rests on. You'll carry it into every module.</div></div>
-</a>
-<a class="at-mod" href="/blog/architecting-trust-how-ai-thinks">
-<div class="at-num">01</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a8 4 0 0 0 16 0"/><path d="M4 8a8 4 0 0 1 16 0v8a8 4 0 0 1-16 0V8"/><path d="M4 12a8 4 0 0 0 16 0"/></svg></div>
-<div><div class="at-m-t">How AI Actually "Thinks" <span class="at-pill-go">Read →</span></div><div class="at-m-d">Why AI forgets between chats, has no "admin mode," and why that changes security entirely.</div></div>
-</a>
-<div class="at-mod at-soon">
-<div class="at-num">02</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M12 8v4M12 15.5v.01"/></svg></div>
-<div><div class="at-m-t">Prompt Injection: the #1 Risk <span class="at-pill">Coming soon</span></div><div class="at-m-d">The attack atop every list, plus the "lethal trifecta" that turns it into a real breach.</div></div>
-</div>
-<div class="at-mod at-soon">
-<div class="at-num">03</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6c-1.6 0-3-.4-4.3-1"/><circle cx="12" cy="12" r="2.4"/><path d="M4 4l16 16"/></svg></div>
-<div><div class="at-m-t">The Stealth Frontier <span class="at-pill">Coming soon</span></div><div class="at-m-d">Why keyword filters give false comfort: attacks hide in encoding, metaphor, and invisible text.</div></div>
-</div>
-<div class="at-mod at-soon">
-<div class="at-num">04</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></div>
-<div><div class="at-m-t">When AI Can Act <span class="at-pill">Coming soon</span></div><div class="at-m-d">Excessive agency, least privilege, and exactly where a human must stay in the loop.</div></div>
-</div>
-<div class="at-mod at-soon">
-<div class="at-num">05</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4-5"/><path d="M4 19h16"/></svg></div>
-<div><div class="at-m-t">Measuring Trust <span class="at-pill">Coming soon</span></div><div class="at-m-d">Move past "it felt right" to proving AI works, with the questions that hold vendors accountable.</div></div>
-</div>
-<div class="at-mod at-soon">
-<div class="at-num">06</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5L12 10 4 6.5z"/><path d="M4 11.5l8 3.5 8-3.5"/><path d="M4 16.5l8 3.5 8-3.5"/></svg></div>
-<div><div class="at-m-t">The Executive Playbook <span class="at-pill">Coming soon</span></div><div class="at-m-d">Defense in depth, the dual-LLM pattern, and naming who owns the day it goes wrong.</div></div>
-</div>
-<div class="at-mod at-assess at-soon">
-<div class="at-num">07</div>
-<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9A6B22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
-<div><div class="at-m-t">AI Readiness Self-Assessment <span class="at-pill">Coming soon</span></div><div class="at-m-d">Score one real deployment and get a tailored, prioritized next step. Interactive.</div></div>
-</div>
-</div>
 <div class="at-cols">
 <div class="at-card">
 <p class="at-card-k">The spine of the guide</p>
@@ -222,6 +176,52 @@ featuredImage: null
 <li><b>The Dual-LLM Pattern</b>Quarantine untrusted input away from the tools that can act.</li>
 <li><b>Measure, Don't Vibe</b>Prove the system works with real evaluation, not a good feeling.</li>
 </ul>
+</div>
+</div>
+<div class="at-banner">
+<span class="at-b-k">Inside the guide</span>
+<span class="at-b-t">Eight modules, one framework you'll keep</span>
+</div>
+<div class="at-grid">
+<a class="at-mod" href="/blog/architecting-trust-introduction-four-questions">
+<div class="at-num">00</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 12 15.5 8.5M12 12 8.5 15.5"/><circle cx="12" cy="12" r="1.4" fill="#7B1818" stroke="none"/></svg></div>
+<div><div class="at-m-t">Introduction &amp; the Four Questions <span class="at-pill-go">Read →</span></div><div class="at-m-d">The one framework the whole guide rests on. You'll carry it into every module.</div></div>
+</a>
+<a class="at-mod" href="/blog/architecting-trust-how-ai-thinks">
+<div class="at-num">01</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a8 4 0 0 0 16 0"/><path d="M4 8a8 4 0 0 1 16 0v8a8 4 0 0 1-16 0V8"/><path d="M4 12a8 4 0 0 0 16 0"/></svg></div>
+<div><div class="at-m-t">How AI Actually "Thinks" <span class="at-pill-go">Read →</span></div><div class="at-m-d">Why AI forgets between chats, has no "admin mode," and why that changes security entirely.</div></div>
+</a>
+<a class="at-mod" href="/blog/architecting-trust-prompt-injection">
+<div class="at-num">02</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M12 8v4M12 15.5v.01"/></svg></div>
+<div><div class="at-m-t">Prompt Injection: the #1 Risk <span class="at-pill-go">Read →</span></div><div class="at-m-d">The attack atop every list, plus the "lethal trifecta" that turns it into a real breach.</div></div>
+</a>
+<a class="at-mod" href="/blog/architecting-trust-stealth-frontier">
+<div class="at-num">03</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6c-1.6 0-3-.4-4.3-1"/><circle cx="12" cy="12" r="2.4"/><path d="M4 4l16 16"/></svg></div>
+<div><div class="at-m-t">The Stealth Frontier <span class="at-pill-go">Read →</span></div><div class="at-m-d">Why keyword filters give false comfort: attacks hide in encoding, metaphor, and invisible text.</div></div>
+</a>
+<div class="at-mod at-soon">
+<div class="at-num">04</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></div>
+<div><div class="at-m-t">When AI Can Act <span class="at-pill">Coming soon</span></div><div class="at-m-d">Excessive agency, least privilege, and exactly where a human must stay in the loop.</div></div>
+</div>
+<div class="at-mod at-soon">
+<div class="at-num">05</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4-5"/><path d="M4 19h16"/></svg></div>
+<div><div class="at-m-t">Measuring Trust <span class="at-pill">Coming soon</span></div><div class="at-m-d">Move past "it felt right" to proving AI works, with the questions that hold vendors accountable.</div></div>
+</div>
+<div class="at-mod at-soon">
+<div class="at-num">06</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5L12 10 4 6.5z"/><path d="M4 11.5l8 3.5 8-3.5"/><path d="M4 16.5l8 3.5 8-3.5"/></svg></div>
+<div><div class="at-m-t">The Executive Playbook <span class="at-pill">Coming soon</span></div><div class="at-m-d">Defense in depth, the dual-LLM pattern, and naming who owns the day it goes wrong.</div></div>
+</div>
+<div class="at-mod at-assess at-soon">
+<div class="at-num">07</div>
+<div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9A6B22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+<div><div class="at-m-t">AI Readiness Self-Assessment <span class="at-pill">Coming soon</span></div><div class="at-m-d">Score one real deployment and get a tailored, prioritized next step. Interactive.</div></div>
 </div>
 </div>
 </div>

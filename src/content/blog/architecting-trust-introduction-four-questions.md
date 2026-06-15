@@ -291,20 +291,20 @@ Introduction &amp; Orientation
 <p class="map-desc">Why an AI forgets everything between conversations, has no built-in "admin mode," and why that changes the whole security picture.</p>
 </div>
 </a>
-<div class="map-row soon">
+<a class="map-row" href="/blog/architecting-trust-prompt-injection">
 <div class="map-num">02</div>
 <div>
-<p class="map-title">Prompt Injection: The #1 AI Risk <span class="pill">Coming soon</span></p>
+<p class="map-title">Prompt Injection: The #1 AI Risk <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">The attack that tops every industry risk list, and how a single email silently pulled data out of Microsoft 365 Copilot.</p>
 </div>
-</div>
-<div class="map-row soon">
+</a>
+<a class="map-row" href="/blog/architecting-trust-stealth-frontier">
 <div class="map-num">03</div>
 <div>
-<p class="map-title">The Stealth Frontier <span class="pill">Coming soon</span></p>
+<p class="map-title">The Stealth Frontier <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">Why keyword filters give false comfort: how attacks hide inside encoded text, metaphors, images, and invisible characters.</p>
 </div>
-</div>
+</a>
 <div class="map-row soon">
 <div class="map-num">04</div>
 <div>
