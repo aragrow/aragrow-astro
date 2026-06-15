@@ -203,11 +203,11 @@ featuredImage: null
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6c-1.6 0-3-.4-4.3-1"/><circle cx="12" cy="12" r="2.4"/><path d="M4 4l16 16"/></svg></div>
 <div><div class="at-m-t">The Stealth Frontier <span class="at-pill-go">Read →</span></div><div class="at-m-d">Why keyword filters give false comfort: attacks hide in encoding, metaphor, and invisible text.</div></div>
 </a>
-<div class="at-mod at-soon">
+<a class="at-mod" href="/blog/architecting-trust-when-ai-can-act">
 <div class="at-num">04</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></div>
-<div><div class="at-m-t">When AI Can Act <span class="at-pill">Coming soon</span></div><div class="at-m-d">Excessive agency, least privilege, and exactly where a human must stay in the loop.</div></div>
-</div>
+<div><div class="at-m-t">When AI Can Act <span class="at-pill-go">Read →</span></div><div class="at-m-d">Excessive agency, least privilege, and exactly where a human must stay in the loop.</div></div>
+</a>
 <div class="at-mod at-soon">
 <div class="at-num">05</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4-5"/><path d="M4 19h16"/></svg></div>

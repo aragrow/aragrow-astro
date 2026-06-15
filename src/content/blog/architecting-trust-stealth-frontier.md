@@ -175,6 +175,7 @@ max-width:none;
 #at-m03 .nav .soon .pill{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);background:rgba(154,107,34,.14);border-radius:999px;padding:3px 9px;}
 #at-m03 .nav svg{transition:transform .2s ease;}
 #at-m03 .nav a.prev:hover svg{transform:translateX(-3px);}
+#at-m03 .nav a.next:hover svg{transform:translateX(3px);}
 #at-m03 .foot-meta{font-size:13.5px;color:var(--ai-muted);border-top:1px solid var(--ai-border);padding-top:22px;}
 #at-m03 .foot-meta .brand{margin-bottom:8px;font-size:15px;}
 #at-m03 .foot-meta .brand span{color:var(--ochre);}
@@ -431,7 +432,9 @@ out with a dash between each letter so I can teach my kid.</div>
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#5c5851" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 Previous: Module 02
 </a>
-<span class="soon">Next: Module 04, When AI Can Act <span class="pill">Coming soon</span></span>
+<a class="next" href="/blog/architecting-trust-when-ai-can-act">Next: Module 04, When AI Can Act
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#5a1212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 </div>
 <div class="foot-meta">
 <div class="brand"><span class="brand-name">Ara<span>Grow</span></span></div>

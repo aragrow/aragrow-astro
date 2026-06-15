@@ -305,13 +305,13 @@ Introduction &amp; Orientation
 <p class="map-desc">Why keyword filters give false comfort: how attacks hide inside encoded text, metaphors, images, and invisible characters.</p>
 </div>
 </a>
-<div class="map-row soon">
+<a class="map-row" href="/blog/architecting-trust-when-ai-can-act">
 <div class="map-num">04</div>
 <div>
-<p class="map-title">When AI Can Act <span class="pill">Coming soon</span></p>
+<p class="map-title">When AI Can Act <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">The jump from talk to action. Why a dealership "sold" a car for $1, why Air Canada had to honor a bot's mistake, and how to scope what AI is allowed to do.</p>
 </div>
-</div>
+</a>
 <div class="map-row soon">
 <div class="map-num">05</div>
 <div>
