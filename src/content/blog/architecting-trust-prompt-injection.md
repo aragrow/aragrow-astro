@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "The attack at the top of every AI risk list is made of nothing but words. Here's how prompt injection works, and the three-part combination that turns it from a prank into a breach."
-featuredImage: null
+order: 4
+featuredImage: "/images/blog/architecting-trust-prompt-injection.webp"
+featuredImageAlt: "Diagram, The Lethal Combination: Data plus Agency, showing prompt injection escalating from a harmless prank to a breach where a hidden instruction drives AI tools to access and exfiltrate data."
+featuredImageCaption: "Prompt injection turns from prank to breach when data access and the power to act combine."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}

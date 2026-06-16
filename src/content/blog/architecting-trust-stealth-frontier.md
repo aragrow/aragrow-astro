@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "The obvious defense against prompt injection is to filter out the bad instructions. Here's why that gives false comfort, the ways an attack hides from both your filter and your eyes, and what to ask a vendor instead."
-featuredImage: null
+order: 5
+featuredImage: "/images/blog/architecting-trust-stealth-frontier.webp"
+featuredImageAlt: "Control-room banner, The Stealth Frontier, comparing the old way of input filtering that an instruction slips past with the new way of action-based limits that deny the unauthorized action."
+featuredImageCaption: "Filtering inputs can be slipped past; limiting what the AI can do is the stronger defense."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}

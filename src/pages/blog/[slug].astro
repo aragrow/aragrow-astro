@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const { title, date, modified, author, categories, excerpt, featuredImage } = post.data;
+const { title, date, modified, author, categories, excerpt, featuredImage, featuredImageAlt, featuredImageCaption } = post.data;
 const slug = post.id.replace(/\.md$/, '');
 
 const formattedDate = new Date(date).toLocaleDateString('en-US', {
@@ -85,9 +85,12 @@ const structuredData = {
     {
       featuredImage && (
         <div class="container">
-          <div class="post-featured-img">
-            <img src={featuredImage} alt={title} />
-          </div>
+          <figure class="post-featured">
+            <div class="post-featured-img">
+              <img src={featuredImage} alt={featuredImageAlt ?? title} />
+            </div>
+            {featuredImageCaption && <figcaption>{featuredImageCaption}</figcaption>}
+          </figure>
         </div>
       )
     }
@@ -142,12 +145,17 @@ const structuredData = {
   .post-sep { opacity: 0.4; }
 
   /* ── Featured image ── */
+  .post-featured { margin: 0 0 48px; }
   .post-featured-img {
     border-radius: var(--radius); overflow: hidden;
-    margin-bottom: 48px; max-height: 480px;
+    max-height: 480px;
     border: 1px solid var(--border);
   }
   .post-featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-featured figcaption {
+    font-size: 0.85rem; color: var(--muted);
+    text-align: center; margin-top: 12px; font-style: italic;
+  }
 
   /* ── Post body (WordPress HTML content) ── */
   .post-body {

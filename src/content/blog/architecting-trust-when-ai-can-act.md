@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "A chatbot that only talks can embarrass you. One that can act can spend, send, or delete on your behalf. How to scope what an AI is allowed to do, gate the actions you can't undo, and own the result."
-featuredImage: null
+order: 6
+featuredImage: "/images/blog/architecting-trust-when-ai-can-act.webp"
+featuredImageAlt: "Banner, When AI Can Act, contrasting a chatbot that only talks with one that acts, gated by an authorization layer with action limits, isolated context, and secure execution to keep agency controlled."
+featuredImageCaption: "A chatbot that acts needs an authorization gateway, action limits, and a gate on the irreversible."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}
@@ -180,6 +183,7 @@ max-width:none;
 #at-m04 .nav .soon .pill{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ochre);background:rgba(154,107,34,.14);border-radius:999px;padding:3px 9px;}
 #at-m04 .nav svg{transition:transform .2s ease;}
 #at-m04 .nav a.prev:hover svg{transform:translateX(-3px);}
+#at-m04 .nav a.next:hover svg{transform:translateX(3px);}
 #at-m04 .foot-meta{font-size:13.5px;color:var(--ai-muted);border-top:1px solid var(--ai-border);padding-top:22px;}
 #at-m04 .foot-meta .brand{margin-bottom:8px;font-size:15px;}
 #at-m04 .foot-meta .brand span{color:var(--ochre);}
@@ -448,7 +452,9 @@ When AI Can Act
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="#5c5851" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 Previous: Module 03
 </a>
-<span class="soon">Next: Module 05, Measuring Trust <span class="pill">Coming soon</span></span>
+<a class="next" href="/blog/architecting-trust-measuring-trust">Next: Module 05, Measuring Trust
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#5a1212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 </div>
 <div class="foot-meta">
 <div class="brand"><span class="brand-name">Ara<span>Grow</span></span></div>

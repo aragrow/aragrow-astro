@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "Two simple facts about how AI works explain almost every risk you'll face: it keeps no memory of its own, and it has no built-in way to rank the instructions it reads. Here's what that means for your business."
-featuredImage: null
+order: 3
+featuredImage: "/images/blog/architecting-trust-how-ai-thinks.webp"
+featuredImageAlt: "Diagram, How AI Actually Thinks, explaining two principles behind AI risk: it works by probability rather than truth, and its goal alignment is brittle, illustrated with a brain and a reward model."
+featuredImageCaption: "Two facts about how AI works, no memory and no built-in rank for instructions, explain most AI risk."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}

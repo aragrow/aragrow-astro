@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "The handful of ideas you need to make a confident decision about AI in your business, illustrated with documented incidents at real companies. No code required."
-featuredImage: null
+order: 2
+featuredImage: "/images/blog/architecting-trust-introduction-four-questions.webp"
+featuredImageAlt: "Banner for Architecting Trust, a clear-eyed guide for leaders deciding whether and how to adopt AI, with no code and no hype, showing a futuristic briefing room and a holographic decision framework."
+featuredImageCaption: "An executive guide to deciding whether and how to adopt AI: no code, no hype, just the judgment."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}
@@ -312,13 +315,13 @@ Introduction &amp; Orientation
 <p class="map-desc">The jump from talk to action. Why a dealership "sold" a car for $1, why Air Canada had to honor a bot's mistake, and how to scope what AI is allowed to do.</p>
 </div>
 </a>
-<div class="map-row soon">
+<a class="map-row" href="/blog/architecting-trust-measuring-trust">
 <div class="map-num">05</div>
 <div>
-<p class="map-title">Measuring Trust <span class="pill">Coming soon</span></p>
+<p class="map-title">Measuring Trust <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">How to move past "it feels right" to actually proving an AI system works, and the questions that hold a vendor accountable.</p>
 </div>
-</div>
+</a>
 <div class="map-row soon">
 <div class="map-num">06</div>
 <div>

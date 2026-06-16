@@ -11,6 +11,9 @@ export const collections = {
       categories: z.array(z.string()).default([]),
       excerpt: z.string().default(''),
       featuredImage: z.string().nullable().default(null),
+      featuredImageAlt: z.string().max(200).optional(),
+      featuredImageCaption: z.string().max(100).optional(),
+      order: z.number().optional(),
     }),
   }),
 };

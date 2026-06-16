@@ -5,7 +5,10 @@ modified: "2026-06-15"
 author: "David Arago"
 categories: ["Blog", "AI Security", "Guide"]
 excerpt: "Eight short parts that turn AI security from a black box into decisions you can own. Learn to ask the right questions of any tool or vendor, and tell a real answer from a hand-wave. Built for the person who signs off, not the person who codes."
-featuredImage: null
+order: 1
+featuredImage: "/images/blog/architecting-trust-course.webp"
+featuredImageAlt: "Banner, Architecting Trust, a clear-eyed guide for leaders on deciding whether AI is right for them, how to set strategy and action limits, and how to keep it under continuous oversight."
+featuredImageCaption: "Decide whether AI is right for you, how to scope what it can do, and how to keep it under oversight."
 ---
 <style>
 #guide-disclaimer{background:#fdf6f6;border:1px solid rgba(123,24,24,0.20);border-left:4px solid #7B1818;border-radius:8px;padding:14px 20px;margin:0 0 24px;}
@@ -208,11 +211,11 @@ featuredImage: null
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></div>
 <div><div class="at-m-t">When AI Can Act <span class="at-pill-go">Read →</span></div><div class="at-m-d">Excessive agency, least privilege, and exactly where a human must stay in the loop.</div></div>
 </a>
-<div class="at-mod at-soon">
+<a class="at-mod" href="/blog/architecting-trust-measuring-trust">
 <div class="at-num">05</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4-5"/><path d="M4 19h16"/></svg></div>
-<div><div class="at-m-t">Measuring Trust <span class="at-pill">Coming soon</span></div><div class="at-m-d">Move past "it felt right" to proving AI works, with the questions that hold vendors accountable.</div></div>
-</div>
+<div><div class="at-m-t">Measuring Trust <span class="at-pill-go">Read →</span></div><div class="at-m-d">Move past "it felt right" to proving AI works, with the questions that hold vendors accountable.</div></div>
+</a>
 <div class="at-mod at-soon">
 <div class="at-num">06</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5L12 10 4 6.5z"/><path d="M4 11.5l8 3.5 8-3.5"/><path d="M4 16.5l8 3.5 8-3.5"/></svg></div>
