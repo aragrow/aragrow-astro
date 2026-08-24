@@ -56,7 +56,7 @@ featuredImageCaption: "Decide whether AI is right for you, how to scope what it 
 .at-about-title{font-family:var(--at-serif);font-weight:700;font-size:17px;line-height:1.15;color:var(--at-text);}
 .at-about p{font-size:14px;line-height:1.55;color:var(--at-muted);margin:0;}
 .at-about p b{color:var(--at-text);font-weight:600;}
-.at-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 0;padding:26px 0;border-bottom:1px solid var(--at-border);}
+.at-facts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px 0;padding:26px 0;border-bottom:1px solid var(--at-border);}
 .at-fact{padding:0 20px;border-left:1px solid var(--at-border);}
 .at-fact:first-child{padding-left:0;border-left:0;}
 .at-fact b{display:block;font-family:var(--at-serif);font-weight:700;font-size:30px;line-height:1;color:var(--at-text);margin-bottom:6px;}
@@ -117,6 +117,7 @@ featuredImageCaption: "Decide whether AI is right for you, how to scope what it 
 .at-facts{grid-template-columns:1fr 1fr;}
 .at-fact{padding:0 14px;}
 .at-fact:nth-child(3){border-left:0;padding-left:0;}
+.at-fact:nth-child(5){border-left:0;padding-left:0;}
 .at-grid,.at-cols{grid-template-columns:1fr;}
 .at-foot{padding:22px 20px;}
 .at-foot .at-f-meta{text-align:left;}
@@ -150,9 +151,10 @@ featuredImageCaption: "Decide whether AI is right for you, how to scope what it 
 </div>
 <div class="at-facts">
 <div class="at-fact"><b>8</b><span>Short parts</span></div>
-<div class="at-fact"><b>~1<em> hr</em></b><span>To read</span></div>
+<div class="at-fact"><b>~90<em> min</em></b><span>To read</span></div>
 <div class="at-fact"><b>10<em>+</em></b><span>Hands-on labs</span></div>
 <div class="at-fact"><b>1</b><span>Live assessment</span></div>
+<div class="at-fact"><b>0</b><span>Lines of code</span></div>
 </div>
 <div class="at-cols">
 <div class="at-card">
@@ -216,16 +218,16 @@ featuredImageCaption: "Decide whether AI is right for you, how to scope what it 
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 19l4-5"/><path d="M4 19h16"/></svg></div>
 <div><div class="at-m-t">Measuring Trust <span class="at-pill-go">Read →</span></div><div class="at-m-d">Move past "it felt right" to proving AI works, with the questions that hold vendors accountable.</div></div>
 </a>
-<div class="at-mod at-soon">
+<a class="at-mod" href="/blog/architecting-trust-executive-playbook">
 <div class="at-num">06</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7B1818" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5L12 10 4 6.5z"/><path d="M4 11.5l8 3.5 8-3.5"/><path d="M4 16.5l8 3.5 8-3.5"/></svg></div>
-<div><div class="at-m-t">The Executive Playbook <span class="at-pill">Coming soon</span></div><div class="at-m-d">Defense in depth, the dual-LLM pattern, and naming who owns the day it goes wrong.</div></div>
-</div>
-<div class="at-mod at-assess at-soon">
+<div><div class="at-m-t">The Executive Playbook <span class="at-pill-go">Read →</span></div><div class="at-m-d">Defense in depth, the dual-LLM pattern, and naming who owns the day it goes wrong.</div></div>
+</a>
+<a class="at-mod at-assess" href="/blog/architecting-trust-readiness-assessment">
 <div class="at-num">07</div>
 <div class="at-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9A6B22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
-<div><div class="at-m-t">AI Readiness Self-Assessment <span class="at-pill">Coming soon</span></div><div class="at-m-d">Score one real deployment and get a tailored, prioritized next step. Interactive.</div></div>
-</div>
+<div><div class="at-m-t">AI Readiness Self-Assessment <span class="at-pill-go">Read →</span></div><div class="at-m-d">Score one real deployment and get a tailored, prioritized next step. Interactive.</div></div>
+</a>
 </div>
 </div>
 <div class="at-foot">

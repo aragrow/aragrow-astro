@@ -329,6 +329,7 @@ How AI Actually "Thinks"
 <p class="kicker">Labs · run these yourself</p>
 <h2>Feel it, don't just read it</h2>
 <p>Each lab takes about five minutes in any everyday chatbot. The point is to watch the two ideas above happen for yourself. As a reminder from the disclaimer up top: use made-up values only, never real customer data or anything confidential.</p>
+<p><strong>One caveat.</strong> AI providers patch specific jailbreaks and injections constantly, so a prompt here may now be refused or blocked instead of misbehaving. A refusal doesn't mean the risk is solved: the weakness is structural and keeps returning in new forms, and a fresh phrasing often still works. It also doesn't transfer. A fix in one public chatbot tells you nothing about whether the AI you're actually evaluating has the same protection, so run these ideas against that specific system, and confirm it has been corrected, before you trust it.</p>
 <div class="lab">
 <span class="tag">Lab 1 · hands-on</span>
 <h3>The amnesiac test</h3>

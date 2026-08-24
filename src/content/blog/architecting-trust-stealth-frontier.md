@@ -316,6 +316,7 @@ The Stealth Frontier
 <p class="kicker">Labs · run these yourself</p>
 <h2>Watch an instruction sail past in disguise</h2>
 <p>Both hands-on labs are harmless: the payloads just make the bot say a silly word. The point is to feel how easily meaning slips through when the letters change. As a reminder from the disclaimer up top: use made-up values only, never real customer data or anything confidential.</p>
+<p><strong>One caveat.</strong> AI providers patch specific jailbreaks and injections constantly, so a prompt here may now be refused or blocked instead of misbehaving. A refusal doesn't mean the risk is solved: the weakness is structural and keeps returning in new forms, and a fresh phrasing often still works. It also doesn't transfer. A fix in one public chatbot tells you nothing about whether the AI you're actually evaluating has the same protection, so run these ideas against that specific system, and confirm it has been corrected, before you trust it.</p>
 <div class="lab">
 <span class="tag">Lab 1 · hands-on</span>
 <h3>The encoding smuggle</h3>

@@ -178,12 +178,6 @@ Introduction &amp; Orientation
 <h1>Architecting Trust</h1>
 <p class="subtitle">A clear-eyed guide for leaders deciding whether and how to adopt AI.</p>
 <p class="lede">No code, and no hype. Just the handful of ideas you need to make a confident decision about AI in your business, illustrated with real incidents at real companies.</p>
-<div class="cover-facts">
-<div class="fact"><b>7</b><span>Parts</span></div>
-<div class="fact"><b>~1 hr</b><span>To read</span></div>
-<div class="fact"><b>10+</b><span>Hands-on labs</span></div>
-<div class="fact"><b>0</b><span>Lines of code</span></div>
-</div>
 </div>
 </div>
 <section>
@@ -322,27 +316,27 @@ Introduction &amp; Orientation
 <p class="map-desc">How to move past "it feels right" to actually proving an AI system works, and the questions that hold a vendor accountable.</p>
 </div>
 </a>
-<div class="map-row soon">
+<a class="map-row" href="/blog/architecting-trust-executive-playbook">
 <div class="map-num">06</div>
 <div>
-<p class="map-title">The Executive Playbook <span class="pill">Coming soon</span></p>
+<p class="map-title">The Executive Playbook <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">Layered defenses in plain terms, where humans belong in the loop, and a repeatable way to keep risk contained.</p>
 </div>
-</div>
-<div class="map-row soon playbook">
+</a>
+<a class="map-row playbook" href="/blog/architecting-trust-readiness-assessment">
 <div class="map-num">07</div>
 <div>
-<p class="map-title">Your AI Readiness Self-Assessment <span class="pill">Coming soon</span></p>
+<p class="map-title">Your AI Readiness Self-Assessment <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">A short worksheet to score a real or planned AI deployment, and decide your safe next step.</p>
 </div>
-</div>
-<div class="map-row soon">
+</a>
+<a class="map-row" href="/blog/architecting-trust-appendix">
 <div class="map-num">A</div>
 <div>
-<p class="map-title">Appendix: Sources &amp; Glossary <span class="pill">Coming soon</span></p>
+<p class="map-title">Appendix: Sources &amp; Glossary <span class="pill-go">Read &rarr;</span></p>
 <p class="map-desc">Every claim traced to a documented source, plus a master glossary of every term used in the guide.</p>
 </div>
-</div>
+</a>
 </div>
 </div>
 </section>
