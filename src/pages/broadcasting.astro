@@ -1,0 +1,582 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const testimonials = [
+  {
+    quote: "I worked with David for many years on our web development team. David consistently demonstrated strong technical knowledge for the tools we used as well as those he was considering introducing to our environment. He is an excellent communicator and has strong organizational skills.",
+    name: 'Lucas Tordsen',
+    label: 'Team Leader, Hubbard Broadcasting',
+  },
+  {
+    quote: 'Are you overwhelmed by unintelligible tech stuff in your business? I am, all the time — from connecting software via APIs to automating repetitive tasks that drive me crazy. I don\'t have the bandwidth. But the bright side is that I know David. And he knows how to deal with all of that. If you are reading this review, now you know David as well. So instead of stressing about your ERP implementation or your CRM integrations, reach out to David.',
+    name: 'Nicolas Rivera',
+    label: 'Solid Factor Consulting LLC · New York, NY',
+  },
+  {
+    quote: 'Working with David over the past year has been a tremendous value for my business and for my clients. David has made the challenge of integrating rapidly developing AI technology in ways that generate practical returns a reality. He provides the benefit of combining his decades of experience with the tools and techniques just coming on the market today. I highly recommend his services.',
+    name: 'James Disser',
+    label: 'Start Up Over 50 · Meridian, CO',
+  },
+];
+
+const pains = [
+  {
+    title: 'No tested backup plan or disaster recovery',
+    pain: 'If your CMS, servers, or core systems went down tonight, nobody can tell you how long it would actually take to get back up, or what you\'d lose in the process.',
+    fix: 'I build and actually test the backup and disaster recovery plan, not a policy document nobody has verified works, so a bad night doesn\'t turn into a bad month.',
+  },
+  {
+    title: 'Loss of tribal knowledge when someone leaves',
+    pain: 'The person who actually understands how your systems fit together might retire, take another job, or just be unreachable on the one night it matters, and none of it is written down anywhere.',
+    fix: 'I document what actually exists, not a generic IT binder, so the business isn\'t one resignation away from nobody understanding its own systems.',
+  },
+  {
+    title: 'Reliability pressure with zero room for downtime',
+    pain: 'Breaking news, election night, and severe weather create traffic spikes your site has to survive with no warning.',
+    fix: 'I stress-test your infrastructure against the traffic patterns that actually break it, not average-day load.',
+  },
+  {
+    title: 'Wire and data feed integrations',
+    pain: 'Your AP, NOAA, or election-data feeds are held together by aging or fragile code that nobody fully understands anymore.',
+    fix: 'I review those integrations for single points of failure and rebuild the fragile ones before they break on a night that matters.',
+  },
+  {
+    title: 'M&A-driven system consolidation',
+    pain: 'An acquired station drags along its own legacy CMS, ad stack, or newsroom tooling, and someone has to decide what stays.',
+    fix: 'I make that call, sequenced so the newly acquired station never goes dark. I did this under real deadline pressure during a company-wide migration in 2020.',
+  },
+  {
+    title: 'Vendor lock-in on broadcast-specific systems',
+    pain: 'Your traffic, automation, or newsroom platform contract feels expensive and rigid, but nobody internally has the standing to push back or evaluate alternatives.',
+    fix: 'I evaluate what your contract actually locks you into versus what\'s negotiable, and give you a real read on switching cost and risk instead of the vendor\'s own sales pitch.',
+  },
+  {
+    title: 'No senior technical leadership dedicated to modernization',
+    pain: 'IT gets handled by whoever\'s available. Nobody owns the multi-year technology plan.',
+    fix: 'I become that senior technical decision-maker on a part-time basis, working directly with your GM or ownership. No account managers, no handoffs.',
+  },
+  {
+    title: 'Budget structured for OPEX, not CAPEX',
+    pain: 'A full-time CTO doesn\'t pencil out at your size, but limping along on patched legacy systems has its own hidden cost.',
+    fix: 'I give ownership a real cost picture: what the current setup quietly costs in outages and lost ad revenue, against what a fractional CTO costs versus a full-time hire.',
+  },
+  {
+    title: 'Fragmented content across your stations',
+    pain: 'One CMS runs across multiple properties, but every station has drifted from the others, so a fix in one place doesn\'t fix it everywhere.',
+    fix: 'I audit the CMS as it actually runs today and set one technical standard your stations build on, with room for local control, not a fork per station. I did this exact work across seven Hubbard Broadcasting stations.',
+  },
+  {
+    title: 'Newsroom-to-web handoff friction',
+    pain: 'Reporters and producers still copy stories into the website by hand because the newsroom system and the CMS were never properly connected.',
+    fix: 'I build or fix that integration so stories publish automatically instead of through manual copy-paste under deadline.',
+  },
+];
+
+const broadcastingFaqs = [
+  {
+    q: 'How much do you already know about the specific newsroom software we run, versus learning it on our time?',
+    feature: "I've spent 23 years building and maintaining the systems around a newsroom, including the CMS integrations that connect to whatever system sits on the other side.",
+    benefit: "You get someone who recognizes a broken newsroom-to-web handoff and fixes it, without needing months to learn your specific vendor's tool first.",
+    value: "Stories move from newsroom to site faster, with less manual work and fewer dropped updates.",
+  },
+  {
+    q: 'Do you understand how traffic and billing systems connect to everything else in the operation?',
+    feature: "I have direct experience evaluating what a traffic or billing vendor contract actually requires versus what's negotiable.",
+    benefit: "You get a real read on your vendor relationship instead of the vendor's own sales pitch.",
+    value: "Lower vendor spend, or the confidence that what you're paying is actually justified.",
+  },
+  {
+    q: 'Have you dealt with playout or automation systems, or just the website and digital side?',
+    feature: "My hands-on experience runs deep in CMS, data integrations, and infrastructure, with honest limits on playout and on-air automation.",
+    benefit: "You get someone who tells you when a specialist engineer is the right call instead of overselling a broader scope.",
+    value: "You spend money on the right expertise instead of paying twice to fix a wrong hire.",
+  },
+  {
+    q: 'Do you understand FCC compliance, EAS integration, and the public inspection file?',
+    feature: "I have working knowledge of how compliance requirements intersect with a station's technology systems, paired with honesty about not being a compliance attorney or EAS engineer.",
+    benefit: "You get systems that reliably support compliance, plus a clear flag the moment something needs a specialist.",
+    value: "Fewer compliance surprises, and the right expert brought in before a small gap becomes a real problem.",
+  },
+  {
+    q: 'Have you worked across a multi-station group, or only single-property businesses?',
+    feature: "I built and maintained a custom CMS running across seven TV stations at Hubbard Broadcasting.",
+    benefit: "You get someone who has already lived the tension between one shared technical standard and each station's need for local control.",
+    value: "A consistent, maintainable system across properties instead of a patchwork that drifts wider every year.",
+  },
+  {
+    q: 'Do you understand how OTT and streaming fit into a station\'s digital strategy?',
+    feature: "I treat OTT and streaming distribution as an infrastructure and integration problem, not just a content decision.",
+    benefit: "You get a read on where your CMS and data feeds create single points of failure before they cause a Roku or Fire TV outage.",
+    value: "Reliable content delivery across every screen your audience actually watches on.",
+  },
+  {
+    q: 'Do you replace our current IT person, or work alongside them?',
+    feature: "The engagement is built to take ownership of technology decisions and roadmap, working next to your existing IT staff.",
+    benefit: "You get senior judgment added to your team, not a replacement for the people already doing the work.",
+    value: "Your IT staff gets relief on the workload that's stretching them thin, without anyone losing their job.",
+  },
+  {
+    q: 'Are you the person who implements changes, or the person who tells someone else what to implement?',
+    feature: "My model combines strategy with hands-on execution, not just recommendations.",
+    benefit: "You get someone who writes the integration or rebuilds the fragile piece directly, not a report that sits in a drawer.",
+    value: "Fixes actually happen, on a timeline you can see, instead of stalling after the strategy phase.",
+  },
+  {
+    q: 'How available are you during breaking news, severe weather, or election night?',
+    feature: "I stress-test infrastructure against your actual high-pressure traffic patterns ahead of time.",
+    benefit: "You get systems built to hold up on the worst night of the year, with direct availability if something still goes wrong.",
+    value: "Your site stays up during the exact moments your audience and advertisers are watching closest.",
+  },
+  {
+    q: 'Can you work across stations in different markets and time zones, and do you come on-site?',
+    feature: "The engagement model is remote and async-friendly, built around splitting time between Minneapolis and Spain, with on-site available for key milestones.",
+    benefit: "You get coverage across every market and time zone your station group operates in, plus in-person presence when it actually matters.",
+    value: "Consistent technology leadership across your whole group, not just your flagship station.",
+  },
+  {
+    q: 'What does this cost compared to hiring a full-time CTO or a broadcast engineer?',
+    feature: "$1,500–$3,000/month for most clients, billed at $150/hour for roughly 10–20 hours a month.",
+    benefit: "You get senior technical judgment at a fraction of a full-time executive salary.",
+    value: "That budget goes toward the technology fixes themselves, not toward a full-time hire.",
+  },
+  {
+    q: 'What\'s the realistic payoff, and how would we measure it?',
+    feature: "Every engagement starts with defined outcomes before the work begins.",
+    benefit: "You get fewer outages during the moments that matter, lower vendor spend, and less manual work in the newsroom-to-web handoff.",
+    value: "A measurable return you can point to, not a vague promise of better technology.",
+  },
+  {
+    q: 'What happens if there\'s a security incident or an outage while you\'re engaged?',
+    feature: "I respond directly and hands-on to any live incident: diagnose, fix, then close the gap that caused it.",
+    benefit: "You get accountability in the moment, plus an honest referral to a security specialist when a situation needs formal audit or compliance work.",
+    value: "Faster recovery from incidents, and the right expert brought in for the parts that need one.",
+  },
+  {
+    q: 'Have you worked in a unionized engineering environment, and how do you handle technology change there?',
+    feature: "I have direct experience inside a broadcasting company with organized labor.",
+    benefit: "You get a technology change plan that accounts for the people whose daily work changes, not just the systems.",
+    value: "Smoother rollouts, with less friction and fewer surprises from the workforce a change actually affects.",
+  },
+  {
+    q: 'What do the first 90 days look like specifically for a station group?',
+    feature: "The first 90 days follow a structured pattern: audit, stakeholder conversations, roadmap, first implementation.",
+    benefit: "You get a clear, written plan for what to fix first and why, sequenced so no station goes dark.",
+    value: "Momentum and a visible win inside the first three months, not a strategy document that gathers dust.",
+  },
+  {
+    q: 'If we\'re mid-acquisition, how do you approach consolidating an acquired station\'s systems without taking it off-air?',
+    feature: "I use a sequencing process: map what the acquired station runs, decide what to retire, integrate, or leave alone.",
+    benefit: "You get an acquisition integration that never takes the new station off-air, backed by direct experience doing exactly this under real deadline pressure.",
+    value: "A smoother acquisition, with the technology risk handled instead of discovered after the deal closes.",
+  },
+  {
+    q: 'If a wire or data feed integration fails, what\'s the plan, and who\'s accountable?',
+    feature: "I proactively review AP, NOAA, and election-data integrations for single points of failure.",
+    benefit: "You get one person accountable for the fix, not a vendor's ticket queue, when something does break.",
+    value: "Fewer live failures on the nights they'd hurt the most, and faster resolution when one happens anyway.",
+  },
+];
+
+const signals = [
+  'Your technology holds up fine on an ordinary day, but you have no real confidence it would survive election night, a major weather event, or whatever comes next.',
+  'You don\'t actually know how exposed your station is if a core data integration, like AP, NOAA, or election results, goes down at the wrong moment.',
+  'Your newsroom and your website operate as two disconnected systems, and nobody has ever mapped out what it would actually take to connect them.',
+  'Your CMS can\'t keep up with the speed and competition your business faces today, no matter how many small fixes get thrown at it.',
+  'You know, somewhere in the back of your mind, that core parts of your operation run on software or hardware that\'s years past its prime, and you\'ve been putting off doing anything about it.',
+  'You\'re not sure your hosting provider is actually a partner supporting where the business is headed, versus something the business has simply outgrown.',
+  'You know AI has a role to play somewhere in the organization, but nobody has mapped out where it actually fits or what it would cost to find out.',
+  'Your technology function is one person handling everything day to day, with nobody responsible for where things need to be in three or five years.',
+  'Whether you have a full-time CTO or you\'re the one filling that role yourself, there are more projects right now than one person can realistically give proper attention to.',
+  'You\'re already searching for a full-time CTO, and you need someone experienced covering the gap until that hire is in place.',
+  'You\'ve grown through acquisition, and you still don\'t have a clear picture of what technology you actually own across the group.',
+  'Nobody in the organization has the standing or the time to seriously evaluate whether your vendor contracts still make sense for the business you are today.',
+  'You\'ve thought about hiring a CTO, but the math doesn\'t work at your size, and a generic web agency doesn\'t understand broadcast well enough to help.',
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: broadcastingFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: `${f.feature} ${f.benefit} ${f.value}`,
+    },
+  })),
+};
+---
+
+<Layout
+  title="Fractional CTO for Broadcasting & Media Companies — AraGrow LLC"
+  description="Hands-on fractional CTO leadership for TV and radio station groups: CMS consolidation, AP/NOAA/election-data integrations, migrations, and modernization, from someone who ran this inside a broadcasting company for 23 years."
+  structuredData={structuredData}
+>
+  <Nav />
+  <main class="bc-page">
+
+    <!-- Header -->
+    <div class="bc-header">
+      <div class="container">
+        <div class="section-label">For Broadcasting &amp; Media Companies</div>
+        <h1 class="bc-title">Your Station's Technology Was Built For a Different Broadcasting Era</h1>
+        <p class="bc-intro">
+          Fractional CTO leadership for TV and radio station groups, from someone who ran technology
+          inside a broadcasting company for 23 years, not someone learning your industry on your time.
+        </p>
+        <a href="/contact" class="btn btn-primary">Book a 30-minute conversation →</a>
+        <p class="bc-pricing-note">$1,500–$3,000/month for most clients · $150/hour · no long-term contract</p>
+      </div>
+    </div>
+
+    <div class="container bc-container">
+
+      <!-- Self-identification -->
+      <section class="bc-section bc-signals-section">
+        <h2 class="bc-section-title">Sounds Like Your Station</h2>
+        <ul class="bc-signals">
+          {signals.map((s) => <li>{s}</li>)}
+        </ul>
+        <p class="bc-signals-bridge">
+          If one, two, three, or more of these sound like your station, that's the exact gap fractional CTO work closes.
+        </p>
+      </section>
+
+      <!-- Proof + why trust AraGrow, merged -->
+      <section class="bc-section">
+        <h2 class="bc-section-title">The Product Is Me</h2>
+        <p class="bc-pullquote">
+          23 years at Hubbard Broadcasting: a custom CMS across seven TV stations, nine system migrations,
+          and a 2020 crisis where my team finished a station migration ahead of schedule after being
+          forced remote overnight. That record is mine, not a brand AraGrow built on top of it.
+        </p>
+        <ul class="bc-skim-list">
+          <li><strong>Before AraGrow:</strong> 23 years at Hubbard Broadcasting, as an employee, building the track record above.</li>
+          <li><strong>Since AraGrow:</strong> three years applying that same judgment as a consultant instead of a staff member, for clients like the ones below.</li>
+          <li>No account manager, no junior team. A firm can lose a client and keep going. I can't, so every engagement gets treated like the only one that matters.</li>
+          <li>A 30-minute call won't prove any of this on its own. It's the first data point in a track record you get to watch build.</li>
+        </ul>
+      </section>
+
+      <!-- Problems + fixes -->
+      <section class="bc-section">
+        <h2 class="bc-section-title">Where Broadcasting Technology Actually Breaks Down</h2>
+        <div class="bc-pain-grid">
+          {pains.map((p) => (
+            <div class="bc-pain-card">
+              <h3 class="bc-pain-title">{p.title}</h3>
+              <p class="bc-pain-text">{p.pain}</p>
+              <p class="bc-fix-text"><span class="bc-fix-label">What I do:</span> {p.fix}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Mid-page CTA break -->
+      <div class="bc-cta-strip">
+        <p>You don't need to finish this page to reach out.</p>
+        <a href="/contact" class="btn btn-primary">Book a 30-minute conversation →</a>
+      </div>
+
+      <!-- Testimonials -->
+      <section class="bc-section">
+        <h2 class="bc-section-title">What Clients and Associates Say</h2>
+        <div class="bc-testimonial-grid">
+          {testimonials.map((t) => (
+            <div class="bc-testimonial-card">
+              <div class="bc-testimonial-mark">"</div>
+              <blockquote class="bc-testimonial-quote">{t.quote}</blockquote>
+              <div class="bc-testimonial-attribution">
+                <strong>{t.name}</strong>
+                <span>{t.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="bc-section">
+        <h2 class="bc-section-title">Questions Station Leadership Actually Asks</h2>
+        <div class="bc-faq-list">
+          {broadcastingFaqs.map((item) => (
+            <details class="bc-faq-item" name="bc-faq">
+              <summary class="bc-faq-question">{item.q}</summary>
+              <p class="bc-faq-answer">{item.feature} {item.benefit} {item.value}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bc-cta-block">
+        <h2 class="bc-cta-title">Ready to talk about your station's technology?</h2>
+        <p class="bc-cta-body">
+          The best first step is a 30-minute conversation about where your technology is creating risk,
+          what's changing at your station group, and whether I'm the right fit to help.
+        </p>
+        <div class="bc-cta-actions">
+          <a href="/contact" class="btn btn-primary">Book a 30-minute conversation →</a>
+          <a href="/how-i-work" class="bc-cta-secondary">See how engagements work</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Header ── */
+  .bc-header {
+    background: linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+    color: #fdf6f4;
+    padding: 80px 0 60px;
+  }
+  .bc-header .section-label { color: #E8B931; }
+  .bc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+    color: #fdf6f4; margin: 12px 0 20px;
+    max-width: 780px;
+  }
+  .bc-intro {
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(253,246,244,0.85);
+    max-width: 600px;
+    margin-bottom: 28px;
+  }
+  .bc-pricing-note {
+    font-size: 0.85rem;
+    color: rgba(253,246,244,0.65);
+    margin-top: 14px;
+  }
+
+  /* ── Container ── */
+  .bc-container { padding-top: 56px; padding-bottom: 80px; }
+
+  /* ── Sections ── */
+  .bc-section {
+    margin-bottom: 24px;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .bc-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--teal-text);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Pain/fix grid ── */
+  .bc-pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ── Mid-page CTA strip ── */
+  .bc-cta-strip {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; flex-wrap: wrap;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    background: var(--teal-dim);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .bc-cta-strip p {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--text); margin: 0;
+  }
+
+  .bc-pain-card {
+    padding: 20px;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .bc-pain-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .bc-pain-text {
+    font-size: 0.88rem; line-height: 1.6;
+    color: var(--muted); margin-bottom: 12px;
+  }
+  .bc-fix-text {
+    font-size: 0.88rem; line-height: 1.6;
+    color: var(--text);
+    padding: 10px 12px;
+    border-left: 3px solid var(--teal-text);
+    background: var(--teal-dim);
+    border-radius: 0 8px 8px 0;
+    margin: 0;
+  }
+  .bc-fix-label {
+    font-weight: 700; color: var(--teal-text);
+  }
+
+  /* ── Self-ID signals ── */
+  .bc-signals {
+    list-style: none; padding: 0; margin: 0 0 20px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .bc-signals li {
+    font-size: 0.95rem; line-height: 1.65;
+    color: var(--muted);
+    padding-left: 22px; position: relative;
+  }
+  .bc-signals li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--teal-text); font-size: 0.85rem;
+    top: 2px;
+  }
+  .bc-signals-bridge {
+    font-size: 0.95rem; line-height: 1.6;
+    color: var(--text);
+    padding: 14px 18px;
+    border-left: 3px solid var(--teal-text);
+    background: var(--teal-dim);
+    border-radius: 0 8px 8px 0;
+    margin: 0;
+  }
+
+  /* ── Skimmable pull-quote + list ── */
+  .bc-pullquote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem; font-weight: 700; line-height: 1.45;
+    color: var(--text);
+    padding: 18px 20px;
+    border-left: 3px solid var(--teal-text);
+    background: var(--teal-dim);
+    border-radius: 0 8px 8px 0;
+    margin: 0 0 20px;
+  }
+  .bc-skim-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .bc-skim-list li {
+    font-size: 0.93rem; line-height: 1.6;
+    color: var(--muted);
+    padding-left: 22px; position: relative;
+  }
+  .bc-skim-list li strong { color: var(--teal-text); }
+  .bc-skim-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--teal-text); font-size: 0.85rem;
+    top: 1px;
+  }
+
+  /* ── FAQ ── */
+  .bc-faq-list {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .bc-faq-item {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px 18px;
+  }
+  .bc-faq-question {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.93rem; font-weight: 600;
+    color: var(--text);
+    padding: 14px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .bc-faq-question::-webkit-details-marker { display: none; }
+  .bc-faq-question::before {
+    content: '+';
+    display: inline-block;
+    width: 18px;
+    color: var(--teal-text);
+    font-weight: 700;
+  }
+  .bc-faq-item[open] .bc-faq-question::before { content: '×'; }
+  .bc-faq-answer {
+    font-size: 0.9rem; line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 16px 18px;
+  }
+
+  /* ── Testimonials ── */
+  .bc-testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .bc-testimonial-card {
+    padding: 20px;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+  }
+  .bc-testimonial-mark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem; line-height: 1;
+    color: var(--teal-text); opacity: 0.4;
+    margin-bottom: 4px;
+  }
+  .bc-testimonial-quote {
+    font-size: 0.88rem; line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 16px;
+    flex-grow: 1;
+  }
+  .bc-testimonial-attribution {
+    font-size: 0.82rem; color: var(--muted);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .bc-testimonial-attribution strong { color: var(--text); }
+
+  /* ── CTA block ── */
+  .bc-cta-block {
+    text-align: center;
+    padding: 56px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .bc-cta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--text); margin-bottom: 14px;
+  }
+  .bc-cta-body {
+    font-size: 0.95rem; line-height: 1.7;
+    color: var(--muted); max-width: 520px;
+    margin: 0 auto 28px;
+  }
+  .bc-cta-actions {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+  }
+  .bc-cta-secondary {
+    font-size: 0.88rem; color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .bc-cta-secondary:hover { color: var(--teal); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .bc-section { padding: 24px 20px; }
+    .bc-pain-grid { grid-template-columns: 1fr; }
+    .bc-testimonial-grid { grid-template-columns: 1fr; }
+    .bc-cta-block { padding: 40px 20px; }
+  }
+</style>
