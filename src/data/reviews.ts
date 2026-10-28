@@ -263,6 +263,76 @@ const reviewList: Review[] = [
       caseStudyId: 'vendor-management',
     },
   },
+  {
+    slug: 'data-migration-review',
+    name: 'Data Migration Review',
+    seoTitle: 'Data Migration Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price review before you move finance, HR or payroll data into a new system: what to move, how much history, and which reports must work on day one. $1,500, about 10 hours.',
+    intro:
+      "When you replace an accounting, HR or payroll system, the software is the easy part. The data decides whether reports are right and people get paid correctly on day one. This review plans the move before anyone starts exporting spreadsheets.",
+    summary: 'For companies about to replace an accounting, HR or payroll system.',
+    forWhom: [
+      "You're replacing or upgrading an accounting, ERP, HR or payroll system.",
+      "Nobody has decided how much history to move, or in how much detail.",
+      'Finance or HR depends on reports that have to work from the first day.',
+      'Compliance reporting relies on data in the old system.',
+    ],
+    whatIDo: [
+      'Learn how each team actually uses the current system, and which reports and data they depend on.',
+      'Decide with you what to move: full detail, summaries or current records only, and for how many years.',
+      'Map the old data to the new system and flag where it will not translate cleanly.',
+    ],
+    deliverables: [
+      'A migration plan covering what moves, in how much detail and who signs off',
+      'A list of the reports that must work at launch, with an owner for each',
+      'A list of data problems to fix before the move',
+    ],
+    price: '$1,500',
+    scope: 'about 10 hours, for one system',
+    scopeNote:
+      "This review plans the migration. It doesn't include running the data loads or configuring the new system. If you want help with that work, we can scope it once the plan is set.",
+    proof: {
+      text: 'At a broadcasting company with about 2,000 employees, I owned the data migration to Dynamics GP, NetSuite, ADP Payroll and ADP Recruitment, including about 20 years of accounting records. Finance and HR had reports they could rely on from launch.',
+      linkText: 'Read the data migration case study',
+      caseStudyId: 'finance-hr-data-migration',
+    },
+  },
+  {
+    slug: 'release-process-review',
+    name: 'Release Process Review',
+    seoTitle: 'Release Process Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price review of how changes reach your live site: version control, test environments, caching and who can push what. $1,500, about 10 hours.',
+    intro:
+      "If changes go straight to your live site by hand, every update is a small risk, and the errors land on your customers. This review looks at how changes move from a developer's machine to the public and sets up a process that catches mistakes first.",
+    summary: 'For teams that still make changes to the live site by hand.',
+    forWhom: [
+      "Changes go straight to the live site, with no test environment in between.",
+      "Code isn't in version control, or not all of it is.",
+      'Release errors keep reaching customers and take time to fix.',
+      "You pay for a hosting platform but work around its tools instead of using them.",
+    ],
+    whatIDo: [
+      'Walk through how a change gets from a developer to the live site today, step by step.',
+      'Check version control, test environments, caching and who has access to push to production.',
+      'Design a release process that fits your team and your hosting platform, with every change tracked and tested.',
+    ],
+    deliverables: [
+      'A map of your current release process, with the risky steps marked',
+      'A recommended process, from version control to the live site',
+      'A short list of caching and performance fixes for traffic spikes',
+    ],
+    price: '$1,500',
+    scope: 'about 10 hours',
+    scopeNote:
+      "This review designs the process. It doesn't include migrating your sites or setting up the tooling. If you want help with that work, we can scope it once the plan is set.",
+    proof: {
+      text: "At a broadcasting company with 7 news sites, we moved from manual releases with no Git and no test environment to a tracked, three-environment process on Pantheon. The team was named one of Pantheon's Best in WebOps Top 20 in 2023.",
+      linkText: 'Read the WebOps case study',
+      caseStudyId: 'webops-release-process',
+    },
+  },
 ];
 
 // Listed in the same order as the case studies they come from.
