@@ -193,6 +193,76 @@ const reviewList: Review[] = [
       caseStudyId: 'developer-resignation-after-launch',
     },
   },
+  {
+    slug: 'architecture-decision-review',
+    name: 'Architecture Decision Review',
+    seoTitle: 'Architecture Decision Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price, senior outside read on a technical decision your team is split on or a design you are about to approve, with the reasoning written down. $1,500, about 10 hours.',
+    intro:
+      'When your team or a vendor is split on a technical approach, the project can stall, or the decision goes to whoever pushes hardest. This review gives every option a fair hearing and leaves you with a documented decision your team can stand behind and come back to later.',
+    summary: 'For teams stuck between two technical approaches, or about to approve a design.',
+    forWhom: [
+      'Your team is split on how to build something important, and the project is stalling.',
+      "A vendor or architect has proposed a design, and you're not sure whether to approve it.",
+      'The wrong choice could mean lost data, downtime or an expensive rebuild.',
+      'Past technical decisions were made in meetings nobody wrote down.',
+    ],
+    whatIDo: [
+      "Hear every side, including the one that seems least likely, and put the options side by side.",
+      'Weigh each option against what matters most to your business, such as data integrity, cost and how hard it is to change later.',
+      'Write up the recommendation and the reasoning, so it can be revisited if requirements change.',
+    ],
+    deliverables: [
+      'A side-by-side comparison of the options, with pros, cons and risks',
+      'A clear recommendation, with the reasoning written down',
+      'A decision record your team can come back to when requirements change',
+    ],
+    price: '$1,500',
+    scope: 'about 10 hours',
+    scopeNote:
+      "I give you the recommendation and the reasoning. The final call stays with you, and the review doesn't include building the chosen design.",
+    proof: {
+      text: "At a broadcasting company, the network architect and the development team disagreed on how to build an in-house system where the wrong choice could corrupt data. Every option got a full hearing and the decision was documented. When requirements changed, the notes let the team bring back the architect's best ideas.",
+      linkText: 'Read the team disagreement case study',
+      caseStudyId: 'team-disagreement-decision',
+    },
+  },
+  {
+    slug: 'vendor-accountability-review',
+    name: 'Vendor Accountability Review',
+    seoTitle: 'Vendor Accountability Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price review of every technology vendor you depend on: who owns each relationship, where issues stall and where costs creep. $1,500, about 10 hours.',
+    intro:
+      'Most growing companies rely on a mix of vendors, from hosting and data feeds to payroll, accounting and outside developers. When nobody owns those relationships, problems bounce between vendors and costs creep up. This review maps every vendor you depend on and gives each one a clear owner.',
+    summary: 'For companies where vendor problems bounce around because nobody owns the relationship.',
+    forWhom: [
+      'You rely on several technology vendors, and nobody owns all of those relationships.',
+      'Support tickets and vendor issues sit unresolved because nobody is sure who should push.',
+      "You're paying for tools or services you're not sure you still use.",
+      'You bring in outside specialists, but scope and hand-offs are loose.',
+    ],
+    whatIDo: [
+      'List every technology vendor you depend on, what each one does and what it costs.',
+      'Find where issues stall, where services overlap and which contracts renew soon.',
+      'Assign an owner and an escalation path for each vendor, and set simple rules for bringing in specialists.',
+    ],
+    deliverables: [
+      'A vendor map with cost, contract dates and an owner for each relationship',
+      'A list of overlaps, stalled issues and cost savings worth pursuing',
+      'An escalation path for each critical vendor',
+    ],
+    price: '$1,500',
+    scope: 'about 10 hours, covering up to 15 vendors',
+    scopeNote:
+      "This review doesn't include negotiating contracts or switching vendors. If the review shows a change is worth making, that can be the next piece of work.",
+    proof: {
+      text: 'At a broadcasting company, I was the single technical contact for the hosting provider, the Associated Press feed, enterprise systems such as NetSuite and ADP, and on-demand specialists. Every vendor knew who to contact, and problems stopped bouncing between people.',
+      linkText: 'Read the vendor management case study',
+      caseStudyId: 'vendor-management',
+    },
+  },
 ];
 
 // Listed in the same order as the case studies they come from.
