@@ -9,6 +9,12 @@ const results = [
     text: 'Moved 7 high-traffic broadcast websites (5M page views a month) from self-hosting to managed hosting.',
     href: caseStudyHref('broadcasting-managed-hosting'),
   },
+  {
+    label: 'Prior role',
+    headline: 'Live-site failure on the main news site contained in about an hour.',
+    text: 'Traced disappearing stories to database load from a new newsroom tool, then brought in a specialist vendor to build a replacement for production traffic and rolled it out to all 7 stations.',
+    href: caseStudyHref('newsroom-incident-build-vs-buy'),
+  },
 ];
 ---
 
@@ -19,12 +25,12 @@ const results = [
     </div>
     <div class="results-grid">
       {
-        results.map((r) => (
+        results.map((r, i) => (
           <article class="result-card reveal">
             <span class="result-label">{r.label}</span>
-            <h3>{r.headline}</h3>
+            <h3 id={`result-${i}`}>{r.headline}</h3>
             <p>{r.text}</p>
-            <a class="result-link" href={r.href}>Read the case study</a>
+            <a class="result-link" href={r.href} aria-describedby={`result-${i}`}>Read the case study</a>
           </article>
         ))
       }

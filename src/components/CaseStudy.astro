@@ -31,7 +31,17 @@ const headingId = `${study.id}-title`;
 
   <div class="cs-block">
     <h3 class="cs-heading">What we did</h3>
-    {study.whatWeDid.map((p) => <p>{p}</p>)}
+    {
+      study.whatWeDid.map((p) =>
+        typeof p === 'string' ? (
+          <p>{p}</p>
+        ) : (
+          <p>
+            <strong>{p.lead}</strong> {p.text}
+          </p>
+        )
+      )
+    }
   </div>
 
   <div class="cs-block">
@@ -99,6 +109,7 @@ const headingId = `${study.id}-title`;
     font-size: 0.95rem; line-height: 1.75;
     color: var(--muted); margin-bottom: 12px;
   }
+  .cs-block p strong { color: var(--text); font-weight: 700; }
 
   /* ── Results list ── */
   .cs-results {
