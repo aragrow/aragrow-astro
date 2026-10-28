@@ -185,7 +185,7 @@ import { reviews, reviewHref } from '../data/reviews';
         <p class="hw-section-note">
           For one specific question, a review is a smaller first step than the 30-day audit.
         </p>
-        <div class="hw-tiers hw-tiers-two">
+        <div class:list={['hw-tiers', { 'hw-tiers-two': reviews.length % 2 === 0 }]}>
           {
             reviews.map((r) => (
               <div class="hw-tier">
@@ -458,6 +458,7 @@ import { reviews, reviewHref } from '../data/reviews';
   }
   .hw-tier-price a:hover { color: var(--teal); }
 
+  /* Even counts of reviews read better as rows of two than as three plus a remainder */
   .hw-tiers-two { grid-template-columns: repeat(2, 1fr); }
   h3.hw-tier-name { line-height: 1.4; }
 
