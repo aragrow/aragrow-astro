@@ -7,6 +7,16 @@ import { caseStudyHref } from '../data/case-studies';
 const FEATURED = 3;
 const results: { label?: string; headline: string; text: string; href: string }[] = [
   {
+    headline: '20 years of finance records moved into four new systems, with reports ready at launch.',
+    text: 'Owned the data migration to Dynamics GP, NetSuite and ADP for about 2,000 employees, including the recruiting data stations need for FCC reporting.',
+    href: caseStudyHref('finance-hr-data-migration'),
+  },
+  {
+    headline: 'Lead developer quit the day after launch. No rollback, no audience impact.',
+    text: 'Brought in a part-time senior WordPress developer within hours and structured a four-month handoff, so the team owned the new site within the first month.',
+    href: caseStudyHref('developer-resignation-after-launch'),
+  },
+  {
     headline: '$125K saved per year. Weekend on-call calls dropped to zero.',
     text: 'Moved 7 high-traffic broadcast websites (5M page views a month) from self-hosting to managed hosting.',
     href: caseStudyHref('broadcasting-managed-hosting'),
@@ -15,16 +25,6 @@ const results: { label?: string; headline: string; text: string; href: string }[
     headline: 'About 100 hours saved every month across the company.',
     text: 'Replaced untracked access across 75 business units with a system that has a full audit trail, built by an engineer I mentored into development.',
     href: caseStudyHref('access-control-new-developer'),
-  },
-  {
-    headline: 'Lead developer quit the day after launch. No rollback, no audience impact.',
-    text: 'Brought in a part-time senior WordPress developer within hours and structured a four-month handoff, so the team owned the new site within the first month.',
-    href: caseStudyHref('developer-resignation-after-launch'),
-  },
-  {
-    headline: '20 years of finance records moved into four new systems, with reports ready at launch.',
-    text: 'Owned the data migration to Dynamics GP, NetSuite and ADP for about 2,000 employees, including the recruiting data stations need for FCC reporting.',
-    href: caseStudyHref('finance-hr-data-migration'),
   },
   {
     headline: 'From manual releases to a Pantheon Best in WebOps Top 20 team.',
@@ -37,6 +37,11 @@ const results: { label?: string; headline: string; text: string; href: string }[
     href: caseStudyHref('newsroom-incident-build-vs-buy'),
   },
   {
+    headline: 'A disaster recovery plan with an owner for every step.',
+    text: 'Brought the network and development teams together on a recovery plan for 7 news websites, from switching to a standby copy to switching back without losing data.',
+    href: caseStudyHref('disaster-recovery-plan'),
+  },
+  {
     headline: 'One accountable lead for every vendor, from the AP feed to NetSuite.',
     text: 'Owned the hosting, news feed and enterprise system relationships, and brought in specialists only when needed, so problems stopped bouncing between vendors.',
     href: caseStudyHref('vendor-management'),
@@ -45,11 +50,6 @@ const results: { label?: string; headline: string; text: string; href: string }[
     headline: 'Team split on a high-risk design. The decision held, and so did the trust.',
     text: "Gave every option a full hearing, made the call with data integrity first and documented it, so the team could bring back the architect's ideas when requirements changed.",
     href: caseStudyHref('team-disagreement-decision'),
-  },
-  {
-    headline: 'A disaster recovery plan with an owner for every step.',
-    text: 'Brought the network and development teams together on a recovery plan for 7 news websites, from switching to a standby copy to switching back without losing data.',
-    href: caseStudyHref('disaster-recovery-plan'),
   },
 ];
 const featured = results.slice(0, FEATURED);
