@@ -226,6 +226,15 @@ section { position: relative; z-index: 1; }
   font-size: 1.15rem; font-weight: 600; margin-bottom: 10px;
 }
 .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+/* Sits above the card's ::before hover overlay so the link stays clickable */
+.service-proof {
+  position: relative; z-index: 1;
+  display: block; margin-top: 14px;
+  font-size: 0.85rem; font-weight: 500; line-height: 1.55;
+  color: var(--teal-text);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.service-proof:hover { color: var(--teal); }
 .service-tag {
   display: inline-block; margin-top: 16px;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;

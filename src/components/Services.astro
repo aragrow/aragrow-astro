@@ -1,5 +1,14 @@
 ---
-const services = [
+import { caseStudyHref } from '../data/case-studies';
+
+const services: {
+  icon: string;
+  title: string;
+  description: string;
+  tag: string;
+  proof?: string;
+  proofHref?: string;
+}[] = [
   {
     icon: '🧭',
     title: 'Fractional CTO',
@@ -27,6 +36,8 @@ const services = [
     description:
       'A fragile hybrid hosting setup with single points of failure works, until the day it doesn\'t. I\'ve migrated organizations onto managed platforms and deployment pipelines built to grow with the business, cutting overhead and closing off those failure points along the way.',
     tag: 'Oracle Cloud · Managed Hosting · DevOps · Pantheon',
+    proof: 'Example: cut hosting costs by about half for 7 broadcast sites.',
+    proofHref: caseStudyHref('broadcasting-managed-hosting'),
   },
   {
     icon: '🗄️',
@@ -41,6 +52,8 @@ const services = [
     description:
       'A slow site your team can\'t update without calling in a developer is costing you both customers and time. I optimize load times, put the right CDN and caching strategy in place, and streamline deployment so routine updates don\'t require a developer on standby. Best in WebOps Award winner (Pantheon, 2023).',
     tag: 'Performance · WebOps · CDN · Uptime',
+    proof: 'Example: kept 7 news sites fast through breaking news traffic spikes.',
+    proofHref: caseStudyHref('broadcasting-managed-hosting'),
   },
 ];
 ---
@@ -62,6 +75,9 @@ const services = [
             <div class="service-icon">{s.icon}</div>
             <h3>{s.title}</h3>
             <p>{s.description}</p>
+            {s.proof && s.proofHref && (
+              <a class="service-proof" href={s.proofHref}>{s.proof}</a>
+            )}
             <span class="service-tag">{s.tag}</span>
           </div>
         ))
