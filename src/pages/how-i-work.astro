@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { reviews, reviewHref } from '../data/reviews';
+
+// The rest of the reviews are linked from the end of each case study.
+const featuredReviews = reviews.slice(0, 3);
 ---
 
 <Layout
@@ -185,9 +188,9 @@ import { reviews, reviewHref } from '../data/reviews';
         <p class="hw-section-note">
           For one specific question, a review is a smaller first step than the 30-day audit.
         </p>
-        <div class:list={['hw-tiers', { 'hw-tiers-two': reviews.length % 2 === 0 }]}>
+        <div class:list={['hw-tiers', { 'hw-tiers-two': featuredReviews.length % 3 !== 0 && featuredReviews.length % 2 === 0 }]}>
           {
-            reviews.map((r) => (
+            featuredReviews.map((r) => (
               <div class="hw-tier">
                 <h3 class="hw-tier-name">{r.name}</h3>
                 <p class="hw-tier-for">{r.summary}</p>
@@ -203,6 +206,10 @@ import { reviews, reviewHref } from '../data/reviews';
             ))
           }
         </div>
+        <p class="hw-rate">
+          More reviews are linked from the case studies they came from.
+          <a href="/case-studies" class="hw-cta-secondary">See all case studies</a>
+        </p>
       </section>
 
       <!-- Working Principles -->
@@ -458,7 +465,7 @@ import { reviews, reviewHref } from '../data/reviews';
   }
   .hw-tier-price a:hover { color: var(--teal); }
 
-  /* Even counts of reviews read better as rows of two than as three plus a remainder */
+  /* Counts like 4 read better as rows of two than as three plus a remainder */
   .hw-tiers-two { grid-template-columns: repeat(2, 1fr); }
   h3.hw-tier-name { line-height: 1.4; }
 

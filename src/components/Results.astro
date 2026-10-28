@@ -3,6 +3,8 @@ import { caseStudyHref } from '../data/case-studies';
 
 // Each card links to its case study on /case-studies, where the full label (prior role or
 // client engagement) is shown. Give a card a `label` to also show a pill here.
+// Only the first FEATURED cards show on the homepage; reorder the list to change which ones.
+const FEATURED = 3;
 const results: { label?: string; headline: string; text: string; href: string }[] = [
   {
     headline: '$125K saved per year. Weekend on-call calls dropped to zero.',
@@ -25,11 +27,22 @@ const results: { label?: string; headline: string; text: string; href: string }[
     href: caseStudyHref('newsroom-incident-build-vs-buy'),
   },
   {
+    headline: 'One accountable lead for every vendor, from the AP feed to NetSuite.',
+    text: 'Owned the hosting, news feed and enterprise system relationships, and brought in specialists only when needed, so problems stopped bouncing between vendors.',
+    href: caseStudyHref('vendor-management'),
+  },
+  {
+    headline: 'Team split on a high-risk design. The decision held, and so did the trust.',
+    text: "Gave every option a full hearing, made the call with data integrity first and documented it, so the team could bring back the architect's ideas when requirements changed.",
+    href: caseStudyHref('team-disagreement-decision'),
+  },
+  {
     headline: 'A disaster recovery plan with an owner for every step.',
     text: 'Brought the network and development teams together on a recovery plan for 7 news websites, from switching to a standby copy to switching back without losing data.',
     href: caseStudyHref('disaster-recovery-plan'),
   },
 ];
+const featured = results.slice(0, FEATURED);
 ---
 
 <section id="results">
@@ -37,9 +50,9 @@ const results: { label?: string; headline: string; text: string; href: string }[
     <div class="reveal">
       <h2 class="section-title">Results</h2>
     </div>
-    <div class:list={['results-grid', { 'results-grid-two': results.length % 2 === 0 }]}>
+    <div class:list={['results-grid', { 'results-grid-two': featured.length % 3 !== 0 && featured.length % 2 === 0 }]}>
       {
-        results.map((r, i) => (
+        featured.map((r, i) => (
           <article class="result-card reveal">
             {r.label && <span class="result-label">{r.label}</span>}
             <h3 id={`result-${i}`}>{r.headline}</h3>
@@ -49,6 +62,9 @@ const results: { label?: string; headline: string; text: string; href: string }[
         ))
       }
     </div>
+    <p class="results-more">
+      <a href="/case-studies" class="btn btn-outline">See all case studies</a>
+    </p>
   </div>
 </section>
 
@@ -60,7 +76,7 @@ const results: { label?: string; headline: string; text: string; href: string }[
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 24px; margin-top: 32px;
   }
-  /* Even card counts read better as rows of two than as three plus a remainder */
+  /* Counts like 4 read better as rows of two than as three plus a remainder */
   @media (min-width: 700px) {
     .results-grid-two { grid-template-columns: repeat(2, 1fr); }
   }
@@ -95,4 +111,6 @@ const results: { label?: string; headline: string; text: string; href: string }[
     text-decoration: underline; text-underline-offset: 2px;
   }
   .result-link:hover { color: var(--teal); }
+
+  .results-more { margin-top: 32px; text-align: center; }
 </style>
