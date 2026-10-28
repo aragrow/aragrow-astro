@@ -4,9 +4,13 @@ import { reviews, reviewHref } from '../data/reviews';
 
 interface Props {
   study: CaseStudy;
+  // Heading level for the title; section headings use the next level down.
+  level?: 2 | 3;
 }
 
-const { study } = Astro.props;
+const { study, level = 2 } = Astro.props;
+const Title = `h${level}` as 'h2' | 'h3';
+const Heading = `h${level + 1}` as 'h3' | 'h4';
 const headingId = `${study.id}-title`;
 const review = reviews.find((r) => r.proof.caseStudyId === study.id);
 const related = (study.related ?? [])
@@ -16,7 +20,7 @@ const related = (study.related ?? [])
 
 <article class="cs-entry" id={study.id} aria-labelledby={headingId}>
   <div class="section-label">{study.label}</div>
-  <h2 class="cs-title" id={headingId}>{study.title}</h2>
+  <Title class="cs-title" id={headingId}>{study.title}</Title>
 
   <dl class="cs-meta">
     <div>
@@ -30,12 +34,12 @@ const related = (study.related ?? [])
   </dl>
 
   <div class="cs-block">
-    <h3 class="cs-heading">The problem</h3>
+    <Heading class="cs-heading">The problem</Heading>
     {study.problem.map((p) => <p>{p}</p>)}
   </div>
 
   <div class="cs-block">
-    <h3 class="cs-heading">What we did</h3>
+    <Heading class="cs-heading">What we did</Heading>
     {
       study.whatWeDid.map((p) =>
         typeof p === 'string' ? (
@@ -50,11 +54,26 @@ const related = (study.related ?? [])
   </div>
 
   <div class="cs-block">
-    <h3 class="cs-heading">The results</h3>
+    <Heading class="cs-heading">The results</Heading>
     <ul class="cs-results">
       {study.results.map((r) => <li>{r}</li>)}
     </ul>
   </div>
+
+  {
+    study.sources && (
+      <div class="cs-block">
+        <Heading class="cs-heading">Further reading</Heading>
+        <ul class="cs-sources">
+          {study.sources.map((s) => (
+            <li>
+              <a href={s.href} rel="noopener">{s.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   {
     study.closing && (
@@ -178,6 +197,18 @@ const related = (study.related ?? [])
     margin-top: 6px;
     font-size: 0.85rem; color: var(--muted);
   }
+
+  /* ── Further reading ── */
+  .cs-sources {
+    padding-left: 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .cs-sources li { font-size: 0.92rem; line-height: 1.6; color: var(--muted); }
+  .cs-sources a {
+    color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .cs-sources a:hover { color: var(--teal); }
 
   /* ── Related review ── */
   .cs-offer {

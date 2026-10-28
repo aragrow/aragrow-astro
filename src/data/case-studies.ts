@@ -16,6 +16,8 @@ export interface CaseStudy {
   quote?: { text: string; attribution: string };
   // Ids of other case studies to link to at the end of this one.
   related?: string[];
+  // Outside pages that back up the story, such as an award announcement.
+  sources?: { text: string; href: string }[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -42,6 +44,45 @@ export const caseStudies: CaseStudy[] = [
       text: 'This has made a huge difference in our lives.',
       attribution: 'Member of the development team',
     },
+  },
+  {
+    id: 'webops-release-process',
+    title: 'From Manual Releases to Best in WebOps',
+    label: 'Prior role · Web Performance & WebOps',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      "Our news sites had to stay stable through sudden traffic spikes during breaking news and severe weather. At the same time, our release process was manual. We didn't use Git, had no test environment and made changes by hand. That led to errors, lost time and frustrated users.",
+    ],
+    whatWeDid: [
+      {
+        lead: 'Choose guardrails.',
+        text: "After deciding to move to managed hosting, we chose Pantheon partly because it is strict. Code can't jump from development straight to the live site. Every change has to pass through development, testing and live environments in order.",
+      },
+      {
+        lead: 'Change how we work.',
+        text: 'We moved all seven sites onto Pantheon and rebuilt our process around it. Every change went through GitHub, so it was tracked. Changes moved through all three environments before reaching the public. We tuned caching and performance so the sites held up under traffic spikes. Instead of working around the platform, we used it the way it was designed.',
+      },
+    ],
+    results: [
+      'A stable platform that held up through news and weather traffic spikes',
+      'Every change tracked and tested before going live',
+      'Fewer release errors and less time lost fixing them',
+      "Our team was named one of Pantheon's Best in WebOps Top 20 in 2023, the first year of the awards",
+      'Full value from the hosting investment, because we used the platform instead of bypassing it',
+    ],
+    related: ['broadcasting-managed-hosting'],
+    sources: [
+      {
+        text: "Pantheon's Best in WebOps Top 20 announcement (2023)",
+        href: 'https://pantheon.io/press-releases/pantheon-announces-best-webops-top-20',
+      },
+      {
+        text: "Pantheon's published case study on this project",
+        href: 'https://pantheon.io/resources/case-studies/hubbard-broadcasting-chooses-wordpress-pantheon-its-digital-news',
+      },
+    ],
   },
   {
     id: 'access-control-new-developer',
@@ -76,6 +117,69 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
+    id: 'newsroom-incident-build-vs-buy',
+    title: 'From Newsroom Frustration to a Tool Built for Our Traffic',
+    label: 'Prior role · Web Performance & Database Management',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The newsroom asked for a tool to control the order of stories on its sites. The goal was to install it on all seven stations, starting with the main one because that site had to work. It passed development testing and a week and a half of staging review. About 90 minutes after it went live on the main station, stories began disappearing and reappearing on its site. For a news organization, that is a credibility problem.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Contain.',
+        text: 'I treated it as an incident. Using our monitoring tools, we confirmed the pattern, isolated the new tool as the cause and switched it off. The site was stable within about an hour.',
+      },
+      {
+        lead: 'Diagnose.',
+        text: 'We rebuilt staging as a full copy of production and reproduced the failure. The tool created heavy database load that only appeared at production scale, which is why earlier testing missed it.',
+      },
+      {
+        lead: 'Decide.',
+        text: "Fixing the tool would have cost more than replacing it, and it was outside the team's expertise. An off-the-shelf plugin was available for $100 a year, but the director of TV digital operations would not have been happy with the result. I pushed for a custom build even though it cost more, and made the case to leadership to bring in a specialist vendor to build a plugin designed for our scale.",
+      },
+    ],
+    results: [
+      'Main station site stable the same day',
+      'Newsroom got the capability it asked for, built for our traffic',
+      'Custom plugin rolled out to all seven stations',
+      'Testing with production-scale data added before major releases',
+      'Team stayed focused on core work instead of rewriting unfamiliar code',
+    ],
+  },
+  {
+    id: 'disaster-recovery-plan',
+    title: 'From Single Point of Failure to a Plan Everyone Owned',
+    label: 'Prior role · Cloud Infrastructure & Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The company planned to host its news websites in its own data center, on load-balanced web servers and a database server. For a newsroom, an outage during breaking news means lost audience and lost trust. Leadership needed to know what would happen if any part of that setup failed.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Plan.',
+        text: 'In the early stages, I represented the development team on a disaster recovery committee with the IT director and the network and security compliance manager. Together we defined how to switch to a standby copy of production, with current code and data, and how to switch back without losing anything. As the plan took shape, the full development and network teams joined to take ownership of their steps.',
+      },
+      {
+        lead: 'Coordinate.',
+        text: 'No single team could run the plan alone. The network team owned some steps and my team owned others. We mapped every step to an owner and set clear lines of communication, so everyone knew the full plan and who to call.',
+      },
+      {
+        lead: 'What happened next.',
+        text: 'We scheduled a weekend failover test during low traffic. Before it ran, the company moved to fully managed hosting, and the provider took over recovery.',
+      },
+    ],
+    results: [
+      'A complete recovery plan, agreed across the IT department',
+      'Every step assigned to a clear owner',
+      'A failover test scheduled to confirm zero data loss',
+    ],
+    related: ['broadcasting-managed-hosting'],
+  },
+  {
     id: 'developer-resignation-after-launch',
     title: 'From Sudden Resignation to a Team That Owned the Site',
     label: 'Prior role · Web Development & Technical Leadership',
@@ -108,35 +212,66 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    id: 'newsroom-incident-build-vs-buy',
-    title: 'From Newsroom Frustration to a Tool Built for Our Traffic',
-    label: 'Prior role · Web Performance & Database Management',
+    id: 'team-disagreement-decision',
+    title: 'From a Split Team to a Decision That Held Up',
+    label: 'Prior role · Technical Leadership',
     organization:
       'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
     role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
     problem: [
-      'The newsroom asked for a tool to control the order of stories on its sites. The goal was to install it on all seven stations, starting with the main one because that site had to work. It passed development testing and a week and a half of staging review. About 90 minutes after it went live on the main station, stories began disappearing and reappearing on its site. For a news organization, that is a credibility problem.',
+      'We were designing an in-house system, and my team split on the approach. Our network architect was convinced his solution was the right one. The development team, including me, had serious doubts. The stakes were high: the wrong choice could have led to data corruption. A split like that can also stall a project, or leave people disengaged long after the decision is made.',
     ],
     whatWeDid: [
       {
-        lead: 'Contain.',
-        text: 'I treated it as an incident. Using our monitoring tools, we confirmed the pattern, isolated the new tool as the cause and switched it off. The site was stable within about an hour.',
-      },
-      {
-        lead: 'Diagnose.',
-        text: 'We rebuilt staging as a full copy of production and reproduced the failure. The tool created heavy database load that only appeared at production scale, which is why earlier testing missed it.',
+        lead: 'Listen.',
+        text: 'I kept the discussion open and respectful. We put the options side by side, laid out the pros and cons of each and made sure every view got a full hearing, including the one I disagreed with.',
       },
       {
         lead: 'Decide.',
-        text: "Fixing the tool would have cost more than replacing it, and it was outside the team's expertise. An off-the-shelf plugin was available for $100 a year, but the director of TV digital operations would not have been happy with the result. I pushed for a custom build even though it cost more, and made the case to leadership to bring in a specialist vendor to build a plugin designed for our scale.",
+        text: 'As team lead, the call was mine. I weighed the options with data integrity as the top priority and made the decision. We documented the decision and the meeting notes, so we could look back at the reasoning later.',
+      },
+      {
+        lead: 'Stay open.',
+        text: "As the work went on, some requirements changed. Our notes let us revisit the architect's ideas, and several fit the new needs. The final application combined both approaches.",
       },
     ],
     results: [
-      'Main station site stable the same day',
-      'Newsroom got the capability it asked for, built for our traffic',
-      'Custom plugin rolled out to all seven stations',
-      'Testing with production-scale data added before major releases',
-      'Team stayed focused on core work instead of rewriting unfamiliar code',
+      'A clear decision that protected data integrity',
+      'An application the whole team was happy with',
+      'Trust between the architect and the development team stayed strong after the disagreement',
+      'A documented record that made it easy to adapt when requirements changed',
+    ],
+    closing: [
+      'After the meeting, the network architect came to me and told me that, even though he and the development team disagreed, he felt heard.',
+    ],
+  },
+  {
+    id: 'finance-hr-data-migration',
+    title: 'From 20 Years of Records to Reports Finance and HR Relied On',
+    label: 'Prior role · Database Management & Systems Implementation',
+    organization:
+      'My former employer, a family-owned broadcasting company with about 2,000 employees across 75 business units, including TV and radio stations',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The company replaced its core finance and HR systems with Microsoft Dynamics GP, NetSuite, ADP Payroll and ADP Recruitment. Some were upgrades, others were new vendors. Bad data in these systems means wrong financial reports, payroll errors for 2,000 people, or missed FCC reporting that stations need to keep their broadcast licenses.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Own the data.',
+        text: 'I owned the data migration for every one of these systems and led report creation for each rollout. For accounting, that meant about 20 years of records: the last five years in full transaction detail and older years summarized. For HR, we moved current data only, as HR requested.',
+      },
+      {
+        lead: 'Learn the business.',
+        text: 'To get it right, I learned how each team actually works: accounts payable, accounts receivable and the general ledger in finance, how payroll staff use their system day to day, and what recruiting data the stations must capture for FCC EEO reporting.',
+      },
+    ],
+    results: [
+      'Highly accurate data in every new system, because I knew the old and new systems well enough to translate between them',
+      'Reports finance and HR could rely on from launch',
+      "Recruiting data that supported the stations' FCC EEO reporting",
+    ],
+    closing: [
+      'After the rollout, the HR director wrote to the IT director about my role. She described me as respectful throughout, said I eased tense discussions with a bit of humor, and said she was very happy with how the project ended.',
     ],
   },
   {
@@ -174,70 +309,38 @@ export const caseStudies: CaseStudy[] = [
       'Specialist skills brought in only when needed, instead of added headcount',
     ],
   },
+];
+
+// Sections on /case-studies, grouped by what a CTO is accountable for. Every case study id must
+// appear in exactly one group; the case studies array above follows the same order.
+export const caseStudyGroups: { id: string; title: string; intro: string; ids: string[] }[] = [
   {
-    id: 'team-disagreement-decision',
-    title: 'From a Split Team to a Decision That Held Up',
-    label: 'Prior role · Technical Leadership',
-    organization:
-      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
-    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
-    problem: [
-      'We were designing an in-house system, and my team split on the approach. Our network architect was convinced his solution was the right one. The development team, including me, had serious doubts. The stakes were high: the wrong choice could have led to data corruption. A split like that can also stall a project, or leave people disengaged long after the decision is made.',
-    ],
-    whatWeDid: [
-      {
-        lead: 'Listen.',
-        text: 'I kept the discussion open and respectful. We put the options side by side, laid out the pros and cons of each and made sure every view got a full hearing, including the one I disagreed with.',
-      },
-      {
-        lead: 'Decide.',
-        text: 'As team lead, the call was mine. I weighed the options with data integrity as the top priority and made the decision. We documented the decision and the meeting notes, so we could look back at the reasoning later.',
-      },
-      {
-        lead: 'Stay open.',
-        text: "As the work went on, some requirements changed. Our notes let us revisit the architect's ideas, and several fit the new needs. The final application combined both approaches.",
-      },
-    ],
-    results: [
-      'A clear decision that protected data integrity',
-      'An application the whole team was happy with',
-      'Trust between the architect and the development team stayed strong after the disagreement',
-      'A documented record that made it easy to adapt when requirements changed',
-    ],
-    closing: [
-      'After the meeting, the network architect came to me and told me that, even though he and the development team disagreed, he felt heard.',
-    ],
+    id: 'strategy',
+    title: 'Technology strategy and cost',
+    intro:
+      'Decisions about where the technology runs, what it costs and how changes reach the public.',
+    ids: ['broadcasting-managed-hosting', 'webops-release-process'],
   },
   {
-    id: 'disaster-recovery-plan',
-    title: 'From Single Point of Failure to a Plan Everyone Owned',
-    label: 'Prior role · Cloud Infrastructure & Technical Leadership',
-    organization:
-      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
-    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
-    problem: [
-      'The company planned to host its news websites in its own data center, on load-balanced web servers and a database server. For a newsroom, an outage during breaking news means lost audience and lost trust. Leadership needed to know what would happen if any part of that setup failed.',
-    ],
-    whatWeDid: [
-      {
-        lead: 'Plan.',
-        text: 'In the early stages, I represented the development team on a disaster recovery committee with the IT director and the network and security compliance manager. Together we defined how to switch to a standby copy of production, with current code and data, and how to switch back without losing anything. As the plan took shape, the full development and network teams joined to take ownership of their steps.',
-      },
-      {
-        lead: 'Coordinate.',
-        text: 'No single team could run the plan alone. The network team owned some steps and my team owned others. We mapped every step to an owner and set clear lines of communication, so everyone knew the full plan and who to call.',
-      },
-      {
-        lead: 'What happened next.',
-        text: 'We scheduled a weekend failover test during low traffic. Before it ran, the company moved to fully managed hosting, and the provider took over recovery.',
-      },
-    ],
-    results: [
-      'A complete recovery plan, agreed across the IT department',
-      'Every step assigned to a clear owner',
-      'A failover test scheduled to confirm zero data loss',
-    ],
-    related: ['broadcasting-managed-hosting'],
+    id: 'risk',
+    title: 'Risk, security and continuity',
+    intro:
+      'Closing gaps before they become outages, audit findings or lost data, and containing them fast when they do.',
+    ids: ['access-control-new-developer', 'newsroom-incident-build-vs-buy', 'disaster-recovery-plan'],
+  },
+  {
+    id: 'team',
+    title: 'Team leadership',
+    intro:
+      'Keeping the team productive, and trusting each other, when a key person leaves or opinions split.',
+    ids: ['developer-resignation-after-launch', 'team-disagreement-decision'],
+  },
+  {
+    id: 'systems',
+    title: 'Systems and vendors',
+    intro:
+      'Owning the business systems and outside partners the company runs on.',
+    ids: ['finance-hr-data-migration', 'vendor-management'],
   },
 ];
 
