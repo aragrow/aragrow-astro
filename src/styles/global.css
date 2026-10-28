@@ -235,6 +235,12 @@ section { position: relative; z-index: 1; }
   text-decoration: underline; text-underline-offset: 2px;
 }
 .service-proof:hover { color: var(--teal); }
+.service-card p a {
+  position: relative; z-index: 1;
+  color: var(--teal-text);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.service-card p a:hover { color: var(--teal); }
 .service-tag {
   display: inline-block; margin-top: 16px;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;

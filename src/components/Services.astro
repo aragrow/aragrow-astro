@@ -8,6 +8,8 @@ const services: {
   tag: string;
   proof?: string;
   proofHref?: string;
+  // Links one phrase inside the description, such as an award, to an outside page.
+  descriptionLink?: { text: string; href: string };
 }[] = [
   {
     icon: '🧭',
@@ -49,8 +51,8 @@ const services: {
     description:
       'The systems your business depends on most, ERP, HRIS, CMS, financial platforms, are usually the ones nobody wants to touch. I\'ve led nine major migrations across exactly those systems, plus the schema design and performance tuning that keeps them reliable once they\'re live.',
     tag: 'Oracle · MySQL · Architecture · Migration',
-    proof: 'Example: traced a live news site failure to database load that only appeared at production scale.',
-    proofHref: caseStudyHref('newsroom-incident-build-vs-buy'),
+    proof: 'Example: moved 20 years of finance records into four new systems, with reports ready at launch.',
+    proofHref: caseStudyHref('finance-hr-data-migration'),
   },
   {
     icon: '⚡',
@@ -58,8 +60,12 @@ const services: {
     description:
       'A slow site your team can\'t update without calling in a developer is costing you both customers and time. I optimize load times, put the right CDN and caching strategy in place, and streamline deployment so routine updates don\'t require a developer on standby. Best in WebOps Award winner (Pantheon, 2023).',
     tag: 'Performance · WebOps · CDN · Uptime',
+    descriptionLink: {
+      text: 'Best in WebOps Award winner (Pantheon, 2023)',
+      href: 'https://pantheon.io/press-releases/pantheon-announces-best-webops-top-20',
+    },
     proof: 'Example: kept 7 news sites fast through breaking news traffic spikes.',
-    proofHref: caseStudyHref('broadcasting-managed-hosting'),
+    proofHref: caseStudyHref('webops-release-process'),
   },
 ];
 ---
@@ -80,7 +86,11 @@ const services: {
           <div class="service-card reveal">
             <div class="service-icon">{s.icon}</div>
             <h3>{s.title}</h3>
-            <p>{s.description}</p>
+            {s.descriptionLink && s.description.includes(s.descriptionLink.text) ? (
+              <p>{s.description.split(s.descriptionLink.text)[0]}<a href={s.descriptionLink.href} rel="noopener">{s.descriptionLink.text}</a>{s.description.split(s.descriptionLink.text)[1]}</p>
+            ) : (
+              <p>{s.description}</p>
+            )}
             {s.proof && s.proofHref && (
               <a class="service-proof" href={s.proofHref}>{s.proof}</a>
             )}
