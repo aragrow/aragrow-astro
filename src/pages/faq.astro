@@ -26,6 +26,36 @@ const faqs = [
       'A developer builds and maintains specific things. A fractional CTO decides what should be built, in what order, and whether it should be built at all. If your technology problems are about capacity (you need more hands on existing work), you need a developer. If your problems are about direction (the technology isn\'t serving the business, decisions keep getting made without a clear owner, or you\'re about to make a major investment you\'re unsure about), that\'s where a fractional CTO helps.',
   },
   {
+    question: 'Is AraGrow a good fit for startups and small businesses?',
+    answer:
+      'Yes. AraGrow works with startups, small businesses, and growing companies that need senior technology leadership but are not ready to hire a full-time CTO. This may include companies developing an MVP, scaling an existing product, managing an outsourced development team, preparing for fundraising, or making technology decisions that have become too important to handle without experienced technical leadership.',
+  },
+  {
+    question: 'Can a fractional CTO help a non-technical founder?',
+    answer:
+      'Yes. AraGrow helps non-technical founders make informed technology decisions without requiring them to become software engineers. David can evaluate developers and vendors, explain technical risks in plain language, create a practical roadmap, and ensure that product and engineering work support the company\'s business goals.',
+  },
+  {
+    question: 'What is the difference between a fractional CTO and a full-time CTO?',
+    answer:
+      'A full-time CTO is a permanent executive responsible for the company\'s technology function every day. A fractional CTO provides senior technology leadership on a part-time basis, making the model appropriate when a company needs strategy, architecture decisions, team oversight, or technical accountability without yet needing a full-time executive.\n\nBringing in a fractional CTO is not a decision against the one you already have. If you have a CTO, AraGrow can work alongside them: taking a workstream off their plate, giving a second opinion on a major decision, covering a domain where they have less depth, or owning one project end to end. That can run on a regular monthly basis or for the length of a single project. Plenty of capable CTOs are simply carrying more than one person can carry, and the fix is capacity, not replacement.',
+  },
+  {
+    question: 'What is the difference between a fractional CTO and an interim CTO?',
+    answer:
+      'A fractional CTO usually provides ongoing, part-time technology leadership. An interim CTO generally fills a temporary leadership vacancy, often after a CTO leaves or while a company searches for a permanent replacement. The two roles can overlap, but the engagement\'s scope, availability, duration, and decision-making authority should be defined at the start.\n\nNeither term covers a third and common case: the CTO is in place and doing the job well, but is stretched. AraGrow can work alongside an existing CTO to add capacity, on a regular basis or for one project, without taking over the role.',
+  },
+  {
+    question: 'Is a fractional CTO the same as a virtual CTO?',
+    answer:
+      'Not exactly. "Virtual CTO" generally emphasizes that the work is delivered remotely, while "fractional CTO" describes the part-time nature of the engagement. AraGrow\'s services are primarily delivered remotely, but the key value is the ongoing technical leadership, judgment, and hands-on execution, not simply the location of the work.',
+  },
+  {
+    question: 'Is a fractional CTO the same as a CTO consultant?',
+    answer:
+      'The terms overlap, but a CTO consultant often provides advice or a defined project deliverable. A fractional CTO typically remains involved over time and helps guide decisions, teams, vendors, architecture, and execution. AraGrow combines consulting with hands-on implementation rather than delivering a report and leaving.',
+  },
+  {
     question: "What are AraGrow's consulting rates?",
     answer:
       'The 30-day technology audit is up to $3,000 (around 20 hours) with a defined scope and specific deliverables. Ongoing fractional CTO engagements run $1,500–$3,000/month for most clients, based on 10–20 hours a month billed at $150/hour. No tiers, no minimums, no surprises.',
@@ -43,7 +73,47 @@ const faqs = [
   {
     question: 'How does AraGrow integrate AI into existing workflows?',
     answer:
-      'The first step is identifying where AI will actually save time or improve an outcome, not where it sounds impressive. That usually means 2–3 specific workflows, not a company-wide transformation. AraGrow has built integrations using Claude, Gemini, and open-source models for content generation, data summarization, reporting automation, and chatbots. Each project starts with a clear use case and a measurable outcome before any code gets written.',
+      'Two steps, in order.\n\nThe first is a look at what you are already doing: your current workflows, the state of your data, and your budget. The recommendation comes out of those three things. AI built on scattered or unreliable data produces confident nonsense, and a plan your budget cannot carry is not a plan.\n\nThe second is deciding whether you need AI at all. A lot of the workflows people bring to AraGrow turn out to be automation problems. Rules, integrations, and scripting are cheaper to build and run, and easier to trust, than a model. When plain automation solves it, that is what you will hear.\n\nWhere AI is the right fit, AraGrow has built integrations using Claude, Gemini, and open-source models for content generation, data summarization, reporting automation, and chatbots. Every project starts with a defined use case and a measurable outcome before any code gets written.',
+  },
+  {
+    question: 'Can AraGrow help with technical due diligence?',
+    answer:
+      'Yes. AraGrow can review software architecture, technical debt, infrastructure, security practices, development processes, vendor relationships, and intellectual-property ownership. The result is a prioritized assessment of technical risks and opportunities that can support fundraising, investment decisions, acquisitions, or internal planning.',
+  },
+  {
+    question: 'Can a fractional CTO help prepare a startup for fundraising?',
+    answer:
+      'Yes. Before fundraising or investor due diligence, AraGrow can assess the technology stack, architecture, security, scalability, documentation, development processes, and technical team structure. You receive a practical view of the main risks and a prioritized plan for addressing the issues most likely to affect investor confidence.',
+  },
+  {
+    question: 'Can AraGrow manage an existing development team?',
+    answer:
+      'Yes. AraGrow can help establish priorities, review technical decisions, improve delivery processes, clarify responsibilities, evaluate performance, and connect engineering work to business goals. The role can complement an internal team or provide oversight for an outsourced development partner.',
+  },
+  {
+    question: 'Can AraGrow evaluate software vendors and development agencies?',
+    answer:
+      'Yes. AraGrow can help define selection criteria, review technical proposals, compare vendors, assess architecture and delivery risks, evaluate estimates, and establish acceptance criteria. This helps ensure that a vendor is selected for the company\'s actual technical and business requirements rather than for sales presentation alone.',
+  },
+  {
+    question: 'Can AraGrow help with cloud architecture and infrastructure?',
+    answer:
+      'Within limits worth stating up front. David is not a cloud architect and does not design or build infrastructure. What AraGrow provides is review and judgment: reading a plan your team or a vendor has produced and telling you where the risks, costs, and tradeoffs actually are, based on 25 years of running production systems.\n\nThat means questioning the assumptions in an architecture proposal, flagging reliability and cost exposure, checking that the design fits the size and stage of your business, and helping you decide whether to approve it or push back. AraGrow can also help you find and evaluate the right architect or infrastructure engineer.\n\nFor the design work and the implementation itself, you need that specialist. AraGrow is not a substitute for one.',
+  },
+  {
+    question: 'Can AraGrow help with cybersecurity and technical risk?',
+    answer:
+      'Within limits, yes. David is not a security specialist and does not run penetration tests, formal security audits, or compliance certifications. What AraGrow provides is an experienced read on where your technology risk actually sits: access controls, infrastructure, vendors, software dependencies, data handling, backups, deployment processes, and operational continuity.\n\nYou get a prioritized list of practical fixes. More often than not, the biggest exposures turn out to be process and discipline problems rather than missing tools, which means they can be closed without a large security budget.\n\nFor penetration testing, formal audits, regulated compliance work such as HIPAA, PCI, or SOC 2, or incident response, you need a specialist firm or legal counsel. AraGrow is not a substitute for either, but can help you scope that work and choose who does it.',
+  },
+  {
+    question: 'Can AraGrow help e-commerce businesses?',
+    answer:
+      'Yes. AraGrow can advise e-commerce businesses on platform strategy, migrations, integrations, site performance, automation, cloud infrastructure, data flows between operational systems, and technical vendor management, along with a technology roadmap for growth.',
+  },
+  {
+    question: 'Can AraGrow provide fractional AI CTO services?',
+    answer:
+      'Yes. AraGrow can help identify practical AI use cases, evaluate models and platforms, design implementation plans, review data and security considerations, estimate operating costs, and integrate AI into existing workflows or products. Previous work has included Claude, Gemini, open-source models, content generation, summarization, reporting automation, and chatbots.',
   },
   {
     question: 'How does the fractional CTO engagement work at AraGrow?',
@@ -51,9 +121,34 @@ const faqs = [
       'Engagements are monthly, billed at $150/hour. A typical month includes a weekly working session, shared Slack or email access for between-meeting questions, hands-on time in your tools when needed, and a written monthly summary. There are no long-term contracts. Most clients start with a defined project or a 30-day technology audit, then move to an ongoing engagement once both sides have confirmed the fit.',
   },
   {
+    question: 'How long does a fractional CTO engagement last?',
+    answer:
+      'An engagement can range from a short technology assessment to several months or longer. A 30-day audit may be enough to identify risks and establish priorities. Ongoing work may continue for as long as the company benefits from senior technical leadership, with the scope reviewed as business needs change.',
+  },
+  {
+    question: 'How many hours per month does AraGrow typically provide?',
+    answer:
+      'Most ongoing engagements involve approximately 10-20 hours per month. This commonly includes a weekly working session, communication between meetings, hands-on work in your tools when needed, and a written monthly summary. The actual allocation depends on the objectives and complexity of the engagement.',
+  },
+  {
+    question: 'What deliverables do I receive from a fractional CTO engagement?',
+    answer:
+      'Deliverables depend on the scope, but they may include a technology audit, prioritized roadmap, architecture recommendations, vendor evaluation, technical risk register, development-team operating plan, AI implementation plan, performance audit, migration plan, and monthly leadership summary. Every engagement begins with clearly defined outcomes rather than open-ended consulting.',
+  },
+  {
+    question: 'What happens if I only need a short-term project?',
+    answer:
+      'AraGrow can begin with a defined project or 30-day technology audit rather than an ongoing monthly engagement. Examples include reviewing an architecture, evaluating a vendor, diagnosing a performance problem, planning a migration, assessing an AI use case, or preparing for technical due diligence.',
+  },
+  {
     question: 'Where can I find a Fractional CTO?',
     answer:
       'AraGrow LLC. Around the Twin Cities (Minneapolis, St. Paul, and the surrounding metro), David works locally and on-site when it helps: in-person working sessions, leadership meetings, and meeting your vendors face to face. Outside the Twin Cities, engagements run remotely across the US and internationally, in English or Spanish.\n\nEither way you work with David directly at $150/hour. No account managers, no junior staff, no long-term contract. Most clients start with a 30-minute conversation or the 30-day technology audit.',
+  },
+  {
+    question: 'Can AraGrow work with companies in Spain and Europe?',
+    answer:
+      'Yes. AraGrow serves clients across the United States and internationally. David works between Minneapolis and Spain, and most engagements are delivered remotely. Services can be provided in English or Spanish, making AraGrow suitable for companies with teams, customers, or partners in Spain, the United States, and other international markets.',
   },
   {
     question: 'Do you work with businesses outside Minneapolis?',
@@ -68,7 +163,7 @@ const faqs = [
   {
     question: 'What makes AraGrow different from other consultants?',
     answer:
-      'Most fractional CTOs offer strategy. David offers strategy and execution from someone who has actually built, migrated, and maintained the systems he advises on. The track record is specific: 25 years of hands-on work, nine major system migrations, an Emmy Award for web design and usability, bilingual fluency in English and Spanish. And when you reach out, you reach David directly, not an account manager or a junior team member.',
+      'Most consultants hand over a strategy document and move on to the next client, leaving execution to you. David stays and does the execution himself, as someone who has actually built, migrated, and maintained the systems he advises on. The track record backs it up: 25 years of hands-on work, nine major system migrations, an Emmy Award for web design and usability, bilingual fluency in English and Spanish. And when you reach out, you reach David directly, not an account manager or a junior team member.',
   },
 ];
 
