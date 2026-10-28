@@ -9,9 +9,27 @@ interface Props {
 }
 
 const { review } = Astro.props;
+
+const site = Astro.site ?? new URL('https://aragrow.me');
+const pageUrl = new URL(`/${review.slug}/`, site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: review.name,
+  description: review.seoDescription,
+  url: pageUrl,
+  areaServed: 'US',
+  provider: { '@type': 'Organization', name: 'AraGrow LLC', url: site.href },
+  offers: {
+    '@type': 'Offer',
+    price: review.price.replace(/[^0-9.]/g, ''),
+    priceCurrency: 'USD',
+    url: pageUrl,
+  },
+};
 ---
 
-<Layout title={review.seoTitle} description={review.seoDescription}>
+<Layout title={review.seoTitle} description={review.seoDescription} structuredData={structuredData}>
   <Nav />
   <main class="rv-page">
 

@@ -3,12 +3,42 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CaseStudy from '../components/CaseStudy.astro';
-import { caseStudies } from '../data/case-studies';
+import { caseStudies, caseStudyHref } from '../data/case-studies';
+
+const site = Astro.site ?? new URL('https://aragrow.me');
+const author = { '@type': 'Person', name: 'David Arago', url: site.href };
+const publisher = { '@type': 'Organization', name: 'AraGrow LLC', url: site.href };
+
+// Schema.org has no case study type; Article is the usual choice. Built from the data file,
+// so new case studies are included automatically.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Case Studies',
+  url: new URL('/case-studies/', site).href,
+  publisher,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: caseStudies.map((study, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Article',
+        headline: study.title,
+        description: study.problem[0],
+        url: new URL(caseStudyHref(study.id), site).href,
+        author,
+        publisher,
+      },
+    })),
+  },
+};
 ---
 
 <Layout
   title="Case Studies | AraGrow LLC"
   description="Fractional CTO case studies with measurable results, including $125K a year saved by moving 7 broadcast websites to managed hosting."
+  structuredData={structuredData}
 >
   <Nav />
   <main class="cs-page">
