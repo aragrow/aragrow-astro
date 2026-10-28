@@ -3,19 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CaseStudy from '../components/CaseStudy.astro';
-import { caseStudies, caseStudyGroups, caseStudyHref } from '../data/case-studies';
-
-const groups = caseStudyGroups.map((g) => ({
-  ...g,
-  studies: g.ids.map((id) => {
-    const study = caseStudies.find((s) => s.id === id);
-    if (!study) throw new Error(`Case study group "${g.id}" lists unknown id "${id}"`);
-    return study;
-  }),
-}));
-const grouped = new Set(caseStudyGroups.flatMap((g) => g.ids));
-const ungrouped = caseStudies.filter((s) => !grouped.has(s.id)).map((s) => s.id);
-if (ungrouped.length) throw new Error(`Case studies missing from a group: ${ungrouped.join(', ')}`);
+import { caseStudies, caseStudyHref } from '../data/case-studies';
 
 const site = Astro.site ?? new URL('https://aragrow.me');
 const author = { '@type': 'Person', name: 'David Arago', url: site.href };
@@ -71,25 +59,7 @@ const structuredData = {
     </div>
 
     <div class="container cs-container">
-      <nav class="cs-toc" aria-label="Case study sections">
-        <ul>
-          {groups.map((g) => (
-            <li>
-              <a href={`#${g.id}`}>{g.title}</a> <span>({g.studies.length})</span>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {
-        groups.map((g) => (
-          <section class="cs-group" id={g.id} aria-labelledby={`${g.id}-title`}>
-            <h2 class="cs-group-title" id={`${g.id}-title`}>{g.title}</h2>
-            <p class="cs-group-intro">{g.intro}</p>
-            {g.studies.map((study) => <CaseStudy study={study} level={3} />)}
-          </section>
-        ))
-      }
+      {caseStudies.map((study) => <CaseStudy study={study} />)}
 
       <!-- CTA -->
       <section class="cs-cta-block" aria-labelledby="cs-cta-title">
@@ -125,42 +95,6 @@ const structuredData = {
 
   /* ── Container ── */
   .cs-container { padding-top: 56px; padding-bottom: 80px; }
-
-  /* ── Section index ── */
-  .cs-toc { margin-bottom: 40px; }
-  .cs-toc ul {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-  .cs-toc a {
-    display: inline-block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.88rem; font-weight: 600;
-    color: var(--teal-text);
-    padding: 8px 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    text-decoration: none;
-  }
-  .cs-toc a:hover { border-color: var(--teal-text); background: var(--teal-dim); }
-  .cs-toc span { font-size: 0.8rem; color: var(--muted); }
-
-  /* ── Groups ── */
-  .cs-group { margin-bottom: 48px; scroll-margin-top: 96px; }
-  .cs-group-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    font-weight: 700; line-height: 1.2;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .cs-group-intro {
-    font-size: 0.97rem; line-height: 1.7;
-    color: var(--muted);
-    max-width: 640px;
-    margin-bottom: 24px;
-  }
 
   /* ── CTA block ── */
   .cs-cta-block {

@@ -4,13 +4,9 @@ import { reviews, reviewHref } from '../data/reviews';
 
 interface Props {
   study: CaseStudy;
-  // Heading level for the title; section headings use the next level down.
-  level?: 2 | 3;
 }
 
-const { study, level = 2 } = Astro.props;
-const Title = `h${level}` as 'h2' | 'h3';
-const Heading = `h${level + 1}` as 'h3' | 'h4';
+const { study } = Astro.props;
 const headingId = `${study.id}-title`;
 const review = reviews.find((r) => r.proof.caseStudyId === study.id);
 const related = (study.related ?? [])
@@ -20,7 +16,7 @@ const related = (study.related ?? [])
 
 <article class="cs-entry" id={study.id} aria-labelledby={headingId}>
   <div class="section-label">{study.label}</div>
-  <Title class="cs-title" id={headingId}>{study.title}</Title>
+  <h2 class="cs-title" id={headingId}>{study.title}</h2>
 
   <dl class="cs-meta">
     <div>
@@ -34,12 +30,12 @@ const related = (study.related ?? [])
   </dl>
 
   <div class="cs-block">
-    <Heading class="cs-heading">The problem</Heading>
+    <h3 class="cs-heading">The problem</h3>
     {study.problem.map((p) => <p>{p}</p>)}
   </div>
 
   <div class="cs-block">
-    <Heading class="cs-heading">What we did</Heading>
+    <h3 class="cs-heading">What we did</h3>
     {
       study.whatWeDid.map((p) =>
         typeof p === 'string' ? (
@@ -54,7 +50,7 @@ const related = (study.related ?? [])
   </div>
 
   <div class="cs-block">
-    <Heading class="cs-heading">The results</Heading>
+    <h3 class="cs-heading">The results</h3>
     <ul class="cs-results">
       {study.results.map((r) => <li>{r}</li>)}
     </ul>
@@ -63,7 +59,7 @@ const related = (study.related ?? [])
   {
     study.sources && (
       <div class="cs-block">
-        <Heading class="cs-heading">Further reading</Heading>
+        <h3 class="cs-heading">Further reading</h3>
         <ul class="cs-sources">
           {study.sources.map((s) => (
             <li>
