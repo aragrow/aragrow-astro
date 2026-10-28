@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import { caseStudies } from '../data/case-studies';
+---
+
+<Layout
+  title="Case Studies | AraGrow LLC"
+  description="Fractional CTO case studies with measurable results, including $125K a year saved by moving 7 broadcast websites to managed hosting."
+>
+  <Nav />
+  <main class="cs-page">
+
+    <!-- Header -->
+    <div class="cs-header">
+      <div class="container">
+        <div class="section-label">Proof</div>
+        <h1 class="cs-page-title">Case Studies</h1>
+        <p class="cs-intro">
+          Real problems, real numbers. Each case study is labeled as a client engagement or a prior role.
+        </p>
+      </div>
+    </div>
+
+    <div class="container cs-container">
+      {caseStudies.map((study) => <CaseStudy study={study} />)}
+
+      <!-- CTA -->
+      <section class="cs-cta-block" aria-labelledby="cs-cta-title">
+        <h2 class="cs-cta-title" id="cs-cta-title">Want to know if this applies to you?</h2>
+        <a href="/contact" class="btn btn-primary">Book a 30-minute conversation</a>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Header ── */
+  .cs-header {
+    background: linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+    color: #fdf6f4;
+    padding: 80px 0 60px;
+  }
+  .cs-header .section-label { color: #E8B931; }
+  .cs-page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    color: #fdf6f4; margin: 12px 0 20px;
+  }
+  .cs-intro {
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(253,246,244,0.8);
+    max-width: 600px;
+  }
+
+  /* ── Container ── */
+  .cs-container { padding-top: 56px; padding-bottom: 80px; }
+
+  /* ── CTA block ── */
+  .cs-cta-block {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .cs-cta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 700; line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .cs-cta-block { padding: 36px 20px; }
+  }
+</style>
