@@ -92,6 +92,17 @@ import Footer from '../components/Footer.astro';
       </section>
 
       <!-- Pricing + CTA -->
+      <!-- Case study proof -->
+      <section class="ta-section ta-proof" aria-labelledby="ta-proof-title">
+        <h2 class="ta-section-title" id="ta-proof-title">What an audit can uncover</h2>
+        <p>
+          At a broadcasting company with 7 websites, a close look at hosting showed that
+          self-hosting cost about $250,000 a year once staff, security and caching were included.
+          Moving to managed hosting cut that in half and ended weekend on-call calls.
+        </p>
+        <a href="/case-studies#broadcasting-managed-hosting" class="ta-cta-secondary">Read the full case study</a>
+      </section>
+
       <section class="ta-cta-block">
         <p class="ta-price">
           The audit is <strong>$3,000</strong> (around 20 hours). Most clients continue into an
@@ -212,6 +223,14 @@ import Footer from '../components/Footer.astro';
     position: absolute; left: 0;
     color: var(--teal-text); font-weight: 700;
     font-size: 0.85rem; top: 2px;
+  }
+
+  /* ── Case study proof ── */
+  .ta-proof { border-left: 3px solid var(--teal-text); }
+  .ta-proof .ta-section-title { margin-bottom: 20px; }
+  .ta-proof p {
+    font-size: 0.97rem; line-height: 1.75;
+    color: var(--muted); margin-bottom: 16px;
   }
 
   /* ── CTA block ── */
