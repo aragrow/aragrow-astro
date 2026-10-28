@@ -1,19 +1,33 @@
 ---
 import { caseStudyHref } from '../data/case-studies';
 
-// Add up to two more cards here. Each card links to its case study on /case-studies.
-const results = [
+// Each card links to its case study on /case-studies, where the full label (prior role or
+// client engagement) is shown. Give a card a `label` to also show a pill here.
+const results: { label?: string; headline: string; text: string; href: string }[] = [
   {
-    label: 'Prior role',
     headline: '$125K saved per year. Weekend on-call calls dropped to zero.',
     text: 'Moved 7 high-traffic broadcast websites (5M page views a month) from self-hosting to managed hosting.',
     href: caseStudyHref('broadcasting-managed-hosting'),
   },
   {
-    label: 'Prior role',
+    headline: 'About 100 hours saved every month across the company.',
+    text: 'Replaced untracked access across 75 business units with a system that has a full audit trail, built by an engineer I mentored into development.',
+    href: caseStudyHref('access-control-new-developer'),
+  },
+  {
+    headline: 'Lead developer quit the day after launch. No rollback, no audience impact.',
+    text: 'Brought in a part-time senior WordPress developer within hours and structured a four-month handoff, so the team owned the new site within the first month.',
+    href: caseStudyHref('developer-resignation-after-launch'),
+  },
+  {
     headline: 'Live-site failure on the main news site contained in about an hour.',
     text: 'Traced disappearing stories to database load from a new newsroom tool, then brought in a specialist vendor to build a replacement for production traffic and rolled it out to all 7 stations.',
     href: caseStudyHref('newsroom-incident-build-vs-buy'),
+  },
+  {
+    headline: 'A disaster recovery plan with an owner for every step.',
+    text: 'Brought the network and development teams together on a recovery plan for 7 news websites, from switching to a standby copy to switching back without losing data.',
+    href: caseStudyHref('disaster-recovery-plan'),
   },
 ];
 ---
@@ -23,11 +37,11 @@ const results = [
     <div class="reveal">
       <h2 class="section-title">Results</h2>
     </div>
-    <div class="results-grid">
+    <div class:list={['results-grid', { 'results-grid-two': results.length % 2 === 0 }]}>
       {
         results.map((r, i) => (
           <article class="result-card reveal">
-            <span class="result-label">{r.label}</span>
+            {r.label && <span class="result-label">{r.label}</span>}
             <h3 id={`result-${i}`}>{r.headline}</h3>
             <p>{r.text}</p>
             <a class="result-link" href={r.href} aria-describedby={`result-${i}`}>Read the case study</a>
@@ -45,6 +59,10 @@ const results = [
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 24px; margin-top: 32px;
+  }
+  /* Even card counts read better as rows of two than as three plus a remainder */
+  @media (min-width: 700px) {
+    .results-grid-two { grid-template-columns: repeat(2, 1fr); }
   }
   .result-card {
     display: flex; flex-direction: column;
