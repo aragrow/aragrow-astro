@@ -1,5 +1,5 @@
 // Case studies shown on /case-studies. Add a new object to this array to add a case study.
-// `id` becomes the anchor on the page (/case-studies#<id>), so keep it stable once published.
+// `id` becomes the anchor on the page (/case-studies/#<id>), so keep it stable once published.
 
 export interface CaseStudy {
   id: string;
@@ -11,6 +11,8 @@ export interface CaseStudy {
   // A plain string renders as a paragraph; `lead` renders as a bold lead-in before `text`.
   whatWeDid: (string | { lead: string; text: string })[];
   results: string[];
+  // Paragraphs shown after the results, for an outcome that is not a direct quote.
+  closing?: string[];
   quote?: { text: string; attribution: string };
   // Ids of other case studies to link to at the end of this one.
   related?: string[];
@@ -138,6 +140,75 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    id: 'vendor-management',
+    title: 'From Scattered Vendors to One Accountable Lead',
+    label: 'Prior role · Vendor Management & Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The company depended on outside partners: specialists for SEO, design and short-term development, a hosting provider, the Associated Press news feed, and enterprise systems like ADP, NetSuite and Microsoft Dynamics GP. Without one accountable person, problems bounce between vendors, costs creep up and issues sit unresolved.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Specialists on demand.',
+        text: 'I brought in SEO experts, graphic designers and extra developers for a few days or a single project, and managed their scope, timelines and hand-offs.',
+      },
+      {
+        lead: 'Hosting.',
+        text: 'I owned the hosting provider relationship from the WordPress implementation through the rest of my time there.',
+      },
+      {
+        lead: 'Associated Press.',
+        text: 'I was the technical contact with the AP. I kept our sites current with their API requirements and worked directly with them to resolve any issues with the feed.',
+      },
+      {
+        lead: 'Enterprise systems.',
+        text: 'I worked closely with ADP support to get our tickets resolved. For NetSuite, I owned reporting and data loads, and led the conversation with the vendor whenever data or reports had problems. I was also a point of contact with the Microsoft Dynamics GP vendor.',
+      },
+    ],
+    results: [
+      'Every vendor knew exactly who to contact when they needed information',
+      'Faster issue resolution, because problems no longer bounced between people',
+      'Cost savings from fewer delays and less time lost chasing answers',
+      'Specialist skills brought in only when needed, instead of added headcount',
+    ],
+  },
+  {
+    id: 'team-disagreement-decision',
+    title: 'From a Split Team to a Decision That Held Up',
+    label: 'Prior role · Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'We were designing an in-house system, and my team split on the approach. Our network architect was convinced his solution was the right one. The development team, including me, had serious doubts. The stakes were high: the wrong choice could have led to data corruption. A split like that can also stall a project, or leave people disengaged long after the decision is made.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Listen.',
+        text: 'I kept the discussion open and respectful. We put the options side by side, laid out the pros and cons of each and made sure every view got a full hearing, including the one I disagreed with.',
+      },
+      {
+        lead: 'Decide.',
+        text: 'As team lead, the call was mine. I weighed the options with data integrity as the top priority and made the decision. We documented the decision and the meeting notes, so we could look back at the reasoning later.',
+      },
+      {
+        lead: 'Stay open.',
+        text: "As the work went on, some requirements changed. Our notes let us revisit the architect's ideas, and several fit the new needs. The final application combined both approaches.",
+      },
+    ],
+    results: [
+      'A clear decision that protected data integrity',
+      'An application the whole team was happy with',
+      'Trust between the architect and the development team stayed strong after the disagreement',
+      'A documented record that made it easy to adapt when requirements changed',
+    ],
+    closing: [
+      'After the meeting, the network architect came to me and told me that, even though he and the development team disagreed, he felt heard.',
+    ],
+  },
+  {
     id: 'disaster-recovery-plan',
     title: 'From Single Point of Failure to a Plan Everyone Owned',
     label: 'Prior role · Cloud Infrastructure & Technical Leadership',
@@ -170,4 +241,4 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const caseStudyHref = (id: string) => `/case-studies#${id}`;
+export const caseStudyHref = (id: string) => `/case-studies/#${id}`;

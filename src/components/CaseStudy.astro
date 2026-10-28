@@ -57,6 +57,14 @@ const related = (study.related ?? [])
   </div>
 
   {
+    study.closing && (
+      <div class="cs-block">
+        {study.closing.map((p) => <p>{p}</p>)}
+      </div>
+    )
+  }
+
+  {
     study.quote && (
       <figure class="cs-quote">
         <blockquote>
