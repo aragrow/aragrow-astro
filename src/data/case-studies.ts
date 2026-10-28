@@ -12,6 +12,8 @@ export interface CaseStudy {
   whatWeDid: (string | { lead: string; text: string })[];
   results: string[];
   quote?: { text: string; attribution: string };
+  // Ids of other case studies to link to at the end of this one.
+  related?: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -37,6 +39,70 @@ export const caseStudies: CaseStudy[] = [
     quote: {
       text: 'This has made a huge difference in our lives.',
       attribution: 'Member of the development team',
+    },
+  },
+  {
+    id: 'access-control-new-developer',
+    title: 'From Untracked Access to Changes in Seconds',
+    label: 'Prior role · Database Management & Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with about 2,000 employees across 75 business units, including TV and radio stations',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'In our regular meetings, the IT director raised a growing concern. The company had no reliable way to track which assets and permissions each person held as employees joined and left. Access often spanned several business units, so former employees could keep permissions they should have lost. That was both a security risk and an audit exposure.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Plan.',
+        text: 'I turned the concern into core requirements, then scoped a simple prototype to prove the approach before investing further.',
+      },
+      {
+        lead: 'Build and mentor.',
+        text: 'Instead of building it myself, I guided an infrastructure engineer who wanted to move into development. I coached him to design the database around how the business would actually use the data, so it could adapt as the company grew. We built in a full audit trail and role-based access, so each user could do only what their job required.',
+      },
+    ],
+    results: [
+      'The prototype went into everyday use across the business units',
+      'About 100 hours saved every month across the company',
+      'Much lower risk of former employees keeping access after leaving',
+      'A flexible design that made it easier to bring acquired companies into the system',
+      'The engineer continued growing as a developer',
+    ],
+    quote: {
+      text: 'This has simplified the process of hiring and terminating employees to the point that it takes seconds vs. hours to communicate, track, and execute change.',
+      attribution: 'Employee at one of the business units',
+    },
+  },
+  {
+    id: 'developer-resignation-after-launch',
+    title: 'From Sudden Resignation to a Team That Owned the Site',
+    label: 'Prior role · Web Development & Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The company chose WordPress as its new CMS, and the whole team was new to it. We hired an experienced WordPress developer to build the first site, starting with our lowest-traffic station, and to teach the rest of the team along the way. Several months later, the site went live on a Monday. On Tuesday morning, his resignation letter, effective immediately, was on my desk. We had a brand-new live site and no one on staff who knew it well.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Act.',
+        text: 'I went straight to the IT director and got approval to contact a local Minneapolis development agency. Within hours, they sent the resume of a senior WordPress developer available part time.',
+      },
+      {
+        lead: 'Structure the engagement.',
+        text: 'I negotiated a phased arrangement. For the first month, he worked on site three days a week alongside our team, teaching WordPress and our specific build. As the team took on more responsibility, he moved to an advisory role for the rest of a four-month engagement.',
+      },
+    ],
+    results: [
+      'No rollback to the old website',
+      'No impact on the station or its audience',
+      'The team taking ownership of the site within the first month',
+      'A planned four-month consulting cost instead of a rushed hire',
+      'Time to find and hire the right permanent replacement',
+    ],
+    quote: {
+      text: 'Thank you for finding a workable solution in a difficult situation.',
+      attribution: 'Station general manager',
     },
   },
   {
@@ -70,6 +136,37 @@ export const caseStudies: CaseStudy[] = [
       'Testing with production-scale data added before major releases',
       'Team stayed focused on core work instead of rewriting unfamiliar code',
     ],
+  },
+  {
+    id: 'disaster-recovery-plan',
+    title: 'From Single Point of Failure to a Plan Everyone Owned',
+    label: 'Prior role · Cloud Infrastructure & Technical Leadership',
+    organization:
+      'My former employer, a family-owned broadcasting company with 7 websites and 5 million page views a month',
+    role: 'Development Team Lead. With no CTO in place, I shared technical decision-making with the network manager.',
+    problem: [
+      'The company planned to host its news websites in its own data center, on load-balanced web servers and a database server. For a newsroom, an outage during breaking news means lost audience and lost trust. Leadership needed to know what would happen if any part of that setup failed.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Plan.',
+        text: 'In the early stages, I represented the development team on a disaster recovery committee with the IT director and the network and security compliance manager. Together we defined how to switch to a standby copy of production, with current code and data, and how to switch back without losing anything. As the plan took shape, the full development and network teams joined to take ownership of their steps.',
+      },
+      {
+        lead: 'Coordinate.',
+        text: 'No single team could run the plan alone. The network team owned some steps and my team owned others. We mapped every step to an owner and set clear lines of communication, so everyone knew the full plan and who to call.',
+      },
+      {
+        lead: 'What happened next.',
+        text: 'We scheduled a weekend failover test during low traffic. Before it ran, the company moved to fully managed hosting, and the provider took over recovery.',
+      },
+    ],
+    results: [
+      'A complete recovery plan, agreed across the IT department',
+      'Every step assigned to a clear owner',
+      'A failover test scheduled to confirm zero data loss',
+    ],
+    related: ['broadcasting-managed-hosting'],
   },
 ];
 

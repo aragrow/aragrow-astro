@@ -1,5 +1,5 @@
 ---
-import type { CaseStudy } from '../data/case-studies';
+import { type CaseStudy, caseStudies, caseStudyHref } from '../data/case-studies';
 import { reviews, reviewHref } from '../data/reviews';
 
 interface Props {
@@ -9,6 +9,9 @@ interface Props {
 const { study } = Astro.props;
 const headingId = `${study.id}-title`;
 const review = reviews.find((r) => r.proof.caseStudyId === study.id);
+const related = (study.related ?? [])
+  .map((id) => caseStudies.find((s) => s.id === id))
+  .filter((s) => s !== undefined);
 ---
 
 <article class="cs-entry" id={study.id} aria-labelledby={headingId}>
@@ -61,6 +64,20 @@ const review = reviews.find((r) => r.proof.caseStudyId === study.id);
         </blockquote>
         <figcaption>{study.quote.attribution}</figcaption>
       </figure>
+    )
+  }
+
+  {
+    related.length > 0 && (
+      <p class="cs-offer">
+        Related case study:{' '}
+        {related.map((s, i) => (
+          <>
+            {i > 0 && ', '}
+            <a href={caseStudyHref(s.id)}>{s.title}</a>
+          </>
+        ))}
+      </p>
     )
   }
 
