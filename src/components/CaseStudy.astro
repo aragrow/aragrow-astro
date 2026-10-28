@@ -1,5 +1,6 @@
 ---
 import type { CaseStudy } from '../data/case-studies';
+import { reviews, reviewHref } from '../data/reviews';
 
 interface Props {
   study: CaseStudy;
@@ -7,6 +8,7 @@ interface Props {
 
 const { study } = Astro.props;
 const headingId = `${study.id}-title`;
+const review = reviews.find((r) => r.proof.caseStudyId === study.id);
 ---
 
 <article class="cs-entry" id={study.id} aria-labelledby={headingId}>
@@ -59,6 +61,14 @@ const headingId = `${study.id}-title`;
         </blockquote>
         <figcaption>{study.quote.attribution}</figcaption>
       </figure>
+    )
+  }
+
+  {
+    review && (
+      <p class="cs-offer">
+        Facing something similar? <a href={reviewHref(review.slug)}>See the {review.name}</a> ({review.price}).
+      </p>
     )
   }
 </article>
@@ -143,6 +153,19 @@ const headingId = `${study.id}-title`;
     margin-top: 6px;
     font-size: 0.85rem; color: var(--muted);
   }
+
+  /* ── Related review ── */
+  .cs-offer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.92rem; color: var(--muted);
+  }
+  .cs-offer a {
+    font-weight: 600; color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .cs-offer a:hover { color: var(--teal); }
 
   @media (max-width: 640px) {
     .cs-entry { padding: 24px 20px; }

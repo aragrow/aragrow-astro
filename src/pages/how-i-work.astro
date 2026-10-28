@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { reviews, reviewHref } from '../data/reviews';
 ---
 
 <Layout
@@ -176,6 +177,32 @@ import Footer from '../components/Footer.astro';
         <p class="hw-rate">
           No tiers, no minimums, no surprises. Billed at $150/hour — most clients land between $1,500 and $3,000/month.
         </p>
+      </section>
+
+      <!-- Fixed-price reviews -->
+      <section class="hw-section">
+        <h2 class="hw-section-title">Fixed-Price Reviews</h2>
+        <p class="hw-section-note">
+          For one specific question, a review is a smaller first step than the 30-day audit.
+        </p>
+        <div class="hw-tiers hw-tiers-two">
+          {
+            reviews.map((r) => (
+              <div class="hw-tier">
+                <h3 class="hw-tier-name">{r.name}</h3>
+                <p class="hw-tier-for">{r.summary}</p>
+                <ul class="hw-tier-includes">
+                  {r.deliverables.map((d) => <li>{d}</li>)}
+                </ul>
+                <p class="hw-tier-price">
+                  {r.price} <span>· {r.scope}</span>
+                  <br />
+                  <a href={reviewHref(r.slug)}>See the {r.name}</a>
+                </p>
+              </div>
+            ))
+          }
+        </div>
       </section>
 
       <!-- Working Principles -->
@@ -430,6 +457,9 @@ import Footer from '../components/Footer.astro';
     text-underline-offset: 2px;
   }
   .hw-tier-price a:hover { color: var(--teal); }
+
+  .hw-tiers-two { grid-template-columns: repeat(2, 1fr); }
+  h3.hw-tier-name { line-height: 1.4; }
 
   .hw-rate {
     font-size: 0.9rem; color: var(--muted);

@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import { type Review, reviewProofHref } from '../data/reviews';
+
+interface Props {
+  review: Review;
+}
+
+const { review } = Astro.props;
+---
+
+<Layout title={review.seoTitle} description={review.seoDescription}>
+  <Nav />
+  <main class="rv-page">
+
+    <!-- Header -->
+    <div class="rv-header">
+      <div class="container">
+        <div class="section-label">Fixed-price review</div>
+        <h1 class="rv-title">{review.name}</h1>
+        <p class="rv-intro">{review.intro}</p>
+      </div>
+    </div>
+
+    <div class="container rv-container">
+
+      <section class="rv-section">
+        <h2 class="rv-section-title">Who it's for</h2>
+        <ul class="rv-list">
+          {review.forWhom.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="rv-section">
+        <h2 class="rv-section-title">What I do</h2>
+        <ol class="rv-steps">
+          {review.whatIDo.map((item) => <li>{item}</li>)}
+        </ol>
+        {review.scopeNote && <p class="rv-note">{review.scopeNote}</p>}
+      </section>
+
+      <section class="rv-section">
+        <h2 class="rv-section-title">What you get</h2>
+        <ul class="rv-list rv-list-check">
+          {review.deliverables.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <!-- Case study proof -->
+      <section class="rv-section rv-proof" aria-labelledby="rv-proof-title">
+        <h2 class="rv-section-title" id="rv-proof-title">Where this comes from</h2>
+        <p>{review.proof.text}</p>
+        <a href={reviewProofHref(review)} class="rv-link">{review.proof.linkText}</a>
+      </section>
+
+      <!-- Pricing + CTA -->
+      <section class="rv-cta-block">
+        <p class="rv-price">
+          The {review.name} is <strong>{review.price}</strong> ({review.scope}). If it shows you
+          need more than a review, the 30-day audit or an ongoing engagement is the next step.
+        </p>
+        <div class="rv-cta-actions">
+          <a href="/contact" class="btn btn-primary">Book a 30-minute conversation</a>
+          <a href="/30-day-audit" class="rv-link">See the 30-day technology audit</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Header ── */
+  .rv-header {
+    background: linear-gradient(160deg, #5a1010 0%, #4a0c0c 55%, #3b0a0a 100%);
+    color: #fdf6f4;
+    padding: 80px 0 60px;
+  }
+  .rv-header .section-label { color: #E8B931; }
+  .rv-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    color: #fdf6f4; margin: 12px 0 20px;
+  }
+  .rv-intro {
+    font-size: 1rem; line-height: 1.75;
+    color: rgba(253,246,244,0.8);
+    max-width: 640px;
+  }
+
+  /* ── Container ── */
+  .rv-container { padding-top: 48px; padding-bottom: 80px; }
+
+  /* ── Sections ── */
+  .rv-section {
+    margin-bottom: 24px;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .rv-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--teal-text);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Lists ── */
+  .rv-list, .rv-steps {
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .rv-list { list-style: none; }
+  .rv-list li {
+    font-size: 0.97rem; line-height: 1.65;
+    color: var(--muted);
+    padding-left: 22px; position: relative;
+  }
+  .rv-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--teal-text); font-size: 0.85rem;
+    top: 2px;
+  }
+  .rv-list-check li { color: var(--text); }
+  .rv-list-check li::before { content: '✓'; font-weight: 700; }
+
+  .rv-steps { padding-left: 22px; }
+  .rv-steps li {
+    font-size: 0.97rem; line-height: 1.65;
+    color: var(--muted);
+    padding-left: 4px;
+  }
+  .rv-steps li::marker {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; color: var(--teal-text);
+  }
+
+  .rv-note {
+    margin-top: 24px;
+    font-size: 0.92rem; line-height: 1.7;
+    color: var(--text);
+    padding: 12px 16px;
+    background: var(--teal-dim);
+    border-left: 3px solid var(--teal-text);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* ── Case study proof ── */
+  .rv-proof { border-left: 3px solid var(--teal-text); }
+  .rv-proof p {
+    font-size: 0.97rem; line-height: 1.75;
+    color: var(--muted); margin-bottom: 16px;
+  }
+
+  .rv-link {
+    font-size: 0.9rem; color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .rv-link:hover { color: var(--teal); }
+
+  /* ── CTA block ── */
+  .rv-cta-block {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .rv-price {
+    font-size: 0.97rem; line-height: 1.75;
+    color: var(--muted); max-width: 520px;
+    margin: 0 auto 28px;
+  }
+  .rv-price strong { color: var(--text); font-weight: 700; }
+  .rv-cta-actions {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .rv-section { padding: 24px 20px; }
+    .rv-cta-block { padding: 36px 20px; }
+  }
+</style>
