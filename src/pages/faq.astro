@@ -9,6 +9,11 @@ import { reviews, reviewHref } from '../data/reviews';
 // Each section can end with one call to action that fits what the reader just learned.
 const faqGroups = [
   {
+    id: 'ai',
+    title: 'AI for growing businesses',
+    cta: { text: 'Not sure where to start with AI?', linkText: 'Book a 30-minute conversation', href: '/contact' },
+  },
+  {
     id: 'role',
     title: 'Understanding the fractional CTO role',
     cta: { text: 'Not sure which model fits?', linkText: 'Book a 30-minute conversation', href: '/contact' },
@@ -164,16 +169,43 @@ const faqItems = [
       'Yes. Before fundraising or investor due diligence, AraGrow can assess the technology stack, architecture, security, scalability, documentation, development processes, and technical team structure. You receive a practical view of the main risks and a prioritized plan for addressing the issues most likely to affect investor confidence.',
   },
   {
-    group: 'help',
+    group: 'ai',
+    service: 'ai-readiness-review',
+    question: 'When does it make sense to implement AI in my business?',
+    answer:
+      'That can only be answered accurately by looking at how your business actually runs: which processes take the most time, what data they depend on and what a mistake would cost. Off-the-shelf AI tools can work well, but usually in very specific cases, where the task is exactly what the tool was built for and the process already runs the same way every time. Outside those cases, a tool bought before the process is understood tends to become one more subscription nobody uses.\n\nThe AI Readiness Review looks at your workflows, data and budget, and tells you where AI makes sense, where plain automation is enough and where it is not worth doing yet.',
+  },
+  {
+    group: 'ai',
+    service: 'ai-readiness-review',
     question: 'How do I know where AI actually fits in my business?',
     answer:
       'Two steps, in order.\n\nThe first is a look at what you are already doing: your current workflows, the state of your data, and your budget. The recommendation comes out of those three things. AI built on scattered or unreliable data produces confident nonsense, and a plan your budget cannot carry is not a plan.\n\nThe second is deciding whether you need AI at all. A lot of the workflows people bring to AraGrow turn out to be automation problems. Rules, integrations, and scripting are cheaper to build and run, and easier to trust, than a model. When plain automation solves it, that is what you will hear.\n\nWhere AI is the right fit, every project starts with a defined use case and a measurable outcome before any code gets written. AraGrow has built with Claude, Gemini and open-source models.',
   },
   {
-    group: 'help',
+    group: 'ai',
     question: 'Can AraGrow act as a fractional AI CTO?',
     answer:
       'Yes. As a fractional AI CTO, AraGrow owns the decisions around AI: which use cases are worth pursuing, which models and platforms to use, what the data and security risks are, what it will cost to run, and how the work is planned and measured. Your team, a vendor or AraGrow can do the build, but the decisions stay with someone accountable for the outcome.',
+  },
+  {
+    group: 'ai',
+    service: 'ai-front-desk-review',
+    question: 'Can an AI assistant handle calls and website inquiries for a service business?',
+    answer:
+      'Yes, for the routine part. An assistant can answer common questions, keep website visitors engaged, give an instant estimate based on rules you set and handle simple requests like rescheduling. The value comes from what it does next: it passes serious prospects and anything important to you, so your time goes to the conversations that turn into work. It should connect to the CRM and job tools you already use, such as GoHighLevel or Jobber, so nothing gets entered twice.',
+  },
+  {
+    group: 'ai',
+    question: 'Which requests should an AI assistant handle, and which should still reach me?',
+    answer:
+      'Start by sorting your calls and messages by what they are worth. Routine questions, scheduling changes and early price checks are good candidates for the assistant. Anything that needs judgment, involves an unhappy client or is close to a sale should reach you. You set the rules for what gets handed off, and you can tighten or loosen them as you see how it performs.',
+  },
+  {
+    group: 'ai',
+    question: 'How do I know whether an AI assistant is paying off?',
+    answer:
+      'Measure it against the problem it was meant to solve, starting from numbers you take before it goes live. For a busy service business, that usually means fewer missed calls from new prospects, more website visitors turning into leads and less of the owner\'s time spent on routine requests and quotes that go nowhere. If those numbers don\'t move, the assistant isn\'t earning its cost, however impressive it looks.',
   },
   {
     group: 'risks',
