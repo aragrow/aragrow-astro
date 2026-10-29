@@ -5,7 +5,10 @@
   <div class="nav-inner">
     <a href="/" class="nav-logo">
       <img src="/logo.svg" alt="AraGrow logo" class="nav-logo-img" width="36" height="36" />
-      AraGrow,<span>LLC</span>
+      <div class="nav-logo-text">
+        <div>AraGrow,<span>LLC</span></div>
+        <div class="nav-logo-tag">Fractional CTO</div>
+      </div>
     </a>
 
     <!-- Desktop links -->
@@ -102,6 +105,16 @@
     flex-shrink: 0;
   }
   .nav-logo span { color: var(--teal-text); }
+  /* Name and "Fractional CTO" stacked, kept within the 36px logo height */
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-text span { margin-left: 10px; } /* matches the old flex gap before "LLC" */
+  .nav-logo-tag {
+    margin-top: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted);
+  }
   .nav-logo-img {
     height: 36px;
     width: auto;
