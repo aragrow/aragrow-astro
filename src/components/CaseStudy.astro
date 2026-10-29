@@ -7,6 +7,7 @@ interface Props {
 
 const { study } = Astro.props;
 const headingId = `${study.id}-title`;
+const inProgress = study.status === 'in-progress';
 const related = (study.related ?? [])
   .map((id) => caseStudies.find((s) => s.id === id))
   .filter((s) => s !== undefined);
@@ -18,7 +19,7 @@ const related = (study.related ?? [])
 
   <dl class="cs-meta">
     <div>
-      <dt>Organization</dt>
+      <dt>{study.organizationLabel ?? 'Organization'}</dt>
       <dd>{study.organization}</dd>
     </div>
     <div>
@@ -33,22 +34,29 @@ const related = (study.related ?? [])
   </div>
 
   <div class="cs-block">
-    <h3 class="cs-heading">What we did</h3>
+    <h3 class="cs-heading">{inProgress ? "What we're doing" : 'What we did'}</h3>
     {
       study.whatWeDid.map((p) =>
         typeof p === 'string' ? (
           <p>{p}</p>
         ) : (
-          <p>
-            <strong>{p.lead}</strong> {p.text}
-          </p>
+          <>
+            <p>
+              <strong>{p.lead}</strong> {p.text}
+            </p>
+            {p.items && (
+              <ul class="cs-steps">
+                {p.items.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+          </>
         )
       )
     }
   </div>
 
   <div class="cs-block">
-    <h3 class="cs-heading">The results</h3>
+    <h3 class="cs-heading">{inProgress ? "What we'll measure" : 'The results'}</h3>
     <ul class="cs-results">
       {study.results.map((r) => <li>{r}</li>)}
     </ul>
@@ -151,6 +159,13 @@ const related = (study.related ?? [])
     color: var(--muted); margin-bottom: 12px;
   }
   .cs-block p strong { color: var(--text); font-weight: 700; }
+
+  /* ── List under a lead-in ── */
+  .cs-steps {
+    padding-left: 20px; margin: -4px 0 16px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cs-steps li { font-size: 0.95rem; line-height: 1.65; color: var(--muted); }
 
   /* ── Results list ── */
   .cs-results {

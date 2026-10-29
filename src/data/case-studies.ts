@@ -7,10 +7,15 @@ export interface CaseStudy {
   title: string;
   label: string;
   organization: string;
+  // Label shown above `organization`; defaults to "Organization". Client work uses "Client".
+  organizationLabel?: string;
   role: string;
+  // Work still underway: headings read "What we're doing" and "What we'll measure".
+  status?: 'in-progress';
   problem: string[];
-  // A plain string renders as a paragraph; `lead` renders as a bold lead-in before `text`.
-  whatWeDid: (string | { lead: string; text: string })[];
+  // A plain string renders as a paragraph; `lead` renders as a bold lead-in before `text`,
+  // and optional `items` render as a list under it.
+  whatWeDid: (string | { lead: string; text: string; items?: string[] })[];
   results: string[];
   // Paragraphs shown after the results, for an outcome that is not a direct quote.
   closing?: string[];
@@ -22,6 +27,48 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    id: 'ai-front-desk-cleaning',
+    title: 'From Missed Calls to Booked Cleanings',
+    label: 'Client engagement · AI Integration · In progress',
+    status: 'in-progress',
+    organizationLabel: 'Client',
+    organization: 'Jill of All Trades, a vacation rental cleaning business',
+    role: 'Fractional CTO, AraGrow LLC',
+    problem: [
+      "Jill, the owner, runs the business and does much of the work herself. She fields a constant stream of calls: new inquiries, rescheduling requests and cleaners who can't make a shift. With so much routine traffic, calls that could become new work get missed. Every quote is also built by hand, even for people who are only browsing.",
+    ],
+    whatWeDid: [
+      {
+        lead: 'Start with how the business works.',
+        text: "Before choosing any technology, we're mapping the real workflows with the owners to find where AI will deliver the biggest return first.",
+      },
+      {
+        lead: "Phase 1: Protect Jill's time.",
+        text: "The goal is to clear Jill's path. The first solution will:",
+        items: [
+          'Answer basic questions and keep website visitors engaged',
+          'Give an instant cleaning estimate based on the property',
+          'Pass serious prospects and important calls to Jill, so she writes full quotes only for people ready to move forward',
+          'Handle routine requests, like rescheduling, and keep Jill informed',
+        ],
+      },
+      {
+        lead: 'Phase 2: Coordinate the whole operation.',
+        text: 'Longer term, a set of AI tools will connect clients, cleaners and Jill. When a client or a cleaner needs to change a visit, the system will find the property, the job and the people involved, and coordinate the change between them. Jill steps in only when a decision needs her approval, based on rules she sets.',
+      },
+      {
+        lead: 'Connect to the tools they already use.',
+        text: 'Everything will run through GoHighLevel, their CRM, and Jobber, which tracks clients, visits, quotes and jobs, so nothing is entered twice.',
+      },
+    ],
+    results: [
+      'Fewer missed high-value calls',
+      'More website visitors turning into leads',
+      "Less of Jill's time spent on routine requests and dead-end quotes",
+    ],
+    closing: ['Status: Discovery in progress. Results will be added as the work moves forward.'],
+  },
   {
     id: 'finance-hr-data-migration',
     title: 'From 20 Years of Records to Reports Finance and HR Relied On',
