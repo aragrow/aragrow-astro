@@ -498,6 +498,21 @@ body > footer {
   font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; line-height: 1.25;
 }
 .faq-group .faq-list { margin-top: 20px; }
+.faq-answer-link a {
+  font-weight: 600; color: var(--teal-text);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.faq-answer-link a:hover { color: var(--teal); }
+/* One-line call to action between sections (FAQ, case studies, services) */
+.lead-prompt {
+  margin-top: 16px;
+  font-size: 0.95rem; color: var(--muted);
+}
+.lead-prompt a {
+  font-weight: 600; color: var(--teal-text);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.lead-prompt a:hover { color: var(--teal); }
 /* On phones the six links stack into a tall block; let people scroll straight into the questions */
 @media (max-width: 640px) { .faq-toc { display: none; } }
 

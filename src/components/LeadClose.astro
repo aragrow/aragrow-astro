@@ -1,0 +1,67 @@
+---
+// Closing call to action shared by the FAQ, case studies and services pages.
+interface Props {
+  title: string;
+  body?: string;
+  links?: { text: string; href: string }[];
+}
+
+const { title, body, links = [] } = Astro.props;
+---
+
+<section class="lead-close" aria-labelledby="lead-close-title">
+  <h2 class="lead-close-title" id="lead-close-title">{title}</h2>
+  {body && <p class="lead-close-body">{body}</p>}
+  <div class="lead-close-actions">
+    <a href="/contact" class="btn btn-primary">Book a 30-minute conversation</a>
+    {
+      links.length > 0 && (
+        <p class="lead-close-links">
+          {links.map((l, i) => (
+            <>
+              {i > 0 && <span aria-hidden="true"> · </span>}
+              <a href={l.href}>{l.text}</a>
+            </>
+          ))}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .lead-close {
+    margin-top: 56px;
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .lead-close-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 700; line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .lead-close-body {
+    color: var(--muted); font-size: 0.97rem; line-height: 1.7;
+    max-width: 520px; margin: 0 auto;
+  }
+  .lead-close-actions {
+    margin-top: 24px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+  }
+  .lead-close-links { font-size: 0.9rem; color: var(--muted); }
+  .lead-close-links a {
+    color: var(--teal-text);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .lead-close-links a:hover { color: var(--teal); }
+
+  @media (max-width: 640px) {
+    .lead-close { padding: 36px 20px; }
+  }
+</style>

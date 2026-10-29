@@ -3,17 +3,40 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
+import LeadClose from '../components/LeadClose.astro';
+import { reviews, reviewHref } from '../data/reviews';
 
+// Each section can end with one call to action that fits what the reader just learned.
 const faqGroups = [
-  { id: 'role', title: 'Understanding the fractional CTO role' },
-  { id: 'fit', title: 'Is AraGrow the right fit?' },
-  { id: 'help', title: 'What AraGrow can help with' },
+  {
+    id: 'role',
+    title: 'Understanding the fractional CTO role',
+    cta: { text: 'Not sure which model fits?', linkText: 'Book a 30-minute conversation', href: '/contact' },
+  },
+  {
+    id: 'fit',
+    title: 'Is AraGrow the right fit?',
+    cta: { text: 'Want to see where your technology stands?', linkText: 'Take the free self-assessment', href: '/self-assessment' },
+  },
+  {
+    id: 'help',
+    title: 'What AraGrow can help with',
+    cta: { text: 'Have one specific problem?', linkText: 'See all fixed-price services', href: '/services' },
+  },
   { id: 'risks', title: 'Technology risks every growing company should understand' },
-  { id: 'pricing', title: 'Pricing and how engagements work' },
-  { id: 'start', title: 'Location and getting started' },
+  {
+    id: 'pricing',
+    title: 'Pricing and how engagements work',
+    cta: { text: 'Want a defined first step?', linkText: 'See the 30-day technology audit', href: '/30-day-audit' },
+  },
+  {
+    id: 'start',
+    title: 'Location and getting started',
+    cta: { text: 'Ready to talk?', linkText: 'Book a 30-minute conversation', href: '/contact' },
+  },
 ];
 
-const faqs = [
+const faqItems = [
   {
     group: 'role',
     question: 'What does a Fractional CTO actually do for my business?',
@@ -154,54 +177,63 @@ const faqs = [
   },
   {
     group: 'risks',
+    service: 'data-migration-review',
     question: 'Why is planning a data migration so important?',
     answer:
       'Because the data decides whether the new system works on day one. Reports come out wrong, payroll misses people or compliance data goes missing when nobody decided what to move, how much history to keep and how old fields map to new ones. Those decisions are cheap before the move and expensive after it, when people are already working in the new system.\n\nGet it right and finance and HR have reports they can trust from the first day, with no cleanup project after launch.',
   },
   {
     group: 'risks',
+    service: 'key-person-risk-review',
     question: 'Why is it risky when only one person knows how a key system works?',
     answer:
       'Because that person can leave, get sick or simply be unreachable on the day something breaks. Until someone else can run the system, the business depends on one person\'s calendar. You may decide to accept that risk for a while, but it should be a decision, with a plan for the day it happens, not something you discover after they leave.\n\nGet it right and a resignation becomes an inconvenience instead of a crisis, because someone else can step in right away.',
   },
   {
     group: 'risks',
+    service: 'hosting-cost-review',
     question: 'Why should a company know the full cost of its hosting?',
     answer:
       'Because the hosting bill is usually the smallest part. Staff time, security, backups, caching and weekend on-call work rarely show up in the same budget line, so self-hosting often looks cheaper than it is. Comparing the full cost with managed options shows whether you\'re paying to own infrastructure you no longer need to own.\n\nGet it right and you know exactly what you pay for, and you can often spend less while getting more reliability.',
   },
   {
     group: 'risks',
+    service: 'access-control-review',
     question: 'Why does it matter who has access to your systems?',
     answer:
       'Because people keep access after they leave unless someone removes it. When access is tracked in emails and spreadsheets, former employees and contractors can still log in, and nobody can prove otherwise in an audit. A clear record of who has access to what, and who approved it, closes that gap and makes hiring and offboarding faster.\n\nGet it right and offboarding takes minutes, audits go faster and you can say with confidence who can reach your data.',
   },
   {
     group: 'risks',
+    service: 'release-process-review',
     question: 'Why do changes need to be tested before they reach the live site?',
     answer:
       'Because errors that reach the live site reach your customers. Without version control and a separate test environment, changes are made by hand on the system people are using, and mistakes are found by the people they affect. A process where every change is tracked and tested first catches problems while they\'re still cheap to fix.\n\nGet it right and releases become routine, your team spends less time fixing mistakes and customers stop finding them first.',
   },
   {
     group: 'risks',
+    service: 'launch-risk-review',
     question: 'Why can a launch fail even after it passed testing?',
     answer:
       'Because testing only proves what it was designed to test. A tool can work with test data and still fail under real traffic, and two people on the same team can mean different things by "tested." Agreeing on what testing covers, testing at production scale and having a fast way to switch a change off keep a launch problem from becoming a public one.\n\nGet it right and launches go out quietly: problems show up in testing, and anything that slips through is switched off before most people notice.',
   },
   {
     group: 'risks',
+    service: 'disaster-recovery-review',
     question: 'Why do you need a disaster recovery plan, not just backups?',
     answer:
       'Because backups only help if someone knows how to use them under pressure. A recovery plan says who does what when a server or site fails, how you switch to a standby copy and how you switch back without losing data. A plan that depends on one person, or has never been tested, isn\'t one you can rely on yet.\n\nGet it right and an outage becomes a rehearsed procedure with a known recovery time, not a scramble.',
   },
   {
     group: 'risks',
+    service: 'vendor-accountability-review',
     question: 'Why should one person own your technology vendor relationships?',
     answer:
       'Because without an owner, problems bounce between vendors and nobody pushes for a fix. Contracts renew without review, tickets sit open and the same issue gets explained again and again. One accountable person who knows every vendor, what it costs and how to escalate keeps issues moving and costs visible.\n\nGet it right and issues get resolved faster, contracts get reviewed before they renew and specialists come in only when you need them.',
   },
   {
     group: 'risks',
+    service: 'architecture-decision-review',
     question: 'Why should important technical decisions be written down?',
     answer:
       'Because the reasons behind a decision are forgotten long before the decision stops mattering. When requirements change, a written record shows what was considered, what was chosen and why, so the team can revisit good ideas instead of restarting old arguments. It also shows the people who disagreed that their view was heard.\n\nGet it right and decisions hold up when people leave or requirements change, and the team trusts the process even when they lose the argument.',
@@ -280,6 +312,14 @@ const faqs = [
   },
 ];
 
+// Risk questions with a `service` end with a link to that fixed-price service, using its live price.
+const faqs = faqItems.map(({ service, ...item }: { service?: string } & (typeof faqItems)[number]) => {
+  if (!service) return item;
+  const review = reviews.find((r) => r.slug === service);
+  if (!review) throw new Error(`FAQ links to unknown service "${service}"`);
+  return { ...item, link: { text: `See the ${review.name} (${review.price})`, href: reviewHref(review.slug) } };
+});
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -303,6 +343,13 @@ const structuredData = {
   <main>
     <div class="faq-page-wrapper">
       <Faq faqs={faqs} groups={faqGroups} />
+      <div class="container">
+        <LeadClose
+          title="Didn't find your answer?"
+          body="Ask me directly. When you reach out, you reach me, not an account manager."
+          links={[{ text: 'Or take the free self-assessment first', href: '/self-assessment' }]}
+        />
+      </div>
     </div>
   </main>
   <Footer />
@@ -311,5 +358,7 @@ const structuredData = {
 <style>
   .faq-page-wrapper {
     padding-top: 80px;
+    padding-bottom: 80px;
   }
+
 </style>
