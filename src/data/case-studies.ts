@@ -68,6 +68,10 @@ export const caseStudies: CaseStudy[] = [
       "Less of Jill's time spent on routine requests and dead-end quotes",
     ],
     closing: ['Status: Discovery in progress. Results will be added as the work moves forward.'],
+    quote: {
+      text: 'David has made the challenge of integrating rapidly developing AI technology in ways that generate practical returns a reality.',
+      attribution: 'James Disser, Start Up Over 50, who brought AraGrow into this engagement',
+    },
   },
   {
     id: 'finance-hr-data-migration',
