@@ -1,6 +1,7 @@
 // Fixed-price reviews. Each one has its own page and is listed on /services, grouped by
-// `category` in the order below. `proof.caseStudyId` names the case study each review's page
-// cites as evidence; case studies do not link back to reviews.
+// `category` in the order below. Each review's page cites evidence: `proof.caseStudyId` links a
+// case study, or `proof.href` links another source such as a client testimonial. Case studies do
+// not link back to reviews.
 
 import { caseStudyHref } from './case-studies';
 
@@ -18,7 +19,7 @@ export interface Review {
   scope: string;
   scopeNote?: string;
   category: 'change' | 'risk';
-  proof: { text: string; linkText: string; caseStudyId: string };
+  proof: { text: string; linkText: string; caseStudyId?: string; href?: string };
 }
 
 export const reviews: Review[] = [
@@ -56,6 +57,78 @@ export const reviews: Review[] = [
       text: 'At a broadcasting company with about 2,000 employees, I owned the data migration to Dynamics GP, NetSuite, ADP Payroll and ADP Recruitment, including about 20 years of accounting records. Finance and HR had reports they could rely on from launch.',
       linkText: 'Read the data migration case study',
       caseStudyId: 'finance-hr-data-migration',
+    },
+  },
+  {
+    slug: 'ai-readiness-review',
+    name: 'AI Readiness Review',
+    seoTitle: 'AI Readiness Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price review of where AI will actually pay off in your business, where plain automation is the better answer, and what each option will cost to run. $1,500.',
+    intro:
+      'If you keep hearing that you should "do something with AI," the useful question is narrower: which two or three of your workflows would AI actually improve, and is your data ready for it? This review answers that before you spend money on tools or developers.',
+    summary: 'For owners who know they should do something with AI, but not what.',
+    forWhom: [
+      "You keep hearing that you should use AI, but nobody has shown you where it would pay off.",
+      'Your team is already trying AI tools on its own, with no plan or rules.',
+      "A vendor is pitching an AI product, and you can't tell whether it fits.",
+      "Your data lives in several systems, and you're not sure it's reliable enough to build on.",
+    ],
+    whatIDo: [
+      'Walk through your main workflows, your data and your budget to see where time and money actually go.',
+      'Sort each idea into what is worth doing with AI, what plain automation solves for less, and what is not worth doing yet.',
+      'For the ideas worth doing, estimate what they will cost to build and run, and flag the data and security risks.',
+    ],
+    deliverables: [
+      'A short list of AI use cases worth pursuing, ranked by business impact',
+      'A list of tasks that plain automation solves for less',
+      'Cost estimates and data and security risks for each recommended use case',
+    ],
+    price: '$1,500',
+    scope: 'two weeks, covering up to 5 workflows',
+    category: 'change',
+    scopeNote:
+      "This review recommends; it doesn't include building anything. If a use case is worth doing, your team, a vendor or AraGrow can build it, and we can scope that once the plan is set.",
+    proof: {
+      text: '"David has made the challenge of integrating rapidly developing AI technology in ways that generate practical returns a reality." James Disser, Start Up Over 50, on a year of working together.',
+      linkText: 'Read the full testimonial',
+      href: '/#testimonials',
+    },
+  },
+  {
+    slug: 'ai-front-desk-review',
+    name: 'AI Front Desk Review',
+    seoTitle: 'AI Front Desk Review | AraGrow LLC',
+    seoDescription:
+      'A fixed-price design for an AI assistant that answers routine questions, gives instant estimates and passes serious prospects to you, connected to the CRM and job tools you already use. $1,800.',
+    intro:
+      'When the owner answers every call, routine requests crowd out the calls that turn into new work. This review designs an AI assistant that handles the routine, gives instant estimates and passes the calls that matter to you, before anyone writes code.',
+    summary: 'For service businesses where the owner answers every call.',
+    forWhom: [
+      'You or one person answers most calls, and new inquiries get missed.',
+      'You build every quote by hand, even for people who are only browsing.',
+      'Rescheduling and routine requests take up a large part of your day.',
+      'Your clients and jobs already live in a CRM or a job management tool.',
+    ],
+    whatIDo: [
+      'Map your calls and requests: who calls, about what, and which ones turn into paying work.',
+      'Design what the assistant answers, how it estimates and the rules for what reaches you.',
+      'Plan how it connects to your CRM and job tools, so nothing is entered twice.',
+    ],
+    deliverables: [
+      'A map of your call and request types, with the high-value ones marked',
+      'An assistant design covering answers, estimate rules and handoff rules',
+      'An integration plan and the numbers to measure from day one',
+    ],
+    price: '$1,800',
+    scope: 'two weeks, for one business',
+    category: 'change',
+    scopeNote:
+      "This review designs the assistant. Building and connecting it is a separate project, and we can scope it once the design is set.",
+    proof: {
+      text: "For Jill of All Trades, a vacation rental cleaning business, we're designing an assistant that answers routine questions, gives instant estimates and passes serious prospects to the owner, connected to GoHighLevel and Jobber. The work is in progress.",
+      linkText: 'Read the case study',
+      caseStudyId: 'ai-front-desk-cleaning',
     },
   },
   {
@@ -360,4 +433,8 @@ export const reviewCategories: { id: Review['category']; title: string; intro: s
 ];
 
 export const reviewHref = (slug: string) => `/${slug}`;
-export const reviewProofHref = (r: Review) => caseStudyHref(r.proof.caseStudyId);
+export const reviewProofHref = (r: Review) => {
+  if (r.proof.href) return r.proof.href;
+  if (!r.proof.caseStudyId) throw new Error(`Review "${r.slug}" has no proof link`);
+  return caseStudyHref(r.proof.caseStudyId);
+};

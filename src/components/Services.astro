@@ -1,5 +1,8 @@
 ---
 import { caseStudyHref } from '../data/case-studies';
+import { reviews, reviewHref } from '../data/reviews';
+
+const aiReview = reviews.find((r) => r.slug === 'ai-readiness-review')!;
 
 const services: {
   icon: string;
@@ -26,6 +29,8 @@ const services: {
     description:
       'Most AI advice you\'re getting right now is generic hype that will cost you time and money you don\'t have. I help you figure out which two or three things AI will actually improve in your business, then build only those. Currently developing WrapInsights, an AI-powered analytics platform for non-technical business owners.',
     tag: 'Practical AI · Real Workflows · No Hype',
+    proof: `Not sure where AI fits? Start with the AI Readiness Review (${aiReview.price}).`,
+    proofHref: reviewHref(aiReview.slug),
   },
   {
     icon: '🌐',

@@ -1,0 +1,8 @@
+---
+import ReviewPage from '../components/ReviewPage.astro';
+import { reviews } from '../data/reviews';
+
+const review = reviews.find((r) => r.slug === 'ai-front-desk-review')!;
+---
+
+<ReviewPage review={review} />
