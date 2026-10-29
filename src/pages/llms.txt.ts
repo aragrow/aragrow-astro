@@ -13,14 +13,15 @@ export const GET: APIRoute = async () => {
   lines.push('');
   lines.push('> Fractional CTO services for businesses between $5M and $10M in revenue — hands-on technology leadership without the full-time overhead.');
   lines.push('');
-  lines.push('AraGrow is run by David Aragó, based in Minneapolis with bilingual fluency in English and Spanish. David works directly with clients: no account managers, no handoffs. Services include a 30-day technology audit and ongoing fractional CTO engagements billed at $150/hour.');
+  lines.push('AraGrow is run by David Aragó, based in Minneapolis with bilingual fluency in English and Spanish. David works directly with clients: no account managers, no handoffs. Services include a 30-day technology audit and ongoing fractional CTO engagements, most running $1,500 to $3,000 a month.');
   lines.push('');
 
   lines.push('## Core pages');
   lines.push('');
   lines.push(`- [Home](${SITE}/): Overview of AraGrow's fractional CTO services`);
   lines.push(`- [How I Work](${SITE}/how-i-work/): Engagement model, working principles, and pricing`);
-  lines.push(`- [30-Day Technology Audit](${SITE}/30-day-audit/): What the audit covers, deliverables, and pricing (up to $1,500)`);
+  lines.push(`- [Services](${SITE}/services/): Fixed-price reviews for one specific problem, with prices`);
+  lines.push(`- [30-Day Technology Audit](${SITE}/30-day-audit/): What the audit covers, deliverables, and pricing (up to $3,000)`);
   lines.push(`- [Self-Assessment](${SITE}/self-assessment/): Free technology self-assessment tool for business owners`);
   lines.push(`- [FAQ](${SITE}/faq/): Answers to common questions about services, rates, and fit`);
   lines.push(`- [Blog](${SITE}/blog/): Articles on AI, technology strategy, and software engineering`);
