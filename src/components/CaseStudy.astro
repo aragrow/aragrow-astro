@@ -1,6 +1,5 @@
 ---
 import { type CaseStudy, caseStudies, caseStudyHref } from '../data/case-studies';
-import { reviews, reviewHref } from '../data/reviews';
 
 interface Props {
   study: CaseStudy;
@@ -8,7 +7,6 @@ interface Props {
 
 const { study } = Astro.props;
 const headingId = `${study.id}-title`;
-const review = reviews.find((r) => r.proof.caseStudyId === study.id);
 const related = (study.related ?? [])
   .map((id) => caseStudies.find((s) => s.id === id))
   .filter((s) => s !== undefined);
@@ -104,13 +102,6 @@ const related = (study.related ?? [])
     )
   }
 
-  {
-    review && (
-      <p class="cs-offer">
-        Facing something similar? <a href={reviewHref(review.slug)}>See the {review.name}</a> ({review.price}).
-      </p>
-    )
-  }
 </article>
 
 <style>
@@ -206,7 +197,7 @@ const related = (study.related ?? [])
   }
   .cs-sources a:hover { color: var(--teal); }
 
-  /* ── Related review ── */
+  /* ── Related case study ── */
   .cs-offer {
     margin-top: 28px;
     padding-top: 20px;

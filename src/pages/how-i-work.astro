@@ -4,8 +4,10 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { reviews, reviewHref } from '../data/reviews';
 
-// The rest of the reviews are linked from the end of each case study.
-const featuredReviews = reviews.slice(0, 3);
+// The full list is on /services.
+const featuredReviews = ['data-migration-review', 'key-person-risk-review', 'hosting-cost-review'].map(
+  (slug) => reviews.find((r) => r.slug === slug)!
+);
 ---
 
 <Layout
@@ -207,8 +209,7 @@ const featuredReviews = reviews.slice(0, 3);
           }
         </div>
         <p class="hw-rate">
-          More reviews are linked from the case studies they came from.
-          <a href="/case-studies" class="hw-cta-secondary">See all case studies</a>
+          <a href="/services" class="hw-cta-secondary">See all services</a>
         </p>
       </section>
 
