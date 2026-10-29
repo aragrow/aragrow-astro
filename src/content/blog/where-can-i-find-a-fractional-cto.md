@@ -34,7 +34,7 @@ excerpt: "AraGrow LLC provides fractional CTO leadership on-site around the Twin
 
 <h2 class="wp-block-heading">What it costs</h2>
 
-<p>$150/hour. Ongoing engagements run $1,500 to $3,000 a month for most clients, based on 10 to 20 hours. The 30-day technology audit is up to $3,000 with a defined scope and a written report of prioritized recommendations. No tiers, no minimums, no long-term contract.</p>
+<p>Ongoing engagements are a fixed monthly fee, $1,500 to $3,000 a month for most clients. The 30-day technology audit is up to $3,000 with a defined scope and a written report of prioritized recommendations. No tiers, no minimums, no long-term contract.</p>
 
 <h2 class="wp-block-heading">Start here</h2>
 
