@@ -2,7 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import LeadClose from '../components/LeadClose.astro';
 import { reviews, reviewCategories, reviewHref } from '../data/reviews';
+
+const groupPrompts: Record<string, { text: string; linkText: string; href: string }> = {
+  change: { text: 'Planning something big and not sure where to start?', linkText: 'Book a 30-minute conversation', href: '/contact' },
+  risk: { text: 'Not sure which risk is biggest for you?', linkText: 'Take the free self-assessment', href: '/self-assessment' },
+};
 
 const groups = reviewCategories.map((c) => ({
   ...c,
@@ -77,18 +83,23 @@ const structuredData = {
                 </article>
               ))}
             </div>
+            {groupPrompts[g.id] && (
+              <p class="lead-prompt">
+                {groupPrompts[g.id].text} <a href={groupPrompts[g.id].href}>{groupPrompts[g.id].linkText}</a>
+              </p>
+            )}
           </section>
         ))
       }
 
-      <!-- CTA -->
-      <section class="sv-cta-block" aria-labelledby="sv-cta-title">
-        <h2 class="sv-cta-title" id="sv-cta-title">Not sure which one fits?</h2>
-        <div class="sv-cta-actions">
-          <a href="/contact" class="btn btn-primary">Book a 30-minute conversation</a>
-          <a href="/30-day-audit" class="sv-card-link">See the 30-day technology audit</a>
-        </div>
-      </section>
+      <LeadClose
+        title="Not sure which one fits?"
+        body="Tell me what you're dealing with, and I'll tell you which review fits, or whether you need one at all."
+        links={[
+          { text: 'See the 30-day technology audit', href: '/30-day-audit' },
+          { text: 'Take the free self-assessment', href: '/self-assessment' },
+        ]}
+      />
     </div>
   </main>
   <Footer />
@@ -184,27 +195,7 @@ const structuredData = {
   }
   .sv-card-link:hover { color: var(--teal); }
 
-  /* ── CTA block ── */
-  .sv-cta-block {
-    text-align: center;
-    padding: 48px 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-  }
-  .sv-cta-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.3rem, 3vw, 1.7rem);
-    font-weight: 700; line-height: 1.25;
-    color: var(--text); margin-bottom: 24px;
-  }
-  .sv-cta-actions {
-    display: flex; flex-direction: column;
-    align-items: center; gap: 14px;
-  }
-
   @media (max-width: 640px) {
     .sv-card { padding: 24px 20px; }
-    .sv-cta-block { padding: 36px 20px; }
   }
 </style>

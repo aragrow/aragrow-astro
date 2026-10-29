@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CaseStudy from '../components/CaseStudy.astro';
+import LeadClose from '../components/LeadClose.astro';
 import { caseStudies, caseStudyHref } from '../data/case-studies';
 
 const site = Astro.site ?? new URL('https://aragrow.me');
@@ -59,13 +60,29 @@ const structuredData = {
     </div>
 
     <div class="container cs-container">
-      {caseStudies.map((study) => <CaseStudy study={study} />)}
+      {
+        caseStudies.map((study, i) => (
+          <>
+            <CaseStudy study={study} />
+            {i === 2 && (
+              <p class="lead-prompt cs-prompt">
+                Seeing your own situation in these? <a href="/contact">Book a 30-minute conversation</a>
+              </p>
+            )}
+            {i === 5 && (
+              <p class="lead-prompt cs-prompt">
+                Want to know where your own technology stands? <a href="/self-assessment">Take the free self-assessment</a>
+              </p>
+            )}
+          </>
+        ))
+      }
 
-      <!-- CTA -->
-      <section class="cs-cta-block" aria-labelledby="cs-cta-title">
-        <h2 class="cs-cta-title" id="cs-cta-title">Want to know if this applies to you?</h2>
-        <a href="/contact" class="btn btn-primary">Book a 30-minute conversation</a>
-      </section>
+      <LeadClose
+        title="Want to know if this applies to you?"
+        body="Tell me what you're dealing with. In 30 minutes you'll know whether any of this fits your situation."
+        links={[{ text: 'Or take the free self-assessment first', href: '/self-assessment' }]}
+      />
     </div>
   </main>
   <Footer />
@@ -92,27 +109,9 @@ const structuredData = {
   }
 
   .cs-intro-context { margin-top: 12px; }
+  .cs-prompt { margin: -4px 0 28px; text-align: center; }
 
   /* ── Container ── */
   .cs-container { padding-top: 56px; padding-bottom: 80px; }
 
-  /* ── CTA block ── */
-  .cs-cta-block {
-    text-align: center;
-    padding: 48px 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-  }
-  .cs-cta-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.3rem, 3vw, 1.7rem);
-    font-weight: 700; line-height: 1.25;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: 640px) {
-    .cs-cta-block { padding: 36px 20px; }
-  }
 </style>
