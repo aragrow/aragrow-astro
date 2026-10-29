@@ -481,6 +481,25 @@ body > footer {
 .faq-contact-link:hover { text-decoration: underline; }
 
 .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 12px; }
+/* Section links and headings when the FAQ is grouped */
+.faq-toc { margin-top: 40px; }
+.faq-toc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.faq-toc a {
+  display: inline-block; padding: 8px 14px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 600;
+  color: var(--teal-text); text-decoration: none;
+  background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+}
+.faq-toc a:hover { border-color: var(--teal-text); background: var(--teal-dim); }
+.faq-group { scroll-margin-top: 96px; }
+.faq-group-title {
+  margin-top: 56px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; line-height: 1.25;
+}
+.faq-group .faq-list { margin-top: 20px; }
+/* On phones the six links stack into a tall block; let people scroll straight into the questions */
+@media (max-width: 640px) { .faq-toc { display: none; } }
 
 .faq-item {
   background: var(--card); border: 1px solid var(--border);
@@ -511,3 +530,4 @@ body > footer {
   padding: 0 28px 22px;
   color: var(--muted); font-size: 0.95rem; line-height: 1.8;
 }
+.faq-answer p + p { margin-top: 12px; }

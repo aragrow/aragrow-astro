@@ -2,13 +2,21 @@
 export interface FaqItem {
   question: string;
   answer: string;
+  group?: string;
 }
 
 interface Props {
   faqs: FaqItem[];
+  // Optional sections, in display order; each item's `group` names its section.
+  groups?: { id: string; title: string }[];
 }
 
-const { faqs } = Astro.props;
+const { faqs, groups } = Astro.props;
+// Number questions across the whole page so every answer id stays unique.
+const numbered = faqs.map((item, i) => ({ ...item, i }));
+const sections = groups
+  ? groups.map((g) => ({ ...g, items: numbered.filter((f) => f.group === g.id) }))
+  : [{ id: '', title: '', items: numbered }];
 ---
 
 <section id="faq">
@@ -22,21 +30,40 @@ const { faqs } = Astro.props;
       </p>
     </div>
 
-    <div class="faq-list">
-      {
-        faqs.map((item, i) => (
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
-              <span>{item.question}</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" id={`faq-answer-${i}`} role="region" hidden>
-              <p>{item.answer}</p>
-            </div>
+    {
+      groups && (
+        <nav class="faq-toc" aria-label="FAQ sections">
+          <ul>
+            {sections.map((sec) => (
+              <li>
+                <a href={`#${sec.id}`}>{sec.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      sections.map((sec) => (
+        <section class="faq-group" id={sec.id || undefined} aria-labelledby={sec.title ? `${sec.id}-title` : undefined}>
+          {sec.title && <h2 class="faq-group-title" id={`${sec.id}-title`}>{sec.title}</h2>}
+          <div class="faq-list">
+            {sec.items.map((item) => (
+                <div class="faq-item reveal">
+                  <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${item.i}`}>
+                    <span>{item.question}</span>
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer" id={`faq-answer-${item.i}`} role="region" hidden>
+                    {item.answer.split('\n\n').map((para: string) => <p>{para}</p>)}
+                  </div>
+                </div>
+            ))}
           </div>
-        ))
-      }
-    </div>
+        </section>
+      ))
+    }
   </div>
 </section>
 
