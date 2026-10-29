@@ -184,6 +184,28 @@ const featuredReviews = ['data-migration-review', 'key-person-risk-review', 'hos
         </p>
       </section>
 
+      <!-- Alongside an existing CTO -->
+      <section class="hw-section hw-alongside" id="alongside">
+        <h2 class="hw-section-title">Already Have a CTO?</h2>
+        <p class="hw-section-note">
+          Plenty of capable CTOs are carrying more than one person can carry. I can work alongside yours
+          without taking over the role.
+        </p>
+        <ul class="hw-gets">
+          <li>Take a workstream off their plate, such as a migration or a vendor selection.</li>
+          <li>Give a second opinion on a major decision before it is made.</li>
+          <li>Cover an area where they have less depth.</li>
+          <li>Own one project from start to finish.</li>
+        </ul>
+        <p class="hw-alongside-note">
+          That can run monthly or for the length of one project, and your CTO stays in charge of
+          technology direction.
+        </p>
+        <p class="lead-prompt">
+          Want to see whether it fits your team? <a href="/contact">Book a 30-minute conversation</a>
+        </p>
+      </section>
+
       <!-- Fixed-price reviews -->
       <section class="hw-section">
         <h2 class="hw-section-title">Fixed-Price Reviews</h2>
@@ -470,6 +492,12 @@ const featuredReviews = ['data-migration-review', 'key-person-risk-review', 'hos
   /* Counts like 4 read better as rows of two than as three plus a remainder */
   .hw-tiers-two { grid-template-columns: repeat(2, 1fr); }
   h3.hw-tier-name { line-height: 1.4; }
+
+  .hw-alongside { scroll-margin-top: 96px; }
+  .hw-alongside-note {
+    margin-top: 20px;
+    font-size: 0.95rem; line-height: 1.65; color: var(--text);
+  }
 
   .hw-rate {
     font-size: 0.9rem; color: var(--muted);
