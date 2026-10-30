@@ -34,7 +34,7 @@ const related = (study.related ?? [])
   </div>
 
   <div class="cs-block">
-    <h3 class="cs-heading">{inProgress ? "What we're doing" : 'What we did'}</h3>
+    <h3 class="cs-heading">{inProgress ? "What we're doing" : study.solo ? 'What I did' : 'What we did'}</h3>
     {
       study.whatWeDid.map((p) =>
         typeof p === 'string' ? (

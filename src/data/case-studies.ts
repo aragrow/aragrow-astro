@@ -12,6 +12,8 @@ export interface CaseStudy {
   role: string;
   // Work still underway: headings read "What we're doing" and "What we'll measure".
   status?: 'in-progress';
+  // Work done alone: the heading reads "What I did" instead of "What we did".
+  solo?: boolean;
   problem: string[];
   // A plain string renders as a paragraph; `lead` renders as a bold lead-in before `text`,
   // and optional `items` render as a list under it.
@@ -227,6 +229,48 @@ export const caseStudies: CaseStudy[] = [
         text: "Pantheon's published case study on this project",
         href: 'https://pantheon.io/resources/case-studies/hubbard-broadcasting-chooses-wordpress-pantheon-its-digital-news',
       },
+    ],
+  },
+  {
+    id: 'aragrow-astro-ai-cms',
+    title: 'From WordPress to Managing My Website With AI',
+    label: 'Own business · AI Integration & Web Development',
+    solo: true,
+    organization: 'AraGrow LLC, my own consulting business',
+    role: 'Founder, and the only person maintaining the site',
+    problem: [
+      'I introduce technology into my own business the same way I do with clients: use it on myself first, set the rules, find the limits and keep what works. My website was the latest test.',
+      'WordPress is an excellent CMS, and it earned its place. The admin is mature, non-technical people can publish without touching code, and most features are a plugin away. My issue was the front end: the site a visitor actually loads.',
+      'A standard WordPress site builds every page on demand. Each visit runs PHP and queries a database, so pages are heavier than they need to be, and speed becomes a moving target that depends on server load, the theme and whichever plugins are active that day. Running it well meant a caching layer to survive traffic spikes and a firewall to watch the doors WordPress leaves open: live code on every request, a login, a database and a stack of third-party plugins. All of that machinery existed to manage a problem the architecture created.',
+    ],
+    whatWeDid: [
+      {
+        lead: 'Start with the common plan.',
+        text: 'My first move was to keep WordPress as the CMS and put Astro in front of it. Astro builds static HTML, so the pages it serves are fast, light and have almost nothing to attack. A process would export posts and category pages from WordPress and rebuild them in Astro. For many businesses, that headless setup is the right answer.',
+      },
+      {
+        lead: 'Question the piece I assumed I needed.',
+        text: 'Working in Astro alongside Claude Code, I asked a simpler question: why keep the CMS at all? I kept WordPress only to write and organize content, and I was already writing in my editor with Claude Code checking grammar, flagging repeated ideas and telling me whether the text said what I meant.',
+      },
+      {
+        lead: 'Manage content in plain language.',
+        text: 'Then it went past writing. I asked Claude Code to build a page for my frequently asked questions, and from there I managed it in plain words: add this question, remove that one, group them by category. At that point it was doing the job of a CMS, so I retired WordPress.',
+      },
+      {
+        lead: 'Be honest about what is still manual.',
+        text: 'The site is now static files on Firebase Hosting, with no server running my code, no database and no login. I make changes with Claude Code and deploy the built site myself. The next step is conversational maintenance: saying "update the website" or "show ten posts in this category instead of twenty" and having it happen.',
+      },
+    ],
+    results: [
+      'Content changes, like adding or grouping FAQ questions, made in plain language with AI instead of a CMS',
+      'One less system to run: no CMS to update, patch or log into',
+      'No server, database or login on the site, which leaves almost nothing to attack',
+      'As a consequence of the move, mobile PageSpeed performance went from a score that swung between 65 and 75 to a consistent 98',
+      'On mobile, Best Practices and SEO both score 100, Accessibility scores 93, and the site passes all 3 Agentic Browsing checks',
+    ],
+    closing: [
+      'Where I would still choose WordPress: this works because I am a technical team of one and the approval loop is just me. If several non-developers publish content, need a polished editor or schedule posts, WordPress is still the right tool, often with the headless setup I first planned in front of it. Rebuilding that in code to follow a trend would be a mistake.',
+      'I use AI in my own business where it earns its place, and here it replaced a whole system. I bring the same test to client work: test it on a real process, set the rules, find the limits and keep what fits how the business actually works.',
     ],
   },
   {
