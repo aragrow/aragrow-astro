@@ -132,37 +132,37 @@ export const reviews: Review[] = [
     },
   },
   {
-    slug: 'hosting-cost-review',
-    name: 'Hosting Cost Review',
-    seoTitle: 'Hosting Cost Review | AraGrow LLC',
+    slug: 'website-hosting-review',
+    name: 'Website & Hosting Review',
+    seoTitle: 'Website & Hosting Review | AraGrow LLC',
     seoDescription:
-      'A fixed-price review of what self-hosting really costs, compared with managed hosting options sized for your traffic. $1,800.',
+      'A fixed-price review of what your website and the servers behind it really cost to run and protect, and which setup fits your team: managed hosting, WordPress with a fast front end, or a static site. $1,800.',
     intro:
-      'If your sites run on servers your team manages, the hosting bill is only part of what you pay. Staff time, security, caching, backups and weekend on-call calls rarely show up in one place. This review puts them in one place and compares the total with managed options that fit your traffic.',
-    summary: 'For companies that self-host and have not priced the full cost of it in years.',
+      'If your website and servers need a caching layer, a firewall, constant plugin updates and weekend calls just to stay fast and safe, the setup may be costing more than it should. This review adds up the real cost of what you run today and recommends the setup your team can actually maintain.',
+    summary: 'For companies whose website or servers take more cost and upkeep than they should.',
     forWhom: [
-      'Your websites or databases run in your own data center or on servers your team maintains.',
-      'One person holds most of the knowledge about how the setup works.',
-      'Your team gets called on weekends when traffic spikes or something breaks.',
-      'Nobody has added up the full cost of hosting in the last few years.',
+      'Your websites or databases run on servers your team manages, or on hosting nobody has reviewed in years.',
+      'The site slows down when traffic spikes or a plugin changes.',
+      'You pay for caching, security plugins or a firewall just to keep it standing, and your team gets called on weekends.',
+      "You're not sure whether to stay on WordPress, go headless or move to a static site.",
     ],
     whatIDo: [
-      'Add up the real cost of your current setup: staff time, servers, security, caching, backups and on-call.',
-      'Compare it with two or three managed hosting options sized for your traffic, including spikes.',
-      'Flag the risks of moving, including downtime during the switch, data migration and vendor lock-in.',
+      'Add up the real cost of what you run today: staff time, servers, plugins, security, caching, backups and on-call.',
+      'Map who publishes content, how often and how much they rely on the editor.',
+      'Compare managed hosting, WordPress behind a fast static front end and a fully static site, then recommend the one your team can run, including when WordPress is still the right answer.',
     ],
     deliverables: [
-      'A written cost comparison of your current setup and the managed options',
-      'A recommendation on whether to move, and to which option',
-      'A migration outline if moving makes sense',
+      'A written cost comparison of your current setup and the options',
+      'A recommendation with the trade-offs for your team',
+      'A migration outline if a change makes sense',
     ],
     price: '$1,800',
-    scope: 'two to three weeks',
+    scope: 'two to three weeks, for one website and the servers behind it',
     category: 'change',
     scopeNote:
-      "This is a cost and vendor review. It doesn't include designing or building new infrastructure. If you need that, I'll help you find and evaluate the right specialist.",
+      "This is a cost and platform review. It doesn't include designing new infrastructure or rebuilding the site; either can be scoped as a separate project once the plan is set.",
     proof: {
-      text: 'At a broadcasting company with 7 websites, this kind of review showed that self-hosting cost about $250,000 a year. Managed hosting cost about $125,000 and ended weekend on-call calls.',
+      text: 'At a broadcasting company with 7 websites, this kind of review showed that self-hosting cost about $250,000 a year, while managed hosting cost about $125,000 and ended weekend on-call calls. On my own site, moving from WordPress to a static site took mobile PageSpeed from a range of 65 to 75 to a consistent 98.',
       linkText: 'Read the hosting case study',
       caseStudyId: 'broadcasting-managed-hosting',
     },
@@ -175,7 +175,7 @@ export const reviews: Review[] = [
       'A fixed-price review of how changes reach your live site: version control, test environments, caching and who can push what. $1,500.',
     intro:
       "If changes go straight to your live site by hand, every update is a small risk, and the errors land on your customers. This review looks at how changes move from a developer's machine to the public and sets up a process that catches mistakes first.",
-    summary: 'For teams that still make changes to the live site by hand.',
+    summary: 'For how every change reaches your live site, when releases are still done by hand.',
     forWhom: [
       "Changes go straight to the live site, with no test environment in between.",
       "Code isn't in version control, or not all of it is.",
@@ -211,7 +211,7 @@ export const reviews: Review[] = [
       'A fixed-price review of your launch plan before a major feature, plugin or vendor tool goes live on a site that cannot go down. $1,200.',
     intro:
       'A new plugin or feature can pass every test and still fail on launch day, because staging rarely carries production-scale data. This review checks your launch plan against the way your site actually runs, before your customers or readers find the problem.',
-    summary: 'For teams about to launch something major on a site that cannot go down.',
+    summary: 'For one major launch in the next few weeks, on a site that cannot go down.',
     forWhom: [
       "You're about to launch a major feature, plugin or vendor tool.",
       'A failure would be visible to your customers or readers.',
