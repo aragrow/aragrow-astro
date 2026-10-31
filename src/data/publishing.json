@@ -1,0 +1,706 @@
+{
+  "items": {
+    "/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/30-day-audit/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/access-control-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/ai-front-desk-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/ai-policy/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/ai-readiness-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/architecture-decision-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/1-introducing-myself-to-a-client-approach/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/10-skeptical-challenging-questions/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/2-rstc-method-one-page-document/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/2/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/3-guide-to-fostering-respect-with-clients-the-foundation/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/3/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/4-guide-to-fostering-safety-with-clients-empowering-their-decision/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/4/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/5-guide-to-building-trust-with-clients-the-bridge-to-partnership/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/5/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/6-guide-to-recognizing-client-readiness-for-the-sale-the-response-youre-waiting-for/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/6/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/7-guide-to-navigating-no-or-not-now-respecting-the-clients-decision-maintaining-alignment/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/7/": {
+      "type": "listing",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/blog/8-monthly-potential-client-contact-schedule-nurturing-the-relationship/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/9-language-guide-reinforcing-your-no-pressure-value-driven-approach/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-06T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/a-journey-through-different-databases-from-as-400-db2-to-mysql/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/aeo-and-geo-navigation-strategy-flat-or-multilevel-menus/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-01-07T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/africai-digital-books-and-comparative-landscape-in-africa/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-11-01T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/africai-digital-books-harnessing-ai-for-inclusive-affordable-and-multilingual-accounting-across-africa/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-11-01T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/ai-powered-analytics-hub/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-01-05T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/ai-technical-debt/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-04-14T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/ai-wrote-my-react-app-you-wont-believe-what-happened/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-27T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/aragrow-ollama-llm-integration-plugin/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-02-28T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-appendix/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-course/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-executive-playbook/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-how-ai-thinks/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-introduction-four-questions/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-measuring-trust/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-prompt-injection/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-readiness-assessment/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-stealth-frontier/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/architecting-trust-when-ai-can-act/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-06-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/booking-assistant-that-never-sleeps/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-05-08T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/building-a-trusted-partnership-a-consultative-flow/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-23T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/building-strong-client-partnerships-the-rstc-method/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/cookie-policy-aragrow-llc/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-10-14T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/creating-efficient-applications-with-laravel/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/custom-cms-development-for-tv-stations-streamlining-content-integration-and-management/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/david-arago-as-an-it-executive/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-12-18T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/david-arago-business-analyst/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-12-18T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/david-arago-developer/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-12-18T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/ditching-the-desk-how-spain-and-maybe-europe-will-supercharge-my-work-life/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-06-12T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/elevating-llm-assisted-vibe-coding-to-the-next-level/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-01-23T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/embarking-on-an-ai-safari-explore-technology-from-virtualbox-to-llms/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-02-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/enhancing-financial-insights-with-customized-jet-reports/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/enhancing-permissions-management-and-user-access-with-timely-notifications-and-audit-trail-feature/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/experience-in-wordpress-custom-themes-and-plugins-development/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/fixing-no-semantic-structural-tags/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-01-05T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/general-and-president-dwight-d-eisenhower-said-it-best/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-09-09T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/help-now-web-page-analyzers-tool-results-101/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-02-17T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/how-i-lost-my-ai-virginity-at-56-building-my-first-wordpress-plugin/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-08-28T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/how-to-manually-purge-a-large-number-of-posts-in-wordpress-2/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-09-14T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/how-to-manually-purge-a-large-number-of-posts-in-wordpress/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-10-15T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/i-obtain-great-core-web-vitals-so-what/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-11-15T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/interactive-rstc-presentation/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/interpreting-client-reactions-the-unspoken-response/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-23T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/introducing-queequeg-your-moby-dick-professor-plugin/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-02-24T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/introduction-to-google-core-web-vitals/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2022-11-10T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/learn-how-to-debug-wordpress-issues/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-02-15T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/midlife-reset-finding-purpose-and-balance-after-50/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-06-23T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/my-wordpress-back-end-is-slow-now-what/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-10-02T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/pagespeed-insights-api-langgraph-project-requirements-v1/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-09-16T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/productcopy-genie-automated-product-content-creation-for-wordpress-store-owners/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-12-30T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/read-now-performance-budgeting-to-skyrocket-your-wordpress/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-12-15T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/resume-job-optimizer/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-12-18T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/ricce-in-action/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-05-11T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/searching-for-a-reliable-used-car-let-ai-guide-your-journey-from-the-start/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/slide-deck-version-speaker-notes-or-printable-handout/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/slow-site-read-now-custom-fields-or-acf-could-by-the-culprit-part-1/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-01-23T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/slow-site-read-now-custom-fields-or-acf-could-by-the-culprit-part-2/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-01-29T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/slow-wordpress-trust-new-relic-to-help-you/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2023-10-04T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/speed-illusions-trick/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-10-28T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/stop-writing-bad-prompts/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-05-08T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/the-critical-role-of-http-headers-in-protecting-against-malicious-attacks/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-31T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/the-future-of-dev-im-letting-abacus-ai-code-my-next-python-app/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-09-16T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/the-human-equation-in-marketing/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-07-01T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/time-flies/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-02-25T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/unlock-the-secret-to-a-google-friendly-website-why-one-size-fits-all-seo-advice-can-hurt-your-business/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/unlocking-the-power-of-local-llms-my-learning-ongoing-adventure/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-01-24T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/website-speed-are-the-reports-speaking-your-language/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-10-28T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/where-can-i-find-a-fractional-cto/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-08-24T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/why-fast-and-stable-websites-matter-in-todays-online-shopping/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-10-09T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/why-pre-ai-browser-mindsets-will-hurt-clients/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-10-13T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/wordpress-stuck-in-maintenance-mode-heres-the-fix-no-panic-required/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2025-04-22T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/you-want-to-implement-content-security-policy-csp-read-now/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2024-03-08T06:00:00.000Z",
+      "expireAt": null
+    },
+    "/broadcasting/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/case-studies/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/contact/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/data-migration-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/disaster-recovery-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/built-for-ecommerce/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/from-idea-to-revenue/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/no-more-handoff-chaos/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/one-team-full-journey/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/elevator-pitch/senior-expertise-without-overhead/": {
+      "type": "internal",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/faq/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/how-i-work/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/key-person-risk-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/launch-risk-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/privacy/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/release-process-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/self-assessment/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/services/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/terms/": {
+      "type": "page",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/vendor-accountability-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    },
+    "/website-hosting-review/": {
+      "type": "service",
+      "status": "published",
+      "publishAt": "2026-10-31T02:10:20.200Z",
+      "expireAt": null
+    }
+  }
+}
