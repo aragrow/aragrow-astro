@@ -168,6 +168,12 @@
       "publishAt": "2025-11-01T05:00:00.000Z",
       "expireAt": null
     },
+    "/blog/ai-is-changing-work-do-we-get-a-choice/": {
+      "type": "post",
+      "status": "draft",
+      "publishAt": null,
+      "expireAt": null
+    },
     "/blog/ai-powered-analytics-hub/": {
       "type": "post",
       "status": "published",
@@ -268,6 +274,12 @@
       "type": "post",
       "status": "published",
       "publishAt": "2025-05-07T05:00:00.000Z",
+      "expireAt": null
+    },
+    "/blog/carpet-bombed-with-ai-offers/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-10-31T18:22:32.842Z",
       "expireAt": null
     },
     "/blog/cookie-policy-aragrow-llc/": {
