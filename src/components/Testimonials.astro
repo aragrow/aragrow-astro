@@ -157,7 +157,7 @@ const testimonials = [
                   {t.avatarUrl && t.avatarHref
                     ? <a href={t.avatarHref} target="_blank" rel="noopener" aria-label={`${t.name} profile`}><img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" /></a>
                     : t.avatarUrl
-                    ? <img src={t.avatarUrl} alt={t.name} width="40" height="40" loading="lazy" />
+                    ? <img src={t.avatarUrl} alt="" width="40" height="40" loading="lazy" />
                     : t.name.charAt(0)
                   }
                 </div>
