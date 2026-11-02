@@ -19,7 +19,14 @@ export interface Review {
   scope: string;
   scopeNote?: string;
   category: 'change' | 'risk';
-  proof: { text: string; linkText: string; caseStudyId?: string; href?: string };
+  proof: {
+    text: string;
+    linkText: string;
+    caseStudyId?: string;
+    href?: string;
+    // More case studies that back the same service, each shown as its own link.
+    more?: { linkText: string; caseStudyId: string }[];
+  };
 }
 
 export const reviews: Review[] = [
@@ -165,6 +172,7 @@ export const reviews: Review[] = [
       text: 'At a broadcasting company with 7 websites, this kind of review showed that self-hosting cost about $250,000 a year, while managed hosting cost about $125,000 and ended weekend on-call calls. On my own site, moving from WordPress to a static site took mobile PageSpeed from a range of 65 to 75 to a consistent 98.',
       linkText: 'Read the hosting case study',
       caseStudyId: 'broadcasting-managed-hosting',
+      more: [{ linkText: 'Read how I moved my own site off WordPress', caseStudyId: 'aragrow-astro-ai-cms' }],
     },
   },
   {
