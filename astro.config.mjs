@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import publishing from './src/data/publishing.json' with { type: 'json' };
 import { isLiveUrl } from './src/lib/publishing.mjs';
+import rehypeImageA11y from './src/lib/rehype-image-a11y.mjs';
 
 const buildTime = Date.now();
 
@@ -9,6 +10,7 @@ export default defineConfig({
   site: 'https://aragrow.me',
   compressHTML: true,
   devToolbar: { enabled: false },
+  markdown: { rehypePlugins: [rehypeImageA11y] },
   integrations: [
     sitemap({
       // Leave out internal pages and anything not live per src/data/publishing.json.
