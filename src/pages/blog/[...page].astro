@@ -2,10 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import { getPublishedPosts } from '../../lib/posts';
+import { getViewablePosts, postState } from '../../lib/posts';
+import DraftBadge from '../../components/DraftBadge.astro';
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
-  const posts = (await getPublishedPosts()).sort((a, b) => {
+  const posts = (await getViewablePosts()).sort((a, b) => {
     const byDate = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
     if (byDate !== 0) return byDate;
     // Same date: order ascending (e.g. the Architecting Trust guide in reading order)
@@ -76,7 +77,6 @@ function pickPlaceholder(id: string) {
           const { title, date, excerpt, featuredImage, categories } = post.data;
           const slug = post.id.replace(/\.md$/, '');
           const imgSrc = featuredImage ?? pickPlaceholder(post.id);
-          const imgAlt = featuredImage ? title : `AraGrow — ${title}`;
           return (
             <a
               href={`/blog/${slug}`}
@@ -86,8 +86,9 @@ function pickPlaceholder(id: string) {
               <div class="blog-listing-img">
                 <img
                   src={imgSrc}
-                  alt={imgAlt}
+                  alt=""
                   loading="lazy"
+                  decoding="async"
                   width="640"
                   height="200"
                 />
@@ -99,13 +100,18 @@ function pickPlaceholder(id: string) {
                 <h2>{title}</h2>
                 <p>{excerpt ? excerpt.slice(0, 160) + (excerpt.length > 160 ? '…' : '') : ''}</p>
                 <div class="blog-listing-meta">
-                  <time datetime={date}>
-                    {new Date(date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
+                  {postState(post) !== 'published' ? (
+                    <DraftBadge state={postState(post)} />
+                  ) : (
+                    <time datetime={date}>
+                      {new Date(date).toLocaleDateString('en-US', {
+                        timeZone: 'UTC',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </time>
+                  )}
                   <span class="blog-read" aria-hidden="true">Read More →</span>
                 </div>
               </div>

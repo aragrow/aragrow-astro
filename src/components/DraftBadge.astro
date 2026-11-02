@@ -1,0 +1,56 @@
+---
+// A status badge shown in place of the date for posts that are not live. It only appears on
+// the local dev server, because getViewablePosts() returns non-published posts only there.
+import type { PostState } from '../lib/posts';
+
+interface Props {
+  state: PostState;
+  class?: string;
+}
+
+const { state, class: className } = Astro.props;
+const labels: Partial<Record<PostState, string>> = {
+  draft: 'Draft',
+  scheduled: 'Scheduled',
+  expired: 'Expired',
+};
+const label = labels[state];
+---
+
+{
+  label && (
+    <span
+      class:list={['draft-badge', `draft-badge--${state}`, className]}
+      title="Visible only in your local preview, not on aragrow.me"
+    >
+      {label} · local only
+    </span>
+  )
+}
+
+<style>
+  .draft-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 50px;
+    background: #fee2e2;
+    color: #7b1818;
+    border: 1px solid #ef9a9a;
+    white-space: nowrap;
+  }
+  .draft-badge--scheduled {
+    background: #e0e7ff;
+    color: #3730a3;
+    border-color: #a5b4fc;
+  }
+  .draft-badge--expired {
+    background: #e2e8f0;
+    color: #475569;
+    border-color: #cbd5e1;
+  }
+</style>

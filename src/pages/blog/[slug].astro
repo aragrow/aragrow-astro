@@ -2,27 +2,37 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import { getPublishedPosts } from '../../lib/posts';
+import { getViewablePosts, postState } from '../../lib/posts';
+import DraftBadge from '../../components/DraftBadge.astro';
+import { existsSync } from 'node:fs';
+import sharp from 'sharp';
 
 export async function getStaticPaths() {
-  const posts = await getPublishedPosts();
+  const posts = await getViewablePosts();
   return posts.map((post) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
+    props: { post, state: postState(post) },
   }));
 }
 
-const { post } = Astro.props;
+const { post, state } = Astro.props;
+const isDraftPreview = state !== 'published';
 const { Content } = await post.render();
 
 const { title, date, modified, author, categories, excerpt, featuredImage, featuredImageAlt, featuredImageCaption } = post.data;
 const slug = post.id.replace(/\.md$/, '');
 
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+// Width and height keep the page from jumping while the featured image loads.
+const featuredFile = featuredImage?.startsWith('/') ? `public${decodeURI(featuredImage)}` : null;
+const featuredSize = featuredFile && existsSync(featuredFile) ? await sharp(featuredFile).metadata() : null;
+
+// Front matter dates are plain days; format them in UTC so they don't shift a day back.
+const fmtDate = (d) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const formattedDate = fmtDate(date);
+// Show an "Updated" date only when the post was changed on a later day than it was posted.
+const wasUpdated = modified && modified !== date;
+const formattedModified = wasUpdated ? fmtDate(modified) : null;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -74,9 +84,21 @@ const structuredData = {
         }
         <h1 class="post-title">{title}</h1>
         <div class="post-meta">
-          <span class="post-author">By <a href="/#about">{author}</a></span>
+          <span class="post-author">By: <a href="/#about">{author}</a></span>
           <span class="post-sep">·</span>
-          <time datetime={date}>{formattedDate}</time>
+          {isDraftPreview ? (
+            <DraftBadge state={state} />
+          ) : (
+            <>
+              <time datetime={date}>Posted: {formattedDate}</time>
+              {wasUpdated && (
+                <>
+                  <span class="post-sep">·</span>
+                  <time datetime={modified} class="post-updated">Updated: {formattedModified}</time>
+                </>
+              )}
+            </>
+          )}
         </div>
       </div>
     </header>
@@ -87,7 +109,13 @@ const structuredData = {
         <div class="container">
           <figure class="post-featured">
             <div class="post-featured-img">
-              <img src={featuredImage} alt={featuredImageAlt ?? title} />
+              <img
+                src={featuredImage}
+                alt={featuredImageAlt ?? ''}
+                width={featuredSize?.width}
+                height={featuredSize?.height}
+                decoding="async"
+              />
             </div>
             {featuredImageCaption && <figcaption>{featuredImageCaption}</figcaption>}
           </figure>
