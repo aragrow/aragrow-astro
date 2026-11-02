@@ -148,3 +148,7 @@ posts.xml
 
 # Local auth / credential files
 .token
+/public/images/blog
+
+# Generated image previews
+scripts/images/*.png
