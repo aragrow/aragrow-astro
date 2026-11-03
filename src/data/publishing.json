@@ -18,6 +18,12 @@
       "publishAt": "2026-10-31T02:10:20.200Z",
       "expireAt": null
     },
+    "/ai-consulting-and-automation/": {
+      "type": "page",
+      "status": "draft",
+      "publishAt": null,
+      "expireAt": null
+    },
     "/ai-front-desk-review/": {
       "type": "service",
       "status": "published",
