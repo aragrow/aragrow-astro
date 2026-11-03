@@ -42,14 +42,21 @@ const structuredData = [
   },
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     name: 'AraGrow LLC',
     url: 'https://aragrow.me',
+    telephone: '+1-952-228-1752',
     slogan: 'Apps for scalable growth',
     description:
       'AraGrow LLC provides fractional CTO services, AI integration, web development, cloud infrastructure, and database management for growing businesses.',
     founder: { '@type': 'Person', name: 'David Arago' },
-    areaServed: 'US',
+    areaServed: [
+      { '@type': 'City', name: 'Minneapolis' },
+      { '@type': 'Place', name: 'Twin Cities' },
+      { '@type': 'State', name: 'Minnesota' },
+      { '@type': 'Country', name: 'United States' },
+    ],
+    availableLanguage: ['en', 'es'],
     priceRange: '$1,500–$3,000/month',
     address: {
       '@type': 'PostalAddress',
@@ -62,8 +69,8 @@ const structuredData = [
       '@type': 'OfferCatalog',
       name: 'Technology Services',
       itemListElement: [
+        'AI Consulting and Automation',
         'Fractional CTO',
-        'AI Integration',
         'Web Development',
         'Cloud Infrastructure',
         'Database Management',
@@ -116,8 +123,8 @@ const structuredData = [
 ---
 
 <Layout
-  title="AraGrow LLC — Fractional CTO for Growing Businesses | David Aragó"
-  description="Your technology was built for the company you were. I help businesses between $5M–$10M close the gap — hands-on fractional CTO leadership without the full-time overhead. Minneapolis, MN."
+  title="Fractional CTO, IT/AI Consultant in Minnesota | AraGrow"
+  description="Part-time senior technology leadership for growing businesses. IT consulting, AI automation, and system modernization from Minnesota, serving clients across the US."
   structuredData={structuredData}
 >
   <Nav />
