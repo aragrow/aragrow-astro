@@ -1,4 +1,6 @@
 ---
+import { caseStudyHref } from '../data/case-studies';
+import { reviewHref } from '../data/reviews';
 ---
 
 <section class="icp-hero" id="icp-hero">
@@ -19,6 +21,19 @@
       <p class="icp-fitnote-alongside">
         Already have a CTO? I also work alongside them, adding capacity for a workstream or a second opinion
         on a big decision. <a href="/how-i-work#alongside">See how that works</a>
+      </p>
+      <p class="icp-fitnote-alongside">
+        Shopping for an IT provider instead? Plenty of clients start out weighing
+        a managed IT services provider, a web design company or a software development company.
+        I help you scope what you actually need before anyone writes a proposal, then pick the
+        vendor and hold them to it. At Hubbard Broadcasting I led the selections for PeopleSoft,
+        ADP, NetSuite and Microsoft Navision.
+        <a href={caseStudyHref('finance-hr-data-migration')}>See how one of those went</a>
+      </p>
+      <p class="icp-fitnote-alongside">
+        Already have vendors and nobody owns the relationships? That is its own fixed-price
+        review. <a href={reviewHref('vendor-accountability-review')}>See the Vendor
+        Accountability Review</a>
       </p>
 
       <ul class="icp-pricing">
