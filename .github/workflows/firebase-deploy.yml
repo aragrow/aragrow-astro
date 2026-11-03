@@ -5,8 +5,9 @@
 name: Build & Deploy to Firebase Hosting
 
 on:
-  push:
-    branches: [main]
+# by commenting the push block, now the deployment to firebase is only manual
+#  push:
+#    branches: [main]
   workflow_dispatch:   # allows manual trigger from GitHub UI
 
 jobs:
