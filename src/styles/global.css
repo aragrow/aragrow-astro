@@ -143,10 +143,21 @@ section { position: relative; z-index: 1; }
 /* Top and bottom only, so .container keeps its 24px side gutter */
 .hero-content { padding-top: 96px; padding-bottom: 32px; position: relative; z-index: 1; }
 
+/* Descriptive H1 above the display line: carries the searchable wording */
+.hero-kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--teal-text);
+  max-width: 640px;
+  margin: 0 0 24px;
+}
+
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.6rem, 6vw, 4.5rem);
-  font-weight: 700; line-height: 1.1; margin-bottom: 24px;
+  font-weight: 700; line-height: 1.1; margin-bottom: 12px;
 }
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted);
@@ -171,7 +182,7 @@ section { position: relative; z-index: 1; }
   display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 48px; align-items: center; margin-bottom: 40px;
 }
-.hero-text .hero-sub { max-width: none; }
+.hero-text .hero-sub { max-width: none; margin-bottom: 16px; }
 .hero-text .hero-sub:last-child { margin-bottom: 0; }
 .hero-action-card {
   padding: 32px 28px; text-align: center;
@@ -463,6 +474,7 @@ body > footer {
 
   /* Hero — center-align on mobile */
   .hero-content { text-align: center; }
+  .hero-kicker { margin: 0 auto 24px; }
   .hero-sub { margin: 0 auto 40px; }
   .hero-actions { justify-content: center; }
   .hero-body { grid-template-columns: 1fr; gap: 32px; }
