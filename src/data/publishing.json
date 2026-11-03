@@ -576,16 +576,16 @@
       "publishAt": "2025-04-22T05:00:00.000Z",
       "expireAt": null
     },
+    "/blog/you-have-backups-can-you-prove-it/": {
+      "type": "post",
+      "status": "published",
+      "publishAt": "2026-11-03T04:22:29.988Z",
+      "expireAt": null
+    },
     "/blog/you-want-to-implement-content-security-policy-csp-read-now/": {
       "type": "post",
       "status": "published",
       "publishAt": "2024-03-08T06:00:00.000Z",
-      "expireAt": null
-    },
-    "/blog/your-backup-is-like-your-cars-emergency-brake/": {
-      "type": "post",
-      "status": "published",
-      "publishAt": "2026-11-03T04:22:29.988Z",
       "expireAt": null
     },
     "/broadcasting/": {

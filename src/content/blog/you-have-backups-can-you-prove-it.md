@@ -1,11 +1,11 @@
 ---
 title: "You Have Backups. Can You Prove It?"
 date: "2026-11-02"
-slug: "your-backup-is-like-your-cars-emergency-brake"
+slug: "you-have-backups-can-you-prove-it"
 author: "David Arago"
 categories: ["Blog"]
 excerpt: "The last time I tested my car's emergency brake, I was seventeen and showing off. Most businesses can't remember the last time they restored from a backup."
-featuredImage: "/images/blog/your-backup-is-like-your-cars-emergency-brake.webp"
+featuredImage: "/images/blog/you-have-backups-can-you-prove-it.webp"
 featuredImageAlt: "A hand pulling up a car's emergency brake, next to a laptop showing a cloud backup icon with a green check mark and a large question mark between them."
 ---
 At seventeen, I was sure my car’s emergency brake worked. My friends and I yanked it at speed to spin the car whenever girls were around.

@@ -1,7 +1,7 @@
-// Alternative, text-free illustration for /blog/your-backup-is-like-your-cars-emergency-brake/.
+// Alternative, text-free illustration for /blog/you-have-backups-can-you-prove-it/.
 // Draws an SVG in the site colors and renders it to a 640px WebP (quality 60). Not the published
 // featured image for that post, which is a photo.
-// Usage: node scripts/images/your-backup-is-like-your-cars-emergency-brake.mjs
+// Usage: node scripts/images/you-have-backups-can-you-prove-it.mjs
 import sharp from 'sharp';
 
 const W = 1200, H = 630;
@@ -77,7 +77,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
 const base = new URL('../../', import.meta.url).pathname;
 // Writes the -illustration variant on purpose: the published featured image for this post is a
 // photo, and this script must not overwrite it.
-const slug = 'your-backup-is-like-your-cars-emergency-brake-illustration';
+const slug = 'you-have-backups-can-you-prove-it-illustration';
 
 await sharp(Buffer.from(svg)).resize(900).png().toFile(`${base}scripts/images/${slug}-preview.png`);
 const info = await sharp(Buffer.from(svg))

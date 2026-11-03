@@ -11,6 +11,11 @@ export default defineConfig({
   compressHTML: true,
   devToolbar: { enabled: false },
   markdown: { rehypePlugins: [rehypeImageA11y] },
+  // Posts that were published under an earlier slug. Static builds emit a redirect page, so an
+  // old link keeps working instead of 404ing.
+  redirects: {
+    '/blog/your-backup-is-like-your-cars-emergency-brake/': '/blog/you-have-backups-can-you-prove-it/',
+  },
   integrations: [
     sitemap({
       // Leave out internal pages and anything not live per src/data/publishing.json.
