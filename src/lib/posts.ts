@@ -42,3 +42,19 @@ export async function getViewablePosts() {
   if (!import.meta.env.DEV) return posts.filter((post) => isLiveUrl(postUrl(post), publishing, now));
   return posts;
 }
+
+// The order posts appear in on the homepage and the blog listing:
+//   1. sticky posts first (front matter `sticky: true`)
+//   2. then newest first by front matter `date`
+//   3. same date: by `order` ascending, so a multi-part guide reads in sequence
+// One sort over the whole list, so a sticky post is pinned to the top of page 1 and does not
+// also appear in its date position further down.
+export function sortPosts(posts: CollectionEntry<'blog'>[]) {
+  return [...posts].sort((a, b) => {
+    const bySticky = Number(b.data.sticky) - Number(a.data.sticky);
+    if (bySticky !== 0) return bySticky;
+    const byDate = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+    if (byDate !== 0) return byDate;
+    return (a.data.order ?? Infinity) - (b.data.order ?? Infinity);
+  });
+}

@@ -346,6 +346,7 @@ section { position: relative; z-index: 1; }
   margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);
   font-size: 0.78rem; color: var(--muted);
 }
+.blog-meta-main { display: inline-flex; align-items: center; gap: 8px; }
 .blog-read { color: var(--teal-text); font-weight: 600; }
 
 /* ══════════════════ CONTACT ══════════════════ */

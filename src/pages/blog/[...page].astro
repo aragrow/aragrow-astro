@@ -2,17 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import { getViewablePosts, postState } from '../../lib/posts';
+import { getViewablePosts, postState, sortPosts } from '../../lib/posts';
 import DraftBadge from '../../components/DraftBadge.astro';
+import StickyBadge from '../../components/StickyBadge.astro';
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
-  const posts = (await getViewablePosts()).sort((a, b) => {
-    const byDate = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-    if (byDate !== 0) return byDate;
-    // Same date: order ascending (e.g. the Architecting Trust guide in reading order)
-    return (a.data.order ?? Infinity) - (b.data.order ?? Infinity);
-  });
-  return paginate(posts, { pageSize: 12 });
+  return paginate(sortPosts(await getViewablePosts()), { pageSize: 12 });
 }
 
 const { page } = Astro.props;
@@ -100,18 +95,21 @@ function pickPlaceholder(id: string) {
                 <h2>{title}</h2>
                 <p>{excerpt ? excerpt.slice(0, 160) + (excerpt.length > 160 ? '…' : '') : ''}</p>
                 <div class="blog-listing-meta">
-                  {postState(post) !== 'published' ? (
-                    <DraftBadge state={postState(post)} />
-                  ) : (
-                    <time datetime={date}>
-                      {new Date(date).toLocaleDateString('en-US', {
-                        timeZone: 'UTC',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  )}
+                  <span class="blog-listing-meta-main">
+                    <StickyBadge sticky={post.data.sticky} />
+                    {postState(post) !== 'published' ? (
+                      <DraftBadge state={postState(post)} />
+                    ) : (
+                      <time datetime={date}>
+                        {new Date(date).toLocaleDateString('en-US', {
+                          timeZone: 'UTC',
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    )}
+                  </span>
                   <span class="blog-read" aria-hidden="true">Read More →</span>
                 </div>
               </div>
@@ -235,6 +233,8 @@ function pickPlaceholder(id: string) {
     text-transform: uppercase;
     color: var(--teal-text);
   }
+
+  .blog-listing-meta-main { display: inline-flex; align-items: center; gap: 8px; }
 
   .blog-listing-meta {
     display: flex;

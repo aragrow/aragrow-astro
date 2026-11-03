@@ -4,6 +4,7 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { getViewablePosts, postState } from '../../lib/posts';
 import DraftBadge from '../../components/DraftBadge.astro';
+import StickyBadge from '../../components/StickyBadge.astro';
 import { existsSync } from 'node:fs';
 import sharp from 'sharp';
 
@@ -84,6 +85,7 @@ const structuredData = {
         }
         <h1 class="post-title">{title}</h1>
         <div class="post-meta">
+          <StickyBadge sticky={post.data.sticky} />
           <span class="post-author">By: <a href="/#about">{author}</a></span>
           <span class="post-sep">·</span>
           {isDraftPreview ? (

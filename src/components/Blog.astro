@@ -1,11 +1,9 @@
 ---
-import { getViewablePosts, postState } from '../lib/posts';
+import { getViewablePosts, postState, sortPosts } from '../lib/posts';
 import DraftBadge from './DraftBadge.astro';
+import StickyBadge from './StickyBadge.astro';
 
-const allPosts = (await getViewablePosts()).sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-);
-const posts = allPosts.slice(0, 3);
+const posts = sortPosts(await getViewablePosts()).slice(0, 3);
 
 const placeholders = [
   '/images/blog-placeholder.svg',
@@ -55,11 +53,14 @@ function pickPlaceholder(id: string) {
               <h3>{title}</h3>
               <p>{shortExcerpt}</p>
               <div class="blog-meta">
-                {postState(post) !== 'published' ? (
-                  <DraftBadge state={postState(post)} />
-                ) : (
-                  <time datetime={date}>{formattedDate}</time>
-                )}
+                <span class="blog-meta-main">
+                  <StickyBadge sticky={post.data.sticky} />
+                  {postState(post) !== 'published' ? (
+                    <DraftBadge state={postState(post)} />
+                  ) : (
+                    <time datetime={date}>{formattedDate}</time>
+                  )}
+                </span>
                 <span class="blog-read">Read More →</span>
               </div>
             </div>

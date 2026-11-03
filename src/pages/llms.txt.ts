@@ -1,12 +1,11 @@
 import type { APIRoute } from 'astro';
-import { getPublishedPosts } from '../lib/posts';
+import { getPublishedPosts, sortPosts } from '../lib/posts';
 
 const SITE = 'https://aragrow.me';
 
 export const GET: APIRoute = async () => {
-  const posts = (await getPublishedPosts()).sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  );
+  // Same order as the homepage and the blog listing: sticky posts first, then newest first.
+  const posts = sortPosts(await getPublishedPosts());
 
   const lines: string[] = [];
   lines.push('# AraGrow');

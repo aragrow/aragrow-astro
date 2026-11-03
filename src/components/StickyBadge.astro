@@ -1,0 +1,47 @@
+---
+// Marks a post pinned to the top of the homepage and the blog listing (front matter `sticky: true`).
+//
+// Unlike DraftBadge, the dev-only gate lives here rather than in the caller. A sticky post is
+// published, so it renders on aragrow.me like any other post; without this check the badge would
+// ship to production. import.meta.env.DEV is false in `astro build`, so nothing is emitted there.
+interface Props {
+  sticky?: boolean;
+  class?: string;
+}
+
+const { sticky = false, class: className } = Astro.props;
+const show = sticky && import.meta.env.DEV;
+---
+
+{
+  show && (
+    <span
+      class:list={['sticky-badge', className]}
+      title="Sticky: pinned above newer posts on the homepage and the blog listing. Shown only in your local preview."
+      aria-label="Sticky post"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M16 9V4h1c.55 0 1-.45 1-1s-.45-1-1-1H7c-.55 0-1 .45-1 1s.45 1 1 1h1v5c0 1.66-1.34 3-3 3v2h5.97v7l1 1 1-1v-7H19v-2c-1.66 0-3-1.34-3-3z" />
+      </svg>
+    </span>
+  )
+}
+
+<style>
+  .sticky-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #e8b931;
+    color: #7b1818;
+    border: 1px solid #c99a1f;
+    flex: none;
+  }
+  .sticky-badge svg {
+    width: 14px;
+    height: 14px;
+  }
+</style>
