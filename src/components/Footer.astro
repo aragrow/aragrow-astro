@@ -53,8 +53,17 @@ const year = new Date().getFullYear();
       </a>
     </div>
 
-    <!-- Row 3: Copyright -->
-    <p class="footer-copy">© {year} AraGrow LLC · Minneapolis, MN · Serving clients in the US and internationally · EN · ES</p>
+    <!-- Row 3: Name, address, phone -->
+    <p class="footer-nap">
+      AraGrow LLC · Minnesota · <a href="tel:+19522281752">(952) 228-1752</a>
+    </p>
+    <p class="footer-area">
+      Fractional CTO, IT consulting and AI automation for the Twin Cities metro and clients
+      across the US and internationally. English and Spanish.
+    </p>
+
+    <!-- Row 4: Copyright -->
+    <p class="footer-copy">© {year} AraGrow LLC</p>
 
   </div>
 </footer>
@@ -67,6 +76,25 @@ const year = new Date().getFullYear();
     transition: color 0.2s;
   }
   .footer-links .footer-link-btn:hover { color: var(--purple); }
+
+  /* Name, service state and phone. Keep in step with the Google Business Profile listing. */
+  .footer-nap {
+    margin: 24px 0 6px;
+    text-align: center;
+    font-size: 0.85rem; font-weight: 500;
+    color: rgba(253, 246, 244, 0.85);
+  }
+  .footer-nap a {
+    color: inherit;
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .footer-nap a:hover { color: var(--purple); }
+  .footer-area {
+    margin: 0 auto;
+    max-width: 620px; text-align: center;
+    font-size: 0.78rem; line-height: 1.6;
+    color: rgba(253, 246, 244, 0.6);
+  }
 </style>
 
 <script>
