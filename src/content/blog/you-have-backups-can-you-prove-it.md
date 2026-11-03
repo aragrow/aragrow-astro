@@ -2,6 +2,7 @@
 title: "You Have Backups. Can You Prove It?"
 date: "2026-11-02"
 slug: "you-have-backups-can-you-prove-it"
+sticky: true
 author: "David Arago"
 categories: ["Blog"]
 excerpt: "The last time I tested my car's emergency brake, I was seventeen and showing off. Most businesses can't remember the last time they restored from a backup."
