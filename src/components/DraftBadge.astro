@@ -1,6 +1,7 @@
 ---
-// A status badge shown in place of the date for posts that are not live. It only appears on
+// A status icon shown in place of the date for posts that are not live. It only appears on
 // the local dev server, because getViewablePosts() returns non-published posts only there.
+// Icon-only, to match StickyBadge; the state and the local-only caveat live in the tooltip.
 import type { PostState } from '../lib/posts';
 
 interface Props {
@@ -9,21 +10,38 @@ interface Props {
 }
 
 const { state, class: className } = Astro.props;
+
 const labels: Partial<Record<PostState, string>> = {
   draft: 'Draft',
   scheduled: 'Scheduled',
   expired: 'Expired',
 };
+
+// Pencil for a draft still being written, clock for one waiting on its publish date,
+// archive box for one whose expiry has passed.
+const paths: Partial<Record<PostState, string>> = {
+  draft:
+    'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z',
+  scheduled:
+    'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z',
+  expired:
+    'M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z',
+};
+
 const label = labels[state];
+const path = paths[state];
 ---
 
 {
-  label && (
+  label && path && (
     <span
       class:list={['draft-badge', `draft-badge--${state}`, className]}
-      title="Visible only in your local preview, not on aragrow.me"
+      title={`${label}: visible only in your local preview, not on aragrow.me`}
+      aria-label={`${label} post`}
     >
-      {label} · local only
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d={path} />
+      </svg>
     </span>
   )
 }
@@ -32,16 +50,18 @@ const label = labels[state];
   .draft-badge {
     display: inline-flex;
     align-items: center;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 50px;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
     background: #fee2e2;
     color: #7b1818;
     border: 1px solid #ef9a9a;
-    white-space: nowrap;
+    flex: none;
+  }
+  .draft-badge svg {
+    width: 13px;
+    height: 13px;
   }
   .draft-badge--scheduled {
     background: #e0e7ff;
