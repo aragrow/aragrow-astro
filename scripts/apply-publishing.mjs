@@ -7,19 +7,16 @@
 import { readFileSync, rmSync, readdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { isLiveUrl } from '../src/lib/publishing.mjs';
-import { builtPageFiles, DIST, SNAPSHOT_FILE, urlOfBuiltFile } from './site-db.mjs';
+import { builtPageFiles, DIST, isRedirectStub, SNAPSHOT_FILE, urlOfBuiltFile } from './site-db.mjs';
 
 const snapshot = JSON.parse(readFileSync(SNAPSHOT_FILE, 'utf8'));
 const now = Date.now();
-
-// Redirect stubs from the `redirects` map in astro.config.mjs. They point at an old URL that is
-// deliberately absent from publishing.json, so the live check below would delete them.
-const isRedirectStub = (file) => readFileSync(file, 'utf8').includes('http-equiv="refresh"');
 
 const removed = [];
 for (const file of builtPageFiles()) {
   const url = urlOfBuiltFile(file);
   if (isLiveUrl(url, snapshot, now)) continue;
+  // A redirect stub stands in for a renamed post's old URL, so it has no publishing.json entry.
   if (isRedirectStub(file)) continue;
   rmSync(file);
   const dir = dirname(file);

@@ -12,7 +12,7 @@
 import { MANAGED_TYPES, classify } from '../src/lib/publishing.mjs';
 import {
   builtPageFiles, connect, discoverSources, frontMatter, git, gitDate, hashContent,
-  readBuiltPage, SCHEMA, textOf, urlOfBuiltFile,
+  isRedirectStub, readBuiltPage, SCHEMA, textOf, urlOfBuiltFile,
 } from './site-db.mjs';
 
 function postFromSource(sourceFile) {
@@ -32,7 +32,13 @@ async function main() {
   const client = await connect();
   if (!client) return;
 
-  const built = new Map(builtPageFiles().map((f) => [urlOfBuiltFile(f), f]));
+  // Redirect stubs stand in for a renamed post's old URL. They are not pages of their own, so
+  // they must not become rows here: classify() would call them posts and they have no front matter.
+  const built = new Map(
+    builtPageFiles()
+      .filter((f) => !isRedirectStub(f))
+      .map((f) => [urlOfBuiltFile(f), f])
+  );
   const sources = new Map(discoverSources().map((s) => [s.url, s]));
   // Generated pages (blog listings) have no source file of their own.
   for (const url of built.keys()) {

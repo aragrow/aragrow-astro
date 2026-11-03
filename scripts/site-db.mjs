@@ -167,8 +167,15 @@ export function discoverSources() {
   return [...posts, ...pages].map((s) => ({ ...s, type: classify(s.url) }));
 }
 
+// A built page emitted by the `redirects` map in astro.config.mjs rather than by a source file.
+// Both publishing scripts skip these: they stand in for a URL that no longer has a post.
+export function isRedirectStub(file) {
+  return readFileSync(file, 'utf8').includes('http-equiv="refresh"');
+}
+
 // Blog front matter is simple `key: "value"` and `key: ["a", "b"]` lines.
 export function frontMatter(sourceFile) {
+  if (!sourceFile) return { data: {}, body: '' };
   const file = join(ROOT, sourceFile);
   if (!existsSync(file)) return { data: {}, body: '' };
   const text = readFileSync(file, 'utf8');
