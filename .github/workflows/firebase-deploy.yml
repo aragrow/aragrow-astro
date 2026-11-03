@@ -1,0 +1,44 @@
+# This is what publishes aragrow.me. The domain's A record points at Firebase Hosting
+# (199.36.158.100), and the custom domain and aragrow-astro.web.app serve the same site.
+# projectId is set explicitly: .firebaserc says "aragrow-astro", but the deploys that
+# actually reached the live site used the warpinsights project. Reconcile the two before
+# trusting .firebaserc here, because the service-account secret is scoped to one project.
+name: Build & Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # allows manual trigger from GitHub UI
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Blog content comes from src/content/blog/ in this repo. Posts are no longer pulled
+      # from WordPress at build time; edit the markdown files and commit them.
+      - name: Build Astro site
+        run: npm run build
+        env:
+          PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID }}
+          PUBLIC_GA_ID: ${{ secrets.PUBLIC_GA_ID }}
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: warpinsights
+          channelId: live   # live = the real site, not a temporary preview channel
