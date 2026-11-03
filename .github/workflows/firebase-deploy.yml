@@ -1,8 +1,7 @@
 # This is what publishes aragrow.me. The domain's A record points at Firebase Hosting
 # (199.36.158.100), and the custom domain and aragrow-astro.web.app serve the same site.
-# projectId matches the one Firebase project on this account (display name "aragrow"),
-# whose only hosting site is aragrow-astro. The previous "warpinsights" value named a
-# project that does not exist, so this step could never have deployed.
+# projectId must be the project ID, not the display name. The console shows the display
+# name "aragrow", but the ID is aragrow-astro, which is also its only hosting site.
 name: Build & Deploy to Firebase Hosting
 
 on:
@@ -40,5 +39,5 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: aragrow
+          projectId: aragrow-astro
           channelId: live   # live = the real site, not a temporary preview channel
