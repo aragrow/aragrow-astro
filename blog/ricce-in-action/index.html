@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RICCE in Action: A Real Walk-Through — AraGrow Blog</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="description" content="In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for b…"><link rel="canonical" href="https://aragrow.me/blog/ricce-in-action/"><!-- Open Graph (Facebook, LinkedIn, Slack, iMessage, Discord, WhatsApp, etc.) --><meta property="og:type" content="article"><meta property="og:site_name" content="AraGrow"><meta property="og:url" content="https://aragrow.me/blog/ricce-in-action/"><meta property="og:title" content="RICCE in Action: A Real Walk-Through — AraGrow Blog"><meta property="og:description" content="In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for b…"><meta property="og:image" content="https://aragrow.me/images/blog/Document_to_wordpress.webp"><meta property="og:locale" content="en_US"><!-- X/Twitter falls back to og:* tags but explicit summary_large_image gives the big card --><meta name="twitter:card" content="summary_large_image"><!-- Preload critical fonts to eliminate CLS from font-swap --><link rel="preload" href="/fonts/space-grotesk-300-2.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-300-6.woff2" as="font" type="font/woff2" crossorigin><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"RICCE in Action: A Real Walk-Through","description":"In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for b…","datePublished":"2026-05-11","dateModified":"2026-05-11","author":{"@type":"Person","name":"David Arago","url":"https://aragrow.me"},"publisher":{"@type":"Organization","name":"AraGrow LLC","url":"https://aragrow.me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://aragrow.me/blog/ricce-in-action"},"image":"https://aragrow.me/images/blog/Document_to_wordpress.webp"}</script><!-- Analytics scripts (GA/GTM) load via ConsentBanner only after user opt-in --><link rel="stylesheet" href="/_astro/access-control-review.BqQxUwiH.css">
+<style>.draft-badge[data-astro-cid-s3jkptqn]{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:50px;background:#fee2e2;color:#7b1818;border:1px solid #ef9a9a;white-space:nowrap}.draft-badge--scheduled[data-astro-cid-s3jkptqn]{background:#e0e7ff;color:#3730a3;border-color:#a5b4fc}.draft-badge--expired[data-astro-cid-s3jkptqn]{background:#e2e8f0;color:#475569;border-color:#cbd5e1}
+.post-wrapper[data-astro-cid-4sn4zg3r]{padding-top:80px;padding-bottom:100px}.post-header[data-astro-cid-4sn4zg3r]{padding:64px 0 40px}.post-header-inner[data-astro-cid-4sn4zg3r]{max-width:760px}.post-categories[data-astro-cid-4sn4zg3r]{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.post-category-tag[data-astro-cid-4sn4zg3r]{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-text);background:var(--teal-dim);border:1px solid var(--border);padding:4px 12px;border-radius:50px}.post-title[data-astro-cid-4sn4zg3r]{font-family:Space Grotesk,sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:20px}.post-meta[data-astro-cid-4sn4zg3r]{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--muted)}.post-author[data-astro-cid-4sn4zg3r]{font-weight:500}.post-author[data-astro-cid-4sn4zg3r] a[data-astro-cid-4sn4zg3r]{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}.post-author[data-astro-cid-4sn4zg3r] a[data-astro-cid-4sn4zg3r]:hover{color:var(--brand, var(--text));border-bottom-style:solid}.post-sep[data-astro-cid-4sn4zg3r]{opacity:.4}.post-featured[data-astro-cid-4sn4zg3r]{margin:0 0 48px}.post-featured-img[data-astro-cid-4sn4zg3r]{border-radius:var(--radius);overflow:hidden;max-height:480px;border:1px solid var(--border)}.post-featured-img[data-astro-cid-4sn4zg3r] img[data-astro-cid-4sn4zg3r]{width:100%;height:100%;object-fit:cover;display:block}.post-featured[data-astro-cid-4sn4zg3r] figcaption[data-astro-cid-4sn4zg3r]{font-size:.85rem;color:var(--muted);text-align:center;margin-top:12px;font-style:italic}.post-body[data-astro-cid-4sn4zg3r]{max-width:760px;font-size:1.05rem;line-height:1.85;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] h2{font-family:Space Grotesk,sans-serif;font-size:1.6rem;font-weight:700;margin:48px 0 16px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] h3{font-family:Space Grotesk,sans-serif;font-size:1.2rem;font-weight:600;margin:32px 0 12px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] p{margin-bottom:20px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] a{color:var(--teal-text);text-decoration:underline}.post-body[data-astro-cid-4sn4zg3r] ul,.post-body[data-astro-cid-4sn4zg3r] ol{margin:0 0 20px 24px;color:var(--text)}.post-body[data-astro-cid-4sn4zg3r] li{margin-bottom:8px;line-height:1.7}.post-body[data-astro-cid-4sn4zg3r] blockquote{border-left:4px solid var(--teal);margin:32px 0;padding:16px 24px;background:var(--teal-dim);border-radius:0 8px 8px 0;font-style:italic;color:var(--muted)}.post-body[data-astro-cid-4sn4zg3r] pre{background:#0f172a;color:#e2e8f0;padding:24px;border-radius:8px;overflow-x:auto;margin-bottom:24px;font-size:.875rem;line-height:1.7}.post-body[data-astro-cid-4sn4zg3r] code{font-family:Fira Code,Courier New,monospace;background:var(--teal-dim);padding:2px 6px;border-radius:4px;font-size:.875em}.post-body[data-astro-cid-4sn4zg3r] pre code{background:none;padding:0}.post-body[data-astro-cid-4sn4zg3r] img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:24px 0}.post-body[data-astro-cid-4sn4zg3r] table{width:100%;border-collapse:collapse;margin-bottom:24px}.post-body[data-astro-cid-4sn4zg3r] th,.post-body[data-astro-cid-4sn4zg3r] td{padding:10px 14px;border:1px solid var(--border);font-size:.9rem}.post-body[data-astro-cid-4sn4zg3r] th{background:var(--teal-dim);font-weight:600}.post-body[data-astro-cid-4sn4zg3r] figure{margin:24px 0}.post-body[data-astro-cid-4sn4zg3r] figcaption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}.post-back[data-astro-cid-4sn4zg3r]{display:flex;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:40px;border-top:1px solid var(--border)}
+</style></head> <body>  <nav id="navbar" data-astro-cid-dmqpwcec> <div class="nav-inner" data-astro-cid-dmqpwcec> <a href="/" class="nav-logo" data-astro-cid-dmqpwcec> <img src="/logo.svg" alt="" class="nav-logo-img" width="36" height="36" data-astro-cid-dmqpwcec> <div class="nav-logo-text" data-astro-cid-dmqpwcec> <div data-astro-cid-dmqpwcec>AraGrow,<span data-astro-cid-dmqpwcec>LLC</span></div> <div class="nav-logo-tag" data-astro-cid-dmqpwcec>Fractional CTO</div> </div> </a> <!-- Desktop links --> <ul class="nav-links" id="nav-links" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec><a href="/services" data-astro-cid-dmqpwcec>Services</a></li> <li data-astro-cid-dmqpwcec><a href="/case-studies" data-astro-cid-dmqpwcec>Case Studies</a></li> <li data-astro-cid-dmqpwcec><a href="/how-i-work" data-astro-cid-dmqpwcec>How I Work</a></li> <li data-astro-cid-dmqpwcec><a href="/#about" data-astro-cid-dmqpwcec>About</a></li> <li data-astro-cid-dmqpwcec><a href="/faq" data-astro-cid-dmqpwcec>FAQ</a></li> <li data-astro-cid-dmqpwcec><a href="/blog" data-astro-cid-dmqpwcec>Blog</a></li> <li data-astro-cid-dmqpwcec><a href="/contact" data-astro-cid-dmqpwcec>Contact</a></li> <!-- Mobile-only CTA inside menu --> <li class="nav-cta-mobile" data-astro-cid-dmqpwcec> <a href="/contact" class="btn btn-primary" data-astro-cid-dmqpwcec>Let's Talk</a> </li> </ul> <a href="/contact" class="btn btn-primary nav-cta" data-astro-cid-dmqpwcec>Let's Talk</a> <!-- Hamburger button --> <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-dmqpwcec> <span data-astro-cid-dmqpwcec></span> <span data-astro-cid-dmqpwcec></span> <span data-astro-cid-dmqpwcec></span> </button> </div> </nav> <script type="module">const n=document.getElementById("navbar"),e=document.getElementById("hamburger"),s=document.getElementById("nav-links");window.addEventListener("scroll",()=>{n?.classList.toggle("scrolled",window.scrollY>60)});e?.addEventListener("click",()=>{const t=s?.classList.toggle("open");e.setAttribute("aria-expanded",String(t)),e.classList.toggle("active",t??!1)});s?.querySelectorAll("a").forEach(t=>{t.addEventListener("click",()=>{s.classList.remove("open"),e?.setAttribute("aria-expanded","false"),e?.classList.remove("active")})});</script>  <main data-astro-cid-4sn4zg3r> <div class="post-wrapper" data-astro-cid-4sn4zg3r> <!-- Hero / header --> <header class="post-header" data-astro-cid-4sn4zg3r> <div class="container post-header-inner" data-astro-cid-4sn4zg3r> <div class="post-categories" data-astro-cid-4sn4zg3r> <span class="post-category-tag" data-astro-cid-4sn4zg3r>Blog</span><span class="post-category-tag" data-astro-cid-4sn4zg3r>To Astro</span> </div> <h1 class="post-title" data-astro-cid-4sn4zg3r>RICCE in Action: A Real Walk-Through</h1> <div class="post-meta" data-astro-cid-4sn4zg3r> <span class="post-author" data-astro-cid-4sn4zg3r>By: <a href="/#about" data-astro-cid-4sn4zg3r>David Arago</a></span> <span class="post-sep" data-astro-cid-4sn4zg3r>·</span>  <time datetime="2026-05-11" data-astro-cid-4sn4zg3r>Posted: May 11, 2026</time>  </div> </div> </header> <!-- Featured image --> <div class="container" data-astro-cid-4sn4zg3r> <figure class="post-featured" data-astro-cid-4sn4zg3r> <div class="post-featured-img" data-astro-cid-4sn4zg3r> <img src="/images/blog/Document_to_wordpress.webp" alt width="1536" height="1024" decoding="async" data-astro-cid-4sn4zg3r> </div>  </figure> </div> <!-- Post body --> <div class="container" data-astro-cid-4sn4zg3r> <article class="post-body" data-astro-cid-4sn4zg3r> <p>In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for building a secure document-to-WordPress bridge.</p>
+<p>Through a short back-and-forth, the MCP uses its scoring and rewrite tools to turn a vague request into a fully RICCE-structured prompt.</p>
+<h2 class="wp-block-heading">Original (bad) prompt</h2>
+<blockquote class="wp-block-quote"><p>I want to create a app that is able to process a Word, Google Doc, PDF, OpenOffice, and text to allow the user to upload the file, or reference the file by url and create a xml file to be able to manually import the xml to WordPress (so it needs to follow the xml requirements in wordpress), also if the correct credentials are in place, import the post directly in wordpress.  the user should be able to enter the post type, and the category for wordpress.</p>
+</blockquote>
+<figure class="wp-block-image aligncenter size-large"><img src="https://cp.aragrow.me/wp-content/uploads/2026/05/Document_to_wordpress-1024x683.webp" alt="Pencil drawing of an MCP server that turns PDF, DOCX, Markdown and TXT documents into a WordPress post, with security checks shown as shields" class="wp-image-2214" width="1024" height="683" loading="lazy" decoding="async"><figcaption class="wp-element-caption">A pencil-style illustration of a secure MCP server that transforms documents into polished WordPress posts through a set of API-driven tools — combining automation, security, and structured content workflows in one intelligent system.</figcaption></figure>
+<h2 class="wp-block-heading">MCP's rewrite with two open questions</h2>
+<p>The MCP came back with the structured rewrite below and flagged two design decisions for me to resolve before using it.</p>
+<blockquote class="wp-block-quote"><p>Here's the rewritten prompt with the MCP framing baked in. Two things worth your call before you use it.<br><br>Role: You are a Senior Backend Engineer specializing in secure API design and integrations with Content Management Systems (CMS). You are building a server that exposes its functionality via the Model Context Protocol (MCP) to language model-based clients.<br><br>Instruction: Build an MCP server whose public interface is a set of MCP tools for converting documents into WordPress posts. Each capability must be exposed as a discrete tool with a clear name, description, and JSON Schema parameters so an LLM client can discover and call it correctly. At minimum, expose:<br><br>convert_document_to_wxr — accept a document (file upload or public URL) plus post_type and category, return a WXR XML string suitable for manual import via WordPress's Tools → Import.<br>publish_document_to_wordpress — same inputs, but publish directly to the configured WordPress site via the REST API. Available only when server-side credentials are configured.<br>health / status — report whether WordPress credentials are configured (boolean only, never the values), and which document formats are supported in this deployment.<br>Context: This MCP server is the only user-facing layer — there is no separate web UI; MCP clients (Claude Desktop, Claude Code, other agents) drive it. Callers are untrusted LLM agents acting on behalf of end-users. The server runs in a containerized environment and reads sensitive credentials (WORDPRESS_API_URL, WORDPRESS_USERNAME, WORDPRESS_APP_PASSWORD) from environment variables. Its responsibility is to safely bridge untrusted document content to the target WordPress site, protecting it from malformed data, malicious payloads (XSS, SSRF), and credential leakage.<br><br>Constraints:<br><br>CRITICAL: Never accept WordPress credentials as tool inputs. They are read only from server-side environment variables. Never log credentials or include them in tool responses or error messages.<br>CRITICAL: Do not trust any client-provided data. Validate and sanitize all inputs (URLs, file contents, metadata) before use.<br>Input validation:<br>For URL inputs, prevent SSRF: only allow http/https, resolve the URL and reject private/reserved/loopback IP ranges, enforce a 10-second request timeout and a hard response size cap.<br>For file uploads, validate content type against a strict allowlist (application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/vnd.oasis.opendocument.text, text/plain). Validate using magic-number sniffing, not just filename extension or client-supplied content type.<br>Enforce a 10 MB size limit on all inputs (uploads and fetched URLs). Reject oversized inputs immediately.<br>Content sanitization: Aggressively sanitize parsed document content to prevent XSS. Strip scripts, iframes, event handlers, and dangerous attributes. Use a well-vetted sanitization library (e.g., bleach).<br>Secure output generation:<br>Build WXR using a real XML library (e.g., xml.etree.ElementTree or lxml). Never construct XML via string concatenation or f-strings.<br>For REST API calls, build payloads as Python dicts and let the HTTP client handle JSON encoding; never hand-format JSON.<br>Tool design:<br>Each tool's description must clearly state its preconditions (e.g., "requires WORDPRESS_* env vars to be set") so the LLM can choose correctly.<br>Tools must return structured errors (not raise) for predictable failure modes: invalid file type, oversized input, blocked URL, missing credentials, WordPress API error.<br>Example: Provide the JSON Schema for the convert_document_to_wxr tool's parameters. Use a oneOf to express the mutually exclusive file-vs-URL source.<br><br><br>{<br>  "type": "object",<br>  "properties": {<br>    "post_type": {<br>      "type": "string",<br>      "description": "The WordPress post type slug (e.g., 'post', 'page', or a custom post type).",<br>      "default": "post"<br>    },<br>    "post_status": {<br>      "type": "string",<br>      "enum": ["publish", "draft", "pending", "private"],<br>      "default": "draft"<br>    },<br>    "category": {<br>      "type": "string",<br>      "description": "Category name to assign. Ignored for post types that don't support categories."<br>    },<br>    "document_source": {<br>      "description": "Source document, as either an inline upload or a public URL.",<br>      "oneOf": [<br>        {<br>          "type": "object",<br>          "title": "FileUpload",<br>          "properties": {<br>            "file_content_b64": { "type": "string", "description": "Base64-encoded document bytes." },<br>            "file_name": { "type": "string", "description": "Original filename; used as a hint, not a security boundary." }<br>          },<br>          "required": ["file_content_b64", "file_name"]<br>        },<br>        {<br>          "type": "object",<br>          "title": "UrlSource",<br>          "properties": {<br>            "document_url": { "type": "string", "format": "uri" }<br>          },<br>          "required": ["document_url"]<br>        }<br>      ]<br>    }<br>  },<br>  "required": ["post_type", "document_source"]<br>}<br>The corresponding publish_document_to_wordpress tool takes the same inputs plus a post_status and returns { "post_id": int, "url": string } on success.</p>
+</blockquote>
+<p>The MCP closed with two things for me to decide:</p>
+<blockquote class="wp-block-quote"><p>Two things to decide<br>One tool or several? The MCP improver initially collapsed everything into one tool with an output_format: "wxr" | "api" switch. I expanded it back to discrete tools (convert_document_to_wxr, publish_document_to_wordpress, health) because that's what you said you wanted ("tools" plural) and it gives the LLM clearer affordances. If you'd rather have a single tool with a mode flag, say so and I'll collapse it.<br><br>Google Docs is still unresolved. It's not a file format — it's a remote resource behind Google auth. The current allowlist excludes it. Options: (a) drop Google Docs and tell users to export to .docx first, (b) add a separate tool import_google_doc(doc_id) that requires a Google service account credential, or (c) accept a public Google Docs "publish to web" URL and parse the HTML. Which?</p>
+</blockquote>
+<h2 class="wp-block-heading">My answer</h2>
+<blockquote class="wp-block-quote"><p>several tools, and allow the user to decide whether to link google docs to the app, or docx.</p>
+</blockquote>
+<h2 class="wp-block-heading">Final RICCE-structured prompt</h2>
+<blockquote class="wp-block-quote"><p>Here's the final RICCE-structured prompt for the MCP server. The Google Docs deployment-time toggle is wired in.<br><br>Role: You are a Senior Backend Engineer specializing in building secure, API-driven content management integrations. You are an expert in Python, the Model Context Protocol (MCP), and defending against common web application vulnerabilities like SSRF, insecure file uploads, and injection attacks.<br><br>Instruction: Write the complete Python code for a secure MCP server using the official MCP Python SDK. The server exposes a public interface as a set of discrete MCP tools for converting documents into WordPress posts. Implement these four tools, each with a clear name, description, and precise JSON Schema:<br><br>convert_document_to_wxr — Accepts a document source (file upload or public URL), a post_type, and a category. Returns a WXR (WordPress eXtended RSS) XML string suitable for manual import via WordPress's Tools → Import. Always available.<br>publish_document_to_wordpress — Same inputs as convert_document_to_wxr plus post_status. Publishes directly via the WordPress REST API. Available only when WordPress credentials are configured server-side.<br>import_google_doc — Accepts a Google Doc ID or shareable URL, post_type, category, and an output flag ("wxr" or "publish"). Fetches the doc server-side using configured Google credentials, then either returns WXR or publishes via the REST API. Available only when Google credentials are configured server-side.<br>health — Reports server status: which optional integrations are configured (booleans only — never values), which document formats are supported, and which tools are currently registered. The calling LLM uses this to decide whether to suggest the Google Docs path or the "export to .docx first" path.<br>Context: This MCP server is the only user-facing layer — there is no separate web UI; MCP clients (Claude Desktop, Claude Code, other agents) drive it. Callers are untrusted LLM agents acting on behalf of end-users. The server runs in a containerized environment.<br><br>The operator decides at deployment time whether to enable Google Docs integration:<br><br>If they don't, end users export Google Docs to .docx first and use convert_document_to_wxr or publish_document_to_wordpress. import_google_doc is not registered.<br>If they do, they set Google credentials env vars (OAuth client or service account JSON path), and import_google_doc is registered. The Google Doc is fetched server-side using those credentials.<br>The trust boundary is strict: the server is trusted; all client inputs are untrusted and potentially malicious.<br><br>Constraints:<br><br>CRITICAL: Never accept credentials (API keys, application passwords, OAuth tokens, service-account JSON) as tool inputs. Read them only from server-side env vars: WORDPRESS_API_URL, WORDPRESS_USERNAME, WORDPRESS_APPLICATION_PASSWORD, GOOGLE_APPLICATION_CREDENTIALS (path to service account JSON) or GOOGLE_OAUTH_*.<br>CRITICAL: Never write credentials, secrets, or raw user file content to logs. Never include them in tool responses or error messages.<br>SSRF defense (URL inputs): Allow only https://. Resolve the domain and reject private, reserved, or loopback IP ranges. 10-second connection timeout. 10 MB response size cap.<br>Upload validation: Verify file type via magic-number sniffing against a strict allowlist (.doc, .docx, .pdf, .odt, .txt). Do not trust filename extension or client-supplied content type.<br>Size limit: 10 MB hard cap on all incoming documents (uploads, URL fetches, Google Doc exports). Reject oversized inputs immediately.<br>Content sanitization: Use a vetted library like bleach to strip &#x3C;script>, &#x3C;iframe>, event handlers, and dangerous attributes before generating XML or REST payloads.<br>WXR generation: Build using xml.etree.ElementTree or lxml. Never concatenate XML strings or use f-strings — vulnerable to XML injection.<br>Error handling: Tools must not raise unhandled exceptions. Return structured errors for predictable failures: {"error": "unsupported_file_type"}, {"error": "ssrf_attempt_blocked"}, {"error": "integration_not_configured", "missing_env": ["WORDPRESS_APPLICATION_PASSWORD"]}, etc.<br>Conditional registration: publish_document_to_wordpress and import_google_doc MUST NOT be registered with the MCP server when their required env vars are absent. The health tool must accurately reflect this.<br>CRITICAL: Never expose credential values or internal stack traces in tool responses. health returns booleans only.<br>Examples:<br><br>Tool skeleton (apply this pattern to all tools):<br><br><br>from mcp.server.fastmcp import FastMCP<br><br>mcp = FastMCP("wordpress-document-bridge")<br><br>@mcp.tool()<br>async def convert_document_to_wxr(source: dict, post_type: str, category: str) -> dict:<br>    """Convert a document (URL or base64 upload) to WXR XML for WordPress import."""<br>    try:<br>        # 1. Validate `source` shape (URL vs. file_upload)<br>        # 2. Fetch/decode + validate (SSRF guard, magic-number sniff, size cap)<br>        # 3. Parse document text by type (docx/pdf/odt/txt)<br>        # 4. Sanitize content via bleach<br>        # 5. Build WXR using xml.etree.ElementTree<br>        return {"wxr_data": "&#x3C;?xml version=\"1.0\"?>..."}<br>    except KnownToolError as e:<br>        return {"error": e.code, **e.context}<br>    except Exception:<br>        # log internally, do not surface details<br>        return {"error": "internal_error"}<br><br># Conditional registration based on env-var presence:<br>if wordpress_credentials_configured():<br>    @mcp.tool()<br>    async def publish_document_to_wordpress(...): ...<br><br>if google_credentials_configured():<br>    @mcp.tool()<br>    async def import_google_doc(...): ...<br>JSON Schema for the shared source parameter (oneOf for mutually exclusive inputs):<br><br><br>{<br>  "type": "object",<br>  "description": "Document source — either a public URL or a base64 file upload.",<br>  "properties": {<br>    "url": {<br>      "type": "string",<br>      "format": "uri",<br>      "description": "Public HTTPS URL to a supported document."<br>    },<br>    "file_upload": {<br>      "type": "object",<br>      "properties": {<br>        "filename": { "type": "string" },<br>        "content_base64": { "type": "string", "contentEncoding": "base64" }<br>      },<br>      "required": ["filename", "content_base64"]<br>    }<br>  },<br>  "oneOf": [<br>    { "required": ["url"] },<br>    { "required": ["file_upload"] }<br>  ]<br>}<br>Expected health response shape:<br><br><br>{<br>  "status": "ok",<br>  "integrations": {<br>    "wordpress_publish": true,<br>    "google_docs": false<br>  },<br>  "supported_formats": ["docx", "doc", "pdf", "odt", "txt"],<br>  "available_tools": ["convert_document_to_wxr", "publish_document_to_wordpress", "health"]<br>}</p>
+</blockquote>
+<h2 class="wp-block-heading">Scoring the result</h2>
+<h3 class="wp-block-heading">RICCE Score: 76 / 100 (judge mode)</h3>
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Component</strong></td><td><strong>Score</strong></td><td><strong>Notes</strong></td></tr><tr><td>Role</td><td>10/10</td><td>Specifies seniority + relevant security expertise</td></tr><tr><td>Instruction</td><td>10/10</td><td>Four tools defined unambiguously</td></tr><tr><td>Context</td><td>6/10</td><td>Trust boundary clear; data sensitivity &#x26; expected scale not stated</td></tr><tr><td>Constraints</td><td>10/10</td><td>Exemplary — credentials, SSRF, file validation, XML injection all covered</td></tr><tr><td>Examples</td><td>2/10</td><td>Judge note<br>"An exemplary, security-focused prompt whose high quality is not fully reflected in the low baseline scores for context and examples."</td></tr></tbody></table></figure>
+<blockquote class="wp-block-quote"><p>The Examples score appears to be a deterministic-rubric artifact — the judge explicitly flagged it as inaccurate because the prompt does include a Python skeleton, JSON Schema, and a response example.<br><br>Cheap wins to push the score higher<br>Context (6 → 9): Add one line on data sensitivity (e.g., "Posts may be public marketing copy or contain end-user PII — treat all content as PII-bearing") and one on scale (e.g., "low-volume internal tool, single-tenant").<br>Examples: Add a negative example of a forbidden pattern, and an explicit structured error response sample. E.g.:<br><br># FORBIDDEN: string-built XML — vulnerable to injection<br>xml = f"&#x3C;title>{user_title}&#x3C;/title>"<br><br>{ "error": "ssrf_attempt_blocked", "reason": "url_resolves_to_private_range" }<br>Security flag noted: no_chain_of_thought. If the coding agent is reasoning-capable, you don't need to add anything; if it's a non-reasoning model, prepend "Think step-by-step before writing code: first plan the module layout, then implement."</p>
+</blockquote>
+<h2 class="wp-block-heading">Takeaways</h2>
+<p>What started as a one-paragraph request — "build an app that turns documents into WordPress imports" — ended as a four-tool MCP server spec with magic-number file validation, SSRF defenses, XML-injection-safe output construction, conditional tool registration based on configured credentials, and a structured error contract. Same idea. Vastly different blast radius if I'd handed the original prompt straight to a coding agent.</p>
+<p>That's RICCE doing its job. But notice what the MCP did <em>beyond</em> rewriting: it refused to commit to a shape until I'd resolved two open questions, one tool or several, and how to handle Google Docs. A coding agent given the vague version would have picked a default and moved on, and I'd have inherited whichever assumption was cheapest to generate. Surfacing ambiguity before code gets written is, frankly, more valuable than any rewrite.</p>
+<p>The final score of 76/100 isn't a perfect ten, and that's the point. The judge flagged thin context around data sensitivity and expected scale, and the deterministic rubric undercounted the worked examples that were already in the prompt. Both are cheap to fix, and the diagnostics tell you exactly what to add. That's the 30-second feedback loop the <a href="https://aragrow.me/blog/stop-writing-bad-prompts/">parent</a> <a href="https://cp.aragrow.me/blog/stop-writing-bad-prompts/"></a><a href="http://stop-writing-bad-prompts/">article</a> talks about, demonstrated end-to-end on a real project of mine.</p>
+<p>Next post, I'll run the wizard against a real task and show how five plain-English answers assemble into a finished prompt — no manual RICCE writing required.</p>
+<p>If you want to see this run live against a prompt of your own — or get a copy of the MCP to use, modify, or fold into your own workflow — <a href="https://aragrow.me/contact/">reach out</a> and we'll schedule a demo.</p>
+<p></p> </article> <!-- Back link --> <div class="post-back" data-astro-cid-4sn4zg3r> <a href="/blog" class="btn btn-outline" data-astro-cid-4sn4zg3r>← Back to Blog</a> <a href="/#contact" class="btn btn-primary" data-astro-cid-4sn4zg3r>Work With Me</a> </div> </div> </div> </main> <footer data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte> <!-- Row 1: Logo + nav links --> <div class="footer-top" data-astro-cid-sz7xmlte> <div class="footer-logo" data-astro-cid-sz7xmlte>Ara<span data-astro-cid-sz7xmlte>Grow</span> LLC</div> <div class="footer-links" data-astro-cid-sz7xmlte> <a href="/contact" data-astro-cid-sz7xmlte>Contact</a> <a href="/privacy/" data-astro-cid-sz7xmlte>Privacy</a> <a href="/ai-policy/" data-astro-cid-sz7xmlte>AI policy</a> <a href="/terms/" data-astro-cid-sz7xmlte>Terms</a> <button type="button" class="footer-link-btn" id="open-consent" data-astro-cid-sz7xmlte>Cookie preferences</button> </div> </div> <!-- Row 2: Social icons --> <p class="footer-social-label" data-astro-cid-sz7xmlte>Connect</p> <div class="footer-social" aria-label="Connect with David on social media" data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/in/davidarago/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-astro-cid-sz7xmlte> <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06s.92-2.06 2.06-2.06c1.14 0 2.06.92 2.06 2.06s-.93 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.facebook.com/david.arago" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" data-astro-cid-sz7xmlte> <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-astro-cid-sz7xmlte> <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" data-astro-cid-sz7xmlte></path> </svg> </a> <a href="https://www.alignable.com/golden-valley-mn/aragrow-llc?user=13125290" target="_blank" rel="noopener" aria-label="Alignable" title="Alignable" data-astro-cid-sz7xmlte> <span class="footer-social-mark" aria-hidden="true" data-astro-cid-sz7xmlte>A</span> </a> </div> <!-- Row 3: Copyright --> <p class="footer-copy" data-astro-cid-sz7xmlte>© 2026 AraGrow LLC · Minneapolis, MN · Serving clients in the US and internationally · EN · ES</p> </div> </footer>  <script type="module">document.getElementById("open-consent")?.addEventListener("click",()=>{window.dispatchEvent(new CustomEvent("aragrow:open-consent"))});</script>  <div id="consent-banner" class="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden><div class="consent-inner"><span class="consent-cookie" aria-hidden="true">🍪</span><p class="consent-text"><strong>We use cookies because we’re so sweet.</strong><span class="consent-sub">
+Just Google Analytics — anonymized, no ads, no third parties.
+<a href="/privacy/">Details</a>.
+</span></p><div class="consent-actions"><button type="button" class="consent-btn consent-decline" data-consent="denied">
+No thanks
+</button><button type="button" class="consent-btn consent-accept" data-consent="granted">
+Sure!
+</button></div></div></div><script>(function(){const gaId = "G-NMYNRF67NY";
+const gtmId = "";
+
+      (function () {
+        var KEY = 'aragrow-consent';
+        var SNOOZE_KEY = 'aragrow-consent-snooze-until';
+        var SNOOZE_MS = 5 * 60 * 1000; // 5 minutes
+        var loaded = false;
+
+        function loadAnalytics() {
+          if (loaded) return;
+          loaded = true;
+
+          if (gaId) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', gaId, { anonymize_ip: true });
+          }
+
+          if (gtmId) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var g = document.createElement('script');
+            g.async = true;
+            g.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+            document.head.appendChild(g);
+          }
+        }
+
+        function showBanner() {
+          var el = document.getElementById('consent-banner');
+          if (el) el.hidden = false;
+        }
+        function hideBanner() {
+          var el = document.getElementById('consent-banner');
+          if (el) el.hidden = true;
+        }
+
+        function init() {
+          var decision = null;
+          var snoozedUntil = 0;
+          try {
+            decision = localStorage.getItem(KEY);
+            snoozedUntil = parseInt(localStorage.getItem(SNOOZE_KEY) || '0', 10) || 0;
+          } catch (e) {}
+
+          if (decision === 'granted') {
+            loadAnalytics();
+          } else if (Date.now() >= snoozedUntil) {
+            showBanner();
+          }
+
+          document.querySelectorAll('[data-consent]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var choice = btn.getAttribute('data-consent');
+              hideBanner();
+              try {
+                if (choice === 'granted') {
+                  localStorage.setItem(KEY, 'granted');
+                  localStorage.removeItem(SNOOZE_KEY);
+                  loadAnalytics();
+                } else {
+                  localStorage.removeItem(KEY);
+                  localStorage.setItem(SNOOZE_KEY, String(Date.now() + SNOOZE_MS));
+                }
+              } catch (e) {}
+            });
+          });
+
+          window.addEventListener('aragrow:open-consent', function () {
+            try {
+              localStorage.removeItem(KEY);
+              localStorage.removeItem(SNOOZE_KEY);
+            } catch (e) {}
+            showBanner();
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+      })();
+    })();</script><style>
+      .consent-banner {
+        position: fixed; left: 16px; right: 16px; bottom: 16px;
+        background: var(--card); color: var(--text);
+        border: 1px solid var(--border); border-radius: 18px;
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.6) inset,
+          0 18px 40px -12px rgba(123,24,24,0.25),
+          0 4px 12px rgba(0,0,0,0.08);
+        padding: 18px 22px; z-index: 9999;
+        max-width: 680px; margin: 0 auto;
+        font-size: 0.92rem;
+        animation: consent-rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1.05);
+      }
+      .consent-banner[hidden] { display: none; }
+
+      @keyframes consent-rise {
+        0%   { transform: translateY(120%); opacity: 0; }
+        70%  { transform: translateY(-6px); opacity: 1; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+
+      .consent-inner {
+        display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+      }
+      .consent-cookie {
+        font-size: 2rem; line-height: 1; flex-shrink: 0;
+        display: inline-block; transform-origin: 50% 70%;
+        animation: cookie-wobble 3.2s ease-in-out infinite;
+      }
+      @keyframes cookie-wobble {
+        0%, 100% { transform: rotate(-6deg); }
+        50%      { transform: rotate(6deg); }
+      }
+      .consent-text {
+        flex: 1 1 280px; margin: 0; line-height: 1.5;
+      }
+      .consent-text strong {
+        display: block; font-weight: 600; color: var(--text);
+        margin-bottom: 2px; font-size: 1.02em;
+      }
+      .consent-sub { color: var(--muted); font-size: 0.88em; }
+      .consent-sub a {
+        color: var(--teal-text); text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+      .consent-btn {
+        appearance: none; cursor: pointer; font: inherit; font-weight: 500;
+        padding: 9px 20px; border-radius: 999px;
+        border: 1px solid var(--border); background: transparent; color: var(--muted);
+        transition: background 0.18s, color 0.18s, transform 0.18s, border-color 0.18s;
+      }
+      .consent-btn:hover { color: var(--text); border-color: var(--text); }
+      .consent-btn:active { transform: translateY(1px); }
+
+      .consent-accept {
+        background: var(--teal); color: #fff; border-color: var(--teal);
+        box-shadow: 0 2px 8px rgba(123,24,24,0.25);
+      }
+      .consent-accept:hover {
+        background: var(--teal-text); color: #fff; border-color: var(--teal-text);
+        box-shadow: 0 4px 12px rgba(123,24,24,0.35);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .consent-banner { animation: none; }
+        .consent-cookie { animation: none; }
+        .consent-btn { transition: none; }
+      }
+
+      @media (max-width: 520px) {
+        .consent-actions { width: 100%; justify-content: stretch; }
+        .consent-btn { flex: 1; }
+      }
+    </style>  <script type="module">const o=document.querySelectorAll(".reveal"),r=new IntersectionObserver(e=>{e.forEach((s,t)=>{s.isIntersecting&&(setTimeout(()=>s.target.classList.add("visible"),t*80),r.unobserve(s.target))})},{threshold:.12});o.forEach(e=>r.observe(e));</script></body></html> 

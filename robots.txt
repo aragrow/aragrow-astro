@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aragrow.me/sitemap-index.xml
