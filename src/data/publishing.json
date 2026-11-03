@@ -20,8 +20,8 @@
     },
     "/ai-consulting-and-automation/": {
       "type": "page",
-      "status": "draft",
-      "publishAt": null,
+      "status": "published",
+      "publishAt": "2026-11-03T23:14:13.475Z",
       "expireAt": null
     },
     "/ai-front-desk-review/": {
