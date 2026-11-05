@@ -238,14 +238,33 @@ const structuredData = {
     max-width: 100%; border-radius: 8px;
     border: 1px solid var(--border); margin: 24px 0;
   }
+  /* Wide tables scroll sideways instead of crushing their columns on a phone. */
   .post-body :global(table) {
-    width: 100%; border-collapse: collapse; margin-bottom: 24px;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin-bottom: 24px;
   }
   .post-body :global(th), .post-body :global(td) {
     padding: 10px 14px; border: 1px solid var(--border);
     font-size: 0.9rem;
   }
   .post-body :global(th) { background: var(--teal-dim); font-weight: 600; }
+  /* On a wide table the first column stays put, so a row never loses its label
+     while the rest scrolls. Needs an opaque background to cover what slides under. */
+  .post-body :global(tr > :first-child) {
+    position: sticky;
+    left: 0;
+    background-color: var(--dark);
+    z-index: 1;
+  }
+  /* --teal-dim is translucent, so the header cell needs the page colour underneath
+     it as well, or scrolled rows show through. */
+  .post-body :global(thead tr > :first-child) {
+    background-image: linear-gradient(var(--teal-dim), var(--teal-dim));
+  }
   .post-body :global(figure) { margin: 24px 0; }
   .post-body :global(figcaption) {
     font-size: 0.8rem; color: var(--muted);
