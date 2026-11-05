@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Database Management"]
 excerpt: "Throughout my career, I have had the privilege of working with various databases, starting from AS/400 DB2 to Oracle, MSSQL, and finally MySQL. This journey has allowed me to gain valuable experien…"
 featuredImage: "/images/blog/building-rooftop-view-scaled.jpg"
+featuredImageAlt: "Empty rooftop parking deck at dusk, looking out over a city skyline under a purple sky."
 ---
 <p>Throughout my career, I have had the privilege of working with various databases, starting from AS/400 DB2 to Oracle, MSSQL, and finally MySQL. This journey has allowed me to gain valuable experience in table modeling, database optimization, query optimization, stored procedures, and more.</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Life's Journey","To Astro"]
 excerpt: "So stopping writing bad prompts is not a nice thing to do, it is a must to get some sort of consistent result. If you write code with an AI assistant, you've felt this: the same task, asked two dif…"
 featuredImage: "/images/blog/marker_version.webp"
+featuredImageAlt: "Hand-drawn poster titled Stop Writing Bad Prompts, showing a weak prompt passing through a local MCP server to produce a score of 87 out of 100 and a rewritten prompt."
 ---
 <p>So stopping writing bad prompts is not a nice thing to do, it is a must to get some sort of consistent result.  If you write code with an AI assistant, you've felt this: the same task, asked two different ways, produces two wildly different outputs. One prompt gets you a parameterized SQL query with input validation. The next gets you a string-concatenated injection vulnerability with a smile. The model didn't change. <strong>The prompt did.</strong></p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "So I analyzed one of my test websites with Chrome LightHouse and I got a 98% overall score consistently. Not to tune my own horn, but It seems that I am a great SEO Guru, right? Well not so fast. O…"
 featuredImage: "/images/blog/good-web-core-vitals.png"
+featuredImageAlt: "Lighthouse report showing scores of 98 for Performance, 100 for Accessibility, 100 for Best Practices and 98 for SEO."
 ---
 <p>So I analyzed one of my test websites with Chrome LightHouse and I got a 98% overall score consistently. Not to tune my own horn, but It seems that I am a great SEO Guru, right? Well not so fast. Obtaining a 98% overall score is not a great achievement. I have a feeling that every single website in the wild, at some point has obtained almost a perfect score at some point during the initial phase of development.</p>
 

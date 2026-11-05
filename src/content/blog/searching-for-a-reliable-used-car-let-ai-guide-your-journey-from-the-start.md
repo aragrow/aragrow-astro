@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Ever found the perfect used car online, only to worry it might turn out to be a lemon? You’re not alone. Buying a used car from a private seller can save you money, but it also comes with risks tha…"
 featuredImage: "/images/blog/hilbert-hill-DVcRrFoYWJM-unsplash-transformed.webp"
+featuredImageAlt: "Rusty vintage car with a handwritten For Sale sign taped inside the window."
 ---
 <p>Ever found the perfect used car online, only to worry it might turn out to be a lemon? You’re not alone. Buying a used car from a private seller can save you money, but it also comes with risks that require careful research and smart decision-making. The good news? With the power of AI, you can make this process easier, faster, and more reliable.</p>
 

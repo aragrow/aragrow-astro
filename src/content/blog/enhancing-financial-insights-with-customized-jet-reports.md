@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Technology"]
 excerpt: "As a professional developer and designer, I have had the privilege of creating over 100 Jet Reports exclusively for the Accounting Department. These reports have played a crucial role in providing …"
 featuredImage: "/images/blog/white-fighting-jet-flying-in-mid-air-scaled.jpg"
+featuredImageAlt: "Grey fighter jet banking against an overcast sky."
 ---
 <p>As a professional developer and designer, I have had the privilege of creating over 100 Jet Reports exclusively for the Accounting Department. These reports have played a crucial role in providing valuable insights and streamlining financial processes within organizations. With a wide spectrum of complexity, ranging from simple vendor lists to intricate Profit and Loss statements, these customized reports have proven to be invaluable assets.</p>
 

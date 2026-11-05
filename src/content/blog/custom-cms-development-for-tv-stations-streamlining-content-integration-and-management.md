@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Technology"]
 excerpt: "As a ColdFusion programmer, I have had the opportunity to develop and maintain a customized Content Management System (CMS) tailored specifically for seven different TV stations. This in-house CMS …"
 featuredImage: "/images/blog/macbook-pro-on-black-wooden-table-scaled.jpg"
+featuredImageAlt: "MacBook on a dark desk showing code in an editor, beside a stack of books and houseplants."
 ---
 <figure class="wp-block-image size-large"><img src="/images/blog/ColdFusion-1024x512.webp" alt="" class="wp-image-635"/></figure>
 

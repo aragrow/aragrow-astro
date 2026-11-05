@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "In this article I am going to discuss the advantages and drawbacks of using Advanced Custom Fields (ACF) and custom fields in WordPress, particularly when dealing with performance issues related to…"
 featuredImage: "/images/blog/istockphoto-179088284-612x612-1.jpg"
+featuredImageAlt: "Tortoise walking slowly along a gravel path beside green scrub."
 ---
 <p>In this article I am going to discuss the advantages and drawbacks of using Advanced Custom Fields (ACF) and custom fields in WordPress, particularly when dealing with performance issues related to querying large amounts of data. I will suggest a potential solution involving custom tables to optimize query performance, especially for complex filtering scenarios. This article is aimed at site owners who are dealing with performance bottlenecks in WordPress sites that extensively use advanced custom fields.</p>
 

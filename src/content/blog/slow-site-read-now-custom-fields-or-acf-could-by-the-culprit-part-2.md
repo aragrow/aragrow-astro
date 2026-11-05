@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "This post aims to analyze the performance disparity between utilizing Custom Post Types and Custom Fields versus Custom Tables within the WordPress environment. Through a retrospective examination …"
 featuredImage: "/images/blog/rocco-stoppoloni-h6qnnmbkLBU-unsplash.webp"
+featuredImageAlt: "Hourglass with golden sand running through it against a dark background with warm bokeh lights."
 ---
 <h2 class="wp-block-heading"><strong>Abstract:</strong></h2>
 

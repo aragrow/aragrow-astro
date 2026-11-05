@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Understanding body language, facial expressions, and tone is a vital layer of communication. For you, this is a key part of receiving the \"response\" you are waiting for and trusting your intuition …"
 featuredImage: "/images/blog/client_reactions_workflow.webp"
+featuredImageAlt: "Flowchart for reading client reactions, from observing signals and identifying their type, through positive and negative branches, to trusting your intuition."
 ---
 <p>Understanding body language, facial expressions, and tone is a vital layer of communication. For you, this is a key part of receiving the "response" you are waiting for and trusting your intuition throughout the client engagement flow. Paying attention to these signals demonstrates&nbsp;<strong>Respect</strong>&nbsp;and helps maintain&nbsp;<strong>Safety</strong>&nbsp;by ensuring you are attuned to the client's comfort level and true feelings.</p>
 

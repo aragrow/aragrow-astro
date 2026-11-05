@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "My approach to engaging with potential clients is inspired by the idea of structured steps, but it is entirely guided by listening, building trust, and being responsive to&nbsp;their&nbsp;needs and…"
 featuredImage: "/images/blog/client_workflow-1.webp"
+featuredImageAlt: "Flowchart of a consultative client conversation, running from establishing connection and deep listening through to guiding the next step, with a red branch for navigating a no."
 ---
 <p>My approach to engaging with potential clients is inspired by the idea of structured steps, but it is entirely guided by listening, building trust, and being responsive to&nbsp;<em>their</em>&nbsp;needs and timeline. It's about creating a valuable partnership based on Respect and Safety, leading to earned Trust. This flow incorporates multiple points to check in with the client, ensure we're proceeding at their pace, and importantly, pay attention to their unspoken communication.</p>
 

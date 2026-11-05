@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Like any conscientious developer, I am implementing Content Security Policies to protect me site from Cross-Site Scripting (XSS) and data injection attacks. So i decided to run Google Lighthouse to…"
 featuredImage: "/images/blog/jad-limcaco-DenHSkScL0Y-unsplash.webp"
+featuredImageAlt: "Royal guards in red tunics and bearskin hats marching in formation outside a brick palace."
 ---
 <p>Like any conscientious developer, I am implementing Content Security Policies to protect me site from Cross-Site Scripting (XSS) and data injection attacks. So i decided to run Google Lighthouse to give it a thorough analysis. This time, I really paid attention to the report rather than just glancing at my Web Core Vitals score.</p>
 

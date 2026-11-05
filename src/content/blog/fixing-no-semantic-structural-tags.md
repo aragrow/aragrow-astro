@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Web Development","WordPress"]
 excerpt: "When running a performance or SEO audit, some WordPress sites built with Elementor show the warning: “No semantic structural tags (main, header, footer, nav) found.” This usually means the visible …"
 featuredImage: "/images/blog/fixing-no-semantic-structural-tags-on-a-wordpress-elementor-site.webp"
+featuredImageAlt: "Flat illustration of a browser window with stacked blocks labeled Header, Nav, Main Content and Footer."
 ---
 <h2 class="wp-block-heading" id="how-to-fix-in-elementor-theme-builder">Semantic HTML: turning div soup into clean structure</h2>
 

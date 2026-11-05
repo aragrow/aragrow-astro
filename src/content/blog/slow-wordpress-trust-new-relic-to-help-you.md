@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "“New Relic is where dev, ops, security, and business teams solve software–performance problems with data.”"
 featuredImage: "/images/blog/istockphoto-1139323101-612x612-1.jpg"
+featuredImageAlt: "Illustration of a laptop showing a red warning triangle, with gears behind it and a half-filled progress bar labeled Loading."
 ---
 <p>“New Relic is where dev, ops, security, and business teams solve software–performance problems with data.”</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Interpreting the results from a web page analyzer tool provides valuable insights into the performance and optimization of your website."
 featuredImage: "/images/blog/Screenshot-2022-12-17-at-8.55.17-AM-1024x647-1.png"
+featuredImageAlt: "Lighthouse report with scores of 98 Performance, 100 Accessibility, 100 Best Practices and 98 SEO, beside a thumbnail of the tested site."
 ---
 <p>Interpreting the results from a web page analyzer tool provides valuable insights into the performance and optimization of your website. </p>
 

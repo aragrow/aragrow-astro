@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Receiving an answer that isn't the desired \"yes, let's proceed\" is a natural part of any sales or business development process. For you, operating from a place of Waiting to Respond and relying on …"
 featuredImage: "/images/blog/maze_compressed.webp"
+featuredImageAlt: "Aerial view of a circular hedge maze with a single tree at its center."
 ---
 <p>Receiving an answer that isn't the desired "yes, let's proceed" is a natural part of any sales or business development process. For you, operating from a place of <strong>Waiting to Respond</strong> and relying on your <strong>Intuition</strong>, a "no" or "not now" is simply a different kind of response from the client or the opportunity itself. The key is to <strong>respect this response</strong> and avoid the urge to push or initiate against it, which would lead to frustration (your Not-Self theme) and damage the foundation of Safety and Respect you've built.</p>
 

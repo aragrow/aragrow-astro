@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Performance budgeting is a technique that involves setting specific performance goals and limits for various aspects of a website, such as website loading speed, response times, memory usage, or ne…"
 featuredImage: "/images/blog/istockphoto-1146651905-612x612-1.jpg"
+featuredImageAlt: "Wooden seesaw balancing blue blocks spelling NEED against red blocks spelling WANT."
 ---
 <p>Performance budgeting is a technique that involves setting specific performance goals and limits for various aspects of a website, such as website loading speed, response times, memory usage, or network utilization. It focuses on allocating resources effectively and efficiently to achieve desired performance outcomes within predefined limits.</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "While WordPress it is generally reliable and user-friendly, there may be times when you encounter issues or errors that need to be resolved. In this blog post, we will explore some common WordPress…"
 featuredImage: "/images/blog/wordpress-logo.webp"
+featuredImageAlt: "Close-up of a white Volkswagen badge on the teal body panel of a van."
 ---
 <h2 class="wp-block-heading">Introduction</h2>
 

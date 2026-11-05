@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","LinkedIn"]
 excerpt: "Ever run your website through Google’s PageSpeed Insights or Lighthouse, only to feel confused or frustrated by the results? You’re not alone. While these tools give you scores and advice to “impro…"
 featuredImage: "/images/blog/website-speed-are-the-reports-speaking-your-language.webp"
+featuredImageAlt: "Illustration of a person beside a monitor showing a speed report that translates metrics into plain questions, such as how fast people see something and whether the page jumps around."
 ---
 <p>Ever run your website through Google’s PageSpeed Insights or Lighthouse, only to feel confused or frustrated by the results? You’re not alone. While these tools give you scores and advice to “improve your site,” nearly every important result is labeled with jargon: First Contentful Paint (FCP), Cumulative Layout Shift (CLS), Total Blocking Time (TBT)... Most website owners need simple answers, not technical language!</p>
 

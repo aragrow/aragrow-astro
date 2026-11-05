@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Trust is the confidence a client places in you – confidence in your competence, your reliability, your integrity, and your commitment to their best interests. It sits on top of the foundation of Re…"
 featuredImage: "/images/blog/rstc-1-e1746565391283.webp"
+featuredImageAlt: "The RSTC triangle cropped to the Trust section in the middle, between Respect and Safety."
 ---
 <p>Trust is the confidence a client places in you – confidence in your competence, your reliability, your integrity, and your commitment to their best interests. It sits on top of the foundation of Respect and Safety because a client can only trust you if they feel you consistently value them and provide a secure environment for interaction and decision-making.</p>
 

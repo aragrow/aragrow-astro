@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["WP Plugins"]
 excerpt: "The ProductCopy Genie plugin is a personal learning project designed to help me delve deeper into Python and Artificial Intelligence. It allows users to create perfectly tailored resumes and cover …"
 featuredImage: "/images/blog/productcopy-Genei.webp"
+featuredImageAlt: "Glowing genie rising from a laptop that shows a WordPress product description screen, with ProductCopy on its base."
 ---
 <p>The <strong>ProductCopy Genie</strong> plugin is a personal learning project designed to help me delve deeper into Python and Artificial Intelligence. It allows users to create perfectly tailored resumes and cover letters for job applications, leveraging advanced AI technologies like Google Gemini, ChatGPT, Anthropic Claude, and locally hosted Ollama.</p>
 

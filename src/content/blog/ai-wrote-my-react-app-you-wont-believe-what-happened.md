@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Learning","Technology","Web Development"]
 excerpt: "Imagine building a fully functional React application without writing a single line of code yourself. Sounds like science fiction? I tried it, and here's what happened."
 featuredImage: "/images/blog/Screenshot-2025-05-23-at-13.09.34.png"
+featuredImageAlt: "Dark login screen of a demo app called Nexus Interactive, with a filled username field, a masked password and an orange Login button."
 ---
 <p>Imagine building a fully functional React application without writing a single line of code yourself. Sounds like science fiction? I tried it, and here's what happened.</p>
 

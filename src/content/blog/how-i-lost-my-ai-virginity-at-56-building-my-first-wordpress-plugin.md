@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","LLM Journey"]
 excerpt: "At 56, I never thought I’d be diving into artificial intelligence. I’ve watched technology change — dial-up internet, smartphones, cloud everything — but AI always felt like it belonged to coders i…"
 featuredImage: "/images/blog/b54ecfde-cb56-44d4-a99f-40fd45b2f9b4.webp"
+featuredImageAlt: "Colorful cartoon of a man at a retro computer showing the WordPress logo, surrounded by small robots in a neon-lit bar."
 ---
 <h3 class="wp-block-heading">A practical beginner’s reflections to mixing AI with WordPress — no midlife crisis required.</h3>
 

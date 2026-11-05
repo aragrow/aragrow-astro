@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Building Successful Partnerships: My Approach to Client Relationships"
 featuredImage: "/images/blog/rstc-e1746565746312-1.webp"
+featuredImageAlt: "Triangle diagram of the RSTC method, with Respect and Safety along the base, Trust in the middle, and Client at the top."
 ---
 <p><strong>Building Successful Partnerships: My Approach to Client Relationships</strong></p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","LLM Journey"]
 excerpt: "Thanks Dwight for this quote. This quote highlights the idea that while a specific, detailed plan might become obsolete once a situation begins, the act of planning itself—the critical thinking, fo…"
 featuredImage: "/images/blog/usa-circa-postage-stamp-printed-us-showing-portrait-general-president-dwight-d-eisenhower-201325704.webp"
+featuredImageAlt: "Purple eight-cent United States postage stamp with an engraved portrait of Dwight D. Eisenhower."
 ---
 <h2 class="wp-block-heading">In preparing for battle I have always found that plans are useless, but planning is indispensable</h2>
 

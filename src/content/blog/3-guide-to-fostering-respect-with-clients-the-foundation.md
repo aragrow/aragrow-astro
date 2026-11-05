@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Building a successful client relationship starts with earning their respect. This isn't about deference; it's about demonstrating that you value them as an individual, their time, their expertise i…"
 featuredImage: "/images/blog/rstc-1-e1746564855693.webp"
+featuredImageAlt: "The RSTC triangle cropped to the Respect section at the lower left of the base."
 ---
 <p>Building a successful client relationship starts with earning their respect. This isn't about deference; it's about demonstrating that you value them as an individual, their time, their expertise in their own business, and their perspective. As the base of our "RSTC" pyramid, respect must be consistently present in every interaction.</p>
 

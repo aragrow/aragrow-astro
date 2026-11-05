@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["WP Plugins"]
 excerpt: "Transform General Resumes into Tailored Applications with Ease!"
 featuredImage: "/images/blog/resume-optimizer-e1740425911895.webp"
+featuredImageAlt: "Mockup of a Resume Job Optimizer app, with a half-human half-robot face and panels for a resume and a job description."
 ---
 <h3 class="wp-block-heading">Plugin Description: <strong>Resume and Cover Letter Customizer</strong></h3>
 

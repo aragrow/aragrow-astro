@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","LLM Journey"]
 excerpt: "This article launches a series documenting a practical experiment: can an LLM, guided by clear requirements and prompts, design and scaffold a complete application while the human remains primarily…"
 featuredImage: "/images/blog/Screenshot-2025-09-16-at-07.09.52.png"
+featuredImageAlt: "Python code in a dark editor, checking that an input directory and CSV file exist and logging an error when they are missing."
 ---
 <p>This article launches a series documenting a practical experiment: can an LLM, guided by clear requirements and prompts, design and scaffold a complete application while the human remains primarily a product owner? I’ll share outcomes, constraints, and what it really takes to hand the keyboard to AI—without debating the value of developers. The aim is speed, clarity, and process.</p>
 

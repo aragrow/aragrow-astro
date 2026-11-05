@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["WP Plugins"]
 excerpt: "Queequeg is an innovative plugin designed specifically for literature enthusiasts and students who wish to deepen their understanding of Herman Melville's classic novel, Moby Dick. Through its adva…"
 featuredImage: "/images/blog/woman-inside-library-looking-at-books-scaled-e1740425770894.jpg"
+featuredImageAlt: "Woman browsing the shelves in a crowded secondhand bookshop."
 ---
 <h2 class="wp-block-heading">What is Queequeg?</h2>
 

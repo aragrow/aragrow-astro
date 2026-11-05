@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "For developers already familiar with vibe coding and skill-assisted vibe coding (responsible vibe coding), you know the power of using Large Language Models (LLMs) to accelerate development. But if…"
 featuredImage: "/images/blog/elevating-llm-assisted-vibe-coding-to-the-next-level.webp"
+featuredImageAlt: "Illustration of a developer at a multi-monitor desk surrounded by floating labels for Python, JavaScript, WordPress, AI, LLM and agentic systems, with Core Web Vitals charts on screen."
 ---
 <h2 class="wp-block-heading" id="introduction">Introduction</h2>
 

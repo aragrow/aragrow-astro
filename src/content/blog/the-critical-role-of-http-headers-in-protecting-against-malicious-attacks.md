@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "The Critical Role of HTTP Headers in Protecting Against Malicious Attacks cannot be overstated., these HTTP headers serve as codes facilitating data transfer between a web server and a client. Desi…"
 featuredImage: "/images/blog/chastagner-thierry-MLfwSItwSpg-unsplash.webp"
+featuredImageAlt: "The Great Wall of China winding over forested hills."
 ---
 <p>The Critical Role of HTTP Headers in Protecting Against Malicious Attacks cannot be overstated., these HTTP headers serve as codes facilitating data transfer between a web server and a client. Designed for bidirectional communication, they play a crucial role in directing the browser regarding permissible actions. When HTTP headers are improperly configured, they expose websites to the risk of malicious code injection by hackers, potentially compromising the security of the browsing experience.</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["David","Resume"]
 excerpt: "Results-oriented IT leader with over 25 years of experience driving technology transformations, aligning IT strategies with business goals, and delivering scalable solutions. Fluent in both Spanish…"
 featuredImage: "/images/blog/download-2025-03-02T185329.163-e1741011604575.png"
+featuredImageAlt: "Portrait of David Arago in a dark blazer with his arms crossed, standing in front of a city skyline at sunset."
 ---
 <h3 class="wp-block-heading">Visionary IT Executive Driving Strategic Innovation</h3>
 

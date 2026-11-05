@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Life's Journey"]
 excerpt: "By David Arago / June 12, 2025"
 featuredImage: "/images/blog/meaning-of-life-1-1.webp"
+featuredImageAlt: "Illustration of several middle-aged men standing thoughtfully in a hedge maze around a signpost reading Meaning of Life."
 ---
 <h3 class="wp-block-heading">Lost at 50+? How I am Finding My Way (and You Can Too)</h3>
 

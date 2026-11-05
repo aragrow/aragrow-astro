@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "WARNING: WHAT WE DID IS SUPER DANGEROUS AND UNLESS YOU KNOW HOW TO RESTORE YOUR DATABASE, I WILL NOT ADVISE YOU TO DELETE RECORDS FROM THE DATABASE MANUALLY."
 featuredImage: "/images/blog/kim-gorga-2Zl80uqruUU-unsplash.webp"
+featuredImageAlt: "Close-up of a well-used yellow number 2 pencil with a worn pink eraser."
 ---
 <p class="has-vivid-red-color has-text-color has-link-color has-small-font-size">WARNING: WHAT WE DID IS SUPER DANGEROUS AND UNLESS YOU KNOW HOW TO RESTORE YOUR DATABASE, I WILL NOT ADVISE YOU TO DELETE RECORDS FROM THE DATABASE MANUALLY.</p>
 

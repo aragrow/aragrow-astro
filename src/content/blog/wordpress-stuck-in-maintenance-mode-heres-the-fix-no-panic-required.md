@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Learning","WordPress"]
 excerpt: "You go to check your WordPress site and—BAM—you’re hit with:"
 featuredImage: "/images/blog/wordpress-drunkersailor_1.webp"
+featuredImageAlt: "Meme of a bearded sailor in a peacoat, captioned with a joke that a drunken sailor eventually stops installing plugins he does not need."
 ---
 <p>You go to check your WordPress site and—BAM—you’re hit with:</p>
 

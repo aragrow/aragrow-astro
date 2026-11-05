@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "AI technical debt is quietly growing in a lot of companies, even as everyone celebrates how “smart” tools are saving time and money. AI now writes code, answers emails, and generates reports that u…"
 featuredImage: "/images/blog/AI-automation-and-technical-debt-challenge.webp"
+featuredImageAlt: "Hand-drawn cartoon of an AI Automation robot feeding code onto a conveyor while a pile of technical debt, labeled old logic and hidden dependencies, builds up over a cracked legacy system."
 ---
 <p>AI technical debt is quietly growing in a lot of companies, even as everyone celebrates how “smart” tools are saving time and money. AI now writes code, answers emails, and generates reports that used to take whole teams, but many leaders are starting to wonder if it’s really reducing complexity or just hiding new problems under the surface.</p>
 

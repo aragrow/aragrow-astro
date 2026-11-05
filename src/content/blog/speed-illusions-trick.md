@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","LinkedIn"]
 excerpt: "When you visit your own website, it’s easy to fall for the magician’s \"Speed Illusions Trick\", the quick flash of color and content that seems to load instantly. Like any good illusion, what’s visi…"
 featuredImage: "/images/blog/magic-trick-while-website-is-loading.webp"
+featuredImageAlt: "Magician in a silver tuxedo waving a wand at a monitor showing a Loading bar, while robots with glowing eyes watch from behind."
 ---
 <div class="wp-block-uagb-image alignleft uagb-block-e60634f2 wp-block-uagb-image--layout-overlay wp-block-uagb-image--effect-static wp-block-uagb-image--align-left"><figure class="wp-block-uagb-image__figure"><img srcset="/images/blog/magic-trick-while-website-is-loading-300x300.webp ,https://aragrow.me/wp-content/uploads/2025/11/magic-trick-while-website-is-loading.webp 780w, https://aragrow.me/wp-content/uploads/2025/11/magic-trick-while-website-is-loading.webp 360w" sizes="(max-width: 480px) 150px" src="/images/blog/magic-trick-while-website-is-loading-300x300.webp" alt="" class="uag-image-1866" width="300" height="300" title="" role="presentation"/><div class="wp-block-uagb-image--layout-overlay__color-wrapper"></div><div class="wp-block-uagb-image--layout-overlay__inner center-center"><figcaption class="uagb-image-caption">Magic Trick while website is loading</figcaption></div></figure></div>
 

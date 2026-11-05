@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "This introduction blends your professional background with your natural, responsive, and practical approach, subtly laying the groundwork for an RSTC-based relationship. It's professional yet frien…"
 featuredImage: "/images/blog/WhatsApp-Image-2025-01-11-at-08.04.06-e1737835045518.webp"
+featuredImageAlt: "Cartoon caricature portrait of David Arago, smiling, in a blue collared shirt."
 ---
 <figure class="wp-block-image alignright size-large is-resized has-custom-border"><img src="/images/blog/WhatsApp-Image-2025-01-11-at-08.04.06-1024x1024.webp" alt="Caricature of David Arago." class="wp-image-778" style="border-width:5px;border-radius:25px;width:391px;height:auto"/></figure>
 

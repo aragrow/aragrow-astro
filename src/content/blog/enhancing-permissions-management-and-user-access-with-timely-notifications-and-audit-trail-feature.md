@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Technology"]
 excerpt: "As a team leader, I had the opportunity to supervise the creation of an application that aimed to enhance permissions management for diverse assets. Our goal was to implement a system that would pr…"
 featuredImage: "/images/blog/person-holding-pencil-near-laptop-computer-scaled.jpg"
+featuredImageAlt: "Two people at a desk with laptops, sketching a page wireframe on paper with pencils."
 ---
 <p>As a team leader, I had the opportunity to supervise the creation of an application that aimed to enhance permissions management for diverse assets. Our goal was to implement a system that would provide timely notifications to administrators, facilitating efficient management of user access. Additionally, we wanted to integrate an Audit Trail feature for comprehensive transaction monitoring.</p>
 

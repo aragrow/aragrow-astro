@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "This schedule begins after an initial positive interaction (meeting, call, inquiry response) where a clear \"yes, let's move to proposal\" didn't happen, but the door wasn't closed with a firm \"no\" e…"
 featuredImage: "/images/blog/Screenshot-2025-05-06-at-16.36.18.webp"
+featuredImageAlt: "Google Calendar showing May 2025 beside a day view with parallel GMT+02 and GMT-05 time columns."
 ---
 <p>This schedule begins <em>after</em> an initial positive interaction (meeting, call, inquiry response) where a clear "yes, let's move to proposal" didn't happen, but the door wasn't closed with a firm "no" either.</p>
 

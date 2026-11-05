@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Learning","LLM Journey"]
 excerpt: "Welcome to the start of something new! This is the first of what I hope will be many posts documenting my journey as I dive into the fascinating world of AI. My goal? To share my experiences—both t…"
 featuredImage: "/images/blog/monkey-llm-e1737835090716.webp"
+featuredImageAlt: "Cartoon monkey holding a large sledgehammer, with LLM lettered across it."
 ---
 <p>Welcome to the start of something new! This is the first of what I hope will be many posts documenting my journey as I dive into the fascinating world of AI. My goal? To share my experiences—both the struggles and the triumphs—as I learn how to harness the power of artificial intelligence tools like large language models (LLMs).</p>
 

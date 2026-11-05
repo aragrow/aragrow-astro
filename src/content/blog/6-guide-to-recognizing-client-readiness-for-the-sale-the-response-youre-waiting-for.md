@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Once you've built Respect and Safety, and Trust is growing, clients will often start sending signals that they are moving towards a decision. These signals are the \"response\" indicating they might …"
 featuredImage: "/images/blog/rstc-1-e1746565522240.webp"
+featuredImageAlt: "The RSTC triangle cropped to the Client section at the top, sitting above Trust."
 ---
 <p>Once you've built Respect and Safety, and Trust is growing, clients will often start sending signals that they are moving towards a decision. These signals are the "response" indicating they might be ready for you to initiate the process of becoming a client. They reflect a shift in their thinking – from problem assessment to solution adoption.</p>
 

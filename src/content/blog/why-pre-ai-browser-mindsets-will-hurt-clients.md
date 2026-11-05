@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "The rise of&nbsp;AI-powered browsers&nbsp;marks a seismic shift in how businesses and users interact with the web. If you feel a bit overwhelmed by the rise of AI-powered browsers, you’re not alone…"
 featuredImage: "/images/blog/fighting-dynasour.webp"
+featuredImageAlt: "Cartoon dinosaur with a sword and shield facing a falling meteor, while a mouse calmly builds a brick shelter nearby."
 ---
 <p>The rise of&nbsp;<strong>AI-powered browsers</strong>&nbsp;marks a seismic shift in how businesses and users interact with the web. If you feel a bit overwhelmed by the rise of AI-powered browsers, you’re not alone. Honestly?</p>
 

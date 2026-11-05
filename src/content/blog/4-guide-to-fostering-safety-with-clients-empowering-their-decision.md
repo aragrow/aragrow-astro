@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Respect-Safety-Trust-Client"]
 excerpt: "Just as essential as Respect, creating a sense of Safety is fundamental to building trust and a successful client relationship. Safety, in this context, means creating an environment where the clie…"
 featuredImage: "/images/blog/rstc-1-e1746565164920.webp"
+featuredImageAlt: "The RSTC triangle cropped to the Safety section at the lower right of the base."
 ---
 <p>Just as essential as Respect, creating a sense of Safety is fundamental to building trust and a successful client relationship. Safety, in this context, means creating an environment where the client feels secure, unpressured, and confident that their best interests are paramount. Crucially, it means they know the control over proceeding rests entirely with them.</p>
 

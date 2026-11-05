@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Google made one of its biggest changes with how it ranks web pages this year. The update was rolled out in mid-June 2021 by introducing the Core Web Vitals.&nbsp; Any business that values brand awa…"
 featuredImage: "/images/blog/Screenshot-2022-12-17-at-8.55.30-AM-1024x458-1.png"
+featuredImageAlt: "Lighthouse metrics panel listing First Contentful Paint 1.5 s, Speed Index 1.7 s, Largest Contentful Paint 1.5 s, Time to Interactive 1.5 s, Total Blocking Time 0 ms and Layout Shift 0.09."
 ---
 <p>Google made one of its biggest changes with how it ranks web pages this year. The update was rolled out in mid-June 2021 by introducing the Core Web Vitals.&nbsp; Any business that values brand awareness and visibility should care about it.</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Web Development"]
 excerpt: "When it comes to WordPress custom themes and plugins development, I have extensive experience in both backend processes and frontend design. From handling APIs and SQL statements to creating intera…"
 featuredImage: "/images/blog/a-computer-screen-with-a-bunch-of-text-on-it-scaled.jpg"
+featuredImageAlt: "Close-up of a screen showing WordPress PHP theme code that registers and enqueues scripts and styles."
 ---
 <p>When it comes to WordPress custom themes and plugins development, I have extensive experience in both backend processes and frontend design. From handling APIs and SQL statements to creating interactive widgets and blocks, I have a deep understanding of the entire development process.</p>
 

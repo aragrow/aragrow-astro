@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","To Astro"]
 excerpt: "A 24/7 virtual booking assistant that captures reservations, answers menu and hours questions in any language, and hands off to a human when needed — for restaurants, clinics, salons, and any business that runs on appointments."
 featuredImage: "/images/blog/The_Booking_Assistant_That_Never_Sleeps.webp"
+featuredImageAlt: "Sketch of a restaurant owner beside a chat window where a booking assistant confirms a table for four, with panels for saving time, supporting staff and recovering lost reservations."
 ---
 <p><em>If your team spends half their shift answering "what time do you close?" and "do you have a table for four on Friday?" — there is a better way. Here's what a 24/7 virtual assistant looks like for a real restaurant, and why the same idea works for almost any service business.</em></p>
 

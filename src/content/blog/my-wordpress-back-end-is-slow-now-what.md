@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "Recently, our WordPress backend was experiencing slowdowns. We are using some plugins, yes I know they can contribute to those slowdowns, but unfortunately, those plugins are a requirement for our …"
 featuredImage: "/images/blog/istockphoto-827158860-612x612-1.jpg"
+featuredImageAlt: "Flat illustration of a man straining to push a large gauge needle back from the red zone toward green."
 ---
 <p>Recently, our WordPress backend was experiencing slowdowns. We are using some plugins, yes I know they can contribute to those slowdowns, but unfortunately, those plugins are a requirement for our client. We follow a strict betting process when we select a third-party plugin.</p>
 

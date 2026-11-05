@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Speed"]
 excerpt: "Online shopping is changing fast. Now, autonomous agents, called AI agents, can shop for people. These helpers find, compare, and buy products all by themselves. This is called agentic commerce."
 featuredImage: "/images/blog/pie-chart-illustrating-performance-grade.webp"
+featuredImageAlt: "Pie chart of website performance grades, with F at 56.5 percent, D at 15 percent, C at 14.8 percent, B at 9.4 percent and A at 4.4 percent."
 ---
 <h2 class="wp-block-heading"><strong>Why Website Speed Is Important for New AI Shopping</strong></h2>
 

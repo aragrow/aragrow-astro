@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Digital Strategy in 2 Minutes"]
 excerpt: "Why do I care to have an AEO and GEO Navigation Strategy? Your website menu is invisible when it works well. But it's becoming increasingly important for a new reason: artificial intelligence now r…"
 featuredImage: "/images/blog/aeo-and-geo-navigation-strategy-flat-or-multilevel-menus.webp"
+featuredImageAlt: "Illustration contrasting a flat menu strategy, where all options are visible on one plank, with a multilevel strategy where options are nested in a treehouse."
 ---
 <p>Why do I care to have an AEO and GEO Navigation Strategy?  Your website menu is invisible when it works well. But it's becoming increasingly important for a new reason: artificial intelligence now reads your menu to understand your business.</p>
 

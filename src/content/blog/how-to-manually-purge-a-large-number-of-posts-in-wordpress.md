@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "WARNING: By choosing to execute the commands mentioned herein, you acknowledge that you do so at your own risk. The author disclaims any liability for any direct or indirect damages, losses, or iss…"
 featuredImage: "/images/blog/time-consumed-by-top-web-transactions.png"
+featuredImageAlt: "Stacked area chart titled Time consumed by top web transactions, where load drops sharply from above 200 percent to near zero after late October."
 ---
 <p class="has-vivid-red-color has-ast-global-color-4-background-color has-text-color has-background has-link-color"><strong>WARNING: </strong> By choosing to execute the commands mentioned herein, you acknowledge that you do so at your own risk. The author disclaims any liability for any direct or indirect damages, losses, or issues that may result from the use or misuse of the provided commands in your system.</p>
 

@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog"]
 excerpt: "After more than thirty years in a traditional office, I realized it was time for a new chapter—one where I could truly own my time and work on my terms."
 featuredImage: "/images/blog/WhatsApp-Image-2025-01-11-at-08.04.06-e1737835045518.webp"
+featuredImageAlt: "Cartoon caricature portrait of David Arago, smiling, in a blue collared shirt."
 ---
 <div class="wp-block-uagb-image alignleft uagb-block-76fcc181 wp-block-uagb-image--layout-default wp-block-uagb-image--effect-static wp-block-uagb-image--align-left"><figure class="wp-block-uagb-image__figure"><img srcset="/images/blog/WhatsApp-Image-2025-01-11-at-08.04.06-300x300.webp ,https://aragrow.me/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-11-at-08.04.06-e1737835045518.webp 780w, https://aragrow.me/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-11-at-08.04.06-e1737835045518.webp 360w" sizes="(max-width: 480px) 150px" src="/images/blog/WhatsApp-Image-2025-01-11-at-08.04.06-300x300.webp" alt="Caricature of David Arago." class="uag-image-778" width="300" height="300" title="WhatsApp-Image-2025-01-11-at-08.04.06" loading="lazy" role="img"/></figure></div>
 

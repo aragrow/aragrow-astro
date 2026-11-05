@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Web Development"]
 excerpt: "As a Laravel developer, I have had the opportunity to create a variety of applications that have proven to be highly valuable for businesses. In this blog post, I would like to highlight two applic…"
 featuredImage: "/images/blog/black-flat-screen-computer-monitor-scaled.jpg"
+featuredImageAlt: "Close-up of a laptop screen showing JavaScript code in a dark editor, with colorful light blur behind it."
 ---
 <p>As a Laravel developer, I have had the opportunity to create a variety of applications that have proven to be highly valuable for businesses. In this blog post, I would like to highlight two applications that I have worked on recently.</p>
 

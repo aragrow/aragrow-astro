@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","Learning","LLM Journey"]
 excerpt: "Imagine venturing into a wild and untamed tech safari, where each technology is like a fascinating (and sometimes dangerous) creature. Together, we’ll explore five key technologies—VirtualBox, Linu…"
 featuredImage: "/images/blog/Gemini_Generated_Image_k12c1fk12c1fk12c.webp"
+featuredImageAlt: "Cartoon of a scientist in a lab coat and goggles pulling her hair beside a bulky retro computer running a locally hosted language model."
 ---
 <p>Imagine venturing into a wild and untamed tech safari, where each technology is like a fascinating (and sometimes dangerous) creature. Together, we’ll explore five key technologies—VirtualBox, Linux (Ubuntu), Python, MongoDB, and Large Language Models (LLMs). Don’t worry—I’ll be your "highly qualified" guide through this thrilling landscape.</p>
 

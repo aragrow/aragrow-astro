@@ -7,6 +7,7 @@ author: "David Arago"
 categories: ["Blog","To Astro"]
 excerpt: "In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for b…"
 featuredImage: "/images/blog/Document_to_wordpress.webp"
+featuredImageAlt: "Sketch diagram of PDF, DOCX, Markdown and text files passing through an MCP server with upload, parse, convert and publish tools to become a WordPress post."
 ---
 <p>In the previous post I introduced RICCE and the MCP server I built around it. Here's that MCP in action on a real project of mine — turning a one-paragraph idea into a production-ready prompt for building a secure document-to-WordPress bridge.</p>
 
