@@ -596,8 +596,8 @@
     },
     "/blog/zero-panic-black-friday-communication-plan/": {
       "type": "post",
-      "status": "draft",
-      "publishAt": null,
+      "status": "published",
+      "publishAt": "2026-11-05T19:10:13.016Z",
       "expireAt": null
     },
     "/broadcasting/": {
