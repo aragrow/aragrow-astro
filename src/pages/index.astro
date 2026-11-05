@@ -12,6 +12,49 @@ import Testimonials from '../components/Testimonials.astro';
 import Blog from '../components/Blog.astro';
 import Footer from '../components/Footer.astro';
 
+// Google needs an aggregateRating on any node that carries more than one review,
+// so the average and count are derived from the list instead of hand-written.
+const testimonialReviews = [
+  {
+    '@type': 'Review',
+    author: { '@type': 'Person', name: 'Brent Peterson' },
+    reviewBody:
+      "David Arago is a WordPress development virtuoso who consistently delivers top-notch solutions. His 25+ years of experience shine through in his ability to navigate complex problems with finesse.",
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  },
+  {
+    '@type': 'Review',
+    author: { '@type': 'Person', name: 'Christian Kuffner' },
+    reviewBody:
+      'David Arago is a very professional developer, excellent at creating accurate scopes for PHP development projects.',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  },
+  {
+    '@type': 'Review',
+    author: { '@type': 'Person', name: 'Jack' },
+    reviewBody:
+      'David is committed to his craft and he is willing to do what I call the R&R – reading and research.',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  },
+  {
+    '@type': 'Review',
+    author: { '@type': 'Person', name: 'Ben Baldwin' },
+    reviewBody: 'Great guy, and very helpful. Gives folks what they need.',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  },
+];
+
+const ratingValues = testimonialReviews.map((r) => Number(r.reviewRating.ratingValue));
+const aggregateRating = {
+  '@type': 'AggregateRating',
+  ratingValue: String(
+    Math.round((ratingValues.reduce((a, b) => a + b, 0) / ratingValues.length) * 10) / 10
+  ),
+  reviewCount: ratingValues.length,
+  bestRating: '5',
+  worstRating: '1',
+};
+
 const structuredData = [
   {
     '@context': 'https://schema.org',
@@ -27,11 +70,7 @@ const structuredData = [
       addressCountry: 'US',
     },
     knowsLanguage: ['en', 'es'],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'AraGrow LLC',
-      url: 'https://aragrow.me',
-    },
+    worksFor: { '@id': 'https://aragrow.me/#business' },
     award: [
       'Emmy Award — Web Site Design & Usability (Upper Midwest Chapter, 2007–2008)',
       'Best in WebOps Award Winner (Pantheon Platform, 2023)',
@@ -43,6 +82,7 @@ const structuredData = [
   {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
+    '@id': 'https://aragrow.me/#business',
     name: 'AraGrow LLC',
     url: 'https://aragrow.me',
     telephone: '+1-952-228-1752',
@@ -65,6 +105,8 @@ const structuredData = [
       addressCountry: 'US',
     },
     sameAs: ['https://www.linkedin.com/company/112431091/'],
+    aggregateRating,
+    review: testimonialReviews,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Technology Services',
@@ -84,47 +126,12 @@ const structuredData = [
     name: 'David Arago — AraGrow LLC',
     url: 'https://aragrow.me',
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'AraGrow LLC',
-    url: 'https://aragrow.me',
-    review: [
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Brent Peterson' },
-        reviewBody:
-          "David Arago is a WordPress development virtuoso who consistently delivers top-notch solutions. His 25+ years of experience shine through in his ability to navigate complex problems with finesse.",
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Christian Kuffner' },
-        reviewBody:
-          'David Arago is a very professional developer, excellent at creating accurate scopes for PHP development projects.',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Jack' },
-        reviewBody:
-          'David is committed to his craft and he is willing to do what I call the R&R – reading and research.',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Ben Baldwin' },
-        reviewBody: 'Great guy, and very helpful. Gives folks what they need.',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-    ],
-  },
 ];
 ---
 
 <Layout
   title="Fractional CTO, IT/AI Consultant in Minnesota | AraGrow"
-  description="Part-time senior technology leadership for growing businesses. IT consulting, AI automation, and system modernization from Minnesota, serving clients across the US."
+  description="Part-time senior technology leadership for growing businesses. IT consulting, AI automation, and system modernization from Minnesota, serving the US."
   structuredData={structuredData}
 >
   <Nav />
